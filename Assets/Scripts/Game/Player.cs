@@ -13,8 +13,9 @@ public class Player : CharaBase
         Move,
     }
 
-    PhysicsBase _physicsBase;
+    Vector3 _beforePos;
 
+    PhysicsBase _physicsBase;
     StateManager _state;
 
     protected override void SetUp()
@@ -29,6 +30,8 @@ public class Player : CharaBase
         _state.AddState(new PlayerIdle(), State.Idle)
             .AddState(new PlayerMove(), State.Move)
             .RunRequest(true, State.Idle);
+
+        _beforePos = transform.position;
     }
 
     void Update()
@@ -51,7 +54,14 @@ public class Player : CharaBase
 
     void Rotate()
     {
+        Vector3 dir = transform.position - _beforePos;
+        dir.y = 0;
+        _beforePos = transform.position;
 
+        if (dir != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(dir);
+        }
     }
 
     void Fire()

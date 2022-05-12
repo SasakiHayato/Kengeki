@@ -56,8 +56,6 @@ public class PhysicsBase : MonoBehaviour
         Vector3 dir = _gravityData.RayDirection;
         float dist = _gravityData.RayDistance;
 
-        Debug.DrawRay(_charaBase.OffsetPosition.position, dir * dist, Color.red);
-
         if (Physics.Raycast(_charaBase.OffsetPosition.position, dir, dist, _gravityData.HitLayer))
         {
             _gravityTimer = 0;
