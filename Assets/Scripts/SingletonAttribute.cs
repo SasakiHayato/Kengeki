@@ -1,29 +1,32 @@
 
-/// <summary>
-/// Singletonにするclassの基底クラス
-/// </summary>
-/// <typeparam name="Singleton">Singletonにするクラス</typeparam>
-
-public abstract class SingletonAttribute<Singleton> where Singleton : class
+namespace SingletonAttribute
 {
-    public static Singleton Instance { get; private set; } = null;
-   
-    public static Singleton SetInstance(Singleton singleton, bool reset = false)
+    /// <summary>
+    /// Singletonにするclassの基底クラス
+    /// </summary>
+    /// <typeparam name="Singleton">Singletonにするクラス</typeparam>
+
+    public abstract class SingletonAttribute<Singleton> where Singleton : class
     {
-        if (Instance == null || reset == true)
+        public static Singleton Instance { get; private set; } = null;
+
+        public static Singleton SetInstance(Singleton singleton, bool reset = false)
         {
-            Instance = singleton;
-            UnityEngine.Debug.Log($"SetInstance => {Instance}");
+            if (Instance == null || reset == true)
+            {
+                Instance = singleton;
+                UnityEngine.Debug.Log($"SetInstance => {Instance}");
+            }
+
+            return Instance;
         }
 
-        return Instance;
-    }
+        public static void Delete()
+        {
+            UnityEngine.Debug.Log($"DeleteInstance => {Instance}");
+            Instance = null;
+        }
 
-    public static void Delete()
-    {
-        UnityEngine.Debug.Log($"DeleteInstance => {Instance}");
-        Instance = null;
+        public abstract void SetUp();
     }
-
-    public abstract void SetUp();
 }

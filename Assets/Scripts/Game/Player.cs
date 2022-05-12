@@ -1,4 +1,5 @@
 using UnityEngine;
+using StateMachine;
 
 /// <summary>
 /// PlayerŠÇ—ƒNƒ‰ƒX
@@ -6,6 +7,14 @@ using UnityEngine;
 
 public class Player : CharaBase
 {
+    enum State
+    {
+        Idle,
+        Move,
+    }
+
+    StateManager _state;
+
     protected override void SetUp()
     {
         base.SetUp();
@@ -14,6 +23,16 @@ public class Player : CharaBase
 
         GamePadInputter.Instance.Input.Player.Fire.started += context => Fire();
         GamePadInputter.Instance.SetAction(() => Move());
+
+        _state = new StateManager(gameObject);
+        _state.AddState(null, State.Idle)
+            .AddState(null, State.Move)
+            .RunRequest(true, State.Move);
+    }
+
+    void Update()
+    {
+        _state.Run();
     }
 
     void Move()

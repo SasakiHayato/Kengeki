@@ -1,0 +1,96 @@
+using System.Collections.Generic;
+using UnityEngine;
+using System;
+using System.Linq;
+
+namespace StateMachine
+{
+    /// <summary>
+    /// StateMAchineの管理クラス
+    /// </summary>
+
+    public class StateManager
+    {
+        bool _isRun = false;
+        
+        GameObject _user;
+        Dictionary<string, State> _stateDic;
+
+        KeyValuePair<string, State> _currentKey;
+
+        public StateManager(GameObject user)
+        {
+            _stateDic = new Dictionary<string, State>();
+            _currentKey = default;
+
+            _user = user;
+            Debug.Log($"StateMachin. user : {user.name}");
+        }
+
+        /// <summary>
+        /// ステートの追加
+        /// </summary>
+        /// <param name="state">ステート</param>
+        /// <param name="statePath">パス</param>
+        /// <returns></returns>
+        public StateManager AddState(State state, Enum statePath)
+        {
+            state.SetUp(_user);
+            _stateDic.Add(statePath.ToString(), state);
+            Debug.Log($"AddState => {state}");
+
+            return this;
+        }
+
+        /// <summary>
+        /// Updateの申請
+        /// </summary>
+        /// <param name="isRun">申請</param>
+        /// <param name="statePath">ステートパス</param>
+        /// <returns></returns>
+        public void RunRequest(bool isRun, Enum statePath = null)
+        {
+            if (isRun && statePath != null)
+            {
+                _currentKey = _stateDic.FirstOrDefault(s => s.Key == statePath.ToString());
+                _currentKey.Value.Entry();
+            }
+
+            _isRun = isRun;
+        }
+
+        /// <summary>
+        /// Update
+        /// </summary>
+        public void Run()
+        {
+            if (!_isRun)
+            {
+                _currentKey = default;
+                Debug.Log("StateMachine. Run is False");
+                return;
+            }
+
+            _currentKey.Value.Run();
+        }
+
+        /// <summary>
+        /// ステートの変更
+        /// </summary>
+        /// <param name="path">StatePath</param>
+        public void ChangeState(Enum path)
+        {
+            _currentKey.Value.Exit();
+            _currentKey = _stateDic.FirstOrDefault(s => s.Key == path.ToString());
+            _currentKey.Value.Entry();
+        }
+    }
+
+    public abstract class State
+    {
+        public abstract void SetUp(GameObject user);
+        public abstract void Entry();
+        public abstract void Run();
+        public abstract void Exit();
+    }
+}
