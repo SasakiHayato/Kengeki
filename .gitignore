@@ -9,7 +9,6 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
-/IgnoreList
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
@@ -70,4 +69,9 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# AddFile
+/[Aa]ssets/[Ii]gnoreList/
+[Ii]gnoreList.meta
+
 © 2021 GitHub, Inc.
