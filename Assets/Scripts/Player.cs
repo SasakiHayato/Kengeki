@@ -7,7 +7,6 @@ public class Player : CharaBase
     protected override void SetUp()
     {
         base.SetUp();
-
     }
 
     void Update()
