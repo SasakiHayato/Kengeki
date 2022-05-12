@@ -7,14 +7,16 @@ using System;
 
 public class PlayerMove : StateMachine.State
 {
+    Player _player;
+
     public override void SetUp(GameObject user)
     {
-        
+        _player = user.GetComponent<Player>();
     }
 
     public override void Entry()
     {
-
+        _player.Anim.Play("Run_ver_B");
     }
 
     public override void Run()

@@ -19,15 +19,13 @@ public class Player : CharaBase
     {
         base.SetUp();
 
-        Data.SetData(GameManager.Instance.ObjectData.GetData("Player"));
-
         GamePadInputter.Instance.Input.Player.Fire.started += context => Fire();
         GamePadInputter.Instance.SetAction(() => Move());
 
         _state = new StateManager(gameObject);
         _state.AddState(new PlayerIdle(), State.Idle)
             .AddState(new PlayerMove(), State.Move)
-            .RunRequest(true, State.Move);
+            .RunRequest(true, State.Idle);
     }
 
     void Update()

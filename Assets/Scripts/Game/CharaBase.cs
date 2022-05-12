@@ -10,15 +10,24 @@ public enum ObjectType
 [RequireComponent(typeof(CharacterController))]
 public abstract class CharaBase : MonoBehaviour
 {
+    [SerializeField] string _dataPath;
+
     protected CharacterController CharacterController { get; private set; }
     protected CharaData Data { get; private set; }
+
+    public ObjectAnimController Anim { get; private set; }
    
     void Start() => SetUp();
  
     protected virtual void SetUp()
     {
         Data = new CharaData();
-        CharacterController = GetComponent<CharacterController>();   
+        CharacterController = GetComponent<CharacterController>();
+
+        ObjectDataBase.Data data = GameManager.Instance.ObjectData.GetData(_dataPath);
+
+        Data.SetData(data);
+        Anim = new ObjectAnimController(data.Runtime, data.Avatar, gameObject);
     }
 
     public class CharaData

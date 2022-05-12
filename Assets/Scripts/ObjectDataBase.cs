@@ -15,7 +15,8 @@ public class ObjectDataBase : ScriptableObject
         public string Name;
         public int HP;
         public float Speed;
-
+        public RuntimeAnimatorController Runtime;
+        public Avatar Avatar;
         public ObjectType ObjectType;
         public int ID;
         public string Path;

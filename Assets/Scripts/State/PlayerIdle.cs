@@ -7,14 +7,16 @@ using System;
 
 public class PlayerIdle : StateMachine.State
 {
+    Player _player;
+
     public override void SetUp(GameObject user)
     {
-        
+        _player = user.GetComponent<Player>();
     }
 
     public override void Entry()
     {
-        
+        _player.Anim.Play("Idle_ver_B");
     }
 
     public override void Run()

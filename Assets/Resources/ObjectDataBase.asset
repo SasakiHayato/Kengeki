@@ -16,6 +16,7 @@ MonoBehaviour:
   - Name: Player
     HP: 1
     Speed: 9
+    Runtime: {fileID: 9100000, guid: 11fe0ec95a17e7a40a744a403b44c50c, type: 2}
     ObjectType: 0
     ID: 1
     Path: Player
