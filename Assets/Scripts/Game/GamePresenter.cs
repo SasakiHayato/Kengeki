@@ -8,7 +8,7 @@ public class GamePresenter : MonoBehaviour
 {
     private void Awake()
     {
-        GamePadInputter.SetInstance(new GamePadInputter()).SetUp();
+        GameManager.SetInstance(new GameManager()).SetUp();
     }
 
     void Update()

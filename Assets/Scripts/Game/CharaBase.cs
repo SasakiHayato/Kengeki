@@ -22,13 +22,20 @@ public abstract class CharaBase : MonoBehaviour
     protected virtual void SetUp()
     {
         Data = new CharaData();
-        CharacterController = GetComponent<CharacterController>();
+        CharacterController = GetComponent<CharacterController>();   
     }
 
     public class CharaData
     {
-        public string Name = "";
-        public int HP = 0;
-        public float Speed = 1;
+        public string Name { get; private set; }
+        public int HP { get; private set; }
+        public float Speed { get; private set; }
+
+        public void SetData(ObjectDataBase.Data data)
+        {
+            Name = data.Name;
+            HP = data.HP;
+            Speed = data.Speed;
+        }
     }
 }

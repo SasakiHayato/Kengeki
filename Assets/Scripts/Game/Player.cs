@@ -10,6 +10,8 @@ public class Player : CharaBase
     {
         base.SetUp();
 
+        Data.SetData(GameManager.Instance.ObjectData.GetData("Player"));
+
         GamePadInputter.Instance.Input.Player.Fire.started += context => Fire();
         GamePadInputter.Instance.SetAction(() => Move());
     }
