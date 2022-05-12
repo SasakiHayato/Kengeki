@@ -35,7 +35,7 @@ public abstract class CharaBase : MonoBehaviour
     protected virtual void SetUp()
     {
         CharacterController = GetComponent<CharacterController>();
-        CharacterController.center = OffsetPosition.position;
+        CharacterController.center = OffsetPosition.localPosition;
 
         ObjectDataBase.Data data = GameManager.Instance.ObjectData.GetData(_dataPath);
         Data = new CharaData();
