@@ -7,7 +7,7 @@ using StateMachine;
 
 public class Player : CharaBase
 {
-    enum State
+    public enum State
     {
         Idle,
         Move,
@@ -25,8 +25,8 @@ public class Player : CharaBase
         GamePadInputter.Instance.SetAction(() => Move());
 
         _state = new StateManager(gameObject);
-        _state.AddState(null, State.Idle)
-            .AddState(null, State.Move)
+        _state.AddState(new PlayerIdle(), State.Idle)
+            .AddState(new PlayerMove(), State.Move)
             .RunRequest(true, State.Move);
     }
 
@@ -47,6 +47,6 @@ public class Player : CharaBase
 
     void Fire()
     {
-        
+        Debug.Log("Fire");
     }
 }

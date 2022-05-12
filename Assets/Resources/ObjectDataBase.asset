@@ -15,7 +15,7 @@ MonoBehaviour:
   _datas:
   - Name: Player
     HP: 1
-    Speed: 1
+    Speed: 9
     ObjectType: 0
     ID: 1
     Path: Player

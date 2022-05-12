@@ -6,12 +6,13 @@ using System.Linq;
 namespace StateMachine
 {
     /// <summary>
-    /// StateMAchineの管理クラス
+    /// StateMachineの管理クラス
     /// </summary>
 
     public class StateManager
     {
         bool _isRun = false;
+        string _currentPath;
         
         GameObject _user;
         Dictionary<string, State> _stateDic;
@@ -53,6 +54,8 @@ namespace StateMachine
             if (isRun && statePath != null)
             {
                 _currentKey = _stateDic.FirstOrDefault(s => s.Key == statePath.ToString());
+                _currentPath = statePath.ToString();
+
                 _currentKey.Value.Entry();
             }
 
@@ -71,7 +74,16 @@ namespace StateMachine
                 return;
             }
 
-            _currentKey.Value.Run();
+            Enum path = _currentKey.Value.Exit();
+
+            if (path.ToString() != _currentPath)
+            {
+                ChangeState(path);
+            }
+            else
+            {
+                _currentKey.Value.Run();
+            }
         }
 
         /// <summary>
@@ -80,17 +92,27 @@ namespace StateMachine
         /// <param name="path">StatePath</param>
         public void ChangeState(Enum path)
         {
-            _currentKey.Value.Exit();
+            if (_currentKey.Key == path.ToString())
+            {
+                Debug.Log($"Not change state. CurrentState => {_currentKey.Key}");
+                return;
+            }
+
             _currentKey = _stateDic.FirstOrDefault(s => s.Key == path.ToString());
+            _currentPath = path.ToString();
+
             _currentKey.Value.Entry();
         }
     }
 
+    /// <summary>
+    /// 各ステート
+    /// </summary>
     public abstract class State
     {
         public abstract void SetUp(GameObject user);
         public abstract void Entry();
         public abstract void Run();
-        public abstract void Exit();
+        public abstract Enum Exit();
     }
 }
