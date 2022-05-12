@@ -460,7 +460,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6508731767011062348, guid: 817dd7ae8ea6acf4b94df91919d26940, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.94
+      value: 11.75
       objectReference: {fileID: 0}
     - target: {fileID: 6508731767011062348, guid: 817dd7ae8ea6acf4b94df91919d26940, type: 3}
       propertyPath: m_LocalPosition.z
@@ -505,6 +505,14 @@ PrefabInstance:
     - target: {fileID: 6511080189298074200, guid: 817dd7ae8ea6acf4b94df91919d26940, type: 3}
       propertyPath: _dataPath
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511080189298074200, guid: 817dd7ae8ea6acf4b94df91919d26940, type: 3}
+      propertyPath: _physicsBase._gravityData._scale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511080189298074200, guid: 817dd7ae8ea6acf4b94df91919d26940, type: 3}
+      propertyPath: _physicsBase._gravityData._useGravity
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 817dd7ae8ea6acf4b94df91919d26940, type: 3}

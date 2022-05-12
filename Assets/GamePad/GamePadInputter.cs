@@ -14,26 +14,12 @@ public class GamePadInputter : SingletonAttribute<GamePadInputter>
         CmMove,
     }
 
-    Action _action = null;
-
     public GamePad Input { get; private set; }
 
     public override void SetUp()
     {
         Input = new GamePad();
         Input.Enable();
-    }
-
-    public void SetAction(Action action)
-    {
-        if (action == null) return;
-
-        _action = action;
-    }
-
-    public void Update()
-    {
-        _action?.Invoke();
     }
 
     public object GetValue(ValueType type)
@@ -58,6 +44,5 @@ public class GamePadInputter : SingletonAttribute<GamePadInputter>
     public static void Despose()
     {
         Instance.Input.Dispose();
-        Instance._action = null;
     }
 }

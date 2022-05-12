@@ -10,9 +10,4 @@ public class GamePresenter : MonoBehaviour
     {
         GameManager.SetInstance(new GameManager()).SetUp();
     }
-
-    void Update()
-    {
-        GamePadInputter.Instance.Update();
-    }
 }

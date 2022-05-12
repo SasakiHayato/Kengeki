@@ -17,6 +17,7 @@ MonoBehaviour:
     HP: 1
     Speed: 9
     Runtime: {fileID: 9100000, guid: 11fe0ec95a17e7a40a744a403b44c50c, type: 2}
+    Avatar: {fileID: 9000000, guid: 43992d4f16e57574fa5d16ef485c0cbd, type: 3}
     ObjectType: 0
     ID: 1
     Path: Player

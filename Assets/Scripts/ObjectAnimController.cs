@@ -18,7 +18,8 @@ public class ObjectAnimController
         
         _anim = user.AddComponent<Animator>();
         _anim.runtimeAnimatorController = runTime;
-        _anim.avatar = avatar;
+
+        if (avatar != null) _anim.avatar = avatar;
 
         _existAnim = true;
     }

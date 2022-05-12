@@ -13,15 +13,18 @@ public class Player : CharaBase
         Move,
     }
 
+    PhysicsBase _physicsBase;
+
     StateManager _state;
 
     protected override void SetUp()
     {
         base.SetUp();
 
-        GamePadInputter.Instance.Input.Player.Fire.started += context => Fire();
-        GamePadInputter.Instance.SetAction(() => Move());
+        _physicsBase = GetComponent<PhysicsBase>();
 
+        GamePadInputter.Instance.Input.Player.Fire.started += context => Fire();
+        
         _state = new StateManager(gameObject);
         _state.AddState(new PlayerIdle(), State.Idle)
             .AddState(new PlayerMove(), State.Move)
@@ -31,6 +34,9 @@ public class Player : CharaBase
     void Update()
     {
         _state.Run();
+
+        Move();
+        Rotate();
     }
 
     void Move()
@@ -38,9 +44,14 @@ public class Player : CharaBase
         Vector2 input = (Vector2)GamePadInputter.Instance.GetValue(GamePadInputter.ValueType.PlayerMove);
 
         Vector3 move = new Vector3(input.x, 0, input.y) * Data.Speed;
-        move.y = 0;
+        move.y = _physicsBase.Gravity.y;
 
         CharacterController.Move(move * Time.deltaTime);
+    }
+
+    void Rotate()
+    {
+
     }
 
     void Fire()
