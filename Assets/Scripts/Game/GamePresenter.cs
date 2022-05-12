@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /// <summary>
-/// シーン開始時のセットアップクラス
+/// ゲームシーンの管理クラス
 /// </summary>
 
 public class GamePresenter : MonoBehaviour
@@ -9,5 +9,10 @@ public class GamePresenter : MonoBehaviour
     private void Awake()
     {
         GamePadInputter.SetInstance(new GamePadInputter()).SetUp();
+    }
+
+    void Update()
+    {
+        GamePadInputter.Instance.Update();
     }
 }
