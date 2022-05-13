@@ -30,7 +30,7 @@ public class LockonCm : StateMachine.State
         Vector2 getVal = (Vector2)GamePadInputter.Instance.GetValue(GamePadInputter.ValueType.PlayerMove);
 
         Vector3 forward = _cmManager.CmData.User.position - _cmManager.ViewTarget.position;
-        Vector3 offset = Camera.main.transform.right * SetLerp(getVal.x) + Vector3.up;
+        Vector3 offset = Camera.main.transform.right * 1/*SetLerp(getVal.x)*/ + Vector3.up;
         _cmManager.CmData.NormalizePosition = forward + offset;
     }
 
@@ -43,12 +43,10 @@ public class LockonCm : StateMachine.State
 
         if ((int)_saveSign != (int)sign)
         {
-            _lerpTimer = 0;
-            _currentRate = sign;
+            _lerpTimer = 0;   
+            _saveSign = sign;
+            _currentRate = rate;
         }
-
-        _currentRate = rate;
-        _saveSign = sign;
 
         return rate;
     }

@@ -584,7 +584,6 @@ MonoBehaviour:
   _offsetView: {x: 0, y: 1.2, z: 0}
   _dist: 7
   _deadInput: 0.3
-  _moveDelay: 1
   _viewDelay: 0.2
   _sensitivity: 3
   _collisionLayer:
