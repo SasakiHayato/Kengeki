@@ -39,18 +39,26 @@ public class CmManager : MonoBehaviour
         public float DeadInput { get; private set; }
         public float Sensitivity { get; private set; }
 
-        public Vector3 Position { get; set; }
+        Vector3 _normalPosition = Vector3.zero;
+        public Vector3 NormalizePosition 
+        {
+            get => _normalPosition.normalized; 
+            set { _normalPosition = value; }
+        }
     }
 
     void Start()
     {
+        CmData = new Data(_user, _offsetPosition, _deadInput, _sensitivity);
+
+        Vector3 offestPos = _user.position + _offsetPosition;
+        transform.position = offestPos;
+
         _state = new StateManager(gameObject);
         _state.AddState(new NormalCm(), State.Normal)
             .AddState(new LockonCm(), State.Lockon)
             .AddState(new TransitionCm(), State.Transition)
             .RunRequest(true, State.Normal);
-
-        CmData = new Data(transform, _offsetPosition, _deadInput, _sensitivity);
     }
 
     void Update()
@@ -63,8 +71,9 @@ public class CmManager : MonoBehaviour
 
     void Move()
     {
-        Vector3 offestPos = _user.position + _offsetPosition;
-        transform.position = (CmData.Position.normalized * (_dist - Zoom())) + offestPos;
+        Vector3 cmPos = CmData.NormalizePosition * (_dist - Zoom());
+        cmPos.y = CmData.NormalizePosition.y + _offsetPosition.y;
+        transform.position = cmPos + _user.position;
     }
 
     void View()
