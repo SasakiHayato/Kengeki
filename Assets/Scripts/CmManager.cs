@@ -18,8 +18,11 @@ public class CmManager : MonoBehaviour
     [SerializeField] float _moveDelay;
     [SerializeField] float _viewDelay;
     [SerializeField] float _sensitivity;
+    [SerializeField] LayerMask _collisionLayer;
 
     float _viewTimer;
+    
+    Transform _virtualityCm;
 
     StateManager _state;
     public Data CmData { get; private set; }
@@ -61,6 +64,8 @@ public class CmManager : MonoBehaviour
             .AddState(new LockonCm(), State.Lockon)
             .AddState(new TransitionCm(), State.Transition)
             .RunRequest(true, State.Normal);
+
+        _virtualityCm = new GameObject("Virtuliry").transform;
     }
 
     void Update()
@@ -75,6 +80,9 @@ public class CmManager : MonoBehaviour
     {
         Vector3 cmPos = CmData.NormalizePosition * (_dist - Zoom());
         transform.position = cmPos + _user.position;
+
+        Vector3 virtualCmPos = CmData.NormalizePosition * _dist;
+        _virtualityCm.position = virtualCmPos;
     }
 
     void View()
@@ -91,6 +99,22 @@ public class CmManager : MonoBehaviour
 
     float Zoom()
     {
-        return 0;
+        float zoomRate;
+        float dist = Vector3.Distance(_virtualityCm.position, _user.position);
+
+        Vector3 dir = _virtualityCm.position;
+        dir.y -= 0.5f;
+        
+        RaycastHit hit;
+        if (Physics.Raycast(_user.position, dir, out hit, dist, _collisionLayer))
+        {
+            zoomRate = _dist - hit.distance;
+        }
+        else
+        {
+            zoomRate = 0;
+        }
+
+        return zoomRate;
     }
 }

@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 785102753}
   - component: {fileID: 785102752}
   - component: {fileID: 785102751}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -468,7 +468,10 @@ MonoBehaviour:
   _deadInput: 0.3
   _moveDelay: 1
   _viewDelay: 0.2
-  _sensitivity: 2
+  _sensitivity: 3
+  _collisionLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1001 &6511080189052041358
 PrefabInstance:
   m_ObjectHideFlags: 0
