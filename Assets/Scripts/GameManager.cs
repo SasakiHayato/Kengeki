@@ -10,10 +10,14 @@ using SingletonAttribute;
 public class GameManager : SingletonAttribute<GameManager>
 {
     public ObjectDataBase ObjectData { get; private set; }
+    public FieldObjectData FieldObject { get; private set; }
 
     public override void SetUp()
     {
         GamePadInputter.SetInstance(new GamePadInputter()).SetUp();
         ObjectData = Resources.Load<ObjectDataBase>("ObjectDataBase");
+        FieldObject = new FieldObjectData();
     }
+
+    public Transform LockonTarget { get; set; }
 }

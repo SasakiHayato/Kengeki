@@ -24,7 +24,7 @@ public class Player : CharaBase
 
         _physicsBase = GetComponent<PhysicsBase>();
 
-        GamePadInputter.Instance.Input.Player.Fire.started += context => Fire();
+        GamePadInputter.Instance.Input.Player.Fire.started += context => Lockon();
         
         _state = new StateManager(gameObject);
         _state.AddState(new PlayerIdle(), State.Idle)
@@ -67,8 +67,9 @@ public class Player : CharaBase
         }
     }
 
-    void Fire()
+    void Lockon()
     {
-        Debug.Log("Fire");
+        GameObject data = GameManager.Instance.FieldObject.GetData(ObjectType.Enemy)[0].Target;
+        GameManager.Instance.LockonTarget = data.transform;
     }
 }

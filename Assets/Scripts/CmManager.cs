@@ -15,7 +15,6 @@ public class CmManager : MonoBehaviour
     [SerializeField] Vector3 _offsetView;
     [SerializeField] float _dist;
     [SerializeField, Range(0, 1.0f)] float _deadInput;
-    [SerializeField] float _moveDelay;
     [SerializeField] float _viewDelay;
     [SerializeField] float _sensitivity;
     [SerializeField] LayerMask _collisionLayer;
@@ -27,18 +26,18 @@ public class CmManager : MonoBehaviour
     StateManager _state;
     public Data CmData { get; private set; }
 
+    public Transform ViewTarget { get; set; }
+
     public class Data
     {
-        public Data(Transform user, Vector3 offsetPos, float deadIput, float sensitivity)
+        public Data(Transform user, float deadIput, float sensitivity)
         {
             User = user;
-            OffsetPosition = offsetPos;
             DeadInput = deadIput;
             Sensitivity = sensitivity;
         }
 
         public Transform User { get; private set; }
-        public Vector3 OffsetPosition { get; private set; }
         public float DeadInput { get; private set; }
         public float Sensitivity { get; private set; }
 
@@ -48,13 +47,11 @@ public class CmManager : MonoBehaviour
             get => _position.normalized; 
             set { _position = value; }
         }
-
-        public Vector3 Position => _position;
     }
 
     void Start()
     {
-        CmData = new Data(_user, _offsetPosition, _deadInput, _sensitivity);
+        CmData = new Data(_user, _deadInput, _sensitivity);
 
         Vector3 offestPos = _user.position + _offsetPosition;
         transform.position = offestPos;
@@ -66,6 +63,8 @@ public class CmManager : MonoBehaviour
             .RunRequest(true, State.Normal);
 
         _virtualityCm = new GameObject("Virtuliry").transform;
+
+        ViewTarget = _user;
     }
 
     void Update()
@@ -89,7 +88,7 @@ public class CmManager : MonoBehaviour
     {
         _viewTimer += Time.deltaTime / _viewDelay;
 
-        Vector3 dir = _user.position - transform.position + _offsetView;
+        Vector3 dir = ViewTarget.position - transform.position + _offsetView;
         Quaternion forward = Quaternion.LookRotation(dir.normalized);
         Quaternion rotate = Quaternion.Lerp(transform.rotation, forward, _viewTimer);
         transform.rotation = rotate;

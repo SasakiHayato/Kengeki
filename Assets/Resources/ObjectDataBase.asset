@@ -21,3 +21,11 @@ MonoBehaviour:
     ObjectType: 0
     ID: 1
     Path: Player
+  - Name: TestEnemy
+    HP: 1
+    Speed: 1
+    Runtime: {fileID: 0}
+    Avatar: {fileID: 0}
+    ObjectType: 1
+    ID: 2
+    Path: TestEnemy

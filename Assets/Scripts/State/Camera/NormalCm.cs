@@ -1,6 +1,10 @@
 using System;
 using UnityEngine;
 
+/// <summary>
+/// í èÌéûÇÃCameraState
+/// </summary>
+
 public class NormalCm : StateMachine.State
 {
     float _horizontalAngle;
@@ -9,20 +13,18 @@ public class NormalCm : StateMachine.State
     Vector3 _setPos;
 
     CmManager _cmManager;
-    Transform _cm;
-
+    
     const int Circumference = 360;
     const float MaxAngle = 107;
 
     public override void SetUp(GameObject user)
     {
         _cmManager = user.GetComponent<CmManager>();
-        _cm = user.transform;
     }
 
     public override void Entry()
     {
-        
+        _cmManager.ViewTarget = _cmManager.CmData.User;
     }
 
     public override void Run()
@@ -81,6 +83,7 @@ public class NormalCm : StateMachine.State
 
     public override Enum Exit()
     {
-        return CmManager.State.Normal;
+        if (GameManager.Instance.LockonTarget != null) return CmManager.State.Lockon;
+        else return CmManager.State.Normal;
     }
 }
