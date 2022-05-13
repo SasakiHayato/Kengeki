@@ -39,12 +39,14 @@ public class CmManager : MonoBehaviour
         public float DeadInput { get; private set; }
         public float Sensitivity { get; private set; }
 
-        Vector3 _normalPosition = Vector3.zero;
+        Vector3 _position = Vector3.zero;
         public Vector3 NormalizePosition 
         {
-            get => _normalPosition.normalized; 
-            set { _normalPosition = value; }
+            get => _position.normalized; 
+            set { _position = value; }
         }
+
+        public Vector3 Position => _position;
     }
 
     void Start()
@@ -72,7 +74,6 @@ public class CmManager : MonoBehaviour
     void Move()
     {
         Vector3 cmPos = CmData.NormalizePosition * (_dist - Zoom());
-        cmPos.y = CmData.NormalizePosition.y + _offsetPosition.y;
         transform.position = cmPos + _user.position;
     }
 

@@ -12,6 +12,7 @@ public class NormalCm : StateMachine.State
     Transform _cm;
 
     const int Circumference = 360;
+    const float MaxAngle = 107;
 
     public override void SetUp(GameObject user)
     {
@@ -21,10 +22,7 @@ public class NormalCm : StateMachine.State
 
     public override void Entry()
     {
-        // VirticalAngle‚Ì‰Šú‰»
-        Vector3 diff = _cm.position - _cmManager.CmData.User.position;
-        float angle = Mathf.Atan2(diff.y, diff.z) * Mathf.Rad2Deg;
-        _virticalAngle = angle;
+        
     }
 
     public override void Run()
@@ -55,12 +53,26 @@ public class NormalCm : StateMachine.State
 
     void Virtical(float input)
     {
+        float angle = _virticalAngle / _cmManager.CmData.Sensitivity;
+
         if (Mathf.Abs(input) > _cmManager.CmData.DeadInput)
         {
             _virticalAngle += input;
         }
 
-        float rad = (_virticalAngle / _cmManager.CmData.Sensitivity) * Mathf.Deg2Rad;
+        if (angle < 0)
+        {
+            angle = 0;
+            _virticalAngle = 0;
+        }
+
+        if (Mathf.Abs(angle) > MaxAngle)
+        {
+            angle = MaxAngle;
+            _virticalAngle = angle * _cmManager.CmData.Sensitivity;
+        }
+
+        float rad = angle * Mathf.Deg2Rad;
         
         _setPos.y = Mathf.Cos(rad);
     }

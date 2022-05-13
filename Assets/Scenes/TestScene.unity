@@ -462,7 +462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _user: {fileID: 686068306}
-  _offsetPosition: {x: 0, y: 2, z: 0}
+  _offsetPosition: {x: 0, y: 3, z: 7}
   _offsetView: {x: 0, y: 1.2, z: 0}
   _dist: 7
   _deadInput: 0.3
