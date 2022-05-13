@@ -46,7 +46,10 @@ public class Player : CharaBase
     {
         Vector2 input = (Vector2)GamePadInputter.Instance.GetValue(GamePadInputter.ValueType.PlayerMove);
 
-        Vector3 move = new Vector3(input.x, 0, input.y) * Data.Speed;
+        Vector3 forward = Camera.main.transform.forward * input.y;
+        Vector3 right = Camera.main.transform.right * input.x;
+
+        Vector3 move = (forward + right) * Data.Speed;
         move.y = _physicsBase.Gravity.y;
 
         CharacterController.Move(move * Time.deltaTime);

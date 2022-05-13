@@ -468,7 +468,7 @@ MonoBehaviour:
   _deadInput: 0.3
   _moveDelay: 1
   _viewDelay: 0.2
-  _sensitivity: 3
+  _sensitivity: 2
 --- !u!1001 &6511080189052041358
 PrefabInstance:
   m_ObjectHideFlags: 0
