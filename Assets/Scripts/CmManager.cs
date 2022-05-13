@@ -12,12 +12,13 @@ public class CmManager : MonoBehaviour
 
     [SerializeField] Transform _user;
     [SerializeField] Vector3 _offsetPosition;
+    [SerializeField] Vector3 _offsetView;
     [SerializeField] float _dist;
     [SerializeField, Range(0, 1.0f)] float _deadInput;
     [SerializeField] float _moveDelay;
     [SerializeField] float _viewDelay;
+    [SerializeField] float _sensitivity;
 
-    float _moveTimer;
     float _viewTimer;
 
     StateManager _state;
@@ -25,16 +26,18 @@ public class CmManager : MonoBehaviour
 
     public class Data
     {
-        public Data(Transform user, Vector3 offsetPos, float deadIput)
+        public Data(Transform user, Vector3 offsetPos, float deadIput, float sensitivity)
         {
             User = user;
             OffsetPosition = offsetPos;
             DeadInput = deadIput;
+            Sensitivity = sensitivity;
         }
 
         public Transform User { get; private set; }
         public Vector3 OffsetPosition { get; private set; }
         public float DeadInput { get; private set; }
+        public float Sensitivity { get; private set; }
 
         public Vector3 Position { get; set; }
     }
@@ -47,7 +50,7 @@ public class CmManager : MonoBehaviour
             .AddState(new TransitionCm(), State.Transition)
             .RunRequest(true, State.Normal);
 
-        CmData = new Data(transform, _offsetPosition, _deadInput);
+        CmData = new Data(transform, _offsetPosition, _deadInput, _sensitivity);
     }
 
     void Update()
@@ -60,19 +63,15 @@ public class CmManager : MonoBehaviour
 
     void Move()
     {
-        _moveTimer += Time.deltaTime / _moveDelay;
-
-        Vector3 setPos = Vector3.Slerp(transform.position.normalized, CmData.Position.normalized, _moveTimer);
-        transform.position = (setPos * (_dist - Zoom())) + _user.position;
-
-        if (setPos == transform.position) _moveTimer = 0;
+        Vector3 offestPos = _user.position + _offsetPosition;
+        transform.position = (CmData.Position.normalized * (_dist - Zoom())) + offestPos;
     }
 
     void View()
     {
         _viewTimer += Time.deltaTime / _viewDelay;
 
-        Vector3 dir = _user.position - transform.position;
+        Vector3 dir = _user.position - transform.position + _offsetView;
         Quaternion forward = Quaternion.LookRotation(dir.normalized);
         Quaternion rotate = Quaternion.Lerp(transform.rotation, forward, _viewTimer);
         transform.rotation = rotate;
