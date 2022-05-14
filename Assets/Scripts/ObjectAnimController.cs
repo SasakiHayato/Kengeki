@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class ObjectAnimController
 {
-    bool _existAnim = false;
+    bool _hasAnim = false;
 
     Animator _anim;
 
@@ -21,12 +21,12 @@ public class ObjectAnimController
 
         if (avatar != null) _anim.avatar = avatar;
 
-        _existAnim = true;
+        _hasAnim = true;
     }
 
     public void Play(string stateName)
     {
-        if (!_existAnim) return;
+        if (!_hasAnim) return;
 
         _anim.CrossFade(stateName, DurationTime);
     }

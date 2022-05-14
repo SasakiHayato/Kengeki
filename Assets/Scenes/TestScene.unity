@@ -285,6 +285,26 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &422941079 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6510533895505459340, guid: 817dd7ae8ea6acf4b94df91919d26940, type: 3}
+  m_PrefabInstance: {fileID: 6511080189052041358}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &422941080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422941079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59401e86ca0633a4389164066270b8be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _datas:
+  - Speed: 0
+    Power: 10
 --- !u!4 &686068306 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5193953810192320901, guid: 817dd7ae8ea6acf4b94df91919d26940, type: 3}
@@ -627,6 +647,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4923172016977217870, guid: 817dd7ae8ea6acf4b94df91919d26940, type: 3}
+      propertyPath: _scale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4923172016977217870, guid: 817dd7ae8ea6acf4b94df91919d26940, type: 3}
+      propertyPath: _useGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4923172016977217870, guid: 817dd7ae8ea6acf4b94df91919d26940, type: 3}
+      propertyPath: _rayDistance
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4923172016977217870, guid: 817dd7ae8ea6acf4b94df91919d26940, type: 3}
+      propertyPath: _rayDirection.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4923172016977217870, guid: 817dd7ae8ea6acf4b94df91919d26940, type: 3}
+      propertyPath: _hitLayer.m_Bits
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4923172016977217870, guid: 817dd7ae8ea6acf4b94df91919d26940, type: 3}
+      propertyPath: _jumpDatas.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4923172016977217870, guid: 817dd7ae8ea6acf4b94df91919d26940, type: 3}
       propertyPath: _gravityData._rayDistance
       value: 1.1

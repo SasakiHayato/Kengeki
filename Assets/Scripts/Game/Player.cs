@@ -16,6 +16,7 @@ public class Player : CharaBase
     Vector3 _beforePos;
 
     PhysicsBase _physicsBase;
+    JumpSetting _jumpSetting;
     StateManager _state;
 
     protected override void SetUp()
@@ -23,8 +24,10 @@ public class Player : CharaBase
         base.SetUp();
 
         _physicsBase = GetComponent<PhysicsBase>();
+        _jumpSetting = GetComponent<JumpSetting>();
 
         GamePadInputter.Instance.Input.Player.Fire.performed += context => Lockon();
+        GamePadInputter.Instance.Input.Player.Jump.performed += context => Jump();
         
         _state = new StateManager(gameObject);
         _state.AddState(new PlayerIdle(), State.Idle)
@@ -50,9 +53,10 @@ public class Player : CharaBase
         Vector3 right = Camera.main.transform.right * input.x;
 
         Vector3 move = (forward + right) * Data.Speed;
-        move.y = _physicsBase.Gravity.y;
+        move.y = 1 + _jumpSetting.Power * -1;
 
-        CharacterController.Move(move * Time.deltaTime);
+        Vector3 scale = Vector3.Scale(move, _physicsBase.Gravity);
+        CharacterController.Move(scale * Time.deltaTime);
     }
 
     void Rotate()
@@ -78,5 +82,10 @@ public class Player : CharaBase
             GameObject data = GameManager.Instance.FieldObject.GetData(ObjectType.Enemy)[0].Target;
             GameManager.Instance.LockonTarget = data.transform;
         }
+    }
+
+    void Jump()
+    {
+        _jumpSetting.Set();
     }
 }

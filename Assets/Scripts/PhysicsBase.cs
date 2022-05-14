@@ -1,38 +1,35 @@
 using UnityEngine;
-using System;
+
+static public class PhsicsMasterData
+{
+    static public float GravityCoefficient => -9.81f;
+    static public float GravityScale = 2;
+}
 
 public class PhysicsBase : MonoBehaviour
 {
-    [SerializeField] GravityData _gravityData;
+    [SerializeField] bool _useGravity;
+    [SerializeField] LayerMask _hitLayer;
+    [SerializeField] Vector3 _rayDirection;
+    [SerializeField] float _rayDistance;
 
     float _gravityTimer;
-
-    CharaBase _charaBase;
-
-    const float GravityCoefficient = -9.81f;
     
-    [Serializable]
-    class GravityData
-    {
-        [SerializeField] bool _useGravity;
-        [SerializeField] LayerMask _hitLayer;
-        [SerializeField] Vector3 _rayDirection;
-        [SerializeField] float _rayDistance;
-        [SerializeField] float _scale;
-
-        public bool UseGravity => _useGravity;
-        public LayerMask HitLayer => _hitLayer;
-        public Vector3 RayDirection => _rayDirection.normalized;
-        public float RayDistance => _rayDistance;
-        public float Scale => _scale; 
-    }
+    CharaBase _charaBase;
 
     public Vector3 Gravity
     { 
         get
         {
-            if (!_gravityData.UseGravity) return Vector3.zero;
-            else return new Vector3(0, GravityCoefficient * _gravityTimer, 0);
+            if (!_useGravity) return Vector3.zero;
+            else
+            {
+                float gravity = PhsicsMasterData.GravityCoefficient * _gravityTimer;
+               
+                if (gravity == 0) gravity = -1;
+
+                return new Vector3(1, gravity, 1);
+            }
         }
     }
 
@@ -48,15 +45,14 @@ public class PhysicsBase : MonoBehaviour
 
     void FixedUpdate()
     {
-        _gravityTimer += Time.fixedDeltaTime;
+        _gravityTimer += Time.fixedDeltaTime * PhsicsMasterData.GravityScale;
     }
 
     void CheckGround()
     {
-        Vector3 dir = _gravityData.RayDirection;
-        float dist = _gravityData.RayDistance;
-
-        if (Physics.Raycast(_charaBase.OffsetPosition.position, dir, dist, _gravityData.HitLayer))
+        Vector3 dir = _charaBase.OffsetPosition.position + _rayDirection;
+        
+        if (Physics.Raycast(_charaBase.OffsetPosition.position, dir, _rayDistance, _hitLayer))
         {
             _gravityTimer = 0;
         }
