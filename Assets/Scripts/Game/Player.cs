@@ -43,6 +43,8 @@ public class Player : CharaBase
 
         Move();
         Rotate();
+
+        
     }
 
     void Move()
@@ -55,8 +57,7 @@ public class Player : CharaBase
         Vector3 move = (forward + right) * Data.Speed;
         move.y = 1 + _jumpSetting.Power * -1;
 
-        Vector3 scale = Vector3.Scale(move, _physicsBase.Gravity);
-        CharacterController.Move(scale * Time.deltaTime);
+        CharacterController.Move(Vector3.Scale(move, _physicsBase.Gravity) * Time.deltaTime);
     }
 
     void Rotate()
@@ -86,6 +87,13 @@ public class Player : CharaBase
 
     void Jump()
     {
+        if (_physicsBase.IsGround) _jumpSetting.Init();
+
         _jumpSetting.Set();
+
+        if (_jumpSetting.IsSet)
+        {
+            _physicsBase.InitializeTumer();
+        }
     }
 }

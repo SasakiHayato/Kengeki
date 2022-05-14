@@ -20,6 +20,7 @@ public class JumpSetting : MonoBehaviour
     Data _data;
 
     public float Power { get; private set; }
+    public bool IsSet { get; private set; }
 
     void FixedUpdate()
     {
@@ -39,7 +40,7 @@ public class JumpSetting : MonoBehaviour
     {
         if (_datas.Count <= _id)
         {
-            _id = 0;
+            IsSet = false;
             return;
         }
 
@@ -48,5 +49,14 @@ public class JumpSetting : MonoBehaviour
         _id++;
         _timer = 0;
         _isJump = true;
+
+        IsSet = true;
+    }
+
+    public void Init()
+    {
+        _id = 0;
+        _timer = 0;
+        _isJump = false;
     }
 }

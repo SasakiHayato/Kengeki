@@ -33,6 +33,8 @@ public class PhysicsBase : MonoBehaviour
         }
     }
 
+    public bool IsGround { get; private set; }
+
     void Start()
     {
         _charaBase = GetComponent<CharaBase>();
@@ -50,11 +52,21 @@ public class PhysicsBase : MonoBehaviour
 
     void CheckGround()
     {
-        Vector3 dir = _charaBase.OffsetPosition.position + _rayDirection;
-        
-        if (Physics.Raycast(_charaBase.OffsetPosition.position, dir, _rayDistance, _hitLayer))
+        Debug.DrawRay(_charaBase.OffsetPosition.position, _rayDirection.normalized, Color.red);
+
+        if (Physics.Raycast(_charaBase.OffsetPosition.position, _rayDirection.normalized, _rayDistance, _hitLayer))
         {
             _gravityTimer = 0;
+            IsGround = true;
         }
+        else
+        {
+            IsGround = false;
+        }
+    }
+
+    public void InitializeTumer()
+    {
+        _gravityTimer = 0;
     }
 }
