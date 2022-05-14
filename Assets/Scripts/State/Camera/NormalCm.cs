@@ -25,10 +25,7 @@ public class NormalCm : StateMachine.State
     public override void Entry()
     {
         _cmManager.ViewTarget = _cmManager.CmData.User;
-
-        Debug.Log(Camera.main.transform.position);
-
-
+        _cmManager.CmData.VirticalRate = float.MaxValue;
     }
 
     public override void Run()

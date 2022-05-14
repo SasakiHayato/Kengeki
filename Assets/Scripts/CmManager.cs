@@ -15,7 +15,7 @@ public class CmManager : MonoBehaviour
     [SerializeField] Vector3 _offsetView;
     [SerializeField] float _dist;
     [SerializeField, Range(0, 1.0f)] float _deadInput;
-    [SerializeField] float _viewDelay;
+    [SerializeField, Range(0, 1.0f)] float _viewDelay;
     [SerializeField] float _sensitivity;
     [SerializeField] LayerMask _collisionLayer;
 
@@ -47,6 +47,8 @@ public class CmManager : MonoBehaviour
             get => _position.normalized; 
             set { _position = value; }
         }
+
+        public float VirticalRate { get; set; }
     }
 
     void Start()
@@ -65,6 +67,7 @@ public class CmManager : MonoBehaviour
         _virtualityCm = new GameObject("Virtuliry").transform;
 
         ViewTarget = _user;
+        CmData.VirticalRate = float.MaxValue;
     }
 
     void Update()
@@ -78,6 +81,9 @@ public class CmManager : MonoBehaviour
     void Move()
     {
         Vector3 cmPos = CmData.NormalizePosition * (_dist - Zoom());
+
+        if (cmPos.y > CmData.VirticalRate) cmPos.y = CmData.VirticalRate;
+
         transform.position = cmPos + _user.position;
 
         Vector3 virtualCmPos = CmData.NormalizePosition * _dist;

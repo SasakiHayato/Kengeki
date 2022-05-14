@@ -12,6 +12,8 @@ public class LockonCm : StateMachine.State
     float _currentRate;
     float _lerpTimer;
     float _saveSign;
+
+    const float VirticalRate = 3f;
     
     public override void SetUp(GameObject user)
     {
@@ -21,6 +23,7 @@ public class LockonCm : StateMachine.State
     public override void Entry()
     {
         _cmManager.ViewTarget = GameManager.Instance.LockonTarget;
+        _cmManager.CmData.VirticalRate = VirticalRate;
         _currentRate = 0;
         _lerpTimer = 0;
     }
@@ -31,6 +34,7 @@ public class LockonCm : StateMachine.State
 
         Vector3 forward = _cmManager.CmData.User.position - _cmManager.ViewTarget.position;
         Vector3 offset = Camera.main.transform.right * 1/*SetLerp(getVal.x)*/ + Vector3.up;
+
         _cmManager.CmData.NormalizePosition = forward + offset;
     }
 
