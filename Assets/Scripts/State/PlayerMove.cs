@@ -17,7 +17,7 @@ public class PlayerMove : State
         _physicsBase = user.GetComponent<PhysicsBase>();
     }
 
-    public override void Entry()
+    public override void Entry(string beforeStatePath)
     {
         _player.Anim.Play("Run_ver_B");
     }

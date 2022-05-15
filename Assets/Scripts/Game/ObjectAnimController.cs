@@ -53,7 +53,7 @@ public class ObjectAnimController
         AnimationClip clip = _runtime.animationClips.FirstOrDefault(a => a.name == stateName);
 
         if (!clip.isLooping) WaitAnimNormalizeTime(SetToken()).Forget();
-        _cancelCurrentAnim = true;
+        //_cancelCurrentAnim = true;
 
         _anim.CrossFade(stateName, DurationTime);
        
@@ -75,6 +75,7 @@ public class ObjectAnimController
     async UniTask WaitAnimNormalizeTime(CancellationToken token)
     {
         await UniTask.DelayFrame(1, PlayerLoopTiming.Update, token);
+        await UniTask.Delay(TimeSpan.FromSeconds(DurationTime));
         await UniTask.WaitUntil(() => _anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1, PlayerLoopTiming.Update, token);
 
         EndCurrentAnimNormalizeTime = true;

@@ -15,7 +15,7 @@ public class PlayerAttack : State
         _physicsBase = user.GetComponent<PhysicsBase>();
     }
 
-    public override void Entry()
+    public override void Entry(string beforeStatePath)
     {
         AttackType type;
 
@@ -27,19 +27,14 @@ public class PlayerAttack : State
     
     public override void Run()
     {
-        if (_player.Anim.CancelCurrentAnim)
+        if (!_physicsBase.IsGround)
         {
-            Debug.Log("a");
+            _physicsBase.InitializeTumer();
         }
     }
 
     public override Enum Exit()
     {
-        if (_player.Anim.CancelCurrentAnim)
-        {
-            return StateManager.ExitChangeState(Player.State.Attack);
-        }
-
         if (_player.Anim.EndCurrentAnimNormalizeTime)
         {
             _attackSetting.InitalizeID();

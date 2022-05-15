@@ -17,7 +17,7 @@ public class PlayerIdle : State
         _physicsBase = user.GetComponent<PhysicsBase>();
     }
 
-    public override void Entry()
+    public override void Entry(string beforeStatePath)
     {
         _player.Anim.Play("Idle_ver_B");
     }

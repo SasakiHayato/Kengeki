@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Cysharp.Threading.Tasks;
 
 public class PlayerFloat : StateMachine.State
 {
@@ -18,7 +19,7 @@ public class PlayerFloat : StateMachine.State
         _physicsBase = user.GetComponent<PhysicsBase>();
     }
 
-    public override void Entry()
+    public override void Entry(string beforeStatePath)
     {
         _timer = 0;
         string animName = "";

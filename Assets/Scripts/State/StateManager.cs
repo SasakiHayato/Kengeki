@@ -57,7 +57,7 @@ namespace StateMachine
                 _currentKey = _stateDic.FirstOrDefault(s => s.Key == statePath.ToString());
                 _currentPath = statePath.ToString();
 
-                _currentKey.Value.Entry();
+                _currentKey.Value.Entry("");
             }
 
             _isRun = isRun;
@@ -100,18 +100,18 @@ namespace StateMachine
             }
 
             _currentKey = _stateDic.FirstOrDefault(s => s.Key == path.ToString());
-            _currentPath = path.ToString();
+            
 
-            _currentKey.Value.Entry();
+            _currentKey.Value.Entry(_currentPath);
+            _currentPath = path.ToString();
         }
 
         public Enum ExitChangeState(Enum path)
         {
             _currentKey = _stateDic.FirstOrDefault(s => s.Key == path.ToString());
+
+            _currentKey.Value.Entry(_currentPath);
             _currentPath = path.ToString();
-
-            _currentKey.Value.Entry();
-
             return path;
         }
     }
@@ -124,7 +124,7 @@ namespace StateMachine
         public StateManager StateManager { get; set; }
 
         public abstract void SetUp(GameObject user);
-        public abstract void Entry();
+        public abstract void Entry(string beforeStatePath);
         public abstract void Run();
         public abstract Enum Exit();
     }

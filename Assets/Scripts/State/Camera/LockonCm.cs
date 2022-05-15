@@ -20,7 +20,7 @@ public class LockonCm : StateMachine.State
         _cmManager = user.GetComponent<CmManager>();
     }
 
-    public override void Entry()
+    public override void Entry(string beforeStateName)
     {
         _cmManager.ViewTarget = GameManager.Instance.LockonTarget;
         _cmManager.CmData.VirticalRate = VirticalRate;

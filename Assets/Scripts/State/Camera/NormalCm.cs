@@ -22,7 +22,7 @@ public class NormalCm : StateMachine.State
         _cmManager = user.GetComponent<CmManager>();
     }
 
-    public override void Entry()
+    public override void Entry(string beforeStateName)
     {
         _cmManager.ViewTarget = _cmManager.CmData.User;
         _cmManager.CmData.VirticalRate = float.MaxValue;

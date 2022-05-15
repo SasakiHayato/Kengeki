@@ -8,7 +8,7 @@ public class TransitionCm : StateMachine.State
 
     }
 
-    public override void Entry()
+    public override void Entry(string beforeStateName)
     {
         
     }
