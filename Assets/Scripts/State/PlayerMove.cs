@@ -8,15 +8,17 @@ using System;
 public class PlayerMove : StateMachine.State
 {
     Player _player;
-
+    PhysicsBase _physicsBase;
+   
     public override void SetUp(GameObject user)
     {
         _player = user.GetComponent<Player>();
+        _physicsBase = user.GetComponent<PhysicsBase>();
     }
 
     public override void Entry()
     {
-        _player.Anim.Play("Run_ver_B");
+        if (_physicsBase.IsGround) _player.Anim.Play("Run_ver_B");
     }
 
     public override void Run()

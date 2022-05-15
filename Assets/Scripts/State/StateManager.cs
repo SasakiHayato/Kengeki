@@ -23,7 +23,7 @@ namespace StateMachine
         {
             _stateDic = new Dictionary<string, State>();
             _currentKey = default;
-
+            
             _user = user;
             Debug.Log($"StateMachin. user : {user.name}");
         }
@@ -90,9 +90,9 @@ namespace StateMachine
         /// ステートの変更
         /// </summary>
         /// <param name="path">StatePath</param>
-        public void ChangeState(Enum path)
+        public void ChangeState(Enum path, bool reEntry = false)
         {
-            if (_currentKey.Key == path.ToString())
+            if (_currentKey.Key == path.ToString() && !reEntry)
             {
                 Debug.Log($"Not change state. CurrentState => {_currentKey.Key}");
                 return;

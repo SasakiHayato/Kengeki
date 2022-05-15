@@ -7,7 +7,7 @@ using UnityEngine;
 public class ObjectAnimController
 {
     bool _hasAnim = false;
-
+   
     Animator _anim;
 
     const float DurationTime = 0.1f;

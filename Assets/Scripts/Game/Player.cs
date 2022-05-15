@@ -11,6 +11,8 @@ public class Player : CharaBase
     {
         Idle,
         Move,
+        Float,
+        Attack,
     }
 
     Vector3 _beforePos;
@@ -28,10 +30,13 @@ public class Player : CharaBase
 
         GamePadInputter.Instance.Input.Player.Fire.performed += context => Lockon();
         GamePadInputter.Instance.Input.Player.Jump.performed += context => Jump();
+        GamePadInputter.Instance.Input.Player.Attack.performed += context => Attack();
         
         _state = new StateManager(gameObject);
         _state.AddState(new PlayerIdle(), State.Idle)
             .AddState(new PlayerMove(), State.Move)
+            .AddState(new PlayerFloat(), State.Float)
+            .AddState(new PlayerAttack(), State.Attack)
             .RunRequest(true, State.Idle);
 
         _beforePos = transform.position;
@@ -43,8 +48,6 @@ public class Player : CharaBase
 
         Move();
         Rotate();
-
-        
     }
 
     void Move()
@@ -93,7 +96,13 @@ public class Player : CharaBase
 
         if (_jumpSetting.IsSet)
         {
+            _state.ChangeState(State.Float, true);
             _physicsBase.InitializeTumer();
         }
+    }
+
+    void Attack()
+    {
+        _state.ChangeState(State.Attack, true);
     }
 }

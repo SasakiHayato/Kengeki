@@ -19,6 +19,7 @@ public class JumpSetting : MonoBehaviour
 
     Data _data;
 
+    public int CurrentID => _id;
     public float Power { get; private set; }
     public bool IsSet { get; private set; }
 
