@@ -1,11 +1,12 @@
 using UnityEngine;
 using System;
+using StateMachine;
 
 /// <summary>
 /// PlayerのMoveステート
 /// </summary>
 
-public class PlayerMove : StateMachine.State
+public class PlayerMove : State
 {
     Player _player;
     PhysicsBase _physicsBase;
@@ -18,7 +19,7 @@ public class PlayerMove : StateMachine.State
 
     public override void Entry()
     {
-        if (_physicsBase.IsGround) _player.Anim.Play("Run_ver_B");
+        _player.Anim.Play("Run_ver_B");
     }
 
     public override void Run()
@@ -28,6 +29,8 @@ public class PlayerMove : StateMachine.State
 
     public override Enum Exit()
     {
+        if (!_physicsBase.IsGround) return StateManager.ExitChangeState(Player.State.Float);
+
         if ((Vector2)GamePadInputter.Instance.GetValue(GamePadInputter.ValueType.PlayerMove) != Vector2.zero)
         {
             return Player.State.Move;

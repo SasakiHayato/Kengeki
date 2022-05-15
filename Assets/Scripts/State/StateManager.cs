@@ -37,6 +37,7 @@ namespace StateMachine
         public StateManager AddState(State state, Enum statePath)
         {
             state.SetUp(_user);
+            state.StateManager = this;
             _stateDic.Add(statePath.ToString(), state);
             Debug.Log($"AddState => {state}");
 
@@ -103,6 +104,16 @@ namespace StateMachine
 
             _currentKey.Value.Entry();
         }
+
+        public Enum ExitChangeState(Enum path)
+        {
+            _currentKey = _stateDic.FirstOrDefault(s => s.Key == path.ToString());
+            _currentPath = path.ToString();
+
+            _currentKey.Value.Entry();
+
+            return path;
+        }
     }
 
     /// <summary>
@@ -110,6 +121,8 @@ namespace StateMachine
     /// </summary>
     public abstract class State
     {
+        public StateManager StateManager { get; set; }
+
         public abstract void SetUp(GameObject user);
         public abstract void Entry();
         public abstract void Run();

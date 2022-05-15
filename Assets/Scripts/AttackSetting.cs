@@ -33,5 +33,5 @@ public class AttackSetting : MonoBehaviour
         }
     }
 
-    public void InitializeID() => _id = 0;
+    public void InitalizeID() => _id = 0;
 }
