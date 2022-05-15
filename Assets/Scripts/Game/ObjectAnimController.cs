@@ -2,6 +2,7 @@ using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System.Threading;
 using System.Linq;
+using System;
 
 /// <summary>
 /// Objectのアニメーション管理クラス
@@ -10,13 +11,23 @@ using System.Linq;
 public class ObjectAnimController
 {
     bool _hasAnim = false;
-
+    
     CancellationTokenSource _tokenSource = null;
    
     Animator _anim;
     RuntimeAnimatorController _runtime;
 
-    public bool EndCurrentAnim { get; private set; }
+    bool _cancelCurrentAnim = false;
+    public bool CancelCurrentAnim
+    {
+        get
+        {
+            bool get = _cancelCurrentAnim;
+            _cancelCurrentAnim = false;
+            return get;
+        }
+    }
+
     public bool EndCurrentAnimNormalizeTime { get; private set; }
 
     const float DurationTime = 0.1f;
@@ -37,17 +48,15 @@ public class ObjectAnimController
     public void Play(string stateName)
     {
         if (!_hasAnim) return;
-        EndCurrentAnim = false;
         EndCurrentAnimNormalizeTime = false;
         
         AnimationClip clip = _runtime.animationClips.FirstOrDefault(a => a.name == stateName);
 
-        if (!clip.isLooping)
-        {
-            WaitAnimNormalizeTime(SetToken()).Forget();
-        }
+        if (!clip.isLooping) WaitAnimNormalizeTime(SetToken()).Forget();
+        _cancelCurrentAnim = true;
 
         _anim.CrossFade(stateName, DurationTime);
+       
     }
 
     CancellationToken SetToken()

@@ -27,7 +27,7 @@ public class PlayerAttack : State
     
     public override void Run()
     {
-        if (_player.Anim.EndCurrentAnimNormalizeTime)
+        if (_player.Anim.CancelCurrentAnim)
         {
             Debug.Log("a");
         }
@@ -35,6 +35,11 @@ public class PlayerAttack : State
 
     public override Enum Exit()
     {
+        if (_player.Anim.CancelCurrentAnim)
+        {
+            return StateManager.ExitChangeState(Player.State.Attack);
+        }
+
         if (_player.Anim.EndCurrentAnimNormalizeTime)
         {
             _attackSetting.InitalizeID();
