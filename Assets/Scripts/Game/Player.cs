@@ -32,6 +32,7 @@ public class Player : CharaBase, IDamage
         GamePadInputter.Instance.Input.Player.Dodge.performed += context => Dodge();
         GamePadInputter.Instance.Input.Player.Jump.performed += context => Jump();
         GamePadInputter.Instance.Input.Player.Attack.performed += context => Attack();
+        GamePadInputter.Instance.Input.Player.Lockon.performed += context => Lockon();
         
         _state = new StateManager(gameObject);
         _state.AddState(new PlayerIdle(), State.Idle)
@@ -60,7 +61,7 @@ public class Player : CharaBase, IDamage
         Vector3 forward = Camera.main.transform.forward * input.y;
         Vector3 right = Camera.main.transform.right * input.x;
 
-        Vector3 move = (forward + right) * Data.Speed;
+        Vector3 move = (forward + right) * CharaData.Speed;
         move.y = 1 + _jumpSetting.Power * -1;
 
         CharacterController.Move(Vector3.Scale(move, _physicsBase.Gravity) * Time.deltaTime);

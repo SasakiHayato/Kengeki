@@ -17,7 +17,7 @@ public class AttackSetting : MonoBehaviour
 
     public void SetUp()
     {
-        _targetCollider.SetUp(_user.Data.ObjectType, this);
+        _targetCollider.SetUp(_user.CharaData.ObjectType, this);
     }
 
     public void Request(AttackType type)

@@ -23,7 +23,7 @@ public abstract class CharaBase : MonoBehaviour
     [SerializeField] Transform _offsetPosition;
     
     protected CharacterController CharacterController { get; private set; }
-    public CharaData Data { get; private set; }
+    public CharaData CharaData { get; private set; }
     
     public ObjectAnimController Anim { get; private set; }
     public Transform OffsetPosition
@@ -43,17 +43,28 @@ public abstract class CharaBase : MonoBehaviour
         CharacterController.center = OffsetPosition.localPosition;
 
         ObjectDataBase.Data data = GameManager.Instance.ObjectData.GetData(_dataPath);
-        Data = new CharaData();
-        Data.SetData(data);
+        CharaData = new CharaData();
+        CharaData.SetData(data);
 
         Anim = new ObjectAnimController(data.Runtime, data.Avatar, gameObject);
 
-        GameManager.Instance.FieldObject.Add(gameObject, data.ObjectType);
+        GameManager.Instance.FieldObject.Add(gameObject, data.ObjectType, CharaData.ID);
+    }
+
+    protected virtual void DestoryRequest()
+    {
+        Effects.Instance.RequestParticalEffect(ParticalType.Dead, _offsetPosition);
+        GameManager.Instance.FieldObject.Remove(CharaData.ObjectType, CharaData.ID);
+
+        Destroy(gameObject);
     }
 }
 
 public class CharaData
 {
+    static int _id;
+
+    public int ID { get; private set; }
     public string Name { get; private set; }
     public int HP { get; private set; }
     public float Speed { get; private set; }
@@ -67,6 +78,9 @@ public class CharaData
         Speed = data.Speed;
         DefaultSpeed = data.Speed;
         ObjectType = data.ObjectType;
+
+        ID = _id;
+        _id++;
     }
 
     public void UpdateSpeed(float value)

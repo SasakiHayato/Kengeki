@@ -5,12 +5,16 @@ using System;
 public class PlayerDodge : State
 {
     Player _player;
+    PhysicsBase _physicsBase;
 
     Vector2 _saveInput;
+
+    string _beforeStatePath;
 
     public override void SetUp(GameObject user)
     {
         _player = user.GetComponent<Player>();
+        _physicsBase = user.GetComponent<PhysicsBase>();
     }
 
     public override void Entry(string beforeStatePath)
@@ -20,12 +24,19 @@ public class PlayerDodge : State
         if (input == Vector2.zero) _saveInput = Vector2.down;
         else _saveInput = input;
 
+        _beforeStatePath = beforeStatePath;
+
         _player.Anim.Play("Dodge_Left");
-        _player.Data.UpdateSpeed(_player.Data.DefaultSpeed * 2);
+        _player.CharaData.UpdateSpeed(_player.CharaData.DefaultSpeed * 2);
     }
 
     public override void Run()
     {
+        if (_beforeStatePath == Player.State.Float.ToString())
+        {
+            _physicsBase.InitializeTumer();
+        }
+        
         _player.Move(_saveInput);
     }
 

@@ -23,6 +23,7 @@ public class CmManager : MonoBehaviour, IManager
     float _viewTimer;
     
     Transform _virtualityCm;
+    RadialBlurAttribute _radialrAttribute;
 
     StateManager _state;
     public Data CmData { get; private set; }
@@ -73,6 +74,8 @@ public class CmManager : MonoBehaviour, IManager
         CmData.VirticalRate = float.MaxValue;
 
         GameManager.Instance.AddManager(this);
+
+        _radialrAttribute = GetComponent<RadialBlurAttribute>();
     }
 
     void Update()
@@ -132,6 +135,11 @@ public class CmManager : MonoBehaviour, IManager
     {
         CmData.SaveState = _state.CurrentStatePath;
         _state.ChangeState(State.Shake);
+    }
+
+    public void RadialBlur(float strength)
+    {
+        _radialrAttribute.SetStrength(strength);
     }
 
     public GameObject ManagerObject() => gameObject;

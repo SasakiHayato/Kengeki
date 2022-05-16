@@ -23,11 +23,11 @@ public class PlayerMove : State
 
         if (beforeStatePath == Player.State.Dodge.ToString())
         {
-            _player.Data.UpdateSpeed(_player.Data.DefaultSpeed * 1.4f);
+            _player.CharaData.UpdateSpeed(_player.CharaData.DefaultSpeed * 1.4f);
         }
         else
         {
-            _player.Data.UpdateSpeed(_player.Data.DefaultSpeed);
+            _player.CharaData.UpdateSpeed(_player.CharaData.DefaultSpeed);
         }
     }
 

@@ -25,7 +25,7 @@ public class PlayerAttack : State
         else type = AttackType.Float;
 
         _attackSetting.Request(type);
-        _player.Data.UpdateSpeed(_player.Data.DefaultSpeed);
+        _player.CharaData.UpdateSpeed(_player.CharaData.DefaultSpeed);
     }
     
     public override void Run()

@@ -30,7 +30,7 @@ public class AttackCollider : MonoBehaviour
     {
         CharaBase chara = other.GetComponent<CharaBase>();
 
-        if (chara != null && chara.Data.ObjectType != _type)
+        if (chara != null && chara.CharaData.ObjectType != _type)
         {
             IDamage iDamage = other.GetComponent<IDamage>();
             _isHit = true;
@@ -45,7 +45,7 @@ public class AttackCollider : MonoBehaviour
 
         CharaBase chara = other.GetComponent<CharaBase>();
         
-        if (chara != null && chara.Data.ObjectType != _type)
+        if (chara != null && chara.CharaData.ObjectType != _type)
         {
             IDamage iDamage = other.GetComponent<IDamage>();
             _isHit = true;

@@ -13,14 +13,15 @@ public enum AttckEffctType
 public enum ParticalType
 {
     Hit,
-    Destory,
+    Dead,
 }
 
 public class Effects : SingletonAttribute<Effects>
 {
     AttackEffect _attackEffect;
 
-    ObjectPool<ParticalUser> _particalPool;
+    ObjectPool<ParticalUser> _hitParticalPool;
+    ObjectPool<ParticalUser> _deadParticalPool;
 
     const float DodgeTime = 0.3f;
 
@@ -28,8 +29,11 @@ public class Effects : SingletonAttribute<Effects>
     {
         _attackEffect = new AttackEffect();
 
-        GameObject partical = (GameObject)Resources.Load("HitPartical");
-        _particalPool = new ObjectPool<ParticalUser>(partical.GetComponent<ParticalUser>());
+        GameObject hitPartical = (GameObject)Resources.Load("HitPartical");
+        _hitParticalPool = new ObjectPool<ParticalUser>(hitPartical.GetComponent<ParticalUser>(), null, 5);
+
+        GameObject deadPartical = (GameObject)Resources.Load("DeadPartical");
+        _deadParticalPool = new ObjectPool<ParticalUser>(deadPartical.GetComponent<ParticalUser>(), null, 5);
     }
 
     public void RequestAttackEffect(AttckEffctType[] type, Transform user)
@@ -55,9 +59,10 @@ public class Effects : SingletonAttribute<Effects>
         switch (type)
         {
             case ParticalType.Hit:
-                partical = _particalPool.Use();
+                partical = _hitParticalPool.Use();
                 break;
-            case ParticalType.Destory:
+            case ParticalType.Dead:
+                partical = _deadParticalPool.Use();
                 break;
         }
 
@@ -69,6 +74,7 @@ public class Effects : SingletonAttribute<Effects>
 
     public void RequestDodgeEffect()
     {
+        GameManager.Instance.GetManager<CmManager>(nameof(CmManager)).RadialBlur(1);
         Time.timeScale = 0.5f;
         WaitDodgeTime().Forget();
     }
@@ -76,6 +82,7 @@ public class Effects : SingletonAttribute<Effects>
     async UniTask WaitDodgeTime()
     {
         await UniTask.Delay(TimeSpan.FromSeconds(DodgeTime));
+        GameManager.Instance.GetManager<CmManager>(nameof(CmManager)).RadialBlur(0);
         Time.timeScale = 1;
     }
 

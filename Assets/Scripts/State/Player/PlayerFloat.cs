@@ -37,7 +37,7 @@ public class PlayerFloat : StateMachine.State
         }
 
         _player.Anim.Play(animName);
-        _player.Data.UpdateSpeed(_player.Data.DefaultSpeed);
+        _player.CharaData.UpdateSpeed(_player.CharaData.DefaultSpeed);
     }
 
     public override void Run()

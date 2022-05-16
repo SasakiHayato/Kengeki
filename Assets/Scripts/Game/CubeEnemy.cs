@@ -29,8 +29,7 @@ public class CubeEnemy : CharaBase, IDamage
 
     public bool GetDamage(int damage)
     {
-        Debug.Log("Damage");
-
+        DestoryRequest();
         return true;
     }
 }

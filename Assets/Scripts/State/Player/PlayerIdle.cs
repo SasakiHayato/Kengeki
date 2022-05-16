@@ -20,7 +20,7 @@ public class PlayerIdle : State
     public override void Entry(string beforeStatePath)
     {
         _player.Anim.Play("Idle_ver_B");
-        _player.Data.UpdateSpeed(_player.Data.DefaultSpeed);
+        _player.CharaData.UpdateSpeed(_player.CharaData.DefaultSpeed);
     }
 
     public override void Run()
