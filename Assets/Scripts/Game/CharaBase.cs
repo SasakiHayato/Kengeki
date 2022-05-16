@@ -7,6 +7,11 @@ public enum ObjectType
     Object,
 }
 
+public interface IDamage
+{
+    void GetDamage(int damage);
+}
+
 /// <summary>
 /// キャラクターの基底クラス
 /// </summary>
@@ -18,7 +23,7 @@ public abstract class CharaBase : MonoBehaviour
     [SerializeField] Transform _offsetPosition;
     
     protected CharacterController CharacterController { get; private set; }
-    protected CharaData Data { get; private set; }
+    public CharaData Data { get; private set; }
     
     public ObjectAnimController Anim { get; private set; }
     public Transform OffsetPosition

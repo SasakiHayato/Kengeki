@@ -23,8 +23,12 @@ public class AttackDataBase : ScriptableObject
     {
         [SerializeField] string _animName;
         [SerializeField] int _power;
+        [SerializeField] float _isActiveTime;
+        [SerializeField] float _endActiveTime;
 
         public string AnimName => _animName;
         public int Power => _power;
+        public float IsActiveTime => _isActiveTime;
+        public float EndActiveTime => _endActiveTime;
     }
 }

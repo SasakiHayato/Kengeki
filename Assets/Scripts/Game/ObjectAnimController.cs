@@ -17,17 +17,6 @@ public class ObjectAnimController
     Animator _anim;
     RuntimeAnimatorController _runtime;
 
-    bool _cancelCurrentAnim = false;
-    public bool CancelCurrentAnim
-    {
-        get
-        {
-            bool get = _cancelCurrentAnim;
-            _cancelCurrentAnim = false;
-            return get;
-        }
-    }
-
     public bool EndCurrentAnimNormalizeTime { get; private set; }
 
     const float DurationTime = 0.1f;
@@ -45,18 +34,24 @@ public class ObjectAnimController
         _hasAnim = true;
     }
 
-    public void Play(string stateName)
+    public ObjectAnimController Play(string stateName)
     {
-        if (!_hasAnim) return;
+        if (!_hasAnim) return this;
         EndCurrentAnimNormalizeTime = false;
         
         AnimationClip clip = _runtime.animationClips.FirstOrDefault(a => a.name == stateName);
 
         if (!clip.isLooping) WaitAnimNormalizeTime(SetToken()).Forget();
-        //_cancelCurrentAnim = true;
 
         _anim.CrossFade(stateName, DurationTime);
-       
+
+        return this;
+    }
+
+    public ObjectAnimController SetAnimEvent(Action action, float executeTime = 0)
+    {
+        WaitAnimEvent(action, executeTime).Forget();
+        return this;
     }
 
     CancellationToken SetToken()
@@ -79,5 +74,11 @@ public class ObjectAnimController
         await UniTask.WaitUntil(() => _anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1, PlayerLoopTiming.Update, token);
 
         EndCurrentAnimNormalizeTime = true;
+    }
+
+    async UniTask WaitAnimEvent(Action action, float waitSeconds)
+    {
+        await UniTask.Delay(TimeSpan.FromSeconds(waitSeconds));
+        action.Invoke();
     }
 }

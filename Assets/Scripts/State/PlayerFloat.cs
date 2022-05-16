@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using Cysharp.Threading.Tasks;
 
 public class PlayerFloat : StateMachine.State
 {
