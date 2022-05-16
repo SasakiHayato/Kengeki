@@ -2,10 +2,21 @@ using UnityEngine;
 
 public class AttackCollider : MonoBehaviour
 {
+    [SerializeField] Transform _offestPosition;
+
     ObjectType _type;
     Collider _collider;
 
     AttackSetting _attackSetting;
+
+    public Transform OffsetPosition
+    {
+        get
+        {
+            if (_offestPosition != null) return _offestPosition;
+            else return transform;
+        }
+    }
 
     public void SetUp(ObjectType type, AttackSetting setting)
     {
@@ -30,7 +41,7 @@ public class AttackCollider : MonoBehaviour
         {
             IDamage iDamage = other.GetComponent<IDamage>();
 
-            if (iDamage != null) _attackSetting.IsHit(iDamage);
+            if (iDamage != null) _attackSetting.IsHit(iDamage, other.gameObject);
         }
     }
 }

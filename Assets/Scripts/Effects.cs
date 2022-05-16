@@ -29,13 +29,13 @@ public class Effects : SingletonAttribute<Effects>
         _particalPool = new ObjectPool<ParticalUser>(partical.GetComponent<ParticalUser>());
     }
 
-    public void Request(AttckEffctType[] type, GameObject user)
+    public void Request(AttckEffctType[] type, Transform user)
     {
         foreach (var item in type)
         {
             switch (item)
             {
-                case AttckEffctType.HitPartical: _attackEffect.HiPartical(user.transform);
+                case AttckEffctType.HitPartical: _attackEffect.HiPartical(user);
                     break;
                 case AttckEffctType.HitStop: _attackEffect.HitStop();
                     break;
