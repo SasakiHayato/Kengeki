@@ -21,11 +21,11 @@ MonoBehaviour:
     ObjectType: 0
     ID: 1
     Path: Player
-  - Name: TestEnemy
+  - Name: CubeEnemy
     HP: 1
     Speed: 1
-    Runtime: {fileID: 0}
+    Runtime: {fileID: 9100000, guid: a2a5bb66a9ac2004cb7602b86514f83f, type: 2}
     Avatar: {fileID: 0}
     ObjectType: 1
     ID: 2
-    Path: TestEnemy
+    Path: CubeEnemy

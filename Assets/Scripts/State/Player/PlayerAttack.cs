@@ -12,6 +12,8 @@ public class PlayerAttack : State
     {
         _player = user.GetComponent<Player>();
         _attackSetting = user.GetComponent<AttackSetting>();
+        _attackSetting.SetUp();
+
         _physicsBase = user.GetComponent<PhysicsBase>();
     }
 

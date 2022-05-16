@@ -15,7 +15,7 @@ public class AttackSetting : MonoBehaviour
 
     AttackDataBase.Data _data;
 
-    void Start()
+    public void SetUp()
     {
         _targetCollider.SetUp(_user.Data.ObjectType, this);
     }
@@ -47,8 +47,10 @@ public class AttackSetting : MonoBehaviour
 
     public void IsHit(IDamage iDamage, GameObject target)
     {
-        Effects.Instance.Request(_data.EffctTypes, target.transform);
-        iDamage.GetDamage(_data.Power);
+        if (iDamage.GetDamage(_data.Power))
+        {
+            Effects.Instance.RequestAttackEffect(_data.EffctTypes, target.transform);
+        }
     }
 
     void TypeCheck(AttackDataBase dataBase, AttackType type)

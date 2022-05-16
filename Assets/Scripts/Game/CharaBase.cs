@@ -9,7 +9,7 @@ public enum ObjectType
 
 public interface IDamage
 {
-    void GetDamage(int damage);
+    bool GetDamage(int damage);
 }
 
 /// <summary>

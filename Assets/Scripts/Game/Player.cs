@@ -5,7 +5,7 @@ using StateMachine;
 /// PlayerŠÇ—ƒNƒ‰ƒX
 /// </summary>
 
-public class Player : CharaBase
+public class Player : CharaBase, IDamage
 {
     public enum State
     {
@@ -112,5 +112,17 @@ public class Player : CharaBase
     void Dodge()
     {
         _state.ChangeState(State.Dodge);
+    }
+
+    // IDamage
+    public bool GetDamage(int damage)
+    {
+        if (_state.CurrentPathName == State.Dodge.ToString())
+        {
+            Effects.Instance.RequestDodgeEffect();
+            return false;
+        }
+
+        return true;
     }
 }

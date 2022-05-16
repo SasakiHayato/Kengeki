@@ -1,6 +1,7 @@
 using UnityEngine;
 using SingletonAttribute;
 using Cysharp.Threading.Tasks;
+using System;
 
 public enum AttckEffctType
 {
@@ -21,6 +22,8 @@ public class Effects : SingletonAttribute<Effects>
 
     ObjectPool<ParticalUser> _particalPool;
 
+    const float DodgeTime = 0.3f;
+
     public override void SetUp()
     {
         _attackEffect = new AttackEffect();
@@ -29,7 +32,7 @@ public class Effects : SingletonAttribute<Effects>
         _particalPool = new ObjectPool<ParticalUser>(partical.GetComponent<ParticalUser>());
     }
 
-    public void Request(AttckEffctType[] type, Transform user)
+    public void RequestAttackEffect(AttckEffctType[] type, Transform user)
     {
         foreach (var item in type)
         {
@@ -45,7 +48,7 @@ public class Effects : SingletonAttribute<Effects>
         }
     }
 
-    public void RequestPartical(ParticalType type, Transform user = null)
+    public void RequestParticalEffect(ParticalType type, Transform user = null)
     {
         ParticalUser partical = null;
 
@@ -64,13 +67,25 @@ public class Effects : SingletonAttribute<Effects>
         }
     }
 
+    public void RequestDodgeEffect()
+    {
+        Time.timeScale = 0.5f;
+        WaitDodgeTime().Forget();
+    }
+
+    async UniTask WaitDodgeTime()
+    {
+        await UniTask.Delay(TimeSpan.FromSeconds(DodgeTime));
+        Time.timeScale = 1;
+    }
+
     class AttackEffect
     {
         const float DurationTime = 0.01f;
 
         public void HiPartical(Transform user)
         {
-            Instance.RequestPartical(ParticalType.Hit, user);
+            Instance.RequestParticalEffect(ParticalType.Hit, user);
         }
 
         public void HitStop()
@@ -81,7 +96,7 @@ public class Effects : SingletonAttribute<Effects>
 
         async UniTask WaitDurationTime()
         {
-            await UniTask.Delay(System.TimeSpan.FromSeconds(DurationTime));
+            await UniTask.Delay(TimeSpan.FromSeconds(DurationTime));
             Time.timeScale = 1;
         }
 

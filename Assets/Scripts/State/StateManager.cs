@@ -12,7 +12,7 @@ namespace StateMachine
     public class StateManager
     {
         bool _isRun = false;
-        string _currentPath;
+        public string CurrentPathName { get; private set; }
         
         GameObject _user;
         Dictionary<string, State> _stateDic;
@@ -57,7 +57,7 @@ namespace StateMachine
             if (isRun && statePath != null)
             {
                 _currentKey = _stateDic.FirstOrDefault(s => s.Key == statePath.ToString());
-                _currentPath = statePath.ToString();
+                CurrentPathName = statePath.ToString();
 
                 CurrentStatePath = statePath;
 
@@ -81,7 +81,7 @@ namespace StateMachine
 
             Enum path = _currentKey.Value.Exit();
 
-            if (path.ToString() != _currentPath)
+            if (path.ToString() != CurrentPathName)
             {
                 ChangeState(path);
             }
@@ -107,8 +107,8 @@ namespace StateMachine
 
             CurrentStatePath = path;
 
-            _currentKey.Value.Entry(_currentPath);
-            _currentPath = path.ToString();
+            _currentKey.Value.Entry(CurrentPathName);
+            CurrentPathName = path.ToString();
         }
 
         public Enum ExitChangeState(Enum path)
@@ -117,8 +117,8 @@ namespace StateMachine
 
             CurrentStatePath = path;
 
-            _currentKey.Value.Entry(_currentPath);
-            _currentPath = path.ToString();
+            _currentKey.Value.Entry(CurrentPathName);
+            CurrentPathName = path.ToString();
             return path;
         }
     }
