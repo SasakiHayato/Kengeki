@@ -47,6 +47,7 @@ public class AttackSetting : MonoBehaviour
 
     public void IsHit(IDamage iDamage)
     {
+        Effects.Instance.Request(_data.EffctTypes,_targetCollider.gameObject);
         iDamage.GetDamage(_data.Power);
     }
 

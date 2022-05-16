@@ -1,13 +1,14 @@
 using UnityEngine;
 using StateMachine;
 
-public class CmManager : MonoBehaviour
+public class CmManager : MonoBehaviour, IManager
 {
     public enum State
     {
         Normal,
         Lockon,
         Transition,
+        Shake,
     }
 
     [SerializeField] Transform _user;
@@ -49,6 +50,7 @@ public class CmManager : MonoBehaviour
         }
 
         public float VirticalRate { get; set; }
+        public System.Enum SaveState { get; set; }
     }
 
     void Start()
@@ -62,12 +64,15 @@ public class CmManager : MonoBehaviour
         _state.AddState(new NormalCm(), State.Normal)
             .AddState(new LockonCm(), State.Lockon)
             .AddState(new TransitionCm(), State.Transition)
+            .AddState(new ShakeCm(), State.Shake)
             .RunRequest(true, State.Normal);
 
         _virtualityCm = new GameObject("Virtuliry").transform;
 
         ViewTarget = _user;
         CmData.VirticalRate = float.MaxValue;
+
+        GameManager.Instance.AddManager(this);
     }
 
     void Update()
@@ -122,4 +127,13 @@ public class CmManager : MonoBehaviour
 
         return zoomRate;
     }
+
+    public void Shake()
+    {
+        CmData.SaveState = _state.CurrentStatePath;
+        _state.ChangeState(State.Shake);
+    }
+
+    public GameObject ManagerObject() => gameObject;
+    public string ManagerPath() => nameof(CmManager);
 }

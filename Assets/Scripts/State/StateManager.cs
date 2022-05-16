@@ -19,6 +19,8 @@ namespace StateMachine
 
         KeyValuePair<string, State> _currentKey;
 
+        public Enum CurrentStatePath { get; private set; }
+
         public StateManager(GameObject user)
         {
             _stateDic = new Dictionary<string, State>();
@@ -56,6 +58,8 @@ namespace StateMachine
             {
                 _currentKey = _stateDic.FirstOrDefault(s => s.Key == statePath.ToString());
                 _currentPath = statePath.ToString();
+
+                CurrentStatePath = statePath;
 
                 _currentKey.Value.Entry("");
             }
@@ -100,7 +104,8 @@ namespace StateMachine
             }
 
             _currentKey = _stateDic.FirstOrDefault(s => s.Key == path.ToString());
-            
+
+            CurrentStatePath = path;
 
             _currentKey.Value.Entry(_currentPath);
             _currentPath = path.ToString();
@@ -109,6 +114,8 @@ namespace StateMachine
         public Enum ExitChangeState(Enum path)
         {
             _currentKey = _stateDic.FirstOrDefault(s => s.Key == path.ToString());
+
+            CurrentStatePath = path;
 
             _currentKey.Value.Entry(_currentPath);
             _currentPath = path.ToString();
