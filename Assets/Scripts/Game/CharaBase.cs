@@ -57,6 +57,7 @@ public class CharaData
     public string Name { get; private set; }
     public int HP { get; private set; }
     public float Speed { get; private set; }
+    public float DefaultSpeed { get; private set; }
     public ObjectType ObjectType;
 
     public void SetData(ObjectDataBase.Data data)
@@ -64,6 +65,12 @@ public class CharaData
         Name = data.Name;
         HP = data.HP;
         Speed = data.Speed;
+        DefaultSpeed = data.Speed;
         ObjectType = data.ObjectType;
+    }
+
+    public void UpdateSpeed(float value)
+    {
+        Speed = value;
     }
 }

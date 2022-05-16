@@ -23,10 +23,13 @@ public class PlayerAttack : State
         else type = AttackType.Float;
 
         _attackSetting.Request(type);
+        _player.Data.UpdateSpeed(_player.Data.DefaultSpeed);
     }
     
     public override void Run()
     {
+        _player.Move((Vector2)GamePadInputter.Instance.GetValue(GamePadInputter.ValueType.PlayerMove));
+
         if (!_physicsBase.IsGround)
         {
             _physicsBase.InitializeTumer();

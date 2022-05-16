@@ -20,11 +20,12 @@ public class PlayerIdle : State
     public override void Entry(string beforeStatePath)
     {
         _player.Anim.Play("Idle_ver_B");
+        _player.Data.UpdateSpeed(_player.Data.DefaultSpeed);
     }
 
     public override void Run()
     {
-        
+        _player.Move((Vector2)GamePadInputter.Instance.GetValue(GamePadInputter.ValueType.PlayerMove));
     }
 
     public override Enum Exit()

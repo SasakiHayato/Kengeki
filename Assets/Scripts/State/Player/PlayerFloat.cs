@@ -37,10 +37,12 @@ public class PlayerFloat : StateMachine.State
         }
 
         _player.Anim.Play(animName);
+        _player.Data.UpdateSpeed(_player.Data.DefaultSpeed);
     }
 
     public override void Run()
     {
+        _player.Move((Vector2)GamePadInputter.Instance.GetValue(GamePadInputter.ValueType.PlayerMove));
         _timer += Time.deltaTime;
     }
 

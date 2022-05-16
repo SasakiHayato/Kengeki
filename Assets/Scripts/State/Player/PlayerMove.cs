@@ -20,11 +20,20 @@ public class PlayerMove : State
     public override void Entry(string beforeStatePath)
     {
         _player.Anim.Play("Run_ver_B");
+
+        if (beforeStatePath == Player.State.Dodge.ToString())
+        {
+            _player.Data.UpdateSpeed(_player.Data.DefaultSpeed * 1.4f);
+        }
+        else
+        {
+            _player.Data.UpdateSpeed(_player.Data.DefaultSpeed);
+        }
     }
 
     public override void Run()
     {
-
+        _player.Move((Vector2)GamePadInputter.Instance.GetValue(GamePadInputter.ValueType.PlayerMove));
     }
 
     public override Enum Exit()

@@ -13,6 +13,7 @@ public class Player : CharaBase
         Move,
         Float,
         Attack,
+        Dodge,
     }
 
     Vector3 _beforePos;
@@ -28,7 +29,7 @@ public class Player : CharaBase
         _physicsBase = GetComponent<PhysicsBase>();
         _jumpSetting = GetComponent<JumpSetting>();
 
-        GamePadInputter.Instance.Input.Player.Fire.performed += context => Lockon();
+        GamePadInputter.Instance.Input.Player.Dodge.performed += context => Dodge();
         GamePadInputter.Instance.Input.Player.Jump.performed += context => Jump();
         GamePadInputter.Instance.Input.Player.Attack.performed += context => Attack();
         
@@ -37,6 +38,7 @@ public class Player : CharaBase
             .AddState(new PlayerMove(), State.Move)
             .AddState(new PlayerFloat(), State.Float)
             .AddState(new PlayerAttack(), State.Attack)
+            .AddState(new PlayerDodge(), State.Dodge)
             .RunRequest(true, State.Idle);
 
         _beforePos = transform.position;
@@ -46,14 +48,15 @@ public class Player : CharaBase
     {
         _state.Run();
 
-        Move();
         Rotate();
     }
 
-    void Move()
+    /// <summary>
+    /// PlayerState‚©‚ç‚ÌˆÚ“®§Œä
+    /// </summary>
+    /// <param name="input">“ü—Í•ûŒü</param>
+    public void Move(Vector2 input)
     {
-        Vector2 input = (Vector2)GamePadInputter.Instance.GetValue(GamePadInputter.ValueType.PlayerMove);
-
         Vector3 forward = Camera.main.transform.forward * input.y;
         Vector3 right = Camera.main.transform.right * input.x;
 
@@ -104,5 +107,10 @@ public class Player : CharaBase
     void Attack()
     {
         _state.ChangeState(State.Attack, true);
+    }
+
+    void Dodge()
+    {
+        _state.ChangeState(State.Dodge);
     }
 }
