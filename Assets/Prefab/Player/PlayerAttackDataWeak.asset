@@ -16,7 +16,7 @@ MonoBehaviour:
   _datas:
   - _animName: Attack_Combo_1
     _power: 0
-    _isActiveTime: 0.1
+    _isActiveTime: 0.15
     _endActiveTime: 0.2
     _effctTypes: 0000000001000000
   - _animName: Attack_Combo_2
