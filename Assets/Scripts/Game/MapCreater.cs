@@ -2,6 +2,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+public class MapData
+{
+    public List<MapCreater.RoomData.Room> RoomList;
+    
+    public void SetData(List<MapCreater.RoomData.Room> rooms)
+    {
+        RoomList = rooms;
+    }
+}
+
 public class MapCreater : MonoBehaviour
 {
     enum CellType
@@ -13,7 +23,7 @@ public class MapCreater : MonoBehaviour
     }
 
     [System.Serializable]
-    class RoomData
+    public class RoomData
     {
         [SerializeField] int _roomCount;
         [SerializeField] int _minRoomRange;
@@ -28,17 +38,24 @@ public class MapCreater : MonoBehaviour
 
         public class Room
         {
+            public int ID { get; private set; }
+
             public Vector2 UpperRightPos { get; private set; }
             public Vector2 UpperLeftPos { get; private set; }
             public Vector2 BottomRight { get; private set; }
             public Vector2 BottomLeft { get; private set; }
+            public Vector2 CenterPos { get; private set; }
 
-            public void SetData(int minX, int minY, int range)
+            public void SetData(int minX, int minY, int range, int id)
             {
                 UpperRightPos = new Vector2(minX + range, minY);
                 UpperLeftPos = new Vector2(minX, minY);
                 BottomRight = new Vector2(minX + range, minY + range);
                 BottomLeft = new Vector2(minX, minY + range);
+
+                CenterPos = new Vector2((minX + minX + range) / 2, (minY + minY + range) / 2);
+
+                ID = id;
             }
         }
     }
@@ -53,20 +70,25 @@ public class MapCreater : MonoBehaviour
         public GameObject Tip => _tip;
     }
 
+    [SerializeField] bool _isDebug;
     [SerializeField] int _horizontalRange;
     [SerializeField] int _verticalRange;
+    [SerializeField] int _loadWidth;
     [SerializeField] CellType _initCellType;
     [SerializeField] RoomData _roomData;
     [SerializeField] List<CellData> _cellDatas;
 
+    int _roomID;
     CellType[,] _cells;
+
+    MapData _mapData;
 
     void Start()
     {
-        Create();
+        if (_isDebug) Create();
     }
 
-    void Create()
+    public MapData Create()
     {
         Init();
 
@@ -77,9 +99,12 @@ public class MapCreater : MonoBehaviour
 
         CreateLoad();
         OverwriteRoom();
+       
         CreateAroundWall();
 
         SetMap();
+
+        return _mapData;
     }
 
     void CreateAroundWall()
@@ -125,9 +150,11 @@ public class MapCreater : MonoBehaviour
                 _cells[x, y] = CellType.Room;
 
                 RoomData.Room room = new RoomData.Room();
-                room.SetData(setCellX, setCellY, roomRange);
+                room.SetData(setCellX, setCellY, roomRange, _roomID);
 
                 _roomData.Rooms.Add(room);
+
+                _roomID++;
             }
         }
     }
@@ -184,7 +211,7 @@ public class MapCreater : MonoBehaviour
 
     void CreateLoadVirtical(int cell)
     {
-        for (int x = cell; x < cell + 1; x++)
+        for (int x = cell; x < cell + _loadWidth; x++)
         {
             for (int y = 0; y < _verticalRange; y++)
             {
@@ -197,7 +224,7 @@ public class MapCreater : MonoBehaviour
     {
         for (int x = 0; x < _horizontalRange; x++)
         {
-            for (int y = cell; y < cell + 1; y++)
+            for (int y = cell; y < cell + _loadWidth; y++)
             {
                 _cells[x, y] = CellType.Load;
             }
@@ -213,6 +240,8 @@ public class MapCreater : MonoBehaviour
                 SetCell(_cells[x, y], x, y);
             }
         }
+
+        _mapData.SetData(_roomData.Rooms);
     }
 
     void SetCell(CellType type, int x, int y)
@@ -225,7 +254,11 @@ public class MapCreater : MonoBehaviour
 
     void Init()
     {
+        _roomID = 0;
         _cells = new CellType[_horizontalRange, _verticalRange];
+
+        _mapData = new MapData();
+
         for (int x = 0; x < _horizontalRange; x++)
         {
             for (int y = 0; y < _verticalRange; y++)

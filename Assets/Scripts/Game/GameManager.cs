@@ -20,6 +20,8 @@ public class GameManager : SingletonAttribute<GameManager>
     public ObjectDataBase ObjectData { get; private set; }
     public FieldObjectData FieldObject { get; private set; }
 
+    public MapData MapData { get; private set; }
+
     public override void SetUp()
     {
         GamePadInputter.SetInstance(new GamePadInputter()).SetUp();
@@ -27,6 +29,16 @@ public class GameManager : SingletonAttribute<GameManager>
         FieldObject = new FieldObjectData();
 
         _managerList = new List<IManager>();
+    }
+
+    public void SetMapData()
+    {
+        MapData = Object.FindObjectOfType<MapCreater>().Create();
+        int randomRoomID = Random.Range(0, MapData.RoomList.Count);
+
+        GameObject player = Object.Instantiate(ObjectData.GetData("Player").Prefab);
+        Vector2 pos = MapData.RoomList[randomRoomID].CenterPos;
+        player.transform.position = new Vector3(pos.x, 1, pos.y);
     }
 
     public Transform LockonTarget { get; set; }

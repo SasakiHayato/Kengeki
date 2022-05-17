@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: ObjectDataBase
   m_EditorClassIdentifier: 
   _datas:
-  - Name: Player
+  - Prefab: {fileID: 1020465696745129027, guid: b3374978c71c0b643964f00e50a4d299, type: 3}
+    Name: Player
     HP: 1
     Speed: 9
     Runtime: {fileID: 9100000, guid: 11fe0ec95a17e7a40a744a403b44c50c, type: 2}
@@ -21,7 +22,8 @@ MonoBehaviour:
     ObjectType: 0
     ID: 1
     Path: Player
-  - Name: CubeEnemy
+  - Prefab: {fileID: 0}
+    Name: CubeEnemy
     HP: 1
     Speed: 1
     Runtime: {fileID: 9100000, guid: a2a5bb66a9ac2004cb7602b86514f83f, type: 2}
