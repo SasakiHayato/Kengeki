@@ -1,4 +1,3 @@
-using UnityEngine;
 
 public class CubeEnemy : EnemyBase, IDamage
 {
@@ -14,7 +13,7 @@ public class CubeEnemy : EnemyBase, IDamage
 
     void Update()
     {
-        
+        TreeManager.TreeUpdate();
     }
 
     public bool GetDamage(int damage)

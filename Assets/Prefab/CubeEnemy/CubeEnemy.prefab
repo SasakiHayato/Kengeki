@@ -160,20 +160,22 @@ MonoBehaviour:
       - RunType: 0
         Condition: 0
         Conditionals:
-        - rid: 3710212216005853184
+        - rid: 3710212216005853186
         Actions:
-        - rid: 3710212216005853185
+        - rid: 3710212216005853187
   references:
     version: 2
     RefIds:
-    - rid: 3710212216005853184
-      type: {class: ConditionDistance, ns: , asm: Assembly-CSharp}
+    - rid: 3710212216005853186
+      type: {class: ConditionEntryRoom, ns: , asm: Assembly-CSharp}
+    - rid: 3710212216005853187
+      type: {class: Console, ns: , asm: Assembly-CSharp}
       data:
-        _effectDistance: 5
-    - rid: 3710212216005853185
-      type: {class: ActionAttack, ns: , asm: Assembly-CSharp}
-      data:
-        _attackType: 0
+        _cosole: aa
+        _activeSetUp: 0
+        _activeTry: 0
+        _activeExecute: 1
+        _activeInit: 0
 --- !u!1 &7514123693954417454
 GameObject:
   m_ObjectHideFlags: 0
