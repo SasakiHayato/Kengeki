@@ -490,6 +490,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1015941906628081736, guid: ee415bf13eea6ab4fb3571fb863bdda6, type: 3}
+      propertyPath: managedReferences[3710212216005853188]._animName
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2544215643859038664, guid: ee415bf13eea6ab4fb3571fb863bdda6, type: 3}
       propertyPath: m_RootOrder
       value: 5

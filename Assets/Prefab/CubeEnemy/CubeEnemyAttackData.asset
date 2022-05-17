@@ -18,4 +18,5 @@ MonoBehaviour:
     _power: 1
     _isActiveTime: 0.21
     _endActiveTime: 0.45
+    _nextInputTime: 1
     _effctTypes: 0000000001000000

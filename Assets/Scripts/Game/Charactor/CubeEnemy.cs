@@ -24,4 +24,12 @@ public class CubeEnemy : EnemyBase, IDamage
         DestoryRequest();
         return true;
     }
+
+    protected override void DestoryRequest()
+    {
+        _attackSetting.Cancel();
+        Anim.Cancel();
+
+        base.DestoryRequest();
+    }
 }

@@ -13,7 +13,12 @@ public class ActionAttack : IAction
 
     public bool Execute()
     {
-        _attackSetting.Request(_attackType);
+        if (_attackSetting.IsNextInput)
+        {
+            _attackSetting.Request(_attackType);
+        }
+
+        
         return true;
     }
 

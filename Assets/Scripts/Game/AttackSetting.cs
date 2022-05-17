@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Linq;
 using Cysharp.Threading.Tasks;
 using System;
+using System.Threading;
 
 public class AttackSetting : MonoBehaviour
 {
@@ -13,31 +14,63 @@ public class AttackSetting : MonoBehaviour
     int _id = 0;
     AttackType _saveAttackType;
 
+    public bool IsNextInput { get; private set; }
+
     AttackDataBase.Data _data;
+
+    CancellationTokenSource _waitEndAnimSource;
+    CancellationTokenSource _waitNextInputSource;
 
     public void SetUp()
     {
         _targetCollider.SetUp(_user.CharaData.ObjectType, this);
+        IsNextInput = true;
     }
 
     public void Request(AttackType type)
     {
+        if (!IsNextInput) return;
+        IsNextInput = false;
+
         AttackDataBase dataBase = _attackDatas.FirstOrDefault(d => d.AttackType == type);
 
         TypeCheck(dataBase, type);
 
         _data = dataBase.GetData(_id);
         _user.Anim.SetAnimEvent(() => ColliderActive(true), _data.IsActiveTime).Play(_data.AnimName);
+
         WaitEndActive(_data.EndActiveTime).Forget();
+        WaitNextInput(_data.NextInputTime).Forget();
 
         _id++;
     }
 
-    async UniTask WaitEndActive(float waitSeconds)
+    public void Cancel()
     {
-        await UniTask.Delay(TimeSpan.FromSeconds(waitSeconds));
+        IsNextInput = true;
+        _id = 0;
+        _waitEndAnimSource?.Cancel();
+        _waitNextInputSource?.Cancel();
 
         ColliderActive(false);
+    }
+
+    async UniTask WaitEndActive(float waitSeconds)
+    {
+        _waitEndAnimSource = new CancellationTokenSource();
+        CancellationToken token = _waitEndAnimSource.Token;
+        await UniTask.Delay(TimeSpan.FromSeconds(waitSeconds),false, PlayerLoopTiming.Update, token);
+
+        ColliderActive(false);
+    }
+
+    async UniTask WaitNextInput(float waitSecond)
+    {
+        _waitNextInputSource = new CancellationTokenSource();
+        CancellationToken token = _waitNextInputSource.Token;
+        await UniTask.Delay(TimeSpan.FromSeconds(waitSecond), false, PlayerLoopTiming.Update, token);
+
+        IsNextInput = true;
     }
 
     void ColliderActive(bool active)
