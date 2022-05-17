@@ -23,7 +23,11 @@ public class PlayerFloat : StateMachine.State
         _timer = 0;
         string animName = "";
 
-        switch (_jumpSetting.CurrentID)
+        int id = _jumpSetting.CurrentID;
+
+        if (id == 0) id = 1;
+
+        switch (id)
         {
             case 1:
                 animName = "Jump_Start";

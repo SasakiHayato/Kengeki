@@ -38,7 +38,7 @@ public class GameManager : SingletonAttribute<GameManager>
 
         GameObject player = Object.Instantiate(ObjectData.GetData("Player").Prefab);
         Vector2 pos = MapData.RoomList[randomRoomID].CenterPos;
-        player.transform.position = new Vector3(pos.x, 1, pos.y);
+        player.transform.position = new Vector3(pos.x, 10, pos.y);
     }
 
     public Transform LockonTarget { get; set; }

@@ -19,14 +19,16 @@ public class PlayerMove : State
 
     public override void Entry(string beforeStatePath)
     {
-        _player.Anim.Play("Run_ver_B");
+        
 
         if (beforeStatePath == Player.State.Dodge.ToString())
         {
+            _player.Anim.Play("Run_Fast_ver_B");
             _player.CharaData.UpdateSpeed(_player.CharaData.DefaultSpeed * 1.4f);
         }
         else
         {
+            _player.Anim.Play("Run_ver_B");
             _player.CharaData.UpdateSpeed(_player.CharaData.DefaultSpeed);
         }
     }

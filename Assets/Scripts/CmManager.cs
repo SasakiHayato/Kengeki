@@ -56,6 +56,11 @@ public class CmManager : MonoBehaviour, IManager
 
     void Start()
     {
+        if (_user == null)
+        {
+            _user = GameManager.Instance.FieldObject.GetData(ObjectType.GameUser)[0].Target.transform;
+        }
+
         CmData = new Data(_user, _deadInput, _sensitivity);
 
         Vector3 offestPos = _user.position + _offsetPosition;
