@@ -4,11 +4,76 @@ using System.Linq;
 
 public class MapData
 {
-    public List<MapCreater.RoomData.Room> RoomList;
+    List<Data> _datas;
+    List<MapCreater.RoomData.Room> _roomList;
+
+    public int RoomCount => _roomList.Count;
+    public Data GetData(int id) => _datas[id];
     
-    public void SetData(List<MapCreater.RoomData.Room> rooms)
+    public void SetRoomList(List<MapCreater.RoomData.Room> rooms)
     {
-        RoomList = rooms;
+        Debug.Log($"Room {rooms.Count}");
+        _roomList = rooms;
+    }
+
+    public void SetUpData(EnemyDataTip enemyDataTip)
+    {
+        int id = 0;
+        _datas = new List<Data>();
+
+        foreach (MapCreater.RoomData.Room room in _roomList)
+        {
+            int randomID = Random.Range(0, enemyDataTip.DataLegth);
+
+            Data data = new Data(room, enemyDataTip.GetDataTip(randomID), id);
+            _datas.Add(data);
+            
+            id++;
+        }
+    }
+
+    public void InstantiateAll()
+    {
+        foreach (Data data in _datas)
+        {
+            foreach (EnemyPath path in data.EnemyTip.EnemyPaths)
+            {
+                int x = Random.Range((int)data.Room.UpperLeftPos.x, (int)data.Room.UpperRightPos.x);
+                int y = Random.Range((int)data.Room.UpperRightPos.y, (int)data.Room.BottomRight.y);
+
+                GameObject obj = Object.Instantiate(GameManager.Instance.ObjectData.GetData(path.ToString()).Prefab);
+                obj.transform.position = new Vector3(x, 1, y);
+            }
+        }
+    }
+
+    public void InstantiateAt(int roomID)
+    {
+        Debug.Log(_datas.Count);
+        Data data = _datas[roomID];
+
+        foreach (EnemyPath path in data.EnemyTip.EnemyPaths)
+        {
+            int x = Random.Range((int)data.Room.UpperLeftPos.x, (int)data.Room.UpperRightPos.x);
+            int y = Random.Range((int)data.Room.UpperRightPos.y, (int)data.Room.BottomRight.y);
+
+            GameObject obj = Object.Instantiate(GameManager.Instance.ObjectData.GetData(path.ToString()).Prefab);
+            obj.transform.position = new Vector3(x, 1, y);
+        }
+    }
+
+    public class Data
+    {
+        public int ID { get; private set; }
+        public MapCreater.RoomData.Room Room { get; private set; }
+        public EnemyDataTip.DataTip EnemyTip { get; private set; }
+
+        public Data(MapCreater.RoomData.Room room, EnemyDataTip.DataTip tip, int id)
+        {
+            ID = id;
+            Room = room;
+            EnemyTip = tip;
+        }
     }
 }
 
@@ -142,21 +207,21 @@ public class MapCreater : MonoBehaviour
             CreateRoom();
             return;
         }
-       
+
         for (int x = setCellX; x < roomRange + setCellX; x++)
         {
             for (int y = setCellY; y < roomRange + setCellY; y++)
             {
                 _cells[x, y] = CellType.Room;
-
-                RoomData.Room room = new RoomData.Room();
-                room.SetData(setCellX, setCellY, roomRange, _roomID);
-
-                _roomData.Rooms.Add(room);
-
-                _roomID++;
             }
         }
+
+        RoomData.Room room = new RoomData.Room();
+        room.SetData(setCellX, setCellY, roomRange, _roomID);
+
+        _roomData.Rooms.Add(room);
+
+        _roomID++;
     }
 
     bool CheckIsCreateRoom(int x, int y, int range)
@@ -241,7 +306,8 @@ public class MapCreater : MonoBehaviour
             }
         }
 
-        _mapData.SetData(_roomData.Rooms);
+        Debug.Log($"CreateRoom {_roomData.Rooms.Count}");
+        _mapData.SetRoomList(_roomData.Rooms);
     }
 
     void SetCell(CellType type, int x, int y)

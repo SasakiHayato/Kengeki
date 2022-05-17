@@ -22,7 +22,7 @@ MonoBehaviour:
     ObjectType: 0
     ID: 1
     Path: Player
-  - Prefab: {fileID: 0}
+  - Prefab: {fileID: 2544215643859038677, guid: ee415bf13eea6ab4fb3571fb863bdda6, type: 3}
     Name: CubeEnemy
     HP: 1
     Speed: 1

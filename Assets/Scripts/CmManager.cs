@@ -58,7 +58,7 @@ public class CmManager : MonoBehaviour, IManager
     {
         if (_user == null)
         {
-            _user = GameManager.Instance.FieldObject.GetData(ObjectType.GameUser)[0].Target.transform;
+            _user = GameManager.Instance.Player.transform;
         }
 
         CmData = new Data(_user, _deadInput, _sensitivity);
