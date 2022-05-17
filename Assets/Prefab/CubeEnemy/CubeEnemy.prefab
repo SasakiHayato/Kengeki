@@ -153,7 +153,22 @@ MonoBehaviour:
   - BrockType: 0
     Condition: 0
     Priority: 0
-    BranchConditionals: []
+    BranchConditionals:
+    - rid: 3710212216005853190
+    BrockDatas:
+    - QueueType: 0
+      QueueDatas:
+      - RunType: 0
+        Condition: 0
+        Conditionals:
+        - rid: 3710212216005853191
+        Actions:
+        - rid: 3710212216005853193
+  - BrockType: 0
+    Condition: 0
+    Priority: 0
+    BranchConditionals:
+    - rid: 3710212216005853190
     BrockDatas:
     - QueueType: 0
       QueueDatas:
@@ -162,20 +177,28 @@ MonoBehaviour:
         Conditionals:
         - rid: 3710212216005853186
         Actions:
-        - rid: 3710212216005853187
+        - rid: 3710212216005853188
+        - rid: 3710212216005853189
   references:
     version: 2
     RefIds:
     - rid: 3710212216005853186
       type: {class: ConditionEntryRoom, ns: , asm: Assembly-CSharp}
-    - rid: 3710212216005853187
-      type: {class: Console, ns: , asm: Assembly-CSharp}
+    - rid: 3710212216005853188
+      type: {class: ActionMove, ns: , asm: Assembly-CSharp}
       data:
-        _cosole: aa
-        _activeSetUp: 0
-        _activeTry: 0
-        _activeExecute: 1
-        _activeInit: 0
+        _animName: 
+        _moveDirType: 0
+    - rid: 3710212216005853189
+      type: {class: ActionRotate, ns: , asm: Assembly-CSharp}
+    - rid: 3710212216005853190
+      type: {class: ConditionEntryRoom, ns: , asm: Assembly-CSharp}
+    - rid: 3710212216005853191
+      type: {class: ConditionEmpty, ns: , asm: Assembly-CSharp}
+    - rid: 3710212216005853193
+      type: {class: ActionIdle, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: 
 --- !u!1 &7514123693954417454
 GameObject:
   m_ObjectHideFlags: 0

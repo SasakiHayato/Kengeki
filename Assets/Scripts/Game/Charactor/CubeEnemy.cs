@@ -1,3 +1,4 @@
+using UnityEngine;
 
 public class CubeEnemy : EnemyBase, IDamage
 {
@@ -14,6 +15,8 @@ public class CubeEnemy : EnemyBase, IDamage
     void Update()
     {
         TreeManager.TreeUpdate();
+        
+        CharacterController.Move(MoveDir * CharaData.Speed * Time.deltaTime);
     }
 
     public bool GetDamage(int damage)

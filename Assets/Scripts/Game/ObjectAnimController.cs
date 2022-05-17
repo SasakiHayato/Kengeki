@@ -11,7 +11,8 @@ using System;
 public class ObjectAnimController
 {
     bool _hasAnim = false;
-    
+    string _currentAnimState;
+
     CancellationTokenSource _tokenSource = null;
    
     Animator _anim;
@@ -29,6 +30,8 @@ public class ObjectAnimController
         _anim.runtimeAnimatorController = runTime;
         _runtime = runTime;
 
+        _currentAnimState = _anim.GetCurrentAnimatorClipInfo(0)[0].clip.name;
+
         if (avatar != null) _anim.avatar = avatar;
 
         _hasAnim = true;
@@ -38,7 +41,10 @@ public class ObjectAnimController
     {
         if (!_hasAnim) return this;
         EndCurrentAnimNormalizeTime = false;
-        
+
+        if (stateName == _currentAnimState) return this;
+        else _currentAnimState = stateName;
+
         AnimationClip clip = _runtime.animationClips.FirstOrDefault(a => a.name == stateName);
 
         if (!clip.isLooping) WaitAnimNormalizeTime(SetToken()).Forget();

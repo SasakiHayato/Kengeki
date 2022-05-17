@@ -28,7 +28,6 @@ public class ConditionEntryRoom : IConditional
             }
         }
 
-
         return false;
     }
 
