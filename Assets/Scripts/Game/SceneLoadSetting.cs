@@ -4,7 +4,7 @@ using UnityEngine;
 /// ゲームシーンの管理クラス
 /// </summary>
 
-public class GamePresenter : MonoBehaviour
+public class SceneLoadSetting : MonoBehaviour
 {
     [SerializeField] bool _isDebug;
 

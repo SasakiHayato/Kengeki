@@ -29,7 +29,6 @@ public class AttackCollider : MonoBehaviour
     public void SetColliderActive(bool active)
     {
         _collider.enabled = active;
-
         _isHit = false;
     }
 

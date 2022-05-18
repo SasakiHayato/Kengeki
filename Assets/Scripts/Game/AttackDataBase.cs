@@ -23,16 +23,16 @@ public class AttackDataBase : ScriptableObject
     {
         [SerializeField] string _animName;
         [SerializeField] int _power;
-        [SerializeField] float _isActiveTime;
-        [SerializeField] float _endActiveTime;
-        [SerializeField] float _nextInputTime;
+        [SerializeField] int _isActiveFrame;
+        [SerializeField] int _endActiveFrame;
+        [SerializeField] int _nextInputFrame;
         [SerializeField] AttckEffctType[] _effctTypes;
 
         public string AnimName => _animName;
         public int Power => _power;
-        public float IsActiveTime => _isActiveTime;
-        public float EndActiveTime => _endActiveTime;
-        public float NextInputTime => _nextInputTime;
+        public int IsActiveFrame => _isActiveFrame;
+        public int EndActiveFrame => _endActiveFrame;
+        public int NextInputFrame => _nextInputFrame;
         public AttckEffctType[] EffctTypes => _effctTypes;
     }
 }

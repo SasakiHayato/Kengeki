@@ -53,9 +53,9 @@ public class ObjectAnimController
         return this;
     }
 
-    public ObjectAnimController SetAnimEvent(Action action, float executeTime = 0)
+    public ObjectAnimController SetAnimEvent(Action action, int executeFrame = 0)
     {
-        WaitAnimEvent(action, executeTime).Forget();
+        WaitAnimEvent(action, executeFrame).Forget();
         return this;
     }
 
@@ -86,9 +86,9 @@ public class ObjectAnimController
         EndCurrentAnimNormalizeTime = true;
     }
 
-    async UniTask WaitAnimEvent(Action action, float waitSeconds)
+    async UniTask WaitAnimEvent(Action action, int waitFrame)
     {
-        await UniTask.Delay(TimeSpan.FromSeconds(waitSeconds));
+        await UniTask.Delay(waitFrame * 30);   
         action.Invoke();
     }
 }

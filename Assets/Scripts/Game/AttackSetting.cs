@@ -37,10 +37,10 @@ public class AttackSetting : MonoBehaviour
         TypeCheck(dataBase, type);
 
         _data = dataBase.GetData(_id);
-        _user.Anim.SetAnimEvent(() => ColliderActive(true), _data.IsActiveTime).Play(_data.AnimName);
+        _user.Anim.SetAnimEvent(() => ColliderActive(true), _data.IsActiveFrame).Play(_data.AnimName);
 
-        WaitEndActive(_data.EndActiveTime).Forget();
-        WaitNextInput(_data.NextInputTime).Forget();
+        WaitEndActive(_data.EndActiveFrame).Forget();
+        WaitNextInput(_data.NextInputFrame).Forget();
 
         _id++;
     }
@@ -55,20 +55,19 @@ public class AttackSetting : MonoBehaviour
         ColliderActive(false);
     }
 
-    async UniTask WaitEndActive(float waitSeconds)
+    async UniTask WaitEndActive(int waitFrame)
     {
         _waitEndAnimSource = new CancellationTokenSource();
         CancellationToken token = _waitEndAnimSource.Token;
-        await UniTask.Delay(TimeSpan.FromSeconds(waitSeconds),false, PlayerLoopTiming.Update, token);
-
+        await UniTask.Delay(waitFrame * 30, false, PlayerLoopTiming.Update, token);
         ColliderActive(false);
     }
 
-    async UniTask WaitNextInput(float waitSecond)
+    async UniTask WaitNextInput(int waitFrame)
     {
         _waitNextInputSource = new CancellationTokenSource();
         CancellationToken token = _waitNextInputSource.Token;
-        await UniTask.Delay(TimeSpan.FromSeconds(waitSecond), false, PlayerLoopTiming.Update, token);
+        await UniTask.Delay(waitFrame * 30, false, PlayerLoopTiming.Update, token);
 
         IsNextInput = true;
     }
