@@ -86,8 +86,8 @@ public class Player : CharaBase, IDamage
         }
         else
         {
-            GameObject data = GameManager.Instance.FieldObject.GetData(ObjectType.Enemy)[0].Target;
-            GameManager.Instance.LockonTarget = data.transform;
+            CmManager cmManager = GameManager.Instance.GetManager<CmManager>(nameof(CmManager));
+            GameManager.Instance.LockonTarget = cmManager.FindCenterTarget(ObjectType.Enemy, 50).transform;
         }
     }
 

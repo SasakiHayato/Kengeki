@@ -1,5 +1,6 @@
 using UnityEngine;
 using StateMachine;
+using System.Linq;
 
 public class CmManager : MonoBehaviour, IManager
 {
@@ -145,6 +146,39 @@ public class CmManager : MonoBehaviour, IManager
     public void RadialBlur(float strength)
     {
         _radialrAttribute.SetStrength(strength);
+    }
+
+    public GameObject FindCenterTarget(ObjectType type, float findDist)
+    {
+        float viewingAngle = Camera.main.fieldOfView;
+        Vector3 cmPos = Camera.main.transform.position;
+
+        var data = GameManager.Instance.FieldObject.GetData(type)
+            .Where(t => Vector3.Distance(t.Target.transform.position, cmPos) < findDist)
+            .Where(t => 
+            {
+                Vector3 tPos = t.Target.transform.position;
+                float rad = Vector3.Dot((tPos - cmPos).normalized, Camera.main.transform.forward);
+                float angle = Mathf.Acos(rad) * Mathf.Rad2Deg;
+                
+                if (viewingAngle > angle) return true;
+                else return false;
+            });
+
+        GameObject obj = null;
+        float saveDist = float.MaxValue;
+
+        foreach (FieldObjectData.Data t in data)
+        {
+            float dist = Vector3.Distance(t.Target.transform.position, _user.position);
+            if (saveDist > dist)
+            {
+                saveDist = dist;
+                obj = t.Target;
+            }
+        }
+
+        return obj;
     }
 
     public GameObject ManagerObject() => gameObject;
