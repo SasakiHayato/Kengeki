@@ -16,7 +16,7 @@ public class Player : CharaBase, IDamage
         Dodge,
     }
 
-    Vector3 _beforePos;
+    Vector3 _saveDir;
 
     PhysicsBase _physicsBase;
     JumpSetting _jumpSetting;
@@ -41,15 +41,11 @@ public class Player : CharaBase, IDamage
             .AddState(new PlayerAttack(), State.Attack)
             .AddState(new PlayerDodge(), State.Dodge)
             .RunRequest(true, State.Idle);
-
-        _beforePos = transform.position;
     }
 
     void Update()
     {
         _state.Run();
-
-        Rotate();
     }
 
     /// <summary>
@@ -67,15 +63,18 @@ public class Player : CharaBase, IDamage
         RB.velocity = Vector3.Scale(move, _physicsBase.Gravity);
     }
 
-    void Rotate()
+    /// <summary>
+    /// PlayerStateÇ©ÇÁÇÃâÒì]êßå‰
+    /// </summary>
+    public void Rotate(Vector3 dir)
     {
-        Vector3 dir = transform.position - _beforePos;
+        if (dir == Vector3.zero) dir = _saveDir;
+        
         dir.y = 0;
-        _beforePos = transform.position;
-
         if (dir != Vector3.zero)
         {
             transform.rotation = Quaternion.LookRotation(dir);
+            _saveDir = dir;
         }
     }
 

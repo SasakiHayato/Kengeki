@@ -19,8 +19,6 @@ public class PlayerMove : State
 
     public override void Entry(string beforeStatePath)
     {
-        
-
         if (beforeStatePath == Player.State.Dodge.ToString())
         {
             _player.Anim.Play("Run_Fast_ver_B");
@@ -35,7 +33,20 @@ public class PlayerMove : State
 
     public override void Run()
     {
-        _player.Move((Vector2)GamePadInputter.Instance.GetValue(GamePadInputter.ValueType.PlayerMove));
+        Vector2 input = (Vector2)GamePadInputter.Instance.GetValue(GamePadInputter.ValueType.PlayerMove);
+
+        _player.Move(input);
+        Rotate(input);
+    }
+
+    void Rotate(Vector2 input)
+    {
+        Vector3 forward = Camera.main.transform.forward * input.y;
+        Vector3 right = Camera.main.transform.right * input.x;
+
+        Vector3 set = forward + right;
+        
+        _player.Rotate(set);
     }
 
     public override Enum Exit()

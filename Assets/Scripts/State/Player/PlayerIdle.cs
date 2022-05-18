@@ -26,6 +26,7 @@ public class PlayerIdle : State
     public override void Run()
     {
         _player.Move((Vector2)GamePadInputter.Instance.GetValue(GamePadInputter.ValueType.PlayerMove));
+        _player.Rotate(Vector3.zero);
     }
 
     public override Enum Exit()
