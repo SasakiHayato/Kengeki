@@ -8,6 +8,10 @@ public class PlayerAttack : State
     AttackSetting _attackSetting;
     PhysicsBase _physicsBase;
 
+    float _timer;
+
+    const float MoveTime = 0.2f;
+
     public override void SetUp(GameObject user)
     {
         _player = user.GetComponent<Player>();
@@ -24,16 +28,32 @@ public class PlayerAttack : State
         if (_physicsBase.IsGround) type = AttackType.Weak;
         else type = AttackType.Float;
 
-        _attackSetting.Request(type);
+        if (_attackSetting.Request(type))
+        {
+            _timer = 0;
+        }
+
         _player.CharaData.UpdateSpeed(_player.CharaData.DefaultSpeed);
     }
     
     public override void Run()
     {
-        Vector2 input = (Vector2)GamePadInputter.Instance.GetValue(GamePadInputter.ValueType.PlayerMove);
+        _timer += Time.deltaTime;
 
-        _player.Move(input);
-        Rotate(input);
+        if (_timer < MoveTime)
+        {
+            Vector2 input = (Vector2)GamePadInputter.Instance.GetValue(GamePadInputter.ValueType.PlayerMove);
+
+            if (input == Vector2.zero) input = Vector2.up;
+
+            _player.Move(input);
+            Rotate(input);
+        }
+        else
+        {
+            _player.Move(Vector3.zero);
+            _player.Rotate(Vector3.zero);
+        }
 
         if (!_physicsBase.IsGround)
         {

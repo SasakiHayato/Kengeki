@@ -28,9 +28,9 @@ public class AttackSetting : MonoBehaviour
         IsNextInput = true;
     }
 
-    public void Request(AttackType type)
+    public bool Request(AttackType type)
     {
-        if (!IsNextInput) return;
+        if (!IsNextInput) return false;
         IsNextInput = false;
 
         AttackDataBase dataBase = _attackDatas.FirstOrDefault(d => d.AttackType == type);
@@ -44,6 +44,8 @@ public class AttackSetting : MonoBehaviour
         WaitNextInput(_data.NextInputFrame).Forget();
 
         _id++;
+
+        return true;
     }
 
     public void Cancel()
