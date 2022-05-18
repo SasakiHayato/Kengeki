@@ -21,6 +21,7 @@ public class ObjectAnimController
     public bool EndCurrentAnimNormalizeTime { get; private set; }
 
     const float DurationTime = 0.1f;
+    const int Span = 30;
     
     public ObjectAnimController(RuntimeAnimatorController runTime, Avatar avatar, GameObject user)
     {
@@ -88,7 +89,7 @@ public class ObjectAnimController
 
     async UniTask WaitAnimEvent(Action action, int waitFrame)
     {
-        await UniTask.Delay(waitFrame * 30);   
+        await UniTask.Delay(waitFrame * Span);
         action.Invoke();
     }
 }

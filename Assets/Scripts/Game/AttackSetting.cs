@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using Cysharp.Threading.Tasks;
-using System;
 using System.Threading;
 
 public class AttackSetting : MonoBehaviour
@@ -20,6 +19,8 @@ public class AttackSetting : MonoBehaviour
 
     CancellationTokenSource _waitEndAnimSource;
     CancellationTokenSource _waitNextInputSource;
+
+    const int Span = 30;
 
     public void SetUp()
     {
@@ -59,7 +60,7 @@ public class AttackSetting : MonoBehaviour
     {
         _waitEndAnimSource = new CancellationTokenSource();
         CancellationToken token = _waitEndAnimSource.Token;
-        await UniTask.Delay(waitFrame * 30, false, PlayerLoopTiming.Update, token);
+        await UniTask.Delay(waitFrame * Span, false, PlayerLoopTiming.Update, token);
         ColliderActive(false);
     }
 
@@ -67,7 +68,7 @@ public class AttackSetting : MonoBehaviour
     {
         _waitNextInputSource = new CancellationTokenSource();
         CancellationToken token = _waitNextInputSource.Token;
-        await UniTask.Delay(waitFrame * 30, false, PlayerLoopTiming.Update, token);
+        await UniTask.Delay(waitFrame * Span, false, PlayerLoopTiming.Update, token);
 
         IsNextInput = true;
     }
