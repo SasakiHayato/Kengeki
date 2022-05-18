@@ -16,19 +16,19 @@ MonoBehaviour:
   _datas:
   - _animName: Attack_Combo_1
     _power: 0
-    _isActiveTime: 8
-    _endActiveTime: 15
-    _nextInputTime: 50
+    _isActiveFrame: 8
+    _endActiveFrame: 15
+    _nextInputFrame: 25
     _effctTypes: 0000000001000000
   - _animName: Attack_Combo_2
     _power: 0
-    _isActiveTime: 0
-    _endActiveTime: 0
-    _nextInputTime: 1
+    _isActiveFrame: 3
+    _endActiveFrame: 10
+    _nextInputFrame: 20
     _effctTypes: 0000000001000000
   - _animName: Attack_Combo_3
     _power: 0
-    _isActiveTime: 0
-    _endActiveTime: 0
-    _nextInputTime: 2
+    _isActiveFrame: 8
+    _endActiveFrame: 35
+    _nextInputFrame: 55
     _effctTypes: 0100000000000000
