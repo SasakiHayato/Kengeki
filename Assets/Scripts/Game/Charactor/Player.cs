@@ -64,7 +64,7 @@ public class Player : CharaBase, IDamage
         Vector3 move = (forward + right) * CharaData.Speed;
         move.y = 1 + _jumpSetting.Power * -1;
 
-        CharacterController.Move(Vector3.Scale(move, _physicsBase.Gravity) * Time.deltaTime);
+        RB.velocity = Vector3.Scale(move, _physicsBase.Gravity);
     }
 
     void Rotate()

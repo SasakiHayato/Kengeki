@@ -16,13 +16,13 @@ public interface IDamage
 /// キャラクターの基底クラス
 /// </summary>
 
-[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(Rigidbody))]
 public abstract class CharaBase : MonoBehaviour
 {
     [SerializeField] string _dataPath;
     [SerializeField] Transform _offsetPosition;
     
-    protected CharacterController CharacterController { get; private set; }
+    protected Rigidbody RB { get; private set; }
     public CharaData CharaData { get; private set; }
     
     public ObjectAnimController Anim { get; private set; }
@@ -39,8 +39,9 @@ public abstract class CharaBase : MonoBehaviour
  
     protected virtual void SetUp()
     {
-        CharacterController = GetComponent<CharacterController>();
-        CharacterController.center = OffsetPosition.localPosition;
+        RB = GetComponent<Rigidbody>();
+        RB.useGravity = false;
+        RB.freezeRotation = true;
 
         ObjectDataBase.Data data = GameManager.Instance.ObjectData.GetData(_dataPath);
         CharaData = new CharaData();
@@ -68,6 +69,7 @@ public class CharaData
     public string Name { get; private set; }
     public int HP { get; private set; }
     public float Speed { get; private set; }
+    public int Power { get; private set; }
     public float DefaultSpeed { get; private set; }
     public ObjectType ObjectType;
 
@@ -76,6 +78,7 @@ public class CharaData
         Name = data.Name;
         HP = data.HP;
         Speed = data.Speed;
+        Power = data.Power;
         DefaultSpeed = data.Speed;
         ObjectType = data.ObjectType;
 

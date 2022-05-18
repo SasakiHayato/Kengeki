@@ -2,7 +2,7 @@ using UnityEngine;
 using BehaviourTree;
 
 [RequireComponent(typeof(TreeManager))]
-public class EnemyBase : CharaBase
+public abstract class EnemyBase : CharaBase
 {
     Vector3 _moveDir;
     public Vector3 MoveDir

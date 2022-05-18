@@ -46,7 +46,6 @@ public class ObjectAnimController
         else _currentAnimState = stateName;
 
         AnimationClip clip = _runtime.animationClips.FirstOrDefault(a => a.name == stateName);
-        Debug.Log(stateName);
         if (!clip.isLooping) WaitAnimNormalizeTime(SetToken()).Forget();
 
         _anim.CrossFade(stateName, DurationTime);
@@ -62,7 +61,7 @@ public class ObjectAnimController
 
     public void Cancel()
     {
-        _tokenSource.Cancel();
+        _tokenSource?.Cancel();
     }
 
     CancellationToken SetToken()

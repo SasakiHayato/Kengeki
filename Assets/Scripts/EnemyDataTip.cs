@@ -3,7 +3,8 @@ using System.Collections.Generic;
 
 public enum EnemyPath
 {
-    CubeEnemy,
+    CubeEnemySword,
+    CubeEnemyBullet,
 }
 
 [CreateAssetMenu (fileName = "EnemyDataTip")]

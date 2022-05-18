@@ -9,14 +9,14 @@ public class CubeEnemy : EnemyBase, IDamage
         base.SetUp();
 
         _attackSetting = GetComponent<AttackSetting>();
-        _attackSetting.SetUp();
+        _attackSetting?.SetUp();
     }
 
     void Update()
     {
         TreeManager.TreeUpdate();
         
-        CharacterController.Move(MoveDir * CharaData.Speed * Time.deltaTime);
+        RB.velocity = MoveDir * CharaData.Speed;
     }
 
     public bool GetDamage(int damage)
@@ -27,7 +27,7 @@ public class CubeEnemy : EnemyBase, IDamage
 
     protected override void DestoryRequest()
     {
-        _attackSetting.Cancel();
+        _attackSetting?.Cancel();
         Anim.Cancel();
 
         base.DestoryRequest();

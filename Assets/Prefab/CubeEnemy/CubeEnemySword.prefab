@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 2544215643859038664}
   - component: {fileID: 2544215643859038667}
   - component: {fileID: 2544215643859038666}
-  - component: {fileID: 2544215643859038665}
   - component: {fileID: 2544215643859038679}
   - component: {fileID: 2544215643859038672}
   - component: {fileID: 1015941906628081736}
+  - component: {fileID: -5274312816883287191}
   m_Layer: 0
-  m_Name: CubeEnemy
+  m_Name: CubeEnemySword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,24 +89,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!143 &2544215643859038665
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2544215643859038677}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 1
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2544215643859038679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af02be41c2568c43b6d180c00780232, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dataPath: CubeEnemy
+  _dataPath: CubeEnemySword
   _offsetPosition: {fileID: 7514123694876130074}
 --- !u!114 &2544215643859038672
 MonoBehaviour:
@@ -164,7 +146,7 @@ MonoBehaviour:
         - rid: 3710212216005853191
         Actions:
         - rid: 3710212216005853193
-  - BrockType: 0
+  - BrockType: 2
     Condition: 0
     Priority: 0
     BranchConditionals:
@@ -175,7 +157,7 @@ MonoBehaviour:
       - RunType: 0
         Condition: 0
         Conditionals:
-        - rid: 3710212216005853186
+        - rid: 3710212221310074882
         Actions:
         - rid: 3710212216005853188
         - rid: 3710212216005853189
@@ -189,8 +171,6 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 3710212216005853186
-      type: {class: ConditionEntryRoom, ns: , asm: Assembly-CSharp}
     - rid: 3710212216005853188
       type: {class: ActionMove, ns: , asm: Assembly-CSharp}
       data:
@@ -218,6 +198,21 @@ MonoBehaviour:
       type: {class: ActionWait, ns: , asm: Assembly-CSharp}
       data:
         _waitTime: 1.5
+    - rid: 3710212221310074882
+      type: {class: ConditionEmpty, ns: , asm: Assembly-CSharp}
+--- !u!65 &-5274312816883287191
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2544215643859038677}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7514123693954417454
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,7 +225,7 @@ GameObject:
   - component: {fileID: 2544215643859038675}
   - component: {fileID: 2544215643859038674}
   - component: {fileID: 2544215643859038678}
-  - component: {fileID: 2544215643859038673}
+  - component: {fileID: 3581735549995779406}
   m_Layer: 0
   m_Name: EnemyBlade
   m_TagString: Untagged
@@ -315,7 +310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9527520320f478d1619649fbae61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &2544215643859038673
+--- !u!65 &3581735549995779406
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -326,8 +321,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 2.5, z: 2.5}
-  m_Center: {x: 0, y: 0, z: 0.91}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0.00015115365, y: 0.007685501, z: 0.4723153}
 --- !u!1 &7514123694876130073
 GameObject:
   m_ObjectHideFlags: 0

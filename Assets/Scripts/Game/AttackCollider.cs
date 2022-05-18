@@ -1,8 +1,10 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))] 
 public class AttackCollider : MonoBehaviour
 {
     ObjectType _type;
+    Rigidbody _rb;
     Collider _collider;
 
     AttackSetting _attackSetting;
@@ -11,6 +13,11 @@ public class AttackCollider : MonoBehaviour
 
     public void SetUp(ObjectType type, AttackSetting setting)
     {
+        _rb = GetComponent<Rigidbody>();
+        _rb.useGravity = false;
+        _rb.isKinematic = true;
+        _rb.freezeRotation = true;
+
         _collider = GetComponent<Collider>();
         _collider.isTrigger = true;
         _collider.enabled = false;
