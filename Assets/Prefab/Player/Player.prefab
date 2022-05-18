@@ -441,6 +441,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dataPath: Player
   _offsetPosition: {fileID: 2046847861937009994}
+  _deadInput: 0.2
 --- !u!114 &1162459682554197377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,7 +501,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1020465696745129027}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: dbb157992bae89249806b5e88f578309, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.32
