@@ -70,6 +70,7 @@ public class AttackSetting : MonoBehaviour
 
         WaitEndActive(_data.EndActiveFrame).Forget();
         WaitNextInput(_data.NextInputFrame).Forget();
+        WaitExecuteAction(_data.Action.ExecuteFrame).Forget();
 
         _id++;
 
