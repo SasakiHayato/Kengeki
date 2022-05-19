@@ -15,7 +15,7 @@ public class PhysicsBase : MonoBehaviour
 
     float _gravityTimer;
     float _forceTimer;
-    bool _isForce;
+    
 
     Vector3 _forceDir;
     float _forcePower;
@@ -24,11 +24,13 @@ public class PhysicsBase : MonoBehaviour
 
     Vector3 _gravity;
 
+    public bool IsForce { get; private set; }
+
     public Vector3 Gravity
     { 
         get
         {
-            if (_isForce)
+            if (IsForce)
             {
                 
                 return _gravity;
@@ -58,7 +60,7 @@ public class PhysicsBase : MonoBehaviour
     void Start()
     {
         _charaBase = GetComponent<CharaBase>();
-        _isForce = false;
+        IsForce = false;
     }
 
     void Update()
@@ -71,7 +73,7 @@ public class PhysicsBase : MonoBehaviour
     {
         _gravityTimer += Time.fixedDeltaTime * PhsicsMasterData.GravityScale;
 
-        if (_isForce) _forceTimer += Time.fixedDeltaTime * PhsicsMasterData.GravityScale;
+        if (IsForce) _forceTimer += Time.fixedDeltaTime * PhsicsMasterData.GravityScale;
     }
 
     void CheckGround()
@@ -91,7 +93,7 @@ public class PhysicsBase : MonoBehaviour
 
     void ForceUpdate()
     {
-        if (!_isForce) return;
+        if (!IsForce) return;
 
         float g = PhsicsMasterData.GravityCoefficient * -1;
         float v = _forcePower - _forceTimer * g;
@@ -100,7 +102,7 @@ public class PhysicsBase : MonoBehaviour
 
         if (v < 0)
         {
-            _isForce = false;
+            IsForce = false;
             _forcePower = 0;
             _forceDir = Vector3.zero;
             _forceTimer = 0;
@@ -112,7 +114,7 @@ public class PhysicsBase : MonoBehaviour
         _forceDir = dir.normalized;
         _forcePower = power;
 
-        _isForce = true;
+        IsForce = true;
     }
 
     public void InitializeTumer()

@@ -14,14 +14,16 @@ public class CubeEnemy : EnemyBase, IDamage
 
     void Update()
     {
-        TreeManager.TreeUpdate();
+        StateManager.Run();
+
+        Vector3 move = Vector3.Scale(MoveDir, PhysicsBase.Gravity);
         
-        RB.velocity = MoveDir * CharaData.Speed;
+        RB.velocity = move * CharaData.Speed;
     }
 
     public bool GetDamage(int damage)
     {
-        DestoryRequest();
+        //DestoryRequest();
         return true;
     }
 

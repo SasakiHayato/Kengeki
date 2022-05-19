@@ -16,6 +16,7 @@ public interface IDamage
 /// キャラクターの基底クラス
 /// </summary>
 
+[RequireComponent(typeof(PhysicsBase))]
 [RequireComponent(typeof(Rigidbody))]
 public abstract class CharaBase : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public abstract class CharaBase : MonoBehaviour
     [SerializeField] Transform _offsetPosition;
     
     protected Rigidbody RB { get; private set; }
+    protected PhysicsBase PhysicsBase { get; private set; }
     public CharaData CharaData { get; private set; }
     
     public ObjectAnimController Anim { get; private set; }
@@ -39,6 +41,8 @@ public abstract class CharaBase : MonoBehaviour
  
     protected virtual void SetUp()
     {
+        PhysicsBase = GetComponent<PhysicsBase>();
+
         RB = GetComponent<Rigidbody>();
         RB.useGravity = false;
         RB.freezeRotation = true;

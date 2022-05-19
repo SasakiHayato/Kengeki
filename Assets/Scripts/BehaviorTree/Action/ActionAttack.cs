@@ -18,7 +18,6 @@ public class ActionAttack : IAction
             _attackSetting.Request(_attackType);
         }
 
-        
         return true;
     }
 

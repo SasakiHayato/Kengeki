@@ -18,7 +18,6 @@ public class Player : CharaBase, IDamage
 
     Vector3 _saveDir;
 
-    PhysicsBase _physicsBase;
     JumpSetting _jumpSetting;
     StateManager _state;
 
@@ -26,7 +25,6 @@ public class Player : CharaBase, IDamage
     {
         base.SetUp();
 
-        _physicsBase = GetComponent<PhysicsBase>();
         _jumpSetting = GetComponent<JumpSetting>();
 
         GamePadInputter.Instance.Input.Player.Dodge.performed += context => Dodge();
@@ -60,7 +58,7 @@ public class Player : CharaBase, IDamage
         Vector3 move = (forward + right) * CharaData.Speed;
         move.y = 1 + _jumpSetting.Power * -1;
 
-        RB.velocity = Vector3.Scale(move, _physicsBase.Gravity);
+        RB.velocity = Vector3.Scale(move, PhysicsBase.Gravity);
     }
 
     /// <summary>
@@ -93,14 +91,14 @@ public class Player : CharaBase, IDamage
 
     void Jump()
     {
-        if (_physicsBase.IsGround) _jumpSetting.Init();
+        if (PhysicsBase.IsGround) _jumpSetting.Init();
 
         _jumpSetting.Set();
 
         if (_jumpSetting.IsSet)
         {
             _state.ChangeState(State.Float, true);
-            _physicsBase.InitializeTumer();
+            PhysicsBase.InitializeTumer();
         }
     }
 

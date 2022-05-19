@@ -44,6 +44,8 @@ namespace BehaviourTree
 
         BranchData _runBranch;
 
+        public bool IsRun { get; set; }
+
         public void SetUp()
         {
             ConditionallyBranches = new List<BranchData>();
@@ -93,6 +95,8 @@ namespace BehaviourTree
                 Debug.Log("Not set up");
                 return;
             }
+
+            if (!IsRun) return;
 
             switch (State)
             {

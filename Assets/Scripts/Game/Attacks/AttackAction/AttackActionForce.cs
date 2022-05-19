@@ -14,7 +14,6 @@ public class AttackActionForce : IAttackAction
 
     public void Execute()
     {
-        Debug.Log("aa");
         _physicsBase.SetForce(_forceDir, _forcePower);
     }
 }
