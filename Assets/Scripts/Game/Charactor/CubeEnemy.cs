@@ -23,6 +23,7 @@ public class CubeEnemy : EnemyBase, IDamage
 
     public bool GetDamage(int damage)
     {
+        _attackSetting?.Cancel();
         //DestoryRequest();
         return true;
     }

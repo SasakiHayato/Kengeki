@@ -16,7 +16,78 @@ MonoBehaviour:
   _datas:
   - _animName: Jump_Attack_Combo_1
     _power: 0
+    _isActiveFrame: 4
+    _endActiveFrame: 15
+    _nextInputFrame: 25
+    _effctTypes: 0000000001000000
+    _actionData:
+      _hitAction:
+        rid: -2
+      _attackAction:
+        rid: -2
+      _executeFrame: 0
   - _animName: Jump_Attack_Combo_2
     _power: 0
+    _isActiveFrame: 2
+    _endActiveFrame: 10
+    _nextInputFrame: 15
+    _effctTypes: 0000000001000000
+    _actionData:
+      _hitAction:
+        rid: -2
+      _attackAction:
+        rid: -2
+      _executeFrame: 0
   - _animName: Jump_Attack_Combo_3
     _power: 0
+    _isActiveFrame: 3
+    _endActiveFrame: 10
+    _nextInputFrame: 20
+    _effctTypes: 0000000001000000
+    _actionData:
+      _hitAction:
+        rid: -2
+      _attackAction:
+        rid: -2
+      _executeFrame: 0
+  - _animName: Jump_Attack_Combo_4
+    _power: 3
+    _isActiveFrame: 15
+    _endActiveFrame: 20
+    _nextInputFrame: 0
+    _effctTypes: 0000000001000000
+    _actionData:
+      _hitAction:
+        rid: -2
+      _attackAction:
+        rid: -2
+      _executeFrame: 0
+  - _animName: Jump_Attack_Combo_5
+    _power: 0
+    _isActiveFrame: 3
+    _endActiveFrame: 10
+    _nextInputFrame: 18
+    _effctTypes: 0100000000000000
+    _actionData:
+      _hitAction:
+        rid: -2
+      _attackAction:
+        rid: -2
+      _executeFrame: 0
+  - _animName: Jump_Attack_Combo_6
+    _power: 0
+    _isActiveFrame: 3
+    _endActiveFrame: 15
+    _nextInputFrame: 27
+    _effctTypes: 0000000001000000
+    _actionData:
+      _hitAction:
+        rid: -2
+      _attackAction:
+        rid: -2
+      _executeFrame: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
