@@ -41,7 +41,7 @@ public class AttackCollider : MonoBehaviour
             IDamage iDamage = other.GetComponent<IDamage>();
             _isHit = true;
 
-            if (iDamage != null) _attackSetting.IsHit(iDamage, other.gameObject);
+            if (iDamage != null) _attackSetting.IsHit(iDamage, other);
         }
     }
 
@@ -56,7 +56,7 @@ public class AttackCollider : MonoBehaviour
             IDamage iDamage = other.GetComponent<IDamage>();
             _isHit = true;
 
-            if (iDamage != null) _attackSetting.IsHit(iDamage, other.gameObject);
+            if (iDamage != null) _attackSetting.IsHit(iDamage, other);
         }
     }
 }

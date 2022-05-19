@@ -25,15 +25,19 @@ public class PlayerAttack : State
     {
         AttackType type;
 
-        if (_physicsBase.IsGround) type = AttackType.Weak;
-        else type = AttackType.Float;
-
-        if (_attackSetting.Request(type))
+        if (beforeStatePath == Player.State.Dodge.ToString())
         {
-            _timer = 0;
+            _attackSetting.RequestAt(AttackType.Counter, 0);
         }
+        else
+        {
+            if (_physicsBase.IsGround) type = AttackType.Weak;
+            else type = AttackType.Float;
 
-        _player.CharaData.UpdateSpeed(_player.CharaData.DefaultSpeed);
+            if (_attackSetting.Request(type)) _timer = 0;
+
+            _player.CharaData.UpdateSpeed(_player.CharaData.DefaultSpeed);
+        }
     }
     
     public override void Run()

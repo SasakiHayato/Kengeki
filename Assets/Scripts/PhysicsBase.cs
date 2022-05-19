@@ -14,22 +14,42 @@ public class PhysicsBase : MonoBehaviour
     [SerializeField] float _rayDistance;
 
     float _gravityTimer;
+    float _forceTimer;
+    bool _isForce;
+
+    Vector3 _forceDir;
+    float _forcePower;
     
     CharaBase _charaBase;
+
+    Vector3 _gravity;
 
     public Vector3 Gravity
     { 
         get
         {
-            if (!_useGravity) return Vector3.zero;
+            if (_isForce)
+            {
+                
+                return _gravity;
+            }
             else
             {
-                float gravity = PhsicsMasterData.GravityCoefficient * _gravityTimer;
-               
-                if (gravity == 0) gravity = -1;
+                if (!_useGravity) return Vector3.zero;
+                else
+                {
+                    float gravity = PhsicsMasterData.GravityCoefficient * _gravityTimer;
 
-                return new Vector3(1, gravity, 1);
+                    if (gravity == 0) gravity = -1;
+
+                    return new Vector3(1, gravity, 1);
+                }
             }
+        }
+
+        private set
+        {
+            _gravity = value;
         }
     }
 
@@ -38,16 +58,20 @@ public class PhysicsBase : MonoBehaviour
     void Start()
     {
         _charaBase = GetComponent<CharaBase>();
+        _isForce = false;
     }
 
     void Update()
     {
         CheckGround();
+        ForceUpdate();
     }
 
     void FixedUpdate()
     {
         _gravityTimer += Time.fixedDeltaTime * PhsicsMasterData.GravityScale;
+
+        if (_isForce) _forceTimer += Time.fixedDeltaTime * PhsicsMasterData.GravityScale;
     }
 
     void CheckGround()
@@ -63,6 +87,32 @@ public class PhysicsBase : MonoBehaviour
         {
             IsGround = false;
         }
+    }
+
+    void ForceUpdate()
+    {
+        if (!_isForce) return;
+
+        float g = PhsicsMasterData.GravityCoefficient * -1;
+        float v = _forcePower - _forceTimer * g;
+
+        _gravity = _forceDir * v;
+
+        if (v < 0)
+        {
+            _isForce = false;
+            _forcePower = 0;
+            _forceDir = Vector3.zero;
+            _forceTimer = 0;
+        }
+    }
+
+    public void SetForce(Vector3 dir, float power)
+    {
+        _forceDir = dir.normalized;
+        _forcePower = power;
+
+        _isForce = true;
     }
 
     public void InitializeTumer()

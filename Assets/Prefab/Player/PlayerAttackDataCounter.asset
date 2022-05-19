@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 480422c488d2d2945bc358330d2bdeaa, type: 3}
+  m_Name: PlayerAttackDataCounter
+  m_EditorClassIdentifier: 
+  _type: 2
+  _datas:
+  - _animName: UpperAttack
+    _power: 0
+    _isActiveFrame: 0
+    _endActiveFrame: 0
+    _nextInputFrame: 0
+    _effctTypes: 
+    _actionData:
+      _attackAction:
+        rid: 3710212259873030144
+      _executeFrame: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 3710212259873030144
+      type: {class: AttackActionForce, ns: , asm: Assembly-CSharp}
+      data:
+        _forceDir: {x: 0, y: 0, z: 0}
+        _forcePower: 0

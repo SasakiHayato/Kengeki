@@ -494,6 +494,7 @@ MonoBehaviour:
   _attackDatas:
   - {fileID: 11400000, guid: ecd93d06008c52c458a8552015b4af92, type: 2}
   - {fileID: 11400000, guid: 468ae2d7b634f704b8e476e8a00eb030, type: 2}
+  - {fileID: 11400000, guid: 0dabc1c94f30fdf4d85c1680fad052fe, type: 2}
 --- !u!136 &4269416146639633525
 CapsuleCollider:
   m_ObjectHideFlags: 0

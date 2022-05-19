@@ -19,11 +19,18 @@ public class AttackSetting : MonoBehaviour
 
     CancellationTokenSource _waitEndAnimSource;
     CancellationTokenSource _waitNextInputSource;
+    CancellationTokenSource _waitExecuteActionSource;
 
     const int Span = 30;
 
     public void SetUp()
     {
+        _attackDatas.ForEach(a => a.GetDatas.ForEach(a =>
+        {
+            a.Action.AttackAction?.SetUp(_user.gameObject);
+            a.Action.HitAction?.SetUp(_user.gameObject);
+        }));
+
         _targetCollider.SetUp(_user.CharaData.ObjectType, this);
         IsNextInput = true;
     }
@@ -38,6 +45,27 @@ public class AttackSetting : MonoBehaviour
         TypeCheck(dataBase, type);
 
         _data = dataBase.GetData(_id);
+        _user.Anim.SetAnimEvent(() => ColliderActive(true), _data.IsActiveFrame).Play(_data.AnimName);
+
+        WaitEndActive(_data.EndActiveFrame).Forget();
+        WaitNextInput(_data.NextInputFrame).Forget();
+        WaitExecuteAction(_data.Action.ExecuteFrame).Forget();
+
+        _id++;
+
+        return true;
+    }
+
+    public bool RequestAt(AttackType type, int id)
+    {
+        if (!IsNextInput) return false;
+        IsNextInput = false;
+
+        AttackDataBase dataBase = _attackDatas.FirstOrDefault(d => d.AttackType == type);
+
+        TypeCheck(dataBase, type);
+
+        _data = dataBase.GetData(id);
         _user.Anim.SetAnimEvent(() => ColliderActive(true), _data.IsActiveFrame).Play(_data.AnimName);
 
         WaitEndActive(_data.EndActiveFrame).Forget();
@@ -75,15 +103,24 @@ public class AttackSetting : MonoBehaviour
         IsNextInput = true;
     }
 
+    async UniTask WaitExecuteAction(int waitFrame)
+    {
+        _waitExecuteActionSource = new CancellationTokenSource();
+        CancellationToken token = _waitExecuteActionSource.Token;
+        await UniTask.Delay(waitFrame * Span, false, PlayerLoopTiming.Update, token);
+        _data.Action.AttackAction?.Execute();
+    }
+
     void ColliderActive(bool active)
     {
         _targetCollider.SetColliderActive(active);
     }
 
-    public void IsHit(IDamage iDamage, GameObject target)
+    public void IsHit(IDamage iDamage, Collider target)
     {
         if (iDamage.GetDamage(_data.Power))
         {
+            _data.Action.HitAction?.Execute(target);
             Effects.Instance.RequestAttackEffect(_data.EffctTypes, target.transform);
         }
     }
