@@ -15,7 +15,7 @@ MonoBehaviour:
   _datas:
   - Prefab: {fileID: 1020465696745129027, guid: b3374978c71c0b643964f00e50a4d299, type: 3}
     Name: Player
-    HP: 1
+    HP: 10
     Speed: 12
     Power: 0
     Runtime: {fileID: 9100000, guid: 11fe0ec95a17e7a40a744a403b44c50c, type: 2}

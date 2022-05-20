@@ -16,7 +16,18 @@ MonoBehaviour:
   _datas:
   - _animName: CubeEnemy_Attack
     _power: 1
-    _isActiveTime: 0.21
-    _endActiveTime: 0.45
-    _nextInputTime: 1
+    _isActiveFrame: 0
+    _endActiveFrame: 10
+    _nextInputFrame: 0
     _effctTypes: 0000000001000000
+    _actionData:
+      _hitAction:
+        rid: -2
+      _attackAction:
+        rid: -2
+      _executeFrame: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }

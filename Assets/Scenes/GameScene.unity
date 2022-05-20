@@ -156,7 +156,7 @@ MonoBehaviour:
   _horizontalRange: 200
   _verticalRange: 220
   _loadWidth: 3
-  _initCellType: 2
+  _initCellType: 3
   _roomData:
     _roomCount: 6
     _minRoomRange: 30
@@ -167,8 +167,10 @@ MonoBehaviour:
     _tip: {fileID: 4403028048830911585, guid: b2abf67e2389fcf418a80a21f33965b9, type: 3}
   - _cellType: 1
     _tip: {fileID: 4403028048830911585, guid: 1ac2b2bda6988b64f8f43b60a9ecd655, type: 3}
-  - _cellType: 2
+  - _cellType: 3
     _tip: {fileID: 476689167495915862, guid: d10416d5aa53cc14a97354976d092bed, type: 3}
+  - _cellType: 2
+    _tip: {fileID: 6055881476379598046, guid: 8decdb1cf4913d34b82e44100cce217b, type: 3}
 --- !u!4 &100074034
 Transform:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class MapCreater : MonoBehaviour
     {
         Room,
         Load,
+        Teleporter,
 
         Wall,
     }
@@ -89,9 +90,10 @@ public class MapCreater : MonoBehaviour
 
         CreateLoad();
         OverwriteRoom();
-       
-        CreateAroundWall();
+        
 
+        CreateAroundWall();
+        CreateTeleporter();
         SetMap();
 
         return _mapData;
@@ -219,6 +221,15 @@ public class MapCreater : MonoBehaviour
                 _cells[x, y] = CellType.Load;
             }
         }
+    }
+
+    void CreateTeleporter()
+    {
+        int random = Random.Range(0, _roomData.RoomCount);
+        
+        Vector2 center = _roomData.Rooms[random].CenterPos;
+        
+        _cells[(int)center.x, (int)center.y] = CellType.Teleporter;
     }
 
     void SetMap()
