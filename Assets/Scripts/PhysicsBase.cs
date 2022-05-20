@@ -37,7 +37,7 @@ public class PhysicsBase : MonoBehaviour
             }
             else
             {
-                if (!_useGravity) return Vector3.zero;
+                if (!_useGravity) return Vector3.one;
                 else
                 {
                     float gravity = PhsicsMasterData.GravityCoefficient * _gravityTimer;

@@ -24,7 +24,7 @@ public class CmManager : MonoBehaviour, IManager
     float _viewTimer;
     
     Transform _virtualityCm;
-    RadialBlurAttribute _radialrAttribute;
+    RadialBlurRender _radialrAttribute;
 
     StateManager _state;
     public Data CmData { get; private set; }
@@ -81,7 +81,7 @@ public class CmManager : MonoBehaviour, IManager
 
         GameManager.Instance.AddManager(this);
 
-        _radialrAttribute = GetComponent<RadialBlurAttribute>();
+        _radialrAttribute = GetComponent<RadialBlurRender>();
     }
 
     void Update()

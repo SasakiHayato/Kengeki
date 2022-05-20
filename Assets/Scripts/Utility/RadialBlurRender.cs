@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [ExecuteInEditMode]
-public class RadialBlurAttribute : MonoBehaviour
+public class RadialBlurRender : MonoBehaviour
 {
 
     [SerializeField]

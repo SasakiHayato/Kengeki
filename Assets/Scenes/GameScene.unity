@@ -153,14 +153,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isDebug: 0
-  _horizontalRange: 100
-  _verticalRange: 120
-  _loadWidth: 2
+  _horizontalRange: 200
+  _verticalRange: 220
+  _loadWidth: 3
   _initCellType: 2
   _roomData:
-    _roomCount: 5
-    _minRoomRange: 20
-    _maxRoomRange: 30
+    _roomCount: 6
+    _minRoomRange: 30
+    _maxRoomRange: 40
     _roomDistance: 1
   _cellDatas:
   - _cellType: 0
@@ -247,8 +247,43 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6696115475712488957, guid: 72436c2ab3e9b2f47a25c08dd797a872, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 72436c2ab3e9b2f47a25c08dd797a872, type: 3}
+--- !u!1 &326519837 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6696115475712488954, guid: 72436c2ab3e9b2f47a25c08dd797a872, type: 3}
+  m_PrefabInstance: {fileID: 326519836}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &326519838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326519837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c50492ebcb4c1ff458c260c1aec1a352, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shader: {fileID: 4800000, guid: 5216b25d65416124394240233caf4292, type: 3}
+  _strength: 1
+--- !u!114 &326519839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326519837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02539c5e102752846bc0f5fd1aaf028d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shader: {fileID: 4800000, guid: dc89adb086d9dc0468030c189134b43a, type: 3}
+  _sampleCount: 8
+  _strength: 0
 --- !u!1 &682037374
 GameObject:
   m_ObjectHideFlags: 0

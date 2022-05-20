@@ -1,4 +1,4 @@
-Shader "Hidden/RadialBlur"
+Shader "Custom/RadialBlur"
 {
     Properties
     {
