@@ -427,7 +427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 621e716109900874eb26d50420bef23b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _path: PlayerHP
+  _path: HP
 --- !u!114 &364315352
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -25,7 +25,7 @@ public abstract class CharaBase : MonoBehaviour
     
     protected Rigidbody RB { get; private set; }
     protected PhysicsBase PhysicsBase { get; private set; }
-    public CharaData CharaData { get; private set; }
+    public CharaData CharaData { get; private set; } = new CharaData();
     
     public ObjectAnimController Anim { get; private set; }
     public Transform OffsetPosition
@@ -48,7 +48,6 @@ public abstract class CharaBase : MonoBehaviour
         RB.freezeRotation = true;
 
         ObjectDataBase.Data data = GameManager.Instance.ObjectData.GetData(_dataPath);
-        CharaData = new CharaData();
         CharaData.SetData(data);
 
         Anim = new ObjectAnimController(data.Runtime, data.Avatar, gameObject);
@@ -93,5 +92,10 @@ public class CharaData
     public void UpdateSpeed(float value)
     {
         Speed = value;
+    }
+
+    public void UpDateHP(int hp)
+    {
+        HP += hp;
     }
 }

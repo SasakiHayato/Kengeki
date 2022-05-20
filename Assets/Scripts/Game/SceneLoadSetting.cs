@@ -11,12 +11,15 @@ public class SceneLoadSetting : MonoBehaviour
     private void Awake()
     {
         GameManager.SetInstance(new GameManager()).SetUp();
-        BaseUI.SetInstance(new BaseUI()).SetUp();
-        Effects.SetInstance(new Effects()).SetUp();
+
+        
 
         if (!_isDebug)
         {
             GameManager.Instance.SetMapData();
         }
+
+        BaseUI.SetInstance(new BaseUI()).SetUp();
+        Effects.SetInstance(new Effects()).SetUp();
     }
 }

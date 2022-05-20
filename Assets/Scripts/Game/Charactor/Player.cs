@@ -39,6 +39,8 @@ public class Player : CharaBase, IDamage
             .AddState(new PlayerAttack(), State.Attack)
             .AddState(new PlayerDodge(), State.Dodge)
             .RunRequest(true, State.Idle);
+
+        BaseUI.Instance.CallBack("PlayerUI", "HP");
     }
 
     void Update()
@@ -120,7 +122,7 @@ public class Player : CharaBase, IDamage
             Effects.Instance.RequestDodgeEffect();
             return false;
         }
-
+        CharaData.UpDateHP(-1);
         return true;
     }
 }
