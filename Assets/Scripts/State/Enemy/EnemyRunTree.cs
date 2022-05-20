@@ -19,7 +19,6 @@ public class EnemyRunTree : State
     public override void Entry(string beforeStatePath)
     {
         _tree.IsRun = true;
-        Debug.Log("Tree");
     }
 
     public override void Run()

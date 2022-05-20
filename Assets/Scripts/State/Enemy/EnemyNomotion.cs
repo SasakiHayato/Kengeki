@@ -18,7 +18,6 @@ public class EnemyNomotion : State
     public override void Entry(string beforeStatePath)
     {
         _timer = 0;
-        Debug.Log("Nomotion");
     }
 
     public override void Run()
