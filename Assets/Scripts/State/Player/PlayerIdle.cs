@@ -25,7 +25,7 @@ public class PlayerIdle : State
 
     public override void Run()
     {
-        _player.Move((Vector2)GamePadInputter.Instance.GetValue(GamePadInputter.ValueType.PlayerMove));
+        _player.Move((Vector2)GamePadInputter.Instance.PlayerGetValue(GamePadInputter.ValueType.PlayerMove));
         _player.Rotate(Vector3.zero);
     }
 
@@ -33,7 +33,7 @@ public class PlayerIdle : State
     {
         if (!_physicsBase.IsGround) return StateManager.ExitChangeState(Player.State.Float);
 
-        if ((Vector2)GamePadInputter.Instance.GetValue(GamePadInputter.ValueType.PlayerMove) != Vector2.zero)
+        if ((Vector2)GamePadInputter.Instance.PlayerGetValue(GamePadInputter.ValueType.PlayerMove) != Vector2.zero)
         {
             return Player.State.Move;
         }

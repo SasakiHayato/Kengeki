@@ -4,7 +4,7 @@ using UnityEngine;
 /// ゲームシーンの管理クラス
 /// </summary>
 
-public class SceneLoadSetting : MonoBehaviour
+public class GamePresenter : MonoBehaviour
 {
     [SerializeField] GameState _gameState;
     [SerializeField] InputterType _inputterType;
@@ -25,5 +25,15 @@ public class SceneLoadSetting : MonoBehaviour
         GamePadInputter.SetInstance(new GamePadInputter()).SetUp();
 
         GamePadInputter.Instance.SetInputterType(_inputterType);
+    }
+
+    private void Start()
+    {
+        GamePadInputter.Instance.RequestGamePadEvents(InputEventsType.Title);
+    }
+
+    void Update()
+    {
+        GamePadInputter.Instance.UIInputUpdate();
     }
 }

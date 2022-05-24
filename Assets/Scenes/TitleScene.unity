@@ -478,54 +478,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1652407172
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1652407174}
-  - component: {fileID: 1652407173}
-  m_Layer: 0
-  m_Name: GamePadEvents
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1652407173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1652407172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad3b62ec95ede5847b6cdf7b2bd52568, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _eventsData: []
-  references:
-    version: 2
-    RefIds: []
---- !u!4 &1652407174
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1652407172}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1685535471
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,7 +487,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1685535473}
-  - component: {fileID: 1685535472}
+  - component: {fileID: 1685535474}
   m_Layer: 0
   m_Name: SceneLoadSetting
   m_TagString: Untagged
@@ -543,21 +495,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1685535472
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1685535471}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8056f192cb0bae4597c65c244f41675, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gameState: 0
-  _inputterType: 1
-  _isDebug: 1
 --- !u!4 &1685535473
 Transform:
   m_ObjectHideFlags: 0
@@ -573,6 +510,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1685535474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1685535471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e88beaeeb7a30354a8d9348cdace9cc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameState: 0
+  _inputterType: 1
+  _isDebug: 1
 --- !u!114 &2906954694574840396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -961,6 +913,7 @@ GameObject:
   - component: {fileID: 7062585607431158497}
   - component: {fileID: 7062585607431158496}
   - component: {fileID: 7062585607431158502}
+  - component: {fileID: 7062585607431158503}
   m_Layer: 5
   m_Name: TitlePanel
   m_TagString: Untagged
@@ -1003,6 +956,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _path: Title
+--- !u!114 &7062585607431158503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7062585607431158498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad3b62ec95ede5847b6cdf7b2bd52568, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputEventsType: 0
+  _eventsData:
+  - _id: 0
+    _button: {fileID: 7062585607213246491}
+    _inputEvents:
+      rid: 3710212374395879426
+  - _id: 0
+    _button: {fileID: 7062585606635348156}
+    _inputEvents:
+      rid: 3710212374395879427
+  references:
+    version: 2
+    RefIds:
+    - rid: 3710212374395879426
+      type: {class: InputEventLoadScene, ns: , asm: Assembly-CSharp}
+      data:
+        _sceneName: 
+        _isFade: 0
+    - rid: 3710212374395879427
+      type: {class: InputEventPanelActive, ns: , asm: Assembly-CSharp}
 --- !u!114 &7062585607664062408
 MonoBehaviour:
   m_ObjectHideFlags: 0

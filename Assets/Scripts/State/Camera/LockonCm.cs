@@ -30,7 +30,7 @@ public class LockonCm : StateMachine.State
 
     public override void Run()
     {
-        Vector2 getVal = (Vector2)GamePadInputter.Instance.GetValue(GamePadInputter.ValueType.PlayerMove);
+        Vector2 getVal = (Vector2)GamePadInputter.Instance.PlayerGetValue(GamePadInputter.ValueType.PlayerMove);
 
         Vector3 forward = _cmManager.CmData.User.position - _cmManager.ViewTarget.position;
         Vector3 offset = Camera.main.transform.right * 1/*SetLerp(getVal.x)*/ + Vector3.up;

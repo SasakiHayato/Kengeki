@@ -30,7 +30,7 @@ public class NormalCm : StateMachine.State
 
     public override void Run()
     {
-        Vector2 getVal = (Vector2)GamePadInputter.Instance.GetValue(GamePadInputter.ValueType.CmMove);
+        Vector2 getVal = (Vector2)GamePadInputter.Instance.PlayerGetValue(GamePadInputter.ValueType.CmMove);
         Vector2 input = getVal.normalized;
         
         Horizontal(input.x);

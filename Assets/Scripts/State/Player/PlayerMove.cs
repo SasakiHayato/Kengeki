@@ -33,7 +33,7 @@ public class PlayerMove : State
 
     public override void Run()
     {
-        Vector2 input = (Vector2)GamePadInputter.Instance.GetValue(GamePadInputter.ValueType.PlayerMove);
+        Vector2 input = (Vector2)GamePadInputter.Instance.PlayerGetValue(GamePadInputter.ValueType.PlayerMove);
 
         _player.Move(input);
         Rotate(input);
@@ -53,7 +53,7 @@ public class PlayerMove : State
     {
         if (!_physicsBase.IsGround) return StateManager.ExitChangeState(Player.State.Float);
 
-        if ((Vector2)GamePadInputter.Instance.GetValue(GamePadInputter.ValueType.PlayerMove) != Vector2.zero)
+        if ((Vector2)GamePadInputter.Instance.PlayerGetValue(GamePadInputter.ValueType.PlayerMove) != Vector2.zero)
         {
             return Player.State.Move;
         }

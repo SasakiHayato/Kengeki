@@ -1,5 +1,7 @@
 using UnityEngine;
+using System.Collections.Generic;
 using SingletonAttribute;
+using System.Linq;
 
 public enum InputterType
 {
@@ -20,20 +22,43 @@ public class GamePadInputter : SingletonAttribute<GamePadInputter>
         UINavigate,
     }
 
+    List<GamePadInputEvent> _gamePadInputEventList;
+    GamePadInputEvent _gamePadInputEvent;
+
     public GamePad Input { get; private set; }
 
     public InputterType CurrentInputterType { get; private set; }
-
+    
     const float DeadInput = 0.2f;
 
     public override void SetUp()
     {
         Input = new GamePad();
         Input.Enable();
+
+        _gamePadInputEventList = new List<GamePadInputEvent>();
+        
+        Input.UI.Submit.performed += context => IsSelect();
     }
 
-    public Vector2 GetValue(ValueType type)
+    void IsSelect()
     {
+        if (_gamePadInputEvent == null) return;
+
+        _gamePadInputEvent.IsSelect();
+    }
+
+    public void UIInputUpdate()
+    {
+        if (InputterType.UI != CurrentInputterType || _gamePadInputEvent == null) return;
+
+        _gamePadInputEvent.Select(Input.UI.Navigate.ReadValue<Vector2>());
+    }
+
+    public Vector2 PlayerGetValue(ValueType type)
+    {
+        if (InputterType.Player != CurrentInputterType) return Vector2.zero;
+
         Vector2 value = Vector2.zero;
 
         switch (type)
@@ -51,11 +76,6 @@ public class GamePadInputter : SingletonAttribute<GamePadInputter>
                 value = Input.Player.Look.ReadValue<Vector2>();
 
                 break;
-
-            case ValueType.UINavigate:
-                value = Input.UI.Navigate.ReadValue<Vector2>();
-
-                break;
         }
 
         return value;
@@ -63,8 +83,15 @@ public class GamePadInputter : SingletonAttribute<GamePadInputter>
 
     public void SetInputterType(InputterType type) => CurrentInputterType = type;
 
+    public void RequestGamePadEvents(InputEventsType type)
+    {
+        _gamePadInputEvent = _gamePadInputEventList.FirstOrDefault(g => g.InputEventsType == type);
+    }
+
     public static void Despose()
     {
         Instance.Input.Dispose();
     }
+
+    public void AddGamePadEvent(GamePadInputEvent events) => _gamePadInputEventList.Add(events);
 }

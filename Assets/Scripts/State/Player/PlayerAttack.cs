@@ -46,7 +46,7 @@ public class PlayerAttack : State
 
         if (_timer < MoveTime)
         {
-            Vector2 input = (Vector2)GamePadInputter.Instance.GetValue(GamePadInputter.ValueType.PlayerMove);
+            Vector2 input = (Vector2)GamePadInputter.Instance.PlayerGetValue(GamePadInputter.ValueType.PlayerMove);
 
             if (input == Vector2.zero) input = Vector2.up;
 

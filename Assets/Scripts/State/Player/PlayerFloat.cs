@@ -46,7 +46,7 @@ public class PlayerFloat : StateMachine.State
 
     public override void Run()
     {
-        Vector2 input = (Vector2)GamePadInputter.Instance.GetValue(GamePadInputter.ValueType.PlayerMove);
+        Vector2 input = (Vector2)GamePadInputter.Instance.PlayerGetValue(GamePadInputter.ValueType.PlayerMove);
 
         _player.Move(input);
         Rotate(input);
