@@ -15,7 +15,7 @@ MonoBehaviour:
   _type: 1
   _datas:
   - _animName: Jump_Attack_Combo_1
-    _power: 0
+    _power: 1
     _isActiveFrame: 4
     _endActiveFrame: 15
     _nextInputFrame: 25
@@ -27,7 +27,7 @@ MonoBehaviour:
         rid: -2
       _executeFrame: 0
   - _animName: Jump_Attack_Combo_2
-    _power: 0
+    _power: 1
     _isActiveFrame: 2
     _endActiveFrame: 10
     _nextInputFrame: 15
@@ -39,7 +39,7 @@ MonoBehaviour:
         rid: -2
       _executeFrame: 0
   - _animName: Jump_Attack_Combo_3
-    _power: 0
+    _power: 1
     _isActiveFrame: 3
     _endActiveFrame: 10
     _nextInputFrame: 20
@@ -51,10 +51,10 @@ MonoBehaviour:
         rid: -2
       _executeFrame: 0
   - _animName: Jump_Attack_Combo_4
-    _power: 3
-    _isActiveFrame: 15
-    _endActiveFrame: 20
-    _nextInputFrame: 0
+    _power: 1
+    _isActiveFrame: 3
+    _endActiveFrame: 15
+    _nextInputFrame: 20
     _effctTypes: 0000000001000000
     _actionData:
       _hitAction:
@@ -63,7 +63,7 @@ MonoBehaviour:
         rid: -2
       _executeFrame: 0
   - _animName: Jump_Attack_Combo_5
-    _power: 0
+    _power: 1
     _isActiveFrame: 3
     _endActiveFrame: 10
     _nextInputFrame: 18
@@ -75,7 +75,7 @@ MonoBehaviour:
         rid: -2
       _executeFrame: 0
   - _animName: Jump_Attack_Combo_6
-    _power: 0
+    _power: 1
     _isActiveFrame: 3
     _endActiveFrame: 15
     _nextInputFrame: 27

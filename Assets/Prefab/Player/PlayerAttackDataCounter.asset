@@ -15,7 +15,7 @@ MonoBehaviour:
   _type: 2
   _datas:
   - _animName: UpperAttack
-    _power: 0
+    _power: 1
     _isActiveFrame: 8
     _endActiveFrame: 20
     _nextInputFrame: 30

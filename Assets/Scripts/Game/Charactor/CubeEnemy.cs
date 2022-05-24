@@ -24,7 +24,10 @@ public class CubeEnemy : EnemyBase, IDamage
     public bool GetDamage(int damage)
     {
         _attackSetting?.Cancel();
-        //DestoryRequest();
+        CharaData.UpDateHP(-damage);
+
+        if (CharaData.HP <= 0) DestoryRequest();
+
         return true;
     }
 
