@@ -1443,26 +1443,31 @@ MonoBehaviour:
     _inputEvents:
     - rid: 3710212374395879434
     - rid: 3710212374395879433
+    - rid: 3710212374395879452
   - _id: 1
     _button: {fileID: 1852849159}
     _inputEvents:
     - rid: 3710212374395879436
     - rid: 3710212374395879437
+    - rid: 3710212374395879451
   - _id: 2
     _button: {fileID: 161957441}
     _inputEvents:
     - rid: 3710212374395879444
     - rid: 3710212374395879445
+    - rid: 3710212374395879449
   - _id: 3
     _button: {fileID: 471267695}
     _inputEvents:
     - rid: 3710212374395879446
     - rid: 3710212374395879447
+    - rid: 3710212374395879448
   - _id: 4
     _button: {fileID: 1287513385}
     _inputEvents:
     - rid: 3710212374395879442
     - rid: 3710212374395879443
+    - rid: 3710212374395879450
   references:
     version: 2
     RefIds:
@@ -1515,6 +1520,26 @@ MonoBehaviour:
       data:
         _targetSlider: {fileID: 799913036}
         _soundType: 1
+    - rid: 3710212374395879448
+      type: {class: InputEventPlaySE, ns: , asm: Assembly-CSharp}
+      data:
+        _path: Click
+    - rid: 3710212374395879449
+      type: {class: InputEventPlaySE, ns: , asm: Assembly-CSharp}
+      data:
+        _path: Click
+    - rid: 3710212374395879450
+      type: {class: InputEventPlaySE, ns: , asm: Assembly-CSharp}
+      data:
+        _path: Click
+    - rid: 3710212374395879451
+      type: {class: InputEventPlaySE, ns: , asm: Assembly-CSharp}
+      data:
+        _path: Click
+    - rid: 3710212374395879452
+      type: {class: InputEventPlaySE, ns: , asm: Assembly-CSharp}
+      data:
+        _path: Click
 --- !u!114 &596820480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2925,12 +2950,14 @@ MonoBehaviour:
     _inputEvents:
     - rid: 3710212374395879438
     - rid: 3710212374395879441
+    - rid: 3710212374395879453
   - _id: 2
     _button: {fileID: 1641375582}
     _inputEvents:
     - rid: 3710212374395879430
     - rid: 3710212374395879440
     - rid: 3710212374395879431
+    - rid: 3710212374395879454
   references:
     version: 2
     RefIds:
@@ -2957,6 +2984,14 @@ MonoBehaviour:
       type: {class: InputEventCallBackParent, ns: , asm: Assembly-CSharp}
       data:
         _path: OptionSound
+    - rid: 3710212374395879453
+      type: {class: InputEventPlaySE, ns: , asm: Assembly-CSharp}
+      data:
+        _path: Click
+    - rid: 3710212374395879454
+      type: {class: InputEventPlaySE, ns: , asm: Assembly-CSharp}
+      data:
+        _path: Click
 --- !u!1 &1852849157
 GameObject:
   m_ObjectHideFlags: 0
