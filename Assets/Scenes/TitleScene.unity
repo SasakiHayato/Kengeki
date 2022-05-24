@@ -152,12 +152,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9ad1c51b7cf5d9409abdb8d0c7b7fed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _masterVol: 0
-  _bgmVol: 0
-  _seVol: 0
+  _bgmPath: Title
+  _masterVol: 0.5
+  _bgmVol: 0.5
+  _seVol: 0.5
   _createPoolCount: 10
   _soundPrefab: {fileID: 2800759425168165283, guid: d356c589114c3b04aacd9da54cc79273, type: 3}
-  _soundDataBases: []
+  _soundDataBases:
+  - {fileID: 11400000, guid: a6f4a625a58917448acce3e640058d90, type: 2}
+  - {fileID: 11400000, guid: 0d3d520bcbebd9f48af2676a38c0d98b, type: 2}
 --- !u!4 &46546806
 Transform:
   m_ObjectHideFlags: 0
@@ -606,6 +609,88 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &299743335
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 299743336}
+  - component: {fileID: 299743338}
+  - component: {fileID: 299743337}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &299743336
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299743335}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1287513383}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &299743337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299743335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 75
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 7
+    m_MaxSize: 75
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Back
+
+'
+--- !u!222 &299743338
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299743335}
+  m_CullTransparentMesh: 1
 --- !u!1 &380400672
 GameObject:
   m_ObjectHideFlags: 0
@@ -1292,6 +1377,7 @@ RectTransform:
   m_Children:
   - {fileID: 1172292973}
   - {fileID: 799913035}
+  - {fileID: 1287513383}
   m_Father: {fileID: 1701188247}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1362,6 +1448,21 @@ MonoBehaviour:
     _inputEvents:
     - rid: 3710212374395879436
     - rid: 3710212374395879437
+  - _id: 2
+    _button: {fileID: 161957441}
+    _inputEvents:
+    - rid: 3710212374395879444
+    - rid: 3710212374395879445
+  - _id: 3
+    _button: {fileID: 471267695}
+    _inputEvents:
+    - rid: 3710212374395879446
+    - rid: 3710212374395879447
+  - _id: 4
+    _button: {fileID: 1287513385}
+    _inputEvents:
+    - rid: 3710212374395879442
+    - rid: 3710212374395879443
   references:
     version: 2
     RefIds:
@@ -1385,6 +1486,35 @@ MonoBehaviour:
       data:
         _targetSlider: {fileID: 1172292974}
         _soundType: 0
+    - rid: 3710212374395879442
+      type: {class: InputEventPanelActive, ns: , asm: Assembly-CSharp}
+      data:
+        _pathName: OptionSound
+        _active: 0
+    - rid: 3710212374395879443
+      type: {class: InputEventCallBackParent, ns: , asm: Assembly-CSharp}
+      data:
+        _path: Option
+    - rid: 3710212374395879444
+      type: {class: InputEventChageSoundValue, ns: , asm: Assembly-CSharp}
+      data:
+        _addCount: -0.2
+        _soundType: 1
+    - rid: 3710212374395879445
+      type: {class: InputEventChangeSoundSlider, ns: , asm: Assembly-CSharp}
+      data:
+        _targetSlider: {fileID: 799913036}
+        _soundType: 1
+    - rid: 3710212374395879446
+      type: {class: InputEventChageSoundValue, ns: , asm: Assembly-CSharp}
+      data:
+        _addCount: 0.2
+        _soundType: 1
+    - rid: 3710212374395879447
+      type: {class: InputEventChangeSoundSlider, ns: , asm: Assembly-CSharp}
+      data:
+        _targetSlider: {fileID: 799913036}
+        _soundType: 1
 --- !u!114 &596820480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2091,6 +2221,141 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1287513382
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1287513383}
+  - component: {fileID: 1287513387}
+  - component: {fileID: 1287513386}
+  - component: {fileID: 1287513385}
+  - component: {fileID: 1287513384}
+  m_Layer: 5
+  m_Name: Button_Back
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1287513383
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287513382}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 299743336}
+  m_Father: {fileID: 596820476}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 211, y: -362.701}
+  m_SizeDelta: {x: 503.318, y: 100.576}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1287513384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287513382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb219b23cdf4b314f94a27bca3cc8012, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1287513385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287513382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1287513386}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1287513386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287513382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1287513387
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287513382}
+  m_CullTransparentMesh: 1
 --- !u!1 &1409517958
 GameObject:
   m_ObjectHideFlags: 0
@@ -2659,10 +2924,12 @@ MonoBehaviour:
     _button: {fileID: 101566438}
     _inputEvents:
     - rid: 3710212374395879438
+    - rid: 3710212374395879441
   - _id: 2
     _button: {fileID: 1641375582}
     _inputEvents:
     - rid: 3710212374395879430
+    - rid: 3710212374395879440
     - rid: 3710212374395879431
   references:
     version: 2
@@ -2682,6 +2949,14 @@ MonoBehaviour:
       data:
         _pathName: OptionSound
         _active: 1
+    - rid: 3710212374395879440
+      type: {class: InputEventCallBackParent, ns: , asm: Assembly-CSharp}
+      data:
+        _path: Title
+    - rid: 3710212374395879441
+      type: {class: InputEventCallBackParent, ns: , asm: Assembly-CSharp}
+      data:
+        _path: OptionSound
 --- !u!1 &1852849157
 GameObject:
   m_ObjectHideFlags: 0
@@ -3488,6 +3763,7 @@ MonoBehaviour:
     _button: {fileID: 7062585606635348156}
     _inputEvents:
     - rid: 3710212374395879428
+    - rid: 3710212374395879439
     - rid: 3710212374395879429
   references:
     version: 2
@@ -3502,6 +3778,10 @@ MonoBehaviour:
       data:
         _pathName: Title
         _active: 0
+    - rid: 3710212374395879439
+      type: {class: InputEventCallBackParent, ns: , asm: Assembly-CSharp}
+      data:
+        _path: Option
 --- !u!114 &7062585607664062408
 MonoBehaviour:
   m_ObjectHideFlags: 0

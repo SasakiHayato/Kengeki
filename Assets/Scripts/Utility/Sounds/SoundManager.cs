@@ -4,6 +4,7 @@ using System.Linq;
 
 public class SoundManager : MonoBehaviour, IManager
 {
+    [SerializeField] string _bgmPath;
     [SerializeField, Range(0, 1)] float _masterVol;
     [SerializeField, Range(0, 1)] float _bgmVol;
     [SerializeField, Range(0, 1)] float _seVol;
@@ -22,6 +23,8 @@ public class SoundManager : MonoBehaviour, IManager
         GameManager.Instance.AddManager(this);
 
         _soundPool = new ObjectPool<SoundPool>(_soundPrefab, null, _createPoolCount);
+
+        Request(SoundType.BGM, _bgmPath);
     }
 
     public void Request(SoundType type, string path)

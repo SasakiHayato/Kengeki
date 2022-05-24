@@ -19,6 +19,8 @@ public class InputEventChangeSoundSlider : IInputEvents
 
     public void Execute()
     {
+        _soundManager = GameManager.Instance.GetManager<SoundManager>(nameof(SoundManager));
+
         switch (_soundType)
         {
             case SoundType.BGM:

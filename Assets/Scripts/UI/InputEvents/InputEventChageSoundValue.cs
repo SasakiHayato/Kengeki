@@ -12,11 +12,12 @@ public class InputEventChageSoundValue : IInputEvents
     public void SetUp()
     {
         _soundManager = GameManager.Instance.GetManager<SoundManager>(nameof(SoundManager));
-        Debug.Log(_soundManager);
     }
 
     public void Execute()
     {
+        _soundManager = GameManager.Instance.GetManager<SoundManager>(nameof(SoundManager));
+
         switch (_soundType)
         {
             case SoundType.BGM:
