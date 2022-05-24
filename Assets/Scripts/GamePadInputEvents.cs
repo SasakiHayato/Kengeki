@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 using UniRx;
 using System;
@@ -11,7 +12,20 @@ public interface IInputEvents
 
 public class GamePadInputEvents : MonoBehaviour
 {
-    [SerializeField] List<InputEventsDataBase> _inputEventsDataBases;
+    [Serializable]
+    class EventData
+    {
+        [SerializeField] int _id;
+        [SerializeField] Button _button;
+        [SerializeReference, SubclassSelector]
+        IInputEvents _inputEvents;
+
+        public int ID => _id;
+        public Button Button => _button;
+        public IInputEvents InputEvents => _inputEvents;
+    }
+
+    [SerializeField] List<EventData> _eventsData;
 
     int _selectID;
 
@@ -19,17 +33,12 @@ public class GamePadInputEvents : MonoBehaviour
 
     void Start()
     {
-        foreach (InputEventsDataBase dataBase in _inputEventsDataBases)
+        foreach (EventData data in _eventsData)
         {
-            dataBase.DataList.ForEach(data =>
-            {
-                data.Button.OnClickAsObservable()
+            data.Button.OnClickAsObservable()
                 .ThrottleFirst(TimeSpan.FromSeconds(WaitSeconds))
                 .TakeUntilDestroy(data.Button)
                 .Subscribe(_ => data.InputEvents.Execute());
-
-                data.InputEvents.SetUp();
-            });
         }
     }
 
