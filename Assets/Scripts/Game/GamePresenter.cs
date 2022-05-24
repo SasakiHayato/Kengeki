@@ -22,7 +22,11 @@ public class GamePresenter : MonoBehaviour
 
         BaseUI.SetInstance(new BaseUI()).SetUp();
         Effects.SetInstance(new Effects()).SetUp();
-        GamePadInputter.SetInstance(new GamePadInputter()).SetUp();
+
+        if (GamePadInputter.Instance == null)
+        {
+            GamePadInputter.SetInstance(new GamePadInputter()).SetUp();
+        }
 
         GamePadInputter.Instance.SetInputterType(_inputterType);
     }

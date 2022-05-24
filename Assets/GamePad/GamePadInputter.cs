@@ -93,5 +93,8 @@ public class GamePadInputter : SingletonAttribute<GamePadInputter>
         Instance.Input.Dispose();
     }
 
-    public void AddGamePadEvent(GamePadInputEvent events) => _gamePadInputEventList.Add(events);
+    public void AddGamePadEvent(GamePadInputEvent events)
+    {
+        _gamePadInputEventList.Add(events);
+    }
 }

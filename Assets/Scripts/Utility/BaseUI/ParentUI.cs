@@ -12,20 +12,24 @@ public abstract class ParentUI : MonoBehaviour
     public string Path => _path;
 
     public int ID { get; set; }
-    public CanvasGroup CanvasGroup { get; set; }
     
     List<ChildrenUI> _uiList = new List<ChildrenUI>();
     public List<ChildrenUI> UIList => _uiList;
+
+    public CanvasGroup CanvasGroup { get; private set; }
 
     public virtual void SetUp()
     {
         ChildrenUI[] uiList = GetComponentsInChildren<ChildrenUI>();
         int index = 0;
 
+        CanvasGroup = gameObject.AddComponent<CanvasGroup>();
+
         foreach (ChildrenUI ui in uiList)
         {
             ui.ID = index;
             ui.ParentPanel = GetComponent<Image>();
+            
             ui.SetUp();
 
             _uiList.Add(ui);

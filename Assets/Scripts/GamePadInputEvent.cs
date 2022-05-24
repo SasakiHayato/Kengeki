@@ -14,6 +14,8 @@ public enum InputEventsType
 {
     Title,
     Option,
+    OptionSystem,
+    OptionSound,
 }
 
 public class GamePadInputEvent : MonoBehaviour
@@ -24,11 +26,11 @@ public class GamePadInputEvent : MonoBehaviour
         [SerializeField] int _id;
         [SerializeField] Button _button;
         [SerializeReference, SubclassSelector]
-        IInputEvents _inputEvents;
+        List<IInputEvents> _inputEvents;
 
         public int ID => _id;
         public Button Button => _button;
-        public IInputEvents InputEvents => _inputEvents;
+        public List<IInputEvents> InputEvents => _inputEvents;
     }
 
     [SerializeField] InputEventsType _inputEventsType;
@@ -39,6 +41,8 @@ public class GamePadInputEvent : MonoBehaviour
     int _selectID;
     int _saveInput;
 
+    EventData _saveEvent;
+
     const float WaitSeconds = 0.5f;
 
     void Awake()
@@ -48,7 +52,7 @@ public class GamePadInputEvent : MonoBehaviour
             data.Button.OnClickAsObservable()
                 .ThrottleFirst(TimeSpan.FromSeconds(WaitSeconds))
                 .TakeUntilDestroy(data.Button)
-                .Subscribe(_ => data.InputEvents.Execute());
+                .Subscribe(_ => data.InputEvents.ForEach(c => c.Execute()));
         }
 
         if (GamePadInputter.Instance == null)
@@ -63,14 +67,15 @@ public class GamePadInputEvent : MonoBehaviour
     {
         if ((int)input.y < 0 && _saveInput != -1)
         {
-            _selectID--;
-            if (_selectID < 0) _selectID = 0;
+            _selectID++;
+            if (_selectID >= _eventsData.Count) _selectID--;
+            
             _saveInput = -1;
         }
         else if ((int)input.y > 0 && _saveInput != 1)
         {
-            _selectID++;
-            if (_selectID >= _eventsData.Count) _selectID--;
+            _selectID--;
+            if (_selectID < 0) _selectID = 0;
 
             _saveInput = 1;
         }
@@ -89,6 +94,7 @@ public class GamePadInputEvent : MonoBehaviour
             if (data.ID == _selectID)
             {
                 data.Button.transform.localScale = new Vector3(1.2f, 1.2f, 1);
+                _saveEvent = data;
             }
             else
             {
@@ -99,6 +105,6 @@ public class GamePadInputEvent : MonoBehaviour
 
     public void IsSelect()
     {
-
+        _saveEvent.InputEvents.ForEach(c => c.Execute());
     }
 }

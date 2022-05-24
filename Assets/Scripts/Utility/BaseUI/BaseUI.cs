@@ -29,9 +29,8 @@ public class BaseUI : SingletonAttribute<BaseUI>
         {
             ui.ID = id;
             ui.gameObject.GetComponent<Image>().raycastTarget = false;
-            ui.CanvasGroup = ui.gameObject.AddComponent<CanvasGroup>();
             ui.SetUp();
-
+            
             _uiList.Add(ui);
 
             id++;

@@ -11,6 +11,8 @@ public class TitlePanel : ParentUI
 
     public override void CallBack(object[] datas)
     {
-        
+        if (GamePadInputter.Instance == null) return;
+
+        GamePadInputter.Instance.RequestGamePadEvents(InputEventsType.Title);
     }
 }
