@@ -169,6 +169,7 @@ MonoBehaviour:
         Actions:
         - rid: 3710212216005853196
         - rid: 3710212216005853197
+        - rid: 3710212374395879455
   references:
     version: 2
     RefIds:
@@ -201,6 +202,10 @@ MonoBehaviour:
         _waitTime: 1.5
     - rid: 3710212221310074882
       type: {class: ConditionEmpty, ns: , asm: Assembly-CSharp}
+    - rid: 3710212374395879455
+      type: {class: ActionIdle, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: CubeEnemy_Idle
 --- !u!65 &-5274312816883287191
 BoxCollider:
   m_ObjectHideFlags: 0

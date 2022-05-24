@@ -153,31 +153,7 @@ namespace Map
 
         void CreateLoad()
         {
-            RoomData room = _roomDatas[0];
-            CreateLoadUp((room.Position.BottomRight + room.Position.UpperRight) / 2);
-            CreateLoadDown((room.Position.UpperLeft + room.Position.BottomLeft) / 2);
-        }
 
-        void CreateLoadUp(Vector3 pos)
-        {
-            for (int x = (int)pos.x; x < _horizontalRange; x++)
-            {
-                for (int y = (int)pos.z; y < (int)pos.z + _loadWidth; y++)
-                {
-                    _cellDatas[x, y].CellType = CellType.Load;
-                }
-            }
-        }
-
-        void CreateLoadDown(Vector3 pos)
-        {
-            for (int x = (int)pos.x - 1; x > 0; x--)
-            {
-                for (int y = (int)pos.z; y < (int)pos.z + _loadWidth; y++)
-                {
-                    _cellDatas[x, y].CellType = CellType.Load;
-                }
-            }
         }
 
         void View()
