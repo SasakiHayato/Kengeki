@@ -3,6 +3,14 @@ using UnityEngine;
 using System.Linq;
 using SingletonAttribute;
 
+public enum GameState
+{
+    Title,
+    InGame,
+
+    None,
+}
+
 public interface IManager
 {
     GameObject ManagerObject();
@@ -17,6 +25,7 @@ public class GameManager : SingletonAttribute<GameManager>
 {
     List<IManager> _managerList;
     
+    public GameState CurrentGameState { get; private set; }
 
     public ObjectDataBase ObjectData { get; private set; }
     public FieldObjectData FieldObject { get; private set; }
@@ -27,7 +36,6 @@ public class GameManager : SingletonAttribute<GameManager>
 
     public override void SetUp()
     {
-        GamePadInputter.SetInstance(new GamePadInputter()).SetUp();
         ObjectData = Resources.Load<ObjectDataBase>("ObjectDataBase");
         FieldObject = new FieldObjectData();
 
@@ -71,4 +79,6 @@ public class GameManager : SingletonAttribute<GameManager>
 
         return manager;
     }
+
+    public void SetGameState(GameState gameState) => CurrentGameState = gameState;
 }

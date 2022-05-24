@@ -1,9 +1,9 @@
 
-public class PlayerPanel : ParentUI
+public class TitlePanel : ParentUI
 {
     public override void SetUp()
     {
-        if (GameManager.Instance.CurrentGameState == GameState.InGame)
+        if (GameState.Title == GameManager.Instance.CurrentGameState)
         {
             base.SetUp();
         }

@@ -1,7 +1,11 @@
 using UnityEngine;
-using System;
 using SingletonAttribute;
 
+public enum InputterType
+{
+    Player,
+    UI,
+}
 /// <summary>
 /// GamePadì¸óÕÇÃä«óùÉNÉâÉX
 /// </summary>
@@ -12,11 +16,15 @@ public class GamePadInputter : SingletonAttribute<GamePadInputter>
     {
         PlayerMove,
         CmMove,
+
+        UINavigate,
     }
 
     public GamePad Input { get; private set; }
 
-    const float PlayerMoveDeadInput = 0.2f;
+    public InputterType CurrentInputterType { get; private set; }
+
+    const float DeadInput = 0.2f;
 
     public override void SetUp()
     {
@@ -24,17 +32,17 @@ public class GamePadInputter : SingletonAttribute<GamePadInputter>
         Input.Enable();
     }
 
-    public object GetValue(ValueType type)
+    public Vector2 GetValue(ValueType type)
     {
-        object value = null;
+        Vector2 value = Vector2.zero;
 
         switch (type)
         {
             case ValueType.PlayerMove:
                 Vector2 player = Input.Player.Move.ReadValue<Vector2>();
 
-                if (Mathf.Abs(player.x) < PlayerMoveDeadInput) player.x = 0;
-                if (Mathf.Abs(player.y) < PlayerMoveDeadInput) player.y = 0;
+                if (Mathf.Abs(player.x) < DeadInput) player.x = 0;
+                if (Mathf.Abs(player.y) < DeadInput) player.y = 0;
 
                 value = player;
 
@@ -43,10 +51,17 @@ public class GamePadInputter : SingletonAttribute<GamePadInputter>
                 value = Input.Player.Look.ReadValue<Vector2>();
 
                 break;
+
+            case ValueType.UINavigate:
+                value = Input.UI.Navigate.ReadValue<Vector2>();
+
+                break;
         }
 
         return value;
     }
+
+    public void SetInputterType(InputterType type) => CurrentInputterType = type;
 
     public static void Despose()
     {
