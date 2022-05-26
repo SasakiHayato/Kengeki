@@ -66,8 +66,8 @@ public class SoundPool : MonoBehaviour, IPool
 
     public void Delete()
     {
+        _source.Stop();
         _isSet = false;
-        _source.clip = null;
         _volume = 0;
     }
 }

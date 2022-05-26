@@ -13,6 +13,7 @@ public class SoundManager : MonoBehaviour, IManager
     [SerializeField] List<SoundDataBase> _soundDataBases;
 
     ObjectPool<SoundPool> _soundPool;
+    SoundPool _currentBGMSound;
 
     public float MasterVolume => _masterVol;
     public float BGMVolume => _bgmVol;
@@ -32,12 +33,19 @@ public class SoundManager : MonoBehaviour, IManager
         SoundDataBase dataBase = _soundDataBases.FirstOrDefault(d => d.SoundType == type);
 
         SoundPool sound = _soundPool.Use();
+
+        if (type == SoundType.BGM)
+        {
+            _currentBGMSound = sound;
+        }
+
         sound.SetData(type, dataBase.GetData(path));
     }
 
     public void StopBGM()
     {
-
+        _currentBGMSound.Delete();
+        _currentBGMSound.Waiting = true;
     }
 
     public void AddBGMVolume(float add)

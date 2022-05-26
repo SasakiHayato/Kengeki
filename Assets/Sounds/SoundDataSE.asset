@@ -18,3 +18,7 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: 40a7d4a09b3d85246a1274be7388a41c, type: 3}
     Volume: 0.5
     SpatialBlend: 0
+  - Path: GameStartClick
+    Clip: {fileID: 8300000, guid: 52d68baafe7f4944886ddf5f8ac6f99e, type: 3}
+    Volume: 0.5
+    SpatialBlend: 0
