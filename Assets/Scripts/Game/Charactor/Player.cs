@@ -122,7 +122,10 @@ public class Player : CharaBase, IDamage
             Effects.Instance.RequestDodgeEffect();
             return false;
         }
-        CharaData.UpDateHP(-1);
+
+        if (damage <= 0) return false;
+
+        CharaData.UpDateHP(-damage);
         return true;
     }
 }

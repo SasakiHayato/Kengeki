@@ -44,6 +44,7 @@ public class GamePadInputEvent : MonoBehaviour
     EventData _saveEvent;
 
     const float WaitSeconds = 0.5f;
+    Vector3 ConstScale = new Vector3(1.2f, 1.2f, 1);
 
     void Awake()
     {
@@ -93,7 +94,7 @@ public class GamePadInputEvent : MonoBehaviour
         {
             if (data.ID == _selectID)
             {
-                data.Button.transform.localScale = new Vector3(1.2f, 1.2f, 1);
+                data.Button.transform.localScale = ConstScale;
                 _saveEvent = data;
             }
             else

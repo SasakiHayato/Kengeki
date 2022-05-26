@@ -3793,13 +3793,16 @@ MonoBehaviour:
   _eventsData:
   - _id: 0
     _button: {fileID: 7062585607213246491}
-    _inputEvents: []
+    _inputEvents:
+    - rid: 3710212427704172544
+    - rid: 3710212427704172545
   - _id: 1
     _button: {fileID: 7062585606635348156}
     _inputEvents:
     - rid: 3710212374395879428
     - rid: 3710212374395879439
     - rid: 3710212374395879429
+    - rid: 3710212427704172546
   references:
     version: 2
     RefIds:
@@ -3817,6 +3820,19 @@ MonoBehaviour:
       type: {class: InputEventCallBackParent, ns: , asm: Assembly-CSharp}
       data:
         _path: Option
+    - rid: 3710212427704172544
+      type: {class: InputEventLoadScene, ns: , asm: Assembly-CSharp}
+      data:
+        _sceneName: GameScene
+        _isFade: 1
+    - rid: 3710212427704172545
+      type: {class: InputEventPlaySE, ns: , asm: Assembly-CSharp}
+      data:
+        _path: 
+    - rid: 3710212427704172546
+      type: {class: InputEventPlaySE, ns: , asm: Assembly-CSharp}
+      data:
+        _path: Click
 --- !u!114 &7062585607664062408
 MonoBehaviour:
   m_ObjectHideFlags: 0

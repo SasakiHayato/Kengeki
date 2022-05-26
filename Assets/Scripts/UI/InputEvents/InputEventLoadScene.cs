@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Cysharp.Threading.Tasks;
 
 public class InputEventLoadScene : IInputEvents
 {
@@ -17,5 +18,17 @@ public class InputEventLoadScene : IInputEvents
         {
             SceneManager.LoadScene(_sceneName);
         }
+        else
+        {
+            WaitFade().Forget();
+        }
+    }
+
+    async UniTask WaitFade()
+    {
+        Fader fader = new Fader(0, 1);
+        fader.SetFade();
+        await UniTask.WaitUntil(() => fader.IsEndFade);
+        SceneManager.LoadScene(_sceneName);
     }
 }
