@@ -80,7 +80,7 @@ public class GamePadInputEvent : MonoBehaviour
 
             _saveInput = 1;
         }
-        else
+        else if ((int)input.y == 0 && _saveInput != 0)
         {
             _saveInput = 0;
         }

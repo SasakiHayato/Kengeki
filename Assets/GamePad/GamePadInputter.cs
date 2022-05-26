@@ -52,7 +52,12 @@ public class GamePadInputter : SingletonAttribute<GamePadInputter>
     {
         if (InputterType.UI != CurrentInputterType || _gamePadInputEvent == null) return;
 
-        _gamePadInputEvent.Select(Input.UI.Navigate.ReadValue<Vector2>());
+        Vector2 input = Input.UI.Navigate.ReadValue<Vector2>();
+
+        if (Mathf.Abs(input.x) < DeadInput) input.x = 0;
+        if (Mathf.Abs(input.y) < DeadInput) input.y = 0;
+
+        _gamePadInputEvent.Select(input);
     }
 
     public Vector2 PlayerGetValue(ValueType type)
