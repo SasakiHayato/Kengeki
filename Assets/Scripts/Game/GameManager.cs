@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Linq;
 using SingletonAttribute;
 
@@ -81,4 +82,10 @@ public class GameManager : SingletonAttribute<GameManager>
     }
 
     public void SetGameState(GameState gameState) => CurrentGameState = gameState;
+
+    public void ChangeScene(string sceneName)
+    {
+        GamePadInputter.Despose();
+        SceneManager.LoadScene(sceneName);
+    }
 }

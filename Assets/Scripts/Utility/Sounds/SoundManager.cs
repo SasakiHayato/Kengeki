@@ -35,6 +35,11 @@ public class SoundManager : MonoBehaviour, IManager
         sound.SetData(type, dataBase.GetData(path));
     }
 
+    public void StopBGM()
+    {
+
+    }
+
     public void AddBGMVolume(float add)
     {
         _bgmVol += add;

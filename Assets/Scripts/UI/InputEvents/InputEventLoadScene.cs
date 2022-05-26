@@ -16,7 +16,7 @@ public class InputEventLoadScene : IInputEvents
     {
         if (!_isFade)
         {
-            SceneManager.LoadScene(_sceneName);
+            GameManager.Instance.ChangeScene(_sceneName);
         }
         else
         {
@@ -29,6 +29,6 @@ public class InputEventLoadScene : IInputEvents
         Fader fader = new Fader(0, 1);
         fader.SetFade();
         await UniTask.WaitUntil(() => fader.IsEndFade);
-        SceneManager.LoadScene(_sceneName);
+        GameManager.Instance.ChangeScene(_sceneName);
     }
 }

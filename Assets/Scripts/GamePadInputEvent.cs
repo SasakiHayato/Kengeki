@@ -46,7 +46,7 @@ public class GamePadInputEvent : MonoBehaviour
     const float WaitSeconds = 0.5f;
     Vector3 ConstScale = new Vector3(1.2f, 1.2f, 1);
 
-    void Awake()
+    void Start()
     {
         foreach (EventData data in _eventsData)
         {
@@ -54,11 +54,6 @@ public class GamePadInputEvent : MonoBehaviour
                 .ThrottleFirst(TimeSpan.FromSeconds(WaitSeconds))
                 .TakeUntilDestroy(data.Button)
                 .Subscribe(_ => data.InputEvents.ForEach(c => c.Execute()));
-        }
-
-        if (GamePadInputter.Instance == null)
-        {
-            GamePadInputter.SetInstance(new GamePadInputter()).SetUp();
         }
 
         GamePadInputter.Instance.AddGamePadEvent(this);

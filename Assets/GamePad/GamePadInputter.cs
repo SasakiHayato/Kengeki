@@ -39,6 +39,17 @@ public class GamePadInputter : SingletonAttribute<GamePadInputter>
         _gamePadInputEventList = new List<GamePadInputEvent>();
         
         Input.UI.Submit.performed += context => IsSelect();
+
+        if (GameManager.Instance.CurrentGameState == GameState.InGame)
+        {
+            Input.UI.Option.performed += cotext => OpenOption();
+        }
+    }
+
+    void OpenOption()
+    {
+        CurrentInputterType = InputterType.UI;
+        BaseUI.Instance.ParentActive("Option", true);
     }
 
     void IsSelect()
@@ -96,6 +107,7 @@ public class GamePadInputter : SingletonAttribute<GamePadInputter>
     public static void Despose()
     {
         Instance.Input.Dispose();
+        Instance._gamePadInputEvent = null;
     }
 
     public void AddGamePadEvent(GamePadInputEvent events)
