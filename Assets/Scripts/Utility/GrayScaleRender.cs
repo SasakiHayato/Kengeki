@@ -1,4 +1,5 @@
 using UnityEngine;
+using DG.Tweening;
 
 [ExecuteInEditMode]
 public class GrayScaleRender : MonoBehaviour
@@ -22,5 +23,16 @@ public class GrayScaleRender : MonoBehaviour
 
         _material.SetFloat("_Strength", _strength);
         Graphics.Blit(source, destination, _material);
+    }
+
+    public void SetStrength(float strength, float duration)
+    {
+        DOTween.To
+            (
+                () => _strength,
+                (x) => _strength = x,
+                strength,
+                duration
+            );
     }
 }

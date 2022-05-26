@@ -49,13 +49,13 @@ Shader "Custom/GrayScale"
                 fixed4 col = tex2D(_MainTex, i.uv);
                 half s = _Strength;
 
-                half r = lerp(1, 0.298912, s);
-                half g = lerp(1, 0.586611, s);
-                half b = lerp(1, 0.114478, s);
+                fixed v = col.r * 0.298912 + col.g * 0.586611 + col.b * 0.114478;
 
-                fixed v = col.r * r + col.g * g + col.b * b;
+                half r = lerp(col.r, v, s);
+                half g = lerp(col.g, v, s);
+                half b = lerp(col.b, v, s);
 
-                return fixed4(v, v, v, col.a);
+                return fixed4(r, g, b, col.a);
             };
 
             ENDCG

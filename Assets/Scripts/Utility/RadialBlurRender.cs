@@ -1,9 +1,9 @@
 using UnityEngine;
+using DG.Tweening;
 
 [ExecuteInEditMode]
 public class RadialBlurRender : MonoBehaviour
 {
-
     [SerializeField]
     private Shader _shader;
     [SerializeField, Range(4, 16)]
@@ -32,8 +32,16 @@ public class RadialBlurRender : MonoBehaviour
         Graphics.Blit(source, dest, _material);
     }
 
-    public void SetStrength(float strength)
+    public void SetStrength(float strength, float duration)
     {
+        DOTween.To
+            (
+                () => _strength,
+                (x) => _strength = x,
+                strength,
+                duration
+
+            );
         _strength = strength;
     }
 }

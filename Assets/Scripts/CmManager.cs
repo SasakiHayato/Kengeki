@@ -25,6 +25,7 @@ public class CmManager : MonoBehaviour, IManager
     
     Transform _virtualityCm;
     RadialBlurRender _radialrAttribute;
+    GrayScaleRender _grayAttribute;
 
     StateManager _state;
     public Data CmData { get; private set; }
@@ -82,6 +83,7 @@ public class CmManager : MonoBehaviour, IManager
         GameManager.Instance.AddManager(this);
 
         _radialrAttribute = GetComponent<RadialBlurRender>();
+        _grayAttribute = GetComponent<GrayScaleRender>();
     }
 
     void Update()
@@ -143,9 +145,14 @@ public class CmManager : MonoBehaviour, IManager
         _state.ChangeState(State.Shake);
     }
 
-    public void RadialBlur(float strength)
+    public void RadialBlur(float strength, float duration = 1)
     {
-        _radialrAttribute.SetStrength(strength);
+        _radialrAttribute.SetStrength(strength, duration);
+    }
+
+    public void GrayScale(float strangth, float duration = 1)
+    {
+        _grayAttribute.SetStrength(strangth, duration);
     }
 
     public GameObject FindCenterTarget(ObjectType type, float findDist)

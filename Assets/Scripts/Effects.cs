@@ -24,6 +24,7 @@ public class Effects : SingletonAttribute<Effects>
     ObjectPool<ParticalUser> _deadParticalPool;
 
     const float DodgeTime = 0.3f;
+    const float DodgeEffectDuration = 0.1f;
 
     public override void SetUp()
     {
@@ -74,15 +75,19 @@ public class Effects : SingletonAttribute<Effects>
 
     public void RequestDodgeEffect()
     {
-        GameManager.Instance.GetManager<CmManager>(nameof(CmManager)).RadialBlur(1);
+        CmManager cm = GameManager.Instance.GetManager<CmManager>(nameof(CmManager));
+        cm.RadialBlur(0.5f, DodgeEffectDuration);
+        cm.GrayScale(1, DodgeEffectDuration);
+
         Time.timeScale = 0.5f;
-        WaitDodgeTime().Forget();
+        WaitDodgeTime(cm).Forget();
     }
 
-    async UniTask WaitDodgeTime()
+    async UniTask WaitDodgeTime(CmManager cm)
     {
         await UniTask.Delay(TimeSpan.FromSeconds(DodgeTime));
-        GameManager.Instance.GetManager<CmManager>(nameof(CmManager)).RadialBlur(0);
+        cm.RadialBlur(0, DodgeEffectDuration);
+        cm.GrayScale(0, DodgeEffectDuration);
         Time.timeScale = 1;
     }
 
