@@ -18,3 +18,7 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: 4cf158aa08bb5d445a20406cdccbadee, type: 3}
     Volume: 0.5
     SpatialBlend: 0
+  - Path: InGameBGM
+    Clip: {fileID: 8300000, guid: dd319749c4d789b4e85a7b77c15b49d0, type: 3}
+    Volume: 0.26
+    SpatialBlend: 0

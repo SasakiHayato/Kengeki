@@ -85,6 +85,7 @@ public class GameManager : SingletonAttribute<GameManager>
 
     public void ChangeScene(string sceneName)
     {
+        _managerList = new List<IManager>();
         GamePadInputter.Despose();
         SceneManager.LoadScene(sceneName);
     }
