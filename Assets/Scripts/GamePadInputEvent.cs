@@ -101,6 +101,8 @@ public class GamePadInputEvent : MonoBehaviour
 
     public void IsSelect()
     {
+        if (GamePadInputter.Instance.CurrentInputterType != InputterType.UI) return;
+
         _saveEvent.InputEvents.ForEach(c => c.Execute());
     }
 }

@@ -41,6 +41,8 @@ public abstract class EnemyBase : CharaBase
         StateManager.AddState(new EnemyRunTree(), State.RunTree)
             .AddState(new EnemyNomotion(), State.Nomotion)
             .RunRequest(true, State.RunTree);
+
+        GetComponentInChildren<EnemyCanvas>().SetUp();
     }
 
     public void SetRoomID(int id) => RoomID = id;
