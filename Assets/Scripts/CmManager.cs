@@ -100,7 +100,8 @@ public class CmManager : MonoBehaviour, IManager
     {
         if (_user == null)
         {
-            _user = GameManager.Instance.Player.transform;
+            Player player = GameManager.Instance.Player.GetComponent<Player>();
+            _user = player.OffsetPosition;
         }
 
         CmData = new Data(_user, _deadInput, _sensitivity);
@@ -153,6 +154,9 @@ public class CmManager : MonoBehaviour, IManager
         Vector3 dir = ViewTarget.position - transform.position + _offsetView;
         Quaternion forward = Quaternion.LookRotation(dir.normalized);
         Quaternion rotate = Quaternion.Lerp(transform.rotation, forward, _viewTimer);
+
+
+
         transform.rotation = rotate;
 
         if (rotate == transform.rotation) _viewTimer = 0;
