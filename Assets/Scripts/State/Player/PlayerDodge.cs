@@ -19,7 +19,7 @@ public class PlayerDodge : State
 
     public override void Entry(string beforeStatePath)
     {
-        Vector2 input = (Vector2)GamePadInputter.Instance.PlayerGetValue(GamePadInputter.ValueType.PlayerMove);
+        Vector2 input = GamePadInputter.Instance.PlayerGetValue(GamePadInputter.ValueType.PlayerMove);
 
         if (input == Vector2.zero) _saveInput = Vector2.down;
         else _saveInput = input;

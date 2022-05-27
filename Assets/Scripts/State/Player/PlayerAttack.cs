@@ -25,7 +25,7 @@ public class PlayerAttack : State
     {
         AttackType type;
 
-        if (beforeStatePath == Player.State.Dodge.ToString())
+        if (beforeStatePath == Player.State.Dodge.ToString() && _player.IsDodge)
         {
             _attackSetting.RequestAt(AttackType.Counter, 0);
         }

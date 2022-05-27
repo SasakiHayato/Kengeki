@@ -1119,8 +1119,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3692370453628499607, guid: d0ebd31b7f80fce4ab2bf67bc830a386, type: 3}
+      propertyPath: managedReferences[-2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692370453628499607, guid: d0ebd31b7f80fce4ab2bf67bc830a386, type: 3}
+      propertyPath: managedReferences[3710212441716031500]
+      value: Assembly-CSharp InputEventSetInputterType
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692370453628499607, guid: d0ebd31b7f80fce4ab2bf67bc830a386, type: 3}
       propertyPath: _eventsData.Array.data[2]._inputEvents.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3692370453628499607, guid: d0ebd31b7f80fce4ab2bf67bc830a386, type: 3}
       propertyPath: _eventsData.Array.data[2]._inputEvents.Array.data[0]
@@ -1128,11 +1136,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3692370453628499607, guid: d0ebd31b7f80fce4ab2bf67bc830a386, type: 3}
       propertyPath: _eventsData.Array.data[2]._inputEvents.Array.data[1]
-      value: 3710212374395879454
+      value: 3710212441716031500
       objectReference: {fileID: 0}
     - target: {fileID: 3692370453628499607, guid: d0ebd31b7f80fce4ab2bf67bc830a386, type: 3}
       propertyPath: _eventsData.Array.data[2]._inputEvents.Array.data[2]
       value: 3710212374395879454
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692370453628499607, guid: d0ebd31b7f80fce4ab2bf67bc830a386, type: 3}
+      propertyPath: managedReferences[3710212441716031500]._inputterType
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3692370453628499610, guid: d0ebd31b7f80fce4ab2bf67bc830a386, type: 3}
       propertyPath: m_Name

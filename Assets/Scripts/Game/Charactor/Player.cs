@@ -21,6 +21,17 @@ public class Player : CharaBase, IDamage
     JumpSetting _jumpSetting;
     StateManager _state;
 
+    bool _isDodge = false;
+    public bool IsDodge
+    {
+        get
+        {
+            bool isDodge = _isDodge;
+            _isDodge = false;
+            return isDodge;
+        }
+    }
+
     protected override void SetUp()
     {
         base.SetUp();
@@ -78,6 +89,8 @@ public class Player : CharaBase, IDamage
         }
     }
 
+    public void InitDodgeCheck() => _isDodge = false;
+
     void Lockon()
     {
         if (GameManager.Instance.LockonTarget != null)
@@ -119,7 +132,9 @@ public class Player : CharaBase, IDamage
     {
         if (_state.CurrentPathName == State.Dodge.ToString())
         {
+            _isDodge = true;
             Effects.Instance.RequestDodgeEffect();
+
             return false;
         }
 

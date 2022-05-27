@@ -20,6 +20,7 @@ public class PlayerFloat : StateMachine.State
 
     public override void Entry(string beforeStatePath)
     {
+        _player.InitDodgeCheck();
         _timer = 0;
         string animName = "";
 
