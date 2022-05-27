@@ -2,6 +2,46 @@ using UnityEngine;
 using StateMachine;
 using System.Linq;
 
+public static class CmMasterData
+{
+    public enum InputType
+    {
+        Normal,
+        Inversion,
+    }
+
+    public static void SetHorizontalInput(InputType type)
+    {
+        Horizontal = type;
+    }
+
+    public static void SetVerticalInput(InputType type)
+    {
+        Vertical = type;
+    }
+
+    public static InputType Horizontal { get; private set; } = InputType.Normal;
+    public static InputType Vertical { get; private set; } = InputType.Normal;
+
+    public static int HorizontalInput
+    {
+        get
+        {
+            if (Horizontal == InputType.Normal) return 1;
+            else return -1;
+        }
+    }
+
+    public static int VerticalInput
+    {
+        get
+        {
+            if (Vertical == InputType.Normal) return 1;
+            else return -1;
+        }
+    }
+}
+
 public class CmManager : MonoBehaviour, IManager
 {
     public enum State

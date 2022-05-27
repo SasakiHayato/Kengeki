@@ -361,7 +361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shader: {fileID: 4800000, guid: 5216b25d65416124394240233caf4292, type: 3}
-  _strength: 1
+  _strength: 0
 --- !u!114 &326519839
 MonoBehaviour:
   m_ObjectHideFlags: 0
