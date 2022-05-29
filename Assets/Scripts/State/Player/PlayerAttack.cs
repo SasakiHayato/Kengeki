@@ -27,7 +27,15 @@ public class PlayerAttack : State
 
         if (beforeStatePath == Player.State.Dodge.ToString() && _player.IsDodge)
         {
-            _attackSetting.RequestAt(AttackType.Counter, 0);
+            if (GameManager.Instance.LockonTarget != null)
+            {
+                _attackSetting.RequestAt(AttackType.Counter, 1);
+            }
+            else
+            {
+                _attackSetting.RequestAt(AttackType.Counter, 0);
+            }
+            
         }
         else
         {
@@ -46,7 +54,7 @@ public class PlayerAttack : State
 
         if (_timer < MoveTime)
         {
-            Vector2 input = (Vector2)GamePadInputter.Instance.PlayerGetValue(GamePadInputter.ValueType.PlayerMove);
+            Vector2 input = GamePadInputter.Instance.PlayerGetValue(GamePadInputter.ValueType.PlayerMove);
 
             if (input == Vector2.zero) input = Vector2.up;
 
