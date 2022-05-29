@@ -33,8 +33,8 @@ public class NormalCm : StateMachine.State
         Vector2 getVal = GamePadInputter.Instance.PlayerGetValue(GamePadInputter.ValueType.CmMove);
         Vector2 input = getVal.normalized;
         
-        Horizontal(input.x * CmMasterData.HorizontalInput);
-        Virtical(input.y * CmMasterData.VerticalInput);
+        Horizontal(input.x * CmInputData.HorizontalInput);
+        Virtical(input.y * CmInputData.VerticalInput);
 
         _cmManager.CmData.NormalizePosition = _setPos;
     }

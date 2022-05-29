@@ -2,7 +2,7 @@ using UnityEngine;
 using StateMachine;
 using System.Linq;
 
-public static class CmMasterData
+public static class CmInputData
 {
     public enum InputType
     {
@@ -120,7 +120,7 @@ public class CmManager : MonoBehaviour, IManager
 
         ViewTarget = _user;
         CmData.VirticalRate = float.MaxValue;
-
+        
         GameManager.Instance.AddManager(this);
 
         _radialrAttribute = GetComponent<RadialBlurRender>();
@@ -155,9 +155,9 @@ public class CmManager : MonoBehaviour, IManager
         Quaternion forward = Quaternion.LookRotation(dir.normalized);
         Quaternion rotate = Quaternion.Lerp(transform.rotation, forward, _viewTimer);
 
+        Vector3 euler = rotate.eulerAngles;
 
-
-        transform.rotation = rotate;
+        transform.rotation = Quaternion.Euler(euler);
 
         if (rotate == transform.rotation) _viewTimer = 0;
     }

@@ -12,7 +12,7 @@ public class InputEventCameraInput : IInputEvents
     [SerializeField] CmInputType _cmInputType;
     [SerializeField] Text _txt;
     
-    CmMasterData.InputType _inputType;
+    CmInputData.InputType _inputType;
 
     public void SetUp()
     {
@@ -20,11 +20,11 @@ public class InputEventCameraInput : IInputEvents
         {
             case CmInputType.Horisontal:
 
-                _inputType = CmMasterData.Horizontal;
+                _inputType = CmInputData.Horizontal;
                 break;
             case CmInputType.Vertical:
 
-                _inputType = CmMasterData.Vertical;
+                _inputType = CmInputData.Vertical;
                 break;
         }
 
@@ -37,24 +37,24 @@ public class InputEventCameraInput : IInputEvents
         {
             case CmInputType.Horisontal:
 
-                CmMasterData.SetHorizontalInput(_inputType);
+                CmInputData.SetHorizontalInput(_inputType);
                 break;
             case CmInputType.Vertical:
 
-                CmMasterData.SetVerticalInput(_inputType);
+                CmInputData.SetVerticalInput(_inputType);
                 break;
         }
 
         _txt.text = _inputType.ToString();
         Debug.Log($"{_txt.text}");
 
-        if (_inputType == CmMasterData.InputType.Inversion)
+        if (_inputType == CmInputData.InputType.Inversion)
         {
-            _inputType = CmMasterData.InputType.Normal;
+            _inputType = CmInputData.InputType.Normal;
         }
         else
         {
-            _inputType = CmMasterData.InputType.Inversion;
+            _inputType = CmInputData.InputType.Inversion;
         }
 
         

@@ -63,7 +63,7 @@ public class Bullet : MonoBehaviour, IPool
             {
                 if (iDamage.GetDamage(_power))
                 {
-                    Effects.Instance.RequestParticalEffect(ParticalType.Hit, other.transform);
+                    Effects.Instance.RequestParticleEffect(ParticalType.Hit, other.transform);
                     Waiting = true;
                     Delete();
                 }

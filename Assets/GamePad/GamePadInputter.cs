@@ -48,7 +48,7 @@ public class GamePadInputter : SingletonAttribute<GamePadInputter>
 
     void OpenOption()
     {
-        CurrentInputterType = InputterType.UI;
+        SetInputterType(InputterType.UI);
         BaseUI.Instance.ParentActive("Option", true);
     }
 
@@ -97,7 +97,19 @@ public class GamePadInputter : SingletonAttribute<GamePadInputter>
         return value;
     }
 
-    public void SetInputterType(InputterType type) => CurrentInputterType = type;
+    public void SetInputterType(InputterType type)
+    {
+        CurrentInputterType = type;
+
+        if (type == InputterType.Player)
+        {
+            Time.timeScale = 1;
+        }
+        else
+        {
+            Time.timeScale = 0;
+        }
+    }
 
     public void RequestGamePadEvents(InputEventsType type)
     {

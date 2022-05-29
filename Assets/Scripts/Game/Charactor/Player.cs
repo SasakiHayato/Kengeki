@@ -56,6 +56,8 @@ public class Player : CharaBase, IDamage
 
     void Update()
     {
+        if (GamePadInputter.Instance.CurrentInputterType != InputterType.Player) return;
+
         _state.Run();
     }
 
@@ -93,6 +95,8 @@ public class Player : CharaBase, IDamage
 
     void Lockon()
     {
+        if (GamePadInputter.Instance.CurrentInputterType != InputterType.Player) return;
+
         if (GameManager.Instance.LockonTarget != null)
         {
             GameManager.Instance.LockonTarget = null;
@@ -106,6 +110,8 @@ public class Player : CharaBase, IDamage
 
     void Jump()
     {
+        if (GamePadInputter.Instance.CurrentInputterType != InputterType.Player) return;
+
         if (PhysicsBase.IsGround) _jumpSetting.Init();
 
         _jumpSetting.Set();
@@ -119,11 +125,14 @@ public class Player : CharaBase, IDamage
 
     void Attack()
     {
+        if (GamePadInputter.Instance.CurrentInputterType != InputterType.Player) return;
+
         _state.ChangeState(State.Attack, true);
     }
 
     void Dodge()
     {
+        if (GamePadInputter.Instance.CurrentInputterType != InputterType.Player) return;
         _state.ChangeState(State.Dodge);
     }
 

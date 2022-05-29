@@ -14,27 +14,34 @@ public enum ParticalType
 {
     Hit,
     Dead,
+    Warning,
 }
 
 public class Effects : SingletonAttribute<Effects>
 {
     AttackEffect _attackEffect;
 
-    ObjectPool<ParticalUser> _hitParticalPool;
-    ObjectPool<ParticalUser> _deadParticalPool;
+    ObjectPool<ParticleUser> _hitParticalPool;
+    ObjectPool<ParticleUser> _deadParticalPool;
+    ObjectPool<ParticleUser> _warnigParticalPool;
 
     const float DodgeTime = 0.3f;
     const float DodgeEffectDuration = 0.1f;
+
+    const string ParticleFileName = "Particle/";
 
     public override void SetUp()
     {
         _attackEffect = new AttackEffect();
 
-        GameObject hitPartical = (GameObject)Resources.Load("HitPartical");
-        _hitParticalPool = new ObjectPool<ParticalUser>(hitPartical.GetComponent<ParticalUser>(), null, 5);
+        GameObject hitPartical = (GameObject)Resources.Load(ParticleFileName+"HitParticle");
+        _hitParticalPool = new ObjectPool<ParticleUser>(hitPartical.GetComponent<ParticleUser>(), null, 5);
 
-        GameObject deadPartical = (GameObject)Resources.Load("DeadPartical");
-        _deadParticalPool = new ObjectPool<ParticalUser>(deadPartical.GetComponent<ParticalUser>(), null, 5);
+        GameObject deadPartical = (GameObject)Resources.Load(ParticleFileName+"DeadParticle");
+        _deadParticalPool = new ObjectPool<ParticleUser>(deadPartical.GetComponent<ParticleUser>(), null, 5);
+
+        GameObject warning = (GameObject)Resources.Load(ParticleFileName + "WarnigParticle");
+        _warnigParticalPool = new ObjectPool<ParticleUser>(warning.GetComponent<ParticleUser>(), null, 5);
     }
 
     public void RequestAttackEffect(AttckEffctType[] type, Transform user)
@@ -53,24 +60,29 @@ public class Effects : SingletonAttribute<Effects>
         }
     }
 
-    public void RequestParticalEffect(ParticalType type, Transform user = null)
+    public ParticleUser RequestParticleEffect(ParticalType type, Transform user = null)
     {
-        ParticalUser partical = null;
+        ParticleUser particle = null;
 
         switch (type)
         {
             case ParticalType.Hit:
-                partical = _hitParticalPool.Use();
+                particle = _hitParticalPool.Use();
                 break;
             case ParticalType.Dead:
-                partical = _deadParticalPool.Use();
+                particle = _deadParticalPool.Use();
+                break;
+            case ParticalType.Warning:
+                particle = _warnigParticalPool.Use();
                 break;
         }
 
         if (user != null)
         {
-            partical.transform.position = user.position;
+            particle.transform.position = user.position;
         }
+
+        return particle;
     }
 
     public void RequestDodgeEffect()
@@ -97,7 +109,7 @@ public class Effects : SingletonAttribute<Effects>
 
         public void HiPartical(Transform user)
         {
-            Instance.RequestParticalEffect(ParticalType.Hit, user);
+            Instance.RequestParticleEffect(ParticalType.Hit, user);
         }
 
         public void HitStop()

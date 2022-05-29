@@ -57,7 +57,7 @@ public abstract class CharaBase : MonoBehaviour
 
     protected virtual void DestoryRequest()
     {
-        Effects.Instance.RequestParticalEffect(ParticalType.Dead, _offsetPosition);
+        Effects.Instance.RequestParticleEffect(ParticalType.Dead, _offsetPosition);
         GameManager.Instance.FieldObject.Remove(CharaData.ObjectType, CharaData.ID);
 
         Destroy(gameObject);

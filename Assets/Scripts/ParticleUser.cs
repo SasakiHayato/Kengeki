@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ParticalUser : MonoBehaviour, IPool
+public class ParticleUser : MonoBehaviour, IPool
 {
     ParticleSystem _particleSystem;
 
