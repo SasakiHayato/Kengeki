@@ -11,6 +11,7 @@ namespace Map
             Room,
             Load,
             Wall,
+            Teleporter,
 
             None,
         }
@@ -33,6 +34,7 @@ namespace Map
             public int ID;
             public int Range;
             public PositionData Position;
+            public Vector2 CellPosition;
 
             public bool IsSet { get; private set; }
             public void IsRoomSetUp(bool isSetup) => IsSet = isSetup;
@@ -41,7 +43,7 @@ namespace Map
             {
                 public PositionData(int x, int y, int z, int range)
                 {
-                    Center = new Vector3((x + range) / 2, y, (z + range) / 2);
+                    Center = new Vector3(x + (range / 2), y, z + (range / 2));
                     UpperLeft = new Vector3(x, y, z);
                     UpperRight = new Vector3(x + range, y, z);
                     BottomLeft = new Vector3(x, y, z + range);
@@ -96,6 +98,7 @@ namespace Map
             }
 
             CreateLoad();
+            OverwriteRoom();
 
             View();
         }
@@ -125,7 +128,8 @@ namespace Map
             {
                 ID = _roomID,
                 Range = roomRange,
-                Position = position
+                Position = position,
+                CellPosition = new Vector2(setCellX, setCellY)
             };
 
             _roomDatas.Add(roomData);
@@ -153,7 +157,112 @@ namespace Map
 
         void CreateLoad()
         {
+            for (int x = 0; x < _roomCount; x++)
+            {
+                for (int y = x + 1; y < _roomCount; y++)
+                {
+                    CheckIsCreateLoad(_roomDatas[x], _roomDatas[y]);
+                }
+            }
+        }
 
+        void CheckIsCreateLoad(RoomData data1, RoomData data2)
+        {
+            HorizontalLoad(data1, data2);
+            VerticalLaod(data1, data2);
+        }
+
+        void HorizontalLoad(RoomData data1, RoomData data2)
+        {
+            // data1
+            int left1 = (int)(data1.Position.Center.x - (data1.Range / 2));
+            int right1 = (int)(data1.Position.Center.x + (data1.Range / 2));
+            int center1 = (int)data1.Position.Center.z;
+
+            // data2
+            int left2 = (int)(data2.Position.Center.x - (data2.Range / 2));
+            int right2 = (int)(data2.Position.Center.x + (data2.Range / 2));
+            int center2 = (int)data2.Position.Center.z;
+
+            int min = Mathf.Min(center1, center2);
+            int max = Mathf.Max(center1, center2);
+
+            if (left1 > right2)
+            {
+                CreateHorizontalLoad((left1 + right2) / 2, left1, center1);
+                CreateHorizontalLoad(right2, (left1 + right2) / 2, center2);
+                CreateVirticalLoad(min, max + 1, (left1 + right2) / 2);
+            }
+
+            if (left2 > right1)
+            {
+                CreateHorizontalLoad((left2 + right1) / 2, left2, center2);
+                CreateHorizontalLoad(right1, (left2 + right1) / 2, center1);
+                CreateVirticalLoad(min, max + 1, (left2 + right1) / 2);
+            }
+        }
+
+        void VerticalLaod(RoomData data1, RoomData data2)
+        {
+            // data1
+            int up1 = (int)(data1.Position.Center.z - (data1.Range / 2));
+            int bottom1 = (int)(data1.Position.Center.z + (data1.Range / 2));
+            int center1 = (int)data1.Position.Center.x;
+
+            // data2
+            int up2 = (int)(data2.Position.Center.z - (data2.Range / 2));
+            int bottom2 = (int)(data2.Position.Center.z + (data2.Range / 2));
+            int center2 = (int)data2.Position.Center.x;
+
+            int min = Mathf.Min(center1, center2);
+            int max = Mathf.Max(center1, center2);
+
+            if (up1 > bottom2)
+            {
+                CreateVirticalLoad((bottom2 + up1) / 2, up1, center1);
+                CreateVirticalLoad(bottom2, (bottom2 + up1) / 2, center2);
+                CreateHorizontalLoad(min, max + 1, (bottom2 + up1) / 2);
+            }
+
+            if (up2 > bottom1)
+            {
+                CreateVirticalLoad((bottom1 + up2) / 2, up2, center2);
+                CreateVirticalLoad(bottom1, (bottom1 + up2) / 2, center1);
+                CreateHorizontalLoad(min, max + 1, (bottom1 + up2) / 2);
+            }
+        }
+
+        void CreateHorizontalLoad(int startPos, int endPos, int constY)
+        {
+            for (int x = startPos; x < endPos; x++)
+            {
+                _cellDatas[x, constY].CellType = CellType.Load;
+            }
+        }
+
+        void CreateVirticalLoad(int startPos, int endPos, int constX)
+        {
+            for (int y = startPos; y < endPos; y++)
+            {
+                _cellDatas[constX, y].CellType = CellType.Load;
+            }
+        }
+
+        void OverwriteRoom()
+        {
+            foreach (RoomData room in _roomDatas)
+            {
+                int setCellX = (int)room.CellPosition.x;
+                int setCellY = (int)room.CellPosition.y;
+
+                for (int x = setCellX; x < setCellX + room.Range; x++)
+                {
+                    for (int y = setCellY; y < setCellY + room.Range; y++)
+                    {
+                        _cellDatas[x, y].CellType = CellType.Room;
+                    }
+                }
+            }
         }
 
         void View()
