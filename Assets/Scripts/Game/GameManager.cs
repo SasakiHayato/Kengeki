@@ -26,6 +26,10 @@ public class GameManager : SingletonAttribute<GameManager>
     public FieldObjectData FieldObject { get; private set; }
     public EnemyDataTip EnemyDataTip { get; private set; }
 
+    public Transform LockonTarget { get; set; }
+
+    public int FieldHierarchy { get; private set; }
+
     public override void SetUp()
     {
         ObjectData = Resources.Load<ObjectDataBase>("ObjectDataBase");
@@ -36,7 +40,7 @@ public class GameManager : SingletonAttribute<GameManager>
         EnemyDataTip = Resources.Load<EnemyDataTip>("EnemyDataTip");
     }
 
-    public Transform LockonTarget { get; set; }
+    public void AddFieldHierarchy() => FieldHierarchy++;
 
     public void AddManager(ManagerBase iManager)
     {
@@ -71,6 +75,7 @@ public class GameManager : SingletonAttribute<GameManager>
     public void ChangeScene(string sceneName)
     {
         _managerList = new List<ManagerBase>();
+        FieldObject = new FieldObjectData();
         GamePadInputter.Despose();
         SceneManager.LoadScene(sceneName);
     }

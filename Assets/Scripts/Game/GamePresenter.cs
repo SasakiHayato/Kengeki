@@ -10,7 +10,8 @@ public class GamePresenter : MonoBehaviour
 {
     [SerializeField] GameState _gameState;
     [SerializeField] InputterType _inputterType;
-    [SerializeField] bool _isDebug;
+    
+    bool _isSetUp = false;
 
     private void Awake()
     {
@@ -30,13 +31,16 @@ public class GamePresenter : MonoBehaviour
 
     void Start()
     {
-        WaitFade().Forget();
         WaitSetUpManager().Forget();
+        WaitFade().Forget();
     }
 
     async UniTask WaitFade()
     {
         Fader fader = new Fader(1, 0);
+        await UniTask.WaitUntil(() => _isSetUp);
+
+        
         fader.SetFade();
 
         await UniTask.WaitUntil(() => fader.IsEndFade);
@@ -49,12 +53,14 @@ public class GamePresenter : MonoBehaviour
         {
             GamePadInputter.Instance.RequestGamePadEvents(InputEventsType.Title);
         }
+
     }
 
     async UniTask WaitSetUpManager()
     {
         await UniTask.Delay(TimeSpan.FromSeconds(1f));
         GameManager.Instance.SetUpManager();
+        _isSetUp = true;
     }
 
     void Update()

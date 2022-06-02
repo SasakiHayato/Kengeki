@@ -58,6 +58,8 @@ public class MapCreater : MonoBehaviour
 
     public void Create()
     {
+        GameManager.Instance.AddFieldHierarchy();
+
         _parent = new GameObject("MapCells");
 
         Initalize();

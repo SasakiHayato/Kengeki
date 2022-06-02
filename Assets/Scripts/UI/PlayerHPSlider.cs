@@ -12,10 +12,6 @@ public class PlayerHPSlider : ChildrenUI
     public override void SetUp()
     {
         _slider = GetComponent<Slider>();
-
-        _player.ObserveEveryValueChanged(x => x.CharaData.HP)
-            .TakeUntilDestroy(_player)
-            .Subscribe(x => ChangeValue(x));
     }
 
     void ChangeValue(int val)
@@ -32,11 +28,18 @@ public class PlayerHPSlider : ChildrenUI
 
     public override void CallBack(object[] datas = null)
     {
-
-        _player = GameManager.Instance.FieldObject.GetData(ObjectType.GameUser)[0].Target.GetComponent<Player>();
-
+        if (_player == null) SetPlayer();
 
         _slider.maxValue = _player.CharaData.HP;
         _slider.value = _player.CharaData.HP;
+    }
+
+    void SetPlayer()
+    {
+        _player = GameManager.Instance.FieldObject.GetData(ObjectType.GameUser)[0].Target.GetComponent<Player>();
+
+        _player.ObserveEveryValueChanged(x => x.CharaData.HP)
+            .TakeUntilDestroy(_player)
+            .Subscribe(x => ChangeValue(x));
     }
 }

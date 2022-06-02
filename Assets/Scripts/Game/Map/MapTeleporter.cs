@@ -10,7 +10,7 @@ public class MapTeleporter : MonoBehaviour
 
         if (charaBase.CharaData.ObjectType == ObjectType.GameUser)
         {
-
+            GameManager.Instance.ChangeScene("GameScene");
         }
     }
 }

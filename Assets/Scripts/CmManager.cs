@@ -103,8 +103,6 @@ public class CmManager : ManagerBase
 
     public override void SetUp()
     {
-        
-
         _virtualityCm = new GameObject("Virtuliry").transform;
 
         _radialrAttribute = GetComponent<RadialBlurRender>();
@@ -120,7 +118,7 @@ public class CmManager : ManagerBase
             Player player = GameManager.Instance.FieldObject.GetData(ObjectType.GameUser)[0].Target.GetComponent<Player>();
             _user = player.OffsetPosition;
         }
-        Debug.Log(_user);
+        
         CmData = new Data(_user, _deadInput, _sensitivity);
 
         CmData.VirticalRate = float.MaxValue;
