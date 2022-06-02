@@ -8,124 +8,111 @@ public class MapCreater : MonoBehaviour
     {
         Room,
         Load,
+        Wall,
         Teleporter,
 
-        Wall,
+        None,
     }
 
     [System.Serializable]
+    class TipData
+    {
+        public CellType CellType;
+        public GameObject TipPrefab;
+    }
+
+    class CellData
+    {
+        public Vector3 Position { get; set; }
+        public CellType CellType { get; set; }
+    }
+
     public class RoomData
     {
-        [SerializeField] int _roomCount;
-        [SerializeField] int _minRoomRange;
-        [SerializeField] int _maxRoomRange;
-        [SerializeField] int _roomDistance;
+        public PositionData Position { get; set; }
+        public RoomInfo Info { get; set; }
 
-        public int RoomCount => _roomCount;
-        public int GetRandomRoomRange => Random.Range(_minRoomRange, _maxRoomRange);
-        public int RoomDistance => _roomDistance;
+        public bool IsSet { get; private set; }
+        public void IsRoomSetUp(bool isSetup) => IsSet = isSetup;
 
-        public List<Room> Rooms { get; private set; } = new List<Room>();
+        public class PositionData
+        {
+            public PositionData(int x, int y, int z, int range)
+            {
+                Center = new Vector3(x + (range / 2), y, z + (range / 2));
+                UpperLeft = new Vector3(x, y, z);
+                UpperRight = new Vector3(x + range, y, z);
+                BottomLeft = new Vector3(x, y, z + range);
+                BottomRight = new Vector3(x + range, y, z + range);
+            }
 
-        public class Room
+            public Vector3 Center { get; private set; }
+            public Vector3 UpperLeft { get; private set; }
+            public Vector3 UpperRight { get; private set; }
+            public Vector3 BottomLeft { get; private set; }
+            public Vector3 BottomRight { get; private set; }
+        }
+
+        public class RoomInfo
         {
             public int ID { get; private set; }
+            public int Range { get; private set; }
+            public Vector2 CellIndex { get; private set; }
 
-            public Vector2 UpperRightPos { get; private set; }
-            public Vector2 UpperLeftPos { get; private set; }
-            public Vector2 BottomRight { get; private set; }
-            public Vector2 BottomLeft { get; private set; }
-            public Vector2 CenterPos { get; private set; }
-
-            public void SetData(int minX, int minY, int range, int id)
+            public RoomInfo(int id, int range, Vector2 cellIndex)
             {
-                UpperRightPos = new Vector2(minX + range, minY);
-                UpperLeftPos = new Vector2(minX, minY);
-                BottomRight = new Vector2(minX + range, minY + range);
-                BottomLeft = new Vector2(minX, minY + range);
-
-                CenterPos = new Vector2((minX + minX + range) / 2, (minY + minY + range) / 2);
-
                 ID = id;
+                Range = range;
+                CellIndex = cellIndex;
             }
         }
     }
 
-    [System.Serializable]
-    class CellData
+    class LoadData
     {
-        [SerializeField] CellType _cellType;
-        [SerializeField] GameObject _tip;
+        public int ID { get; set; }
+        public List<Vector3> PositionList { get; set; }
 
-        public CellType CellType => _cellType;
-        public GameObject Tip => _tip;
+        public bool IsConnect { get; private set; }
+
+        public void SetConnect(bool isConnect) => IsConnect = isConnect;
     }
 
-    [SerializeField] bool _isDebug;
     [SerializeField] int _horizontalRange;
     [SerializeField] int _verticalRange;
+    [SerializeField] int _roomCount;
+    [SerializeField] int _minRoomRange;
+    [SerializeField] int _maxRoomRange;
+    [SerializeField] int _roomDistance;
     [SerializeField] int _loadWidth;
-    [SerializeField] CellType _initCellType;
-    [SerializeField] RoomData _roomData;
-    [SerializeField] List<CellData> _cellDatas;
+    [SerializeField] List<TipData> _tipDatas;
+
+    CellData[,] _cellDatas;
+    List<RoomData> _roomDatas;
 
     int _roomID;
-    CellType[,] _cells;
 
-    MapData _mapData;
+    public List<RoomData> RoomList => _roomDatas;
 
-    void Start()
+    public void Create()
     {
-        if (_isDebug) Create();
-    }
+        Initalize();
 
-    public MapData Create()
-    {
-        Init();
-
-        for (int i = 0; i < _roomData.RoomCount; i++)
+        for (int i = 0; i < _roomCount; i++)
         {
             CreateRoom();
         }
 
         CreateLoad();
         OverwriteRoom();
-        
+        CreateWall();
 
-        CreateAroundWall();
-        CreateTeleporter();
-        SetMap();
-
-        return _mapData;
-    }
-
-    void CreateAroundWall()
-    {
-        for (int x = 0; x < _horizontalRange; x++)
-        {
-            _cells[x, 0] = CellType.Wall;
-        }
-
-        for (int x = 0; x < _horizontalRange; x++)
-        {
-            _cells[x, _verticalRange - 1] = CellType.Wall;
-        }
-
-        for (int y = 0; y < _verticalRange; y++)
-        {
-            _cells[0, y] = CellType.Wall;
-        }
-
-        for (int y = 0; y < _verticalRange; y++)
-        {
-            _cells[_horizontalRange - 1, y] = CellType.Wall;
-        }
+        View();
     }
 
     void CreateRoom()
     {
-        int roomRange = _roomData.GetRandomRoomRange;
-
+        int roomRange = Random.Range(_minRoomRange, _maxRoomRange);
         int setCellX = Random.Range(1, _horizontalRange - roomRange);
         int setCellY = Random.Range(1, _verticalRange - roomRange);
 
@@ -135,37 +122,37 @@ public class MapCreater : MonoBehaviour
             return;
         }
 
-        for (int x = setCellX; x < roomRange + setCellX; x++)
+        for (int x = setCellX; x < setCellX + roomRange; x++)
         {
-            for (int y = setCellY; y < roomRange + setCellY; y++)
+            for (int y = setCellY; y < setCellY + roomRange; y++)
             {
-                _cells[x, y] = CellType.Room;
+                _cellDatas[x, y].CellType = CellType.Room;
             }
         }
 
-        RoomData.Room room = new RoomData.Room();
-        room.SetData(setCellX, setCellY, roomRange, _roomID);
+        RoomData.PositionData position = new RoomData.PositionData(setCellX, 0, setCellY, roomRange);
+        RoomData.RoomInfo info = new RoomData.RoomInfo(_roomID, roomRange, new Vector2(setCellX, setCellY));
 
-        _roomData.Rooms.Add(room);
+        RoomData roomData = new RoomData()
+        {
+            Position = position,
+            Info = info
+        };
+
+        _roomDatas.Add(roomData);
 
         _roomID++;
     }
 
     bool CheckIsCreateRoom(int x, int y, int range)
     {
-        if (_roomData.Rooms.Count <= 0) return true;
+        if (_roomDatas.Count <= 0) return true;
 
-        foreach (RoomData.Room room in _roomData.Rooms)
+        foreach (RoomData room in _roomDatas)
         {
-            int upperRigthX = (int)room.UpperRightPos.x + _roomData.RoomDistance;
-            int upperLeftX = (int)room.UpperLeftPos.x - _roomData.RoomDistance;
-
-            int bottomLeftY = (int)room.BottomLeft.y + _roomData.RoomDistance;
-            int upperLeftY = (int)room.UpperLeftPos.y - _roomData.RoomDistance;
-
-            if (upperRigthX >= x && upperLeftX <= x + range)
+            if (room.Position.UpperRight.x + _roomDistance >= x && room.Position.UpperLeft.x - _roomDistance <= x + range)
             {
-                if (bottomLeftY >= y && upperLeftY <= y + range)
+                if (room.Position.BottomLeft.z + _roomDistance >= y && room.Position.UpperLeft.z - _roomDistance <= y + range)
                 {
                     return false;
                 }
@@ -175,15 +162,15 @@ public class MapCreater : MonoBehaviour
         return true;
     }
 
-    void OverwriteRoom()
+    void CreateWall()
     {
-        foreach (RoomData.Room room in _roomData.Rooms)
+        for (int x = 0; x < _horizontalRange; x++)
         {
-            for (int x = (int)room.UpperLeftPos.x; x < (int)room.UpperRightPos.x; x++)
+            for (int y = 0; y < _verticalRange; y++)
             {
-                for (int y = (int)room.UpperLeftPos.y; y < (int)room.BottomRight.y; y++)
+                if (_cellDatas[x, y].CellType == CellType.None)
                 {
-                    _cells[x, y] = CellType.Room;
+                    _cellDatas[x, y].CellType = CellType.Wall;
                 }
             }
         }
@@ -191,80 +178,161 @@ public class MapCreater : MonoBehaviour
 
     void CreateLoad()
     {
-        foreach (RoomData.Room room in _roomData.Rooms)
+        for (int x = 0; x < _roomCount; x++)
         {
-            int virtical = (int)(room.UpperLeftPos.x + room.UpperRightPos.x) / 2;
-            CreateLoadVirtical(virtical);
-
-            int horizontal = (int)(room.UpperLeftPos.y + room.BottomLeft.y) / 2;
-            CreateLoadHorizontal(horizontal);
+            for (int y = x + 1; y < _roomCount; y++)
+            {
+                CheckIsCreateLoad(_roomDatas[x], _roomDatas[y]);
+            }
         }
     }
 
-    void CreateLoadVirtical(int cell)
+    void CheckIsCreateLoad(RoomData data1, RoomData data2)
     {
-        for (int x = cell; x < cell + _loadWidth; x++)
+        HorizontalLoad(data1, data2);
+        VerticalLaod(data1, data2);
+    }
+
+    void HorizontalLoad(RoomData data1, RoomData data2)
+    {
+        // data1
+        int range1 = data1.Info.Range;
+        int left1 = (int)(data1.Position.Center.x - (range1 / 2));
+        int right1 = (int)(data1.Position.Center.x + (range1 / 2));
+        int center1 = (int)data1.Position.Center.z;
+
+        // data2
+        int range2 = data2.Info.Range;
+        int left2 = (int)(data2.Position.Center.x - (range2 / 2));
+        int right2 = (int)(data2.Position.Center.x + (range2 / 2));
+        int center2 = (int)data2.Position.Center.z;
+
+        int min = Mathf.Min(center1, center2);
+        int max = Mathf.Max(center1, center2);
+
+        if (left1 > right2)
+        {
+            CreateHorizontalLoad((left1 + right2) / 2, left1, center1);
+            CreateHorizontalLoad(right2, (left1 + right2) / 2, center2);
+            CreateVirticalLoad(min, max + 1, (left1 + right2) / 2);
+        }
+
+        if (left2 > right1)
+        {
+            CreateHorizontalLoad((left2 + right1) / 2, left2, center2);
+            CreateHorizontalLoad(right1, (left2 + right1) / 2, center1);
+            CreateVirticalLoad(min, max + 1, (left2 + right1) / 2);
+        }
+    }
+
+    void VerticalLaod(RoomData data1, RoomData data2)
+    {
+        // data1
+        int range1 = data1.Info.Range;
+        int up1 = (int)(data1.Position.Center.z - (range1 / 2));
+        int bottom1 = (int)(data1.Position.Center.z + (range1 / 2));
+        int center1 = (int)data1.Position.Center.x;
+
+        // data2
+        int range2 = data2.Info.Range;
+        int up2 = (int)(data2.Position.Center.z - (range2 / 2));
+        int bottom2 = (int)(data2.Position.Center.z + (range2 / 2));
+        int center2 = (int)data2.Position.Center.x;
+
+        int min = Mathf.Min(center1, center2);
+        int max = Mathf.Max(center1, center2);
+
+        if (up1 > bottom2)
+        {
+            CreateVirticalLoad((bottom2 + up1) / 2, up1, center1);
+            CreateVirticalLoad(bottom2, (bottom2 + up1) / 2, center2);
+            CreateHorizontalLoad(min, max + 1, (bottom2 + up1) / 2);
+        }
+
+        if (up2 > bottom1)
+        {
+            CreateVirticalLoad((bottom1 + up2) / 2, up2, center2);
+            CreateVirticalLoad(bottom1, (bottom1 + up2) / 2, center1);
+            CreateHorizontalLoad(min, max + 1, (bottom1 + up2) / 2);
+        }
+    }
+
+    void CreateHorizontalLoad(int startPos, int endPos, int constY)
+    {
+        for (int x = startPos; x < endPos; x++)
+        {
+            for (int y = constY; y < constY + _loadWidth; y++)
+            {
+                _cellDatas[x, y].CellType = CellType.Load;
+            }
+        }
+    }
+
+    void CreateVirticalLoad(int startPos, int endPos, int constX)
+    {
+        for (int x = constX; x < constX + _loadWidth; x++)
+        {
+            for (int y = startPos; y < endPos; y++)
+            {
+                _cellDatas[x, y].CellType = CellType.Load;
+            }
+        }
+    }
+
+    void OverwriteRoom()
+    {
+        foreach (RoomData room in _roomDatas)
+        {
+            int setCellX = (int)room.Info.CellIndex.x;
+            int setCellY = (int)room.Info.CellIndex.y;
+
+            for (int x = setCellX; x < setCellX + room.Info.Range; x++)
+            {
+                for (int y = setCellY; y < setCellY + room.Info.Range; y++)
+                {
+                    _cellDatas[x, y].CellType = CellType.Room;
+                }
+            }
+        }
+    }
+
+    void View()
+    {
+        GameObject obj = new GameObject("MapCells");
+
+        for (int x = 0; x < _horizontalRange; x++)
         {
             for (int y = 0; y < _verticalRange; y++)
             {
-                _cells[x, y] = CellType.Load;
+                CellData cellData = _cellDatas[x, y];
+
+                if (cellData.CellType == CellType.None) continue;
+
+                GameObject tip = Instantiate(_tipDatas.FirstOrDefault(t => t.CellType == cellData.CellType).TipPrefab);
+                tip.transform.position = cellData.Position;
+
+                tip.transform.SetParent(obj.transform);
             }
         }
     }
 
-    void CreateLoadHorizontal(int cell)
+    void Initalize()
     {
-        for (int x = 0; x < _horizontalRange; x++)
-        {
-            for (int y = cell; y < cell + _loadWidth; y++)
-            {
-                _cells[x, y] = CellType.Load;
-            }
-        }
-    }
+        _cellDatas = new CellData[_horizontalRange, _verticalRange];
+        _roomDatas = new List<RoomData>();
 
-    void CreateTeleporter()
-    {
-        int random = Random.Range(0, _roomData.RoomCount);
-        
-        Vector2 center = _roomData.Rooms[random].CenterPos;
-        
-        _cells[(int)center.x, (int)center.y] = CellType.Teleporter;
-    }
-
-    void SetMap()
-    {
-        for (int x = 0; x < _horizontalRange; x++)
-        {
-            for (int y = 0; y < _verticalRange; y++)
-            {
-                SetCell(_cells[x, y], x, y);
-            }
-        }
-
-        _mapData.SetRoomList(_roomData.Rooms);
-    }
-
-    void SetCell(CellType type, int x, int y)
-    {
-        GameObject tip = Instantiate(_cellDatas.FirstOrDefault(c => c.CellType == type).Tip);
-
-        tip.transform.position = new Vector3(x, 0, y);
-        tip.transform.SetParent(transform);
-    }
-
-    void Init()
-    {
         _roomID = 0;
-        _cells = new CellType[_horizontalRange, _verticalRange];
-
-        _mapData = new MapData();
 
         for (int x = 0; x < _horizontalRange; x++)
         {
             for (int y = 0; y < _verticalRange; y++)
             {
-                _cells[x, y] = _initCellType;
+                CellData cellData = new CellData
+                {
+                    CellType = CellType.None,
+                    Position = new Vector3(x, 0, y)
+                };
+                _cellDatas[x, y] = cellData;
             }
         }
     }

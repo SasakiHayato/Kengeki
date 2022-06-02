@@ -20,11 +20,6 @@ public class GamePresenter : MonoBehaviour
         
         GameManager.Instance.SetGameState(_gameState);
         
-        if (!_isDebug || GameManager.Instance.CurrentGameState == GameState.InGame)
-        {
-            GameManager.Instance.SetMapData();
-        }
-
         BaseUI.SetInstance(new BaseUI()).SetUp();
         Effects.SetInstance(new Effects()).SetUp();
         

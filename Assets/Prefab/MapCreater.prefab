@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6701862034259071486
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6701862034259071472}
+  - component: {fileID: 6701862034259071487}
+  m_Layer: 0
+  m_Name: MapCreater
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6701862034259071472
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6701862034259071486}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6701862034259071487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6701862034259071486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ef3019ee6178934b960a87d330984a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _horizontalRange: 150
+  _verticalRange: 150
+  _roomCount: 5
+  _minRoomRange: 20
+  _maxRoomRange: 30
+  _roomDistance: 5
+  _loadWidth: 2
+  _tipDatas:
+  - CellType: 0
+    TipPrefab: {fileID: 4403028048830911585, guid: b2abf67e2389fcf418a80a21f33965b9, type: 3}
+  - CellType: 1
+    TipPrefab: {fileID: 4403028048830911585, guid: 1ac2b2bda6988b64f8f43b60a9ecd655, type: 3}
+  - CellType: 2
+    TipPrefab: {fileID: 476689167495915862, guid: d10416d5aa53cc14a97354976d092bed, type: 3}

@@ -30,9 +30,8 @@ public class GameManager : SingletonAttribute<GameManager>
 
     public ObjectDataBase ObjectData { get; private set; }
     public FieldObjectData FieldObject { get; private set; }
+    public EnemyDataTip EnemyDataTip { get; private set; }
 
-    public MapData MapData { get; private set; }
-    
     public GameObject Player { get; private set; }
 
     public override void SetUp()
@@ -41,20 +40,9 @@ public class GameManager : SingletonAttribute<GameManager>
         FieldObject = new FieldObjectData();
 
         _managerList = new List<IManager>();
-    }
 
-    public void SetMapData()
-    {
-        MapData = Object.FindObjectOfType<MapCreater>().Create();
-        MapData.SetUpData(Resources.Load<EnemyDataTip>("EnemyDataTip"));
-
-        int randomRoomID = Random.Range(0, MapData.RoomCount);
-        
         Player = Object.Instantiate(ObjectData.GetData("Player").Prefab);
-        Vector2 pos = MapData.GetData(randomRoomID).Room.CenterPos;
-        Player.transform.position = new Vector3(pos.x, 10, pos.y);
-        
-        MapData.InstantiateAll();
+        EnemyDataTip = Resources.Load<EnemyDataTip>("EnemyDataTip");
     }
 
     public Transform LockonTarget { get; set; }
