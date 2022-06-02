@@ -12,19 +12,13 @@ public enum GameState
     None,
 }
 
-public interface IManager
-{
-    GameObject ManagerObject();
-    string ManagerPath();
-}
-
 /// <summary>
 /// ƒQ[ƒ€‚ÌŠÇ—ƒNƒ‰ƒX
 /// </summary>
 
 public class GameManager : SingletonAttribute<GameManager>
 {
-    List<IManager> _managerList;
+    List<ManagerBase> _managerList;
     
     public GameState CurrentGameState { get; private set; }
 
@@ -32,22 +26,19 @@ public class GameManager : SingletonAttribute<GameManager>
     public FieldObjectData FieldObject { get; private set; }
     public EnemyDataTip EnemyDataTip { get; private set; }
 
-    public GameObject Player { get; private set; }
-
     public override void SetUp()
     {
         ObjectData = Resources.Load<ObjectDataBase>("ObjectDataBase");
         FieldObject = new FieldObjectData();
 
-        _managerList = new List<IManager>();
+        _managerList = new List<ManagerBase>();
 
-        Player = Object.Instantiate(ObjectData.GetData("Player").Prefab);
         EnemyDataTip = Resources.Load<EnemyDataTip>("EnemyDataTip");
     }
 
     public Transform LockonTarget { get; set; }
 
-    public void AddManager(IManager iManager)
+    public void AddManager(ManagerBase iManager)
     {
         if (_managerList.Count <= 0)
         {
@@ -69,11 +60,17 @@ public class GameManager : SingletonAttribute<GameManager>
         return manager;
     }
 
+    public void SetUpManager()
+    {
+        var sort = _managerList.OrderBy(m => m.Priority);
+        sort.ToList().ForEach(m => m.SetUp());
+    }
+
     public void SetGameState(GameState gameState) => CurrentGameState = gameState;
 
     public void ChangeScene(string sceneName)
     {
-        _managerList = new List<IManager>();
+        _managerList = new List<ManagerBase>();
         GamePadInputter.Despose();
         SceneManager.LoadScene(sceneName);
     }

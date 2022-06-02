@@ -4,6 +4,7 @@ using DG.Tweening;
 
 public class PlayerHPSlider : ChildrenUI
 {
+    Player _player;
     Slider _slider;
 
     const float DurationTime = 0.2f;
@@ -12,10 +13,8 @@ public class PlayerHPSlider : ChildrenUI
     {
         _slider = GetComponent<Slider>();
 
-        Player player = GameManager.Instance.Player.GetComponent<Player>();
-
-        player.ObserveEveryValueChanged(x => x.CharaData.HP)
-            .TakeUntilDestroy(player)
+        _player.ObserveEveryValueChanged(x => x.CharaData.HP)
+            .TakeUntilDestroy(_player)
             .Subscribe(x => ChangeValue(x));
     }
 
@@ -33,9 +32,11 @@ public class PlayerHPSlider : ChildrenUI
 
     public override void CallBack(object[] datas = null)
     {
-        Player player = GameManager.Instance.Player.GetComponent<Player>();
 
-        _slider.maxValue = player.CharaData.HP;
-        _slider.value = player.CharaData.HP;
+        _player = GameManager.Instance.FieldObject.GetData(ObjectType.GameUser)[0].Target.GetComponent<Player>();
+
+
+        _slider.maxValue = _player.CharaData.HP;
+        _slider.value = _player.CharaData.HP;
     }
 }

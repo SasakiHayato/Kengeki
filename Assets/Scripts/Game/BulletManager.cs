@@ -5,7 +5,7 @@ public enum ShotType
     Toward,
 }
 
-public class BulletManager : MonoBehaviour, IManager
+public class BulletManager : ManagerBase
 {
     [SerializeField] Bullet _bullet;
 
@@ -13,9 +13,13 @@ public class BulletManager : MonoBehaviour, IManager
 
     void Start()
     {
-        _bulletPool = new ObjectPool<Bullet>(_bullet);
-
         GameManager.Instance.AddManager(this);
+    }
+
+    public override void SetUp()
+    {
+        _bulletPool = new ObjectPool<Bullet>(_bullet);
+        base.SetUp();
     }
 
     public Bullet ShotRequest(ObjectType type, Vector3 dir, float speed, int power)
@@ -41,6 +45,6 @@ public class BulletManager : MonoBehaviour, IManager
         return dir.normalized;
     }
   
-    public GameObject ManagerObject() => gameObject;
-    public string ManagerPath() => nameof(BulletManager);
+    public override GameObject ManagerObject() => gameObject;
+    public override string ManagerPath() => nameof(BulletManager);
 }

@@ -2,14 +2,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class FieldManager : MonoBehaviour, IManager
+public class FieldManager : ManagerBase
 {
     [SerializeField] MapCreater _creater;
-    public List<MapCreater.RoomData> RoomList { get; private set; }
+    public List<RoomData> RoomList { get; private set; }
 
     const float ConstYPosition = 5f;
 
     void Start()
+    {
+        GameManager.Instance.AddManager(this);
+    }
+
+    public override void SetUp()
     {
         _creater.Create();
         RoomList = _creater.RoomList;
@@ -22,14 +27,14 @@ public class FieldManager : MonoBehaviour, IManager
             if (!RoomList[i].IsSetUp) InstanceEnemy(RoomList[i]);
         }
 
-        GameManager.Instance.AddManager(this);
+        base.SetUp();
     }
 
     void InstancePlayer()
     {
         int randomID = Random.Range(0, RoomList.Count);
-        GameObject player = GameManager.Instance.Player;
-        MapCreater.RoomData data = RoomList[randomID];
+        GameObject player = Instantiate(GameManager.Instance.ObjectData.GetData("Player").Prefab);
+        RoomData data = RoomList[randomID];
         Vector3 setPos = data.Position.Center;
         setPos.y = ConstYPosition;
         player.transform.position = setPos;
@@ -38,7 +43,7 @@ public class FieldManager : MonoBehaviour, IManager
         data.IsRoomSetUp(true);
     }
 
-    void InstanceEnemy(MapCreater.RoomData data)
+    void InstanceEnemy(RoomData data)
     {
         int randomTip = Random.Range(0, GameManager.Instance.EnemyDataTip.DataLegth);
 
@@ -65,7 +70,7 @@ public class FieldManager : MonoBehaviour, IManager
 
     public void RemoveEnemyEvent(int roomID, EnemyBase enemyBase)
     {
-        MapCreater.RoomData data = RoomList.FirstOrDefault(r => r.Info.ID == roomID);
+        RoomData data = RoomList.FirstOrDefault(r => r.Info.ID == roomID);
         data.Info.RemoveEnemy(enemyBase);
         
         if (data.Info.SetTeleporter && data.Info.EnemyList.Count() <= 0)
@@ -74,8 +79,8 @@ public class FieldManager : MonoBehaviour, IManager
         }
     }
 
-    public MapCreater.RoomData GetRoomData(int id) => RoomList.FirstOrDefault(r => r.Info.ID == id);
+    public RoomData GetRoomData(int id) => RoomList.FirstOrDefault(r => r.Info.ID == id);
 
-    public GameObject ManagerObject() => gameObject;
-    public string ManagerPath() => nameof(FieldManager);
+    public override GameObject ManagerObject() => gameObject;
+    public override string ManagerPath() => nameof(FieldManager);
 }

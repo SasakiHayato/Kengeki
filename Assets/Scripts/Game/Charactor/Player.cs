@@ -52,6 +52,7 @@ public class Player : CharaBase, IDamage
             .RunRequest(true, State.Idle);
 
         BaseUI.Instance.CallBack("PlayerUI", "HP");
+        GameManager.Instance.GetManager<CmManager>(nameof(CmManager)).SetUser();
     }
 
     void Update()

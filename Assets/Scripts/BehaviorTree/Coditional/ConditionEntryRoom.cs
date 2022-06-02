@@ -12,7 +12,7 @@ public class ConditionEntryRoom : IConditional
     {
         EnemyBase enemyBase = user.GetComponent<EnemyBase>();
         FieldManager fieldManager = GameManager.Instance.GetManager<FieldManager>(nameof(FieldManager));
-        MapCreater.RoomData room = fieldManager.GetRoomData(enemyBase.RoomID);
+        RoomData room = fieldManager.GetRoomData(enemyBase.RoomID);
         _player = GameManager.Instance.FieldObject.GetData(ObjectType.GameUser)[0].Target.transform;
 
         _minPos = room.Position.UpperLeft;

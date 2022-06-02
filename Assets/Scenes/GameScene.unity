@@ -123,50 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &100074032
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 100074034}
-  - component: {fileID: 100074033}
-  m_Layer: 0
-  m_Name: MapCreater
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &100074033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100074032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3db5c78c661794a4bb56cf17c8020e0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &100074034
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100074032}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1561586407}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &129575428
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,7 +227,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6696115475712488958, guid: 72436c2ab3e9b2f47a25c08dd797a872, type: 3}
       propertyPath: _priority
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6696115475712488958, guid: 72436c2ab3e9b2f47a25c08dd797a872, type: 3}
       propertyPath: _sensitivity
@@ -498,7 +454,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1561586407}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &682037377
 MonoBehaviour:
@@ -657,6 +613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67fff0c087b7c0419112b3250c5662c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _priority: 2
   _bullet: {fileID: 6440506166919660465, guid: ecec1dcb9be911048ab3d4a0ddee624e, type: 3}
 --- !u!4 &832018292
 Transform:
@@ -671,7 +628,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1561586407}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &860501964
 PrefabInstance:
@@ -682,7 +639,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5064831249328109829, guid: f2389b99b0c7d554cabe8575d766dd38, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5064831249328109829, guid: f2389b99b0c7d554cabe8575d766dd38, type: 3}
       propertyPath: m_LocalPosition.x
@@ -728,6 +685,10 @@ PrefabInstance:
       propertyPath: _bgmPath
       value: InGameBGM
       objectReference: {fileID: 0}
+    - target: {fileID: 5064831249328109830, guid: f2389b99b0c7d554cabe8575d766dd38, type: 3}
+      propertyPath: _priority
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5064831249328109831, guid: f2389b99b0c7d554cabe8575d766dd38, type: 3}
       propertyPath: m_Name
       value: SoundManager
@@ -743,7 +704,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6701862034259071472, guid: e5ac9fd144964d94aa884e5f6d3bddca, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6701862034259071472, guid: e5ac9fd144964d94aa884e5f6d3bddca, type: 3}
       propertyPath: m_LocalPosition.x
@@ -978,7 +939,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1561586407}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1347452511
 MonoBehaviour:
@@ -992,6 +953,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60856e426f745f840953aee819564123, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _priority: 0
   _creater: {fileID: 967911490}
 --- !u!1 &1561586406
 GameObject:
@@ -1021,7 +983,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 100074034}
   - {fileID: 832018292}
   - {fileID: 682037376}
   - {fileID: 326947061}

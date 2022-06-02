@@ -42,7 +42,7 @@ public static class CmInputData
     }
 }
 
-public class CmManager : MonoBehaviour, IManager
+public class CmManager : ManagerBase
 {
     public enum State
     {
@@ -98,16 +98,37 @@ public class CmManager : MonoBehaviour, IManager
 
     void Start()
     {
+        GameManager.Instance.AddManager(this);   
+    }
+
+    public override void SetUp()
+    {
+        
+
+        _virtualityCm = new GameObject("Virtuliry").transform;
+
+        _radialrAttribute = GetComponent<RadialBlurRender>();
+        _grayAttribute = GetComponent<GrayScaleRender>();
+
+        base.SetUp();
+    }
+
+    public void SetUser()
+    {
         if (_user == null)
         {
-            Player player = GameManager.Instance.Player.GetComponent<Player>();
+            Player player = GameManager.Instance.FieldObject.GetData(ObjectType.GameUser)[0].Target.GetComponent<Player>();
             _user = player.OffsetPosition;
         }
-
+        Debug.Log(_user);
         CmData = new Data(_user, _deadInput, _sensitivity);
+
+        CmData.VirticalRate = float.MaxValue;
 
         Vector3 offestPos = _user.position + _offsetPosition;
         transform.position = offestPos;
+
+        ViewTarget = _user;
 
         _state = new StateManager(gameObject);
         _state.AddState(new NormalCm(), State.Normal)
@@ -115,20 +136,12 @@ public class CmManager : MonoBehaviour, IManager
             .AddState(new TransitionCm(), State.Transition)
             .AddState(new ShakeCm(), State.Shake)
             .RunRequest(true, State.Normal);
-
-        _virtualityCm = new GameObject("Virtuliry").transform;
-
-        ViewTarget = _user;
-        CmData.VirticalRate = float.MaxValue;
-        
-        GameManager.Instance.AddManager(this);
-
-        _radialrAttribute = GetComponent<RadialBlurRender>();
-        _grayAttribute = GetComponent<GrayScaleRender>();
     }
 
     void Update()
     {
+        if (!IsSetUp || _user == null) return;
+
         _state.Run();
 
         View();
@@ -232,6 +245,6 @@ public class CmManager : MonoBehaviour, IManager
         return obj;
     }
 
-    public GameObject ManagerObject() => gameObject;
-    public string ManagerPath() => nameof(CmManager);
+    public override GameObject ManagerObject() => gameObject;
+    public override string ManagerPath() => nameof(CmManager);
 }

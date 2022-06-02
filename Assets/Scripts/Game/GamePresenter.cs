@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 using Cysharp.Threading.Tasks;
 
 /// <summary>
@@ -30,6 +31,7 @@ public class GamePresenter : MonoBehaviour
     void Start()
     {
         WaitFade().Forget();
+        WaitSetUpManager().Forget();
     }
 
     async UniTask WaitFade()
@@ -47,6 +49,12 @@ public class GamePresenter : MonoBehaviour
         {
             GamePadInputter.Instance.RequestGamePadEvents(InputEventsType.Title);
         }
+    }
+
+    async UniTask WaitSetUpManager()
+    {
+        await UniTask.Delay(TimeSpan.FromSeconds(1f));
+        GameManager.Instance.SetUpManager();
     }
 
     void Update()

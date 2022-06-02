@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class SoundManager : MonoBehaviour, IManager
+public class SoundManager : ManagerBase
 {
     [SerializeField] string _bgmPath;
     [SerializeField, Range(0, 1)] float _masterVol;
@@ -23,6 +23,10 @@ public class SoundManager : MonoBehaviour, IManager
     {
         GameManager.Instance.AddManager(this);
 
+    }
+
+    public override void SetUp()
+    {
         _soundPool = new ObjectPool<SoundPool>(_soundPrefab, null, _createPoolCount);
 
         Request(SoundType.BGM, _bgmPath);
@@ -62,6 +66,6 @@ public class SoundManager : MonoBehaviour, IManager
         if (_seVol < 0) _seVol = 0;
     }
 
-    public GameObject ManagerObject() => gameObject;
-    public string ManagerPath() => nameof(SoundManager);
+    public override GameObject ManagerObject() => gameObject;
+    public override string ManagerPath() => nameof(SoundManager);
 }
