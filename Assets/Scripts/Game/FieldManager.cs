@@ -45,9 +45,20 @@ public class FieldManager : ManagerBase
 
     void InstanceEnemy(RoomData data)
     {
-        int randomTip = Random.Range(0, GameManager.Instance.EnemyDataTip.DataLegth);
+        List<EnemyDataTip> dataList = GameManager.Instance.EnemyDataTipList;
+        EnemyDataTip dataTip;
+        
+        if (_creater.IsSetArena)
+        {
+            dataTip = dataList.FirstOrDefault(d => d.EnemyType == EnemyType.Boss);
+        }
+        else
+        {
+            dataTip = dataList.FirstOrDefault(d => d.EnemyType == EnemyType.Mob);
+        }
 
-        EnemyDataTip.DataTip tip = GameManager.Instance.EnemyDataTip.GetDataTip(randomTip);
+        int randomTip = Random.Range(0, dataTip.DataLegth);
+        EnemyDataTip.DataTip tip = dataTip.GetDataTip(randomTip);
 
         foreach (EnemyPath path in tip.EnemyPaths)
         {

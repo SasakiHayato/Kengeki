@@ -24,7 +24,7 @@ public class GameManager : SingletonAttribute<GameManager>
 
     public ObjectDataBase ObjectData { get; private set; }
     public FieldObjectData FieldObject { get; private set; }
-    public EnemyDataTip EnemyDataTip { get; private set; }
+    public List<EnemyDataTip> EnemyDataTipList { get; private set; }
 
     public Transform LockonTarget { get; set; }
 
@@ -37,7 +37,9 @@ public class GameManager : SingletonAttribute<GameManager>
 
         _managerList = new List<ManagerBase>();
 
-        EnemyDataTip = Resources.Load<EnemyDataTip>("EnemyDataTip");
+        EnemyDataTipList = new List<EnemyDataTip>();
+        EnemyDataTipList.Add(Resources.Load<EnemyDataTip>("MobEnemyDataTip"));
+        EnemyDataTipList.Add(Resources.Load<EnemyDataTip>("BossEnemyDataTip"));
     }
 
     public void AddFieldHierarchy() => FieldHierarchy++;

@@ -58,6 +58,8 @@ public class MapCreater : MonoBehaviour
 
     public List<RoomData> RoomList => _roomDatas;
 
+    public bool IsSetArena { get; private set; }
+
     public void Create()
     {
         GameManager.Instance.AddFieldHierarchy();
@@ -71,11 +73,13 @@ public class MapCreater : MonoBehaviour
         if (hierarchy % _arenaHierarchy == 0)
         {
             _saveRoomCount = 2;
+            IsSetArena = true;
             ArenaMap();
         }
         else
         {
             _saveRoomCount = _roomCount;
+            IsSetArena = false;
             NormalMap();
         }
 
