@@ -45,10 +45,10 @@ MonoBehaviour:
     Path: CubeEnemyBullet
   - Name: BossGrruzam
     Prefab: {fileID: 2473082838094617567, guid: fd93b2d530f32104ab865e217c9c7b32, type: 3}
-    HP: 3
-    Speed: 1
+    HP: 10
+    Speed: 5
     Power: 1
-    Runtime: {fileID: 0}
+    Runtime: {fileID: 9100000, guid: 78d833dcd15b2164aa0dce5031b02512, type: 2}
     Avatar: {fileID: 9000000, guid: 43992d4f16e57574fa5d16ef485c0cbd, type: 3}
     ObjectType: 1
     ID: 3

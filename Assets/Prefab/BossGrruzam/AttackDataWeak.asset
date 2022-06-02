@@ -13,7 +13,45 @@ MonoBehaviour:
   m_Name: AttackDataWeak
   m_EditorClassIdentifier: 
   _type: 0
-  _datas: []
+  _datas:
+  - _animName: Attack_3Combo_1
+    _power: 0
+    _isActiveFrame: 7
+    _endActiveFrame: 14
+    _nextInputFrame: 23
+    _effctTypes: 0000000001000000
+    _actionData:
+      _hitAction:
+        rid: -2
+      _attackAction:
+        rid: -2
+      _executeFrame: 0
+  - _animName: Attack_3Combo_2
+    _power: 0
+    _isActiveFrame: 5
+    _endActiveFrame: 12
+    _nextInputFrame: 18
+    _effctTypes: 0000000001000000
+    _actionData:
+      _hitAction:
+        rid: -2
+      _attackAction:
+        rid: -2
+      _executeFrame: 0
+  - _animName: Attack_3Combo_3
+    _power: 0
+    _isActiveFrame: 0
+    _endActiveFrame: 0
+    _nextInputFrame: 0
+    _effctTypes: 0000000001000000
+    _actionData:
+      _hitAction:
+        rid: -2
+      _attackAction:
+        rid: -2
+      _executeFrame: 0
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }

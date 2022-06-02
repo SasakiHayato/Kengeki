@@ -1300,8 +1300,8 @@ GameObject:
   - component: {fileID: 7318265668539436707}
   - component: {fileID: 7586370589469115304}
   - component: {fileID: 5714641218120383349}
-  - component: {fileID: 4044448374854081201}
   - component: {fileID: -7924496618511053628}
+  - component: {fileID: 4044448374854081201}
   m_Layer: 0
   m_Name: BossGrruzam
   m_TagString: Untagged
@@ -1361,7 +1361,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _rayDirection: {x: 0, y: -1, z: 0}
-  _rayDistance: 1.2
+  _rayDistance: 2.2
 --- !u!54 &7586370589469115304
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1392,6 +1392,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dataPath: BossGrruzam
   _offsetPosition: {fileID: 7781719752261621080}
+--- !u!136 &-7924496618511053628
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2473082838094617567}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.21
+  m_Height: 1.9
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.88, z: 0}
 --- !u!114 &4044448374854081201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1418,6 +1432,54 @@ MonoBehaviour:
         - rid: 6414747703172923392
         Actions:
         - rid: 6414747703172923393
+  - BrockType: 2
+    Condition: 0
+    Priority: 0
+    BranchConditionals:
+    - rid: 6414747703172923396
+    - rid: 6414747703172923400
+    BrockDatas:
+    - QueueType: 0
+      QueueDatas:
+      - RunType: 0
+        Condition: 0
+        Conditionals:
+        - rid: 6414747703172923392
+        Actions:
+        - rid: 6414747703172923408
+        - rid: 6414747703172923402
+        - rid: 6414747703172923401
+        - rid: 6414747703172923403
+      - RunType: 0
+        Condition: 0
+        Conditionals:
+        - rid: 6414747703172923392
+        Actions:
+        - rid: 6414747703172923409
+        - rid: 6414747703172923402
+        - rid: 6414747703172923401
+        - rid: 6414747703172923403
+      - RunType: 0
+        Condition: 0
+        Conditionals:
+        - rid: 6414747703172923392
+        Actions:
+        - rid: 6414747703172923405
+  - BrockType: 2
+    Condition: 0
+    Priority: 0
+    BranchConditionals:
+    - rid: 6414747703172923396
+    BrockDatas:
+    - QueueType: 0
+      QueueDatas:
+      - RunType: 0
+        Condition: 0
+        Conditionals:
+        - rid: 6414747703172923392
+        Actions:
+        - rid: 6414747703172923397
+        - rid: 6414747703172923398
   references:
     version: 2
     RefIds:
@@ -1427,20 +1489,43 @@ MonoBehaviour:
       type: {class: ActionIdle, ns: , asm: Assembly-CSharp}
       data:
         _animName: Idle
---- !u!136 &-7924496618511053628
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2473082838094617567}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.21
-  m_Height: 1.9
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.88, z: 0}
+    - rid: 6414747703172923396
+      type: {class: ConditionEntryRoom, ns: , asm: Assembly-CSharp}
+    - rid: 6414747703172923397
+      type: {class: ActionMove, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: Run_ver_B
+        _moveDirType: 0
+        _applyY: 0
+    - rid: 6414747703172923398
+      type: {class: ActionRotate, ns: , asm: Assembly-CSharp}
+    - rid: 6414747703172923400
+      type: {class: ConditionDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _effectDistance: 5
+    - rid: 6414747703172923401
+      type: {class: ActionAttack, ns: , asm: Assembly-CSharp}
+      data:
+        _attackType: 0
+    - rid: 6414747703172923402
+      type: {class: ActionSetParticle, ns: , asm: Assembly-CSharp}
+      data:
+        _particalType: 2
+        _nextQueue: 0
+    - rid: 6414747703172923403
+      type: {class: ActionWaitNextAttack, ns: , asm: Assembly-CSharp}
+    - rid: 6414747703172923405
+      type: {class: ActionWait, ns: , asm: Assembly-CSharp}
+      data:
+        _waitTime: 5
+    - rid: 6414747703172923408
+      type: {class: ActionIdle, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: Idle
+    - rid: 6414747703172923409
+      type: {class: ActionIdle, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: 
 --- !u!1 &2473086590774950143
 GameObject:
   m_ObjectHideFlags: 0

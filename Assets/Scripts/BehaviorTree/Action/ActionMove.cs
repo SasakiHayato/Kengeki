@@ -11,6 +11,7 @@ public class ActionMove : IAction
 
     [SerializeField] string _animName;
     [SerializeField] MoveDirType _moveDirType;
+    [SerializeField] bool _applyY;
 
     EnemyBase _enemyBase;
     Transform _user;
@@ -27,14 +28,18 @@ public class ActionMove : IAction
     {
         if (_animName != "") _enemyBase.Anim.Play(_animName);
 
+        Vector3 dir = (_user.position - _player.position).normalized;
+
+        if (!_applyY) dir.y = 0; 
+
         switch (_moveDirType)
         {
             case MoveDirType.TowardPlayer:
-                _enemyBase.MoveDir = (_user.position - _player.position) * -1;
+                _enemyBase.MoveDir = dir * -1;
 
                 break;
             case MoveDirType.Back:
-                _enemyBase.MoveDir = (_user.position - _player.position);
+                _enemyBase.MoveDir = dir;
 
                 break;
         }
