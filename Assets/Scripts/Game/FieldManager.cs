@@ -44,8 +44,11 @@ public class FieldManager : MonoBehaviour, IManager
         foreach (EnemyPath path in tip.EnemyPaths)
         {
             GameObject obj = Instantiate(GameManager.Instance.ObjectData.GetData(path.ToString()).Prefab);
-            Vector3 setPos = data.Position.Center;
-            setPos.y += 5;
+
+            float x = Random.Range(data.Position.UpperLeft.x, data.Position.BottomRight.x);
+            float z = Random.Range(data.Position.UpperLeft.z, data.Position.BottomRight.z);
+
+            Vector3 setPos = new Vector3(x, 5, z);
             obj.transform.position = setPos;
 
             obj.GetComponent<EnemyBase>().SetRoomID(data.Info.ID);

@@ -152,25 +152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3db5c78c661794a4bb56cf17c8020e0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isDebug: 0
-  _horizontalRange: 200
-  _verticalRange: 220
-  _loadWidth: 3
-  _initCellType: 3
-  _roomData:
-    _roomCount: 6
-    _minRoomRange: 30
-    _maxRoomRange: 40
-    _roomDistance: 1
-  _cellDatas:
-  - _cellType: 0
-    _tip: {fileID: 4403028048830911585, guid: b2abf67e2389fcf418a80a21f33965b9, type: 3}
-  - _cellType: 1
-    _tip: {fileID: 4403028048830911585, guid: 1ac2b2bda6988b64f8f43b60a9ecd655, type: 3}
-  - _cellType: 3
-    _tip: {fileID: 476689167495915862, guid: d10416d5aa53cc14a97354976d092bed, type: 3}
-  - _cellType: 2
-    _tip: {fileID: 6055881476379598046, guid: 8decdb1cf4913d34b82e44100cce217b, type: 3}
 --- !u!4 &100074034
 Transform:
   m_ObjectHideFlags: 0
@@ -806,7 +787,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6701862034259071486, guid: e5ac9fd144964d94aa884e5f6d3bddca, type: 3}
       propertyPath: m_Name
-      value: MapCreater (1)
+      value: MapCreater
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5ac9fd144964d94aa884e5f6d3bddca, type: 3}

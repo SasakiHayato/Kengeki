@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: EnemyDataTip
   m_EditorClassIdentifier: 
   _dataTips:
+  - _enemyPaths: 0000000001000000
   - _enemyPaths: 00000000
+  - _enemyPaths: 01000000
