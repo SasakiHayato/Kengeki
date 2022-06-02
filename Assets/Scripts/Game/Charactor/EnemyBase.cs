@@ -45,5 +45,12 @@ public abstract class EnemyBase : CharaBase
         GetComponentInChildren<EnemyCanvas>().SetUp();
     }
 
+    protected override void DestoryRequest()
+    {
+        GameManager.Instance.GetManager<FieldManager>(nameof(FieldManager)).RemoveEnemyEvent(RoomID, this);
+
+        base.DestoryRequest();
+    }
+
     public void SetRoomID(int id) => RoomID = id;
 }

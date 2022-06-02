@@ -23,6 +23,7 @@ public class MapCreater : MonoBehaviour
 
     class CellData
     {
+        public GameObject Tip { get; set; }
         public Vector3 Position { get; set; }
         public CellType CellType { get; set; }
     }
@@ -32,8 +33,8 @@ public class MapCreater : MonoBehaviour
         public PositionData Position { get; set; }
         public RoomInfo Info { get; set; }
 
-        public bool IsSet { get; private set; }
-        public void IsRoomSetUp(bool isSetup) => IsSet = isSetup;
+        public bool IsSetUp { get; private set; }
+        public void IsRoomSetUp(bool isSetup) => IsSetUp = isSetup;
 
         public class PositionData
         {
@@ -59,12 +60,23 @@ public class MapCreater : MonoBehaviour
             public int Range { get; private set; }
             public Vector2 CellIndex { get; private set; }
 
+            public bool SetTeleporter { get; private set; }
+
+            public List<EnemyBase> EnemyList { get; private set; }
+
             public RoomInfo(int id, int range, Vector2 cellIndex)
             {
                 ID = id;
                 Range = range;
                 CellIndex = cellIndex;
+
+                EnemyList = new List<EnemyBase>();
             }
+
+            public void IsSetTeleporter(bool isSet) => SetTeleporter = isSet;
+
+            public void AddEnemy(EnemyBase enemyBase) => EnemyList.Add(enemyBase);
+            public void RemoveEnemy(EnemyBase enemyBase) => EnemyList.Remove(enemyBase);
         }
     }
 
@@ -92,10 +104,14 @@ public class MapCreater : MonoBehaviour
 
     int _roomID;
 
+    GameObject _parent;
+
     public List<RoomData> RoomList => _roomDatas;
 
     public void Create()
     {
+        _parent = new GameObject("MapCells");
+
         Initalize();
 
         for (int i = 0; i < _roomCount; i++)
@@ -108,6 +124,28 @@ public class MapCreater : MonoBehaviour
         CreateWall();
 
         View();
+    }
+
+    public void SetTeleportFrag()
+    {
+        var list = RoomList.Where(r => !r.IsSetUp);
+        int random = Random.Range(0, list.Count());
+
+        RoomData.RoomInfo info = list.ToList()[random].Info;
+        info.IsSetTeleporter(true);
+    }
+
+    public void SetTeleport()
+    {
+        RoomData data = RoomList.FirstOrDefault(r => r.Info.SetTeleporter);
+        Vector3 cellPosition = data.Position.Center;
+
+        CellData cellData = _cellDatas[(int)cellPosition.x, (int)cellPosition.z];
+        cellData.CellType = CellType.Teleporter;
+
+        Destroy(cellData.Tip);
+
+        Set(cellData, _parent);
     }
 
     void CreateRoom()
@@ -298,8 +336,6 @@ public class MapCreater : MonoBehaviour
 
     void View()
     {
-        GameObject obj = new GameObject("MapCells");
-
         for (int x = 0; x < _horizontalRange; x++)
         {
             for (int y = 0; y < _verticalRange; y++)
@@ -308,12 +344,19 @@ public class MapCreater : MonoBehaviour
 
                 if (cellData.CellType == CellType.None) continue;
 
-                GameObject tip = Instantiate(_tipDatas.FirstOrDefault(t => t.CellType == cellData.CellType).TipPrefab);
-                tip.transform.position = cellData.Position;
-
-                tip.transform.SetParent(obj.transform);
+                Set(cellData, _parent);
             }
         }
+    }
+
+    void Set(CellData cellData, GameObject parent)
+    {
+        GameObject tip = Instantiate(_tipDatas.FirstOrDefault(t => t.CellType == cellData.CellType).TipPrefab);
+        tip.transform.position = cellData.Position;
+
+        cellData.Tip = tip;
+
+        tip.transform.SetParent(parent.transform);
     }
 
     void Initalize()
