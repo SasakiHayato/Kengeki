@@ -470,7 +470,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameState: 1
   _inputterType: 0
-  _isDebug: 0
 --- !u!1 &692875511
 GameObject:
   m_ObjectHideFlags: 0
@@ -749,6 +748,10 @@ PrefabInstance:
     - target: {fileID: 6701862034259071486, guid: e5ac9fd144964d94aa884e5f6d3bddca, type: 3}
       propertyPath: m_Name
       value: MapCreater
+      objectReference: {fileID: 0}
+    - target: {fileID: 6701862034259071487, guid: e5ac9fd144964d94aa884e5f6d3bddca, type: 3}
+      propertyPath: _arenaHierarchy
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6701862034259071487, guid: e5ac9fd144964d94aa884e5f6d3bddca, type: 3}
       propertyPath: _tipDatas.Array.size
