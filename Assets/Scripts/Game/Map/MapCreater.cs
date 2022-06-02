@@ -45,12 +45,14 @@ public class MapCreater : MonoBehaviour
     [SerializeField] int _maxRoomRange;
     [SerializeField] int _roomDistance;
     [SerializeField] int _loadWidth;
+    [SerializeField] int _arenaHierarchy;
     [SerializeField] List<TipData> _tipDatas;
 
     CellData[,] _cellDatas;
     List<RoomData> _roomDatas;
 
     int _roomID;
+    int _saveRoomCount;
 
     GameObject _parent;
 
@@ -64,16 +66,42 @@ public class MapCreater : MonoBehaviour
 
         Initalize();
 
-        for (int i = 0; i < _roomCount; i++)
+        int hierarchy = GameManager.Instance.FieldHierarchy;
+
+        if (hierarchy % _arenaHierarchy == 0)
+        {
+            _saveRoomCount = 2;
+            ArenaMap();
+        }
+        else
+        {
+            _saveRoomCount = _roomCount;
+            NormalMap();
+        }
+
+        CreateWall();
+        View();
+    }
+
+    void NormalMap()
+    {
+        for (int i = 0; i < _saveRoomCount; i++)
         {
             CreateRoom();
         }
 
         CreateLoad();
         OverwriteRoom();
-        CreateWall();
+    }
 
-        View();
+    void ArenaMap()
+    {
+        for (int i = 0; i < _saveRoomCount; i++)
+        {
+            CreateRoom();
+        }
+        
+        CreateLoad();
     }
 
     public void SetTeleportFrag()
@@ -166,9 +194,9 @@ public class MapCreater : MonoBehaviour
 
     void CreateLoad()
     {
-        for (int x = 0; x < _roomCount; x++)
+        for (int x = 0; x < _saveRoomCount; x++)
         {
-            for (int y = x + 1; y < _roomCount; y++)
+            for (int y = x + 1; y < _saveRoomCount; y++)
             {
                 CheckIsCreateLoad(_roomDatas[x], _roomDatas[y]);
             }
