@@ -15,7 +15,7 @@ MonoBehaviour:
   _type: 0
   _datas:
   - _animName: Attack_3Combo_1
-    _power: 0
+    _power: 1
     _isActiveFrame: 7
     _endActiveFrame: 14
     _nextInputFrame: 23
@@ -27,7 +27,7 @@ MonoBehaviour:
         rid: -2
       _executeFrame: 0
   - _animName: Attack_3Combo_2
-    _power: 0
+    _power: 1
     _isActiveFrame: 5
     _endActiveFrame: 12
     _nextInputFrame: 18
@@ -39,10 +39,10 @@ MonoBehaviour:
         rid: -2
       _executeFrame: 0
   - _animName: Attack_3Combo_3
-    _power: 0
-    _isActiveFrame: 0
-    _endActiveFrame: 0
-    _nextInputFrame: 0
+    _power: 1
+    _isActiveFrame: 10
+    _endActiveFrame: 15
+    _nextInputFrame: 25
     _effctTypes: 0000000001000000
     _actionData:
       _hitAction:

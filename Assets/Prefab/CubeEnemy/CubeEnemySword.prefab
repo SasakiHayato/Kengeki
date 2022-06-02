@@ -181,6 +181,7 @@ MonoBehaviour:
       data:
         _animName: 
         _moveDirType: 0
+        _applyY: 1
     - rid: 3710212216005853189
       type: {class: ActionRotate, ns: , asm: Assembly-CSharp}
     - rid: 3710212216005853190
@@ -191,6 +192,7 @@ MonoBehaviour:
       type: {class: ActionIdle, ns: , asm: Assembly-CSharp}
       data:
         _animName: CubeEnemy_Idle
+        _applyY: 0
     - rid: 3710212216005853195
       type: {class: ConditionDistance, ns: , asm: Assembly-CSharp}
       data:
@@ -209,6 +211,7 @@ MonoBehaviour:
       type: {class: ActionIdle, ns: , asm: Assembly-CSharp}
       data:
         _animName: CubeEnemy_Idle
+        _applyY: 0
     - rid: 3710212494985003010
       type: {class: ActionSetParticle, ns: , asm: Assembly-CSharp}
       data:

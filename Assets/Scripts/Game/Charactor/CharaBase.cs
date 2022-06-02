@@ -73,6 +73,7 @@ public class CharaData
     public int ID { get; private set; }
     public string Name { get; private set; }
     public int HP { get; private set; }
+    public int MaxHP;
     public float Speed { get; private set; }
     public int Power { get; private set; }
     public float DefaultSpeed { get; private set; }
@@ -82,6 +83,7 @@ public class CharaData
     {
         Name = data.Name;
         HP = data.HP;
+        MaxHP = data.HP;
         Speed = data.Speed;
         Power = data.Power;
         DefaultSpeed = data.Speed;

@@ -1437,7 +1437,24 @@ MonoBehaviour:
     Priority: 0
     BranchConditionals:
     - rid: 6414747703172923396
+    - rid: 6414747707582709763
+    - rid: 6414747707582709771
+    BrockDatas:
+    - QueueType: 0
+      QueueDatas:
+      - RunType: 0
+        Condition: 0
+        Conditionals:
+        - rid: 6414747707582709772
+        Actions:
+        - rid: 6414747707582709773
+  - BrockType: 2
+    Condition: 0
+    Priority: 0
+    BranchConditionals:
+    - rid: 6414747703172923396
     - rid: 6414747703172923400
+    - rid: 6414747707582709762
     BrockDatas:
     - QueueType: 0
       QueueDatas:
@@ -1449,6 +1466,7 @@ MonoBehaviour:
         - rid: 6414747703172923408
         - rid: 6414747703172923402
         - rid: 6414747703172923401
+        - rid: 6414747707582709770
         - rid: 6414747703172923403
       - RunType: 0
         Condition: 0
@@ -1458,18 +1476,31 @@ MonoBehaviour:
         - rid: 6414747703172923409
         - rid: 6414747703172923402
         - rid: 6414747703172923401
+        - rid: 6414747707582709769
         - rid: 6414747703172923403
       - RunType: 0
         Condition: 0
         Conditionals:
         - rid: 6414747703172923392
         Actions:
-        - rid: 6414747703172923405
+        - rid: 6414747703172923409
+        - rid: 6414747703172923402
+        - rid: 6414747703172923401
+        - rid: 6414747707582709768
+        - rid: 6414747707582709764
+      - RunType: 1
+        Condition: 0
+        Conditionals:
+        - rid: 6414747703172923392
+        Actions:
+        - rid: 6414747707582709767
+        - rid: 6414747707582709766
   - BrockType: 2
     Condition: 0
     Priority: 0
     BranchConditionals:
     - rid: 6414747703172923396
+    - rid: 6414747707582709763
     BrockDatas:
     - QueueType: 0
       QueueDatas:
@@ -1480,6 +1511,7 @@ MonoBehaviour:
         Actions:
         - rid: 6414747703172923397
         - rid: 6414747703172923398
+        - rid: 6414747707582709761
   references:
     version: 2
     RefIds:
@@ -1489,6 +1521,7 @@ MonoBehaviour:
       type: {class: ActionIdle, ns: , asm: Assembly-CSharp}
       data:
         _animName: Idle
+        _applyY: 1
     - rid: 6414747703172923396
       type: {class: ConditionEntryRoom, ns: , asm: Assembly-CSharp}
     - rid: 6414747703172923397
@@ -1514,18 +1547,50 @@ MonoBehaviour:
         _nextQueue: 0
     - rid: 6414747703172923403
       type: {class: ActionWaitNextAttack, ns: , asm: Assembly-CSharp}
-    - rid: 6414747703172923405
-      type: {class: ActionWait, ns: , asm: Assembly-CSharp}
-      data:
-        _waitTime: 5
     - rid: 6414747703172923408
       type: {class: ActionIdle, ns: , asm: Assembly-CSharp}
       data:
         _animName: Idle
+        _applyY: 1
     - rid: 6414747703172923409
       type: {class: ActionIdle, ns: , asm: Assembly-CSharp}
       data:
         _animName: 
+        _applyY: 0
+    - rid: 6414747707582709761
+      type: {class: ActionAttackCancel, ns: , asm: Assembly-CSharp}
+    - rid: 6414747707582709762
+      type: {class: ConditionIsGround, ns: , asm: Assembly-CSharp}
+    - rid: 6414747707582709763
+      type: {class: ConditionIsGround, ns: , asm: Assembly-CSharp}
+    - rid: 6414747707582709764
+      type: {class: ActionWaitNextAttack, ns: , asm: Assembly-CSharp}
+    - rid: 6414747707582709766
+      type: {class: ActionTaskTowardPosition, ns: , asm: Assembly-CSharp}
+      data:
+        _updateSpeed: 12
+        _effectDist: 3
+    - rid: 6414747707582709767
+      type: {class: ActionPlayAnim, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: Dodge_Right
+    - rid: 6414747707582709768
+      type: {class: ActionRotate, ns: , asm: Assembly-CSharp}
+    - rid: 6414747707582709769
+      type: {class: ActionRotate, ns: , asm: Assembly-CSharp}
+    - rid: 6414747707582709770
+      type: {class: ActionRotate, ns: , asm: Assembly-CSharp}
+    - rid: 6414747707582709771
+      type: {class: ConditionCheckHP, ns: , asm: Assembly-CSharp}
+      data:
+        _effectParsent: 0.75
+    - rid: 6414747707582709772
+      type: {class: ConditionEmpty, ns: , asm: Assembly-CSharp}
+    - rid: 6414747707582709773
+      type: {class: ActionIdle, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: 
+        _applyY: 0
 --- !u!1 &2473086590774950143
 GameObject:
   m_ObjectHideFlags: 0
@@ -2762,11 +2827,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3692431610443909662, guid: b0c65007c3e0828489f26a08c3e60f9f, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9460005
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3692431610443909662, guid: b0c65007c3e0828489f26a08c3e60f9f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.3241651
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3692431610443909662, guid: b0c65007c3e0828489f26a08c3e60f9f, type: 3}
       propertyPath: m_LocalRotation.y
@@ -2778,7 +2843,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3692431610443909662, guid: b0c65007c3e0828489f26a08c3e60f9f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 37.83
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3692431610443909662, guid: b0c65007c3e0828489f26a08c3e60f9f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y

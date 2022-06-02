@@ -35,7 +35,7 @@ namespace BehaviourTree
         bool _isSetUp = false;
         int _branchID = 0;
 
-        int _saveConditionalID = 0;
+        int _saveBranchID = 0;
 
         public List<BranchData> ConditionallyBranches { get; private set; }
         public List<BranchData> NormalBranches { get; private set; }
@@ -183,16 +183,28 @@ namespace BehaviourTree
                 _runBranch = branch;
             }
 
-            if (branch.ID != _saveConditionalID)
+            if (branch.ID != _saveBranchID)
             {
                 _sequenceNode.Init();
                 _selectorNode.Init();
                 _actionNode.Init();
-                _saveConditionalID = branch.ID;
+                _saveBranchID = branch.ID; _branchDatas.ForEach(branch =>
+                {
+                    branch.BrockDatas.ForEach(brock =>
+                    {
+                        brock.QueueDatas.ForEach(queue =>
+                        {
+                            queue.Conditionals.ForEach(c => c.InitParam());
+                            queue.Actions.ForEach(a => a.InitParam());
+                        });
+                    });
+                });
+
+                return;
             }
 
-            BlockData blockData = null;
-            QueueData queueData = null;
+            BlockData blockData;
+            QueueData queueData;
 
             //　ブロックの取得
             if (branch.BrockType == BrockType.Sequence
@@ -269,7 +281,7 @@ namespace BehaviourTree
             _actionNode.Init();
             _selectorNode.Init();
             _sequenceNode.Init();
-            _saveConditionalID = 0;
+            _saveBranchID = 0;
 
             _branchDatas.ForEach(branch =>
             {

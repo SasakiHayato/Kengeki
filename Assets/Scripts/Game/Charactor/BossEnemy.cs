@@ -17,8 +17,9 @@ public class BossEnemy : EnemyBase, IDamage
         StateManager.Run();
 
         Vector3 move = Vector3.Scale(MoveDir, PhysicsBase.Gravity);
-        
-        RB.velocity = move * CharaData.Speed;
+
+        if  (PhysicsBase.IsForce) RB.velocity = move;
+        else RB.velocity = move * CharaData.Speed;
     }
 
     public bool GetDamage(int damage)

@@ -4,6 +4,7 @@ using BehaviourTree;
 public class ActionIdle : IAction
 {
     [SerializeField] string _animName;
+    [SerializeField] bool _applyY;
 
     EnemyBase _enemyBase;
 
@@ -16,7 +17,8 @@ public class ActionIdle : IAction
     {
         if (_animName != "") _enemyBase.Anim.Play(_animName);
 
-        _enemyBase.MoveDir = Vector3.up;
+        if (!_applyY) _enemyBase.MoveDir = Vector3.zero;
+        else _enemyBase.MoveDir = Vector3.up;
 
         return true;
     }
