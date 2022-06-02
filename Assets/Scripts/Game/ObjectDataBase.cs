@@ -12,8 +12,8 @@ public class ObjectDataBase : ScriptableObject
     [System.Serializable]
     public class Data
     {
-        public GameObject Prefab;
         public string Name;
+        public GameObject Prefab;
         public int HP;
         public float Speed;
         public int Power;

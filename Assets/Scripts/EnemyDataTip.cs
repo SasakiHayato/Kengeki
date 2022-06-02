@@ -1,11 +1,12 @@
 using UnityEngine;
-using System.Linq;
 using System.Collections.Generic;
 
 public enum EnemyPath
 {
     CubeEnemySword,
     CubeEnemyBullet,
+
+    BossGrruzam,
 }
 
 public enum EnemyType

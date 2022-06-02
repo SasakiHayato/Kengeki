@@ -16,7 +16,7 @@ public class ActionIdle : IAction
     {
         if (_animName != "") _enemyBase.Anim.Play(_animName);
 
-        _enemyBase.MoveDir = Vector3.zero;
+        _enemyBase.MoveDir = Vector3.up;
 
         return true;
     }

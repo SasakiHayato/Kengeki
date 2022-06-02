@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CubeEnemy : EnemyBase, IDamage
+public class MobEnemy : EnemyBase, IDamage
 {
     AttackSetting _attackSetting;
 
