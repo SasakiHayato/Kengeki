@@ -188,7 +188,9 @@ namespace BehaviourTree
                 _sequenceNode.Init();
                 _selectorNode.Init();
                 _actionNode.Init();
-                _saveBranchID = branch.ID; _branchDatas.ForEach(branch =>
+                _saveBranchID = branch.ID; 
+                
+                _branchDatas.ForEach(branch =>
                 {
                     branch.BrockDatas.ForEach(brock =>
                     {
@@ -199,8 +201,6 @@ namespace BehaviourTree
                         });
                     });
                 });
-
-                return;
             }
 
             BlockData blockData;

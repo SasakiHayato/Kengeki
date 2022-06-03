@@ -61,6 +61,24 @@ public class SubclassSelectorDrawer : PropertyDrawer
         typeFullNameArray = inheritedTypes.Select(type => type == null ? "" : string.Format("{0} {1}", type.Assembly.ToString().Split(',')[0], type.FullName)).ToArray();
     }
 
+    private void UpdatePropertyToSelectedTypeIndex(SerializedProperty property, int selectedTypeIndex)
+    {
+        if (currentTypeIndex == selectedTypeIndex) return;
+        currentTypeIndex = selectedTypeIndex;
+        Type selectedType = inheritedTypes[selectedTypeIndex];
+        property.managedReferenceValue =
+            selectedType == null ? null : Activator.CreateInstance(selectedType);
+    }
+
+    private Rect GetPopupPosition(Rect currentPosition)
+    {
+        Rect popupPosition = new Rect(currentPosition);
+        popupPosition.width -= EditorGUIUtility.labelWidth;
+        popupPosition.x += EditorGUIUtility.labelWidth;
+        popupPosition.height = EditorGUIUtility.singleLineHeight;
+        return popupPosition;
+    }
+
     public static Type GetFieldType(SerializedProperty property)
     {
         const BindingFlags bindingAttr =
@@ -89,6 +107,7 @@ public class SubclassSelectorDrawer : PropertyDrawer
                 {
                     // GetGenericArguments ‚Å—v‘f‚ÌŒ^‚ðŽæ“¾‚·‚é
                     var genericArguments = fieldType.GetGenericArguments();
+                    if (genericArguments.Count() == 0) continue;
                     fieldType = genericArguments[0];
                 }
 
@@ -97,29 +116,14 @@ public class SubclassSelectorDrawer : PropertyDrawer
                 continue;
             }
 
-            //else
-            fieldType = field.FieldType;
+            if (field != null)
+            {
+                //else
+                fieldType = field.FieldType;
+            }
         }
 
         return fieldType;
-    }
-
-    private void UpdatePropertyToSelectedTypeIndex(SerializedProperty property, int selectedTypeIndex)
-    {
-        if (currentTypeIndex == selectedTypeIndex) return;
-        currentTypeIndex = selectedTypeIndex;
-        Type selectedType = inheritedTypes[selectedTypeIndex];
-        property.managedReferenceValue =
-            selectedType == null ? null : Activator.CreateInstance(selectedType);
-    }
-
-    private Rect GetPopupPosition(Rect currentPosition)
-    {
-        Rect popupPosition = new Rect(currentPosition);
-        popupPosition.width -= EditorGUIUtility.labelWidth;
-        popupPosition.x += EditorGUIUtility.labelWidth;
-        popupPosition.height = EditorGUIUtility.singleLineHeight;
-        return popupPosition;
     }
 }
 #endif

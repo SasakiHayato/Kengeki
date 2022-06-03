@@ -1438,16 +1438,17 @@ MonoBehaviour:
     BranchConditionals:
     - rid: 6414747703172923396
     - rid: 6414747707582709763
-    - rid: 6414747707582709771
+    - rid: 6414747721681338369
     BrockDatas:
     - QueueType: 0
       QueueDatas:
-      - RunType: 0
+      - RunType: 1
         Condition: 0
         Conditionals:
         - rid: 6414747707582709772
         Actions:
-        - rid: 6414747707582709773
+        - rid: 6414747721681338373
+        - rid: 6414747721681338374
   - BrockType: 2
     Condition: 0
     Priority: 0
@@ -1580,17 +1581,31 @@ MonoBehaviour:
       type: {class: ActionRotate, ns: , asm: Assembly-CSharp}
     - rid: 6414747707582709770
       type: {class: ActionRotate, ns: , asm: Assembly-CSharp}
-    - rid: 6414747707582709771
+    - rid: 6414747707582709772
+      type: {class: ConditionEmpty, ns: , asm: Assembly-CSharp}
+    - rid: 6414747721681338369
+      type: {class: ConditionLimit, ns: , asm: Assembly-CSharp}
+      data:
+        _limitCount: 1
+        _type: 0
+        _conditions:
+        - rid: 6414747721681338370
+    - rid: 6414747721681338370
       type: {class: ConditionCheckHP, ns: , asm: Assembly-CSharp}
       data:
         _effectParsent: 0.75
-    - rid: 6414747707582709772
-      type: {class: ConditionEmpty, ns: , asm: Assembly-CSharp}
-    - rid: 6414747707582709773
-      type: {class: ActionIdle, ns: , asm: Assembly-CSharp}
+    - rid: 6414747721681338373
+      type: {class: ActionWait, ns: , asm: Assembly-CSharp}
       data:
-        _animName: 
-        _applyY: 0
+        _waitTime: 5
+    - rid: 6414747721681338374
+      type: {class: Console, ns: , asm: Assembly-CSharp}
+      data:
+        _cosole: AAA
+        _activeSetUp: 0
+        _activeTry: 0
+        _activeExecute: 1
+        _activeInit: 0
 --- !u!1 &2473086590774950143
 GameObject:
   m_ObjectHideFlags: 0
