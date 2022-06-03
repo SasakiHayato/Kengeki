@@ -64,8 +64,10 @@ public class CmManager : ManagerBase
     float _viewTimer;
     
     Transform _virtualityCm;
+
     RadialBlurRender _radialrAttribute;
     GrayScaleRender _grayAttribute;
+    NoiseRenderer _noiseAttribute;
 
     StateManager _state;
     public Data CmData { get; private set; }
@@ -107,6 +109,7 @@ public class CmManager : ManagerBase
 
         _radialrAttribute = GetComponent<RadialBlurRender>();
         _grayAttribute = GetComponent<GrayScaleRender>();
+        _noiseAttribute = GetComponent<NoiseRenderer>();
 
         base.SetUp();
     }
@@ -208,6 +211,11 @@ public class CmManager : ManagerBase
     public void GrayScale(float strangth, float duration = 1)
     {
         _grayAttribute.SetStrength(strangth, duration);
+    }
+
+    public void Noise(float strength, float duration = 1)
+    {
+        _noiseAttribute.SetStrength(strength, duration);
     }
 
     public GameObject FindCenterTarget(ObjectType type, float findDist)

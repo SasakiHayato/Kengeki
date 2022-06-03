@@ -113,7 +113,7 @@ public class PhysicsBase : MonoBehaviour
     {
         _forceDir = dir.normalized;
         _forcePower = power;
-
+        
         IsForce = true;
     }
 

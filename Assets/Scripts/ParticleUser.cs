@@ -1,8 +1,11 @@
 using UnityEngine;
+using Cysharp.Threading.Tasks;
+using System;
 
 public class ParticleUser : MonoBehaviour, IPool
 {
-    ParticleSystem _particleSystem;
+    [SerializeField] ParticleSystem _particleSystem;
+    [SerializeField] float _delayPlayTime;
 
     bool _isExecution = false;
 
@@ -10,7 +13,10 @@ public class ParticleUser : MonoBehaviour, IPool
 
     public void SetUp(Transform parent)
     {
-        _particleSystem = GetComponent<ParticleSystem>();
+        if (_particleSystem == null)
+        {
+            _particleSystem = GetComponent<ParticleSystem>();
+        }
 
         ParticleSystem.MainModule particlal = _particleSystem.main;
         particlal.stopAction = ParticleSystemStopAction.Callback;
@@ -21,8 +27,14 @@ public class ParticleUser : MonoBehaviour, IPool
     public void IsUseSetUp()
     {
         gameObject.SetActive(true);
-        _particleSystem.Play();
+        DelayPlay().Forget();
         _isExecution = true;
+    }
+
+    async UniTask DelayPlay()
+    {
+        await UniTask.Delay(TimeSpan.FromSeconds(_delayPlayTime));
+        _particleSystem.Play();
     }
 
     void OnParticleSystemStopped()
@@ -32,6 +44,11 @@ public class ParticleUser : MonoBehaviour, IPool
 
     public bool Execute()
     {
+        if (!_particleSystem.isPlaying)
+        {
+            _isExecution = false;
+        }
+
         return _isExecution;
     }
 

@@ -314,6 +314,20 @@ MonoBehaviour:
   _shader: {fileID: 4800000, guid: dc89adb086d9dc0468030c189134b43a, type: 3}
   _sampleCount: 8
   _strength: 0
+--- !u!114 &326519844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326519837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 850469679da81e74ea421bab3d4bace5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shader: {fileID: 4800000, guid: 030e600d609060843bc751e19723d41b, type: 3}
+  _horizonValue: 0
 --- !u!4 &326947061 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5064831249328109829, guid: f2389b99b0c7d554cabe8575d766dd38, type: 3}

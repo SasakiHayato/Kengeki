@@ -24,7 +24,7 @@ MonoBehaviour:
       _hitAction:
         rid: -2
       _attackAction:
-        rid: -2
+        rid: 6414747721681338389
       _executeFrame: 0
   - _animName: Attack_3Combo_2
     _power: 1
@@ -36,7 +36,7 @@ MonoBehaviour:
       _hitAction:
         rid: -2
       _attackAction:
-        rid: -2
+        rid: 6414747721681338390
       _executeFrame: 0
   - _animName: Attack_3Combo_3
     _power: 1
@@ -48,10 +48,28 @@ MonoBehaviour:
       _hitAction:
         rid: -2
       _attackAction:
-        rid: -2
+        rid: 6414747721681338391
       _executeFrame: 0
   references:
     version: 2
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
+    - rid: 6414747721681338389
+      type: {class: AttackActionEnemyMove, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 0
+        _moveTime: 0.2
+        _applyYPosition: 0
+    - rid: 6414747721681338390
+      type: {class: AttackActionEnemyMove, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 0
+        _moveTime: 0.2
+        _applyYPosition: 0
+    - rid: 6414747721681338391
+      type: {class: AttackActionEnemyMove, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 0
+        _moveTime: 0.5
+        _applyYPosition: 0

@@ -1344,6 +1344,7 @@ MonoBehaviour:
   _targetCollider: {fileID: 2115539633606077964}
   _attackDatas:
   - {fileID: 11400000, guid: ca53e3557caa53a45939a98fb7fad6e6, type: 2}
+  - {fileID: 11400000, guid: 037fd8f28e49cf447a77654086d31d2c, type: 2}
 --- !u!114 &7318265668539436707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1438,6 +1439,22 @@ MonoBehaviour:
     BranchConditionals:
     - rid: 6414747703172923396
     - rid: 6414747707582709763
+    - rid: 6414747721681338392
+    BrockDatas:
+    - QueueType: 0
+      QueueDatas:
+      - RunType: 0
+        Condition: 0
+        Conditionals:
+        - rid: 6414747721681338394
+        Actions:
+        - rid: 6414747721681338395
+  - BrockType: 2
+    Condition: 0
+    Priority: 0
+    BranchConditionals:
+    - rid: 6414747703172923396
+    - rid: 6414747707582709763
     - rid: 6414747721681338369
     BrockDatas:
     - QueueType: 0
@@ -1447,8 +1464,15 @@ MonoBehaviour:
         Conditionals:
         - rid: 6414747707582709772
         Actions:
-        - rid: 6414747721681338373
-        - rid: 6414747721681338374
+        - rid: 6414747721681338375
+        - rid: 6414747721681338387
+        - rid: 6414747721681338386
+        - rid: 6414747721681338388
+        - rid: 6414747721681338385
+        - rid: 6414747721681338381
+        - rid: 6414747721681338378
+        - rid: 6414747721681338380
+        - rid: 6414747721681338382
   - BrockType: 2
     Condition: 0
     Priority: 0
@@ -1569,6 +1593,7 @@ MonoBehaviour:
     - rid: 6414747707582709766
       type: {class: ActionTaskTowardPosition, ns: , asm: Assembly-CSharp}
       data:
+        _type: 1
         _updateSpeed: 12
         _effectDist: 3
     - rid: 6414747707582709767
@@ -1594,18 +1619,68 @@ MonoBehaviour:
       type: {class: ConditionCheckHP, ns: , asm: Assembly-CSharp}
       data:
         _effectParsent: 0.75
-    - rid: 6414747721681338373
-      type: {class: ActionWait, ns: , asm: Assembly-CSharp}
+    - rid: 6414747721681338375
+      type: {class: ActionTaskTowardPosition, ns: , asm: Assembly-CSharp}
       data:
-        _waitTime: 5
-    - rid: 6414747721681338374
-      type: {class: Console, ns: , asm: Assembly-CSharp}
+        _type: 0
+        _updateSpeed: 15
+        _effectDist: 1.7
+    - rid: 6414747721681338378
+      type: {class: ActionAttack, ns: , asm: Assembly-CSharp}
       data:
-        _cosole: AAA
-        _activeSetUp: 0
-        _activeTry: 0
-        _activeExecute: 1
-        _activeInit: 0
+        _attackType: 2
+    - rid: 6414747721681338380
+      type: {class: ActionWaitNextAttack, ns: , asm: Assembly-CSharp}
+    - rid: 6414747721681338381
+      type: {class: ActionChangeScale, ns: , asm: Assembly-CSharp}
+      data:
+        _terget: {fileID: 8955983091552384534}
+        _setScale: {x: 5, y: 5, z: 5}
+    - rid: 6414747721681338382
+      type: {class: ActionChangeScale, ns: , asm: Assembly-CSharp}
+      data:
+        _terget: {fileID: 8955983091552384534}
+        _setScale: {x: 1, y: 1, z: 1}
+    - rid: 6414747721681338385
+      type: {class: ActionMove, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: 
+        _moveDirType: 0
+        _applyY: 0
+    - rid: 6414747721681338386
+      type: {class: ActionSetParticle, ns: , asm: Assembly-CSharp}
+      data:
+        _particalType: 3
+        _nextQueue: 0
+    - rid: 6414747721681338387
+      type: {class: ActionIdle, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: 
+        _applyY: 0
+    - rid: 6414747721681338388
+      type: {class: ActionSetParticle, ns: , asm: Assembly-CSharp}
+      data:
+        _particalType: 4
+        _nextQueue: 1
+    - rid: 6414747721681338392
+      type: {class: ConditionLimit, ns: , asm: Assembly-CSharp}
+      data:
+        _limitCount: 1
+        _type: 0
+        _conditions:
+        - rid: 6414747721681338393
+    - rid: 6414747721681338393
+      type: {class: ConditionCheckHP, ns: , asm: Assembly-CSharp}
+      data:
+        _effectParsent: 0.5
+    - rid: 6414747721681338394
+      type: {class: ConditionEmpty, ns: , asm: Assembly-CSharp}
+    - rid: 6414747721681338395
+      type: {class: ActionTaskTowardPosition, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 0
+        _updateSpeed: 15
+        _effectDist: 3
 --- !u!1 &2473086590774950143
 GameObject:
   m_ObjectHideFlags: 0
@@ -2875,12 +2950,30 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5924642953037505668, guid: b0c65007c3e0828489f26a08c3e60f9f, type: 3}
   m_PrefabInstance: {fileID: 5720529711374518920}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 8955983091552384534}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9527520320f478d1619649fbae61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &8955983091552384534 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3686596918813244574, guid: b0c65007c3e0828489f26a08c3e60f9f, type: 3}
+  m_PrefabInstance: {fileID: 5720529711374518920}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4150790012702172181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8955983091552384534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6c276dce784cfc4fbce101f13240f10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collectionDist: 3
 --- !u!4 &8961390895511699606 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3692431610443909662, guid: b0c65007c3e0828489f26a08c3e60f9f, type: 3}

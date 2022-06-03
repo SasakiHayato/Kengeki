@@ -14,6 +14,7 @@ public class Player : CharaBase, IDamage
         Float,
         Attack,
         Dodge,
+        KnockBack,
     }
 
     Vector3 _saveDir;
@@ -49,6 +50,7 @@ public class Player : CharaBase, IDamage
             .AddState(new PlayerFloat(), State.Float)
             .AddState(new PlayerAttack(), State.Attack)
             .AddState(new PlayerDodge(), State.Dodge)
+            .AddState(new PlayerKnockBack(), State.KnockBack)
             .RunRequest(true, State.Idle);
 
         BaseUI.Instance.CallBack("PlayerUI", "HP");
@@ -151,6 +153,7 @@ public class Player : CharaBase, IDamage
         if (damage <= 0) return false;
 
         CharaData.UpDateHP(-damage);
+        _state.ChangeState(State.KnockBack);
         return true;
     }
 }

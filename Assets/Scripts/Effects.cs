@@ -8,6 +8,7 @@ public enum AttckEffctType
     HitPartical,
     HitStop,
     CmShake,
+    Noise,
 }
 
 public enum ParticalType
@@ -15,6 +16,8 @@ public enum ParticalType
     Hit,
     Dead,
     Warning,
+    Collect,
+    Impulse,
 }
 
 public class Effects : SingletonAttribute<Effects>
@@ -24,6 +27,8 @@ public class Effects : SingletonAttribute<Effects>
     ObjectPool<ParticleUser> _hitParticalPool;
     ObjectPool<ParticleUser> _deadParticalPool;
     ObjectPool<ParticleUser> _warnigParticalPool;
+    ObjectPool<ParticleUser> _collectParticlePool;
+    ObjectPool<ParticleUser> _impulseParticlePool;
 
     const float DodgeTime = 0.3f;
     const float DodgeEffectDuration = 0.1f;
@@ -42,6 +47,12 @@ public class Effects : SingletonAttribute<Effects>
 
         GameObject warning = (GameObject)Resources.Load(ParticleFileName + "WarnigParticle");
         _warnigParticalPool = new ObjectPool<ParticleUser>(warning.GetComponent<ParticleUser>(), null, 5);
+
+        GameObject collect = (GameObject)Resources.Load(ParticleFileName + "CollectParticle");
+        _collectParticlePool = new ObjectPool<ParticleUser>(collect.GetComponent<ParticleUser>(), null, 5);
+
+        GameObject impluse = (GameObject)Resources.Load(ParticleFileName + "ImpulseParticle");
+        _impulseParticlePool = new ObjectPool<ParticleUser>(impluse.GetComponent<ParticleUser>(), null, 5);
     }
 
     public void RequestAttackEffect(AttckEffctType[] type, Transform user)
@@ -55,6 +66,8 @@ public class Effects : SingletonAttribute<Effects>
                 case AttckEffctType.HitStop: _attackEffect.HitStop();
                     break;
                 case AttckEffctType.CmShake: _attackEffect.CmShake();
+                    break;
+                case AttckEffctType.Noise: RequestNoiseEffect(); 
                     break;
             }
         }
@@ -75,6 +88,12 @@ public class Effects : SingletonAttribute<Effects>
             case ParticalType.Warning:
                 particle = _warnigParticalPool.Use();
                 break;
+            case ParticalType.Collect:
+                particle = _collectParticlePool.Use();
+                break;
+            case ParticalType.Impulse:
+                particle = _impulseParticlePool.Use();
+                break;
         }
 
         if (user != null)
@@ -93,6 +112,12 @@ public class Effects : SingletonAttribute<Effects>
 
         Time.timeScale = 0.5f;
         WaitDodgeTime(cm).Forget();
+    }
+
+    public void RequestNoiseEffect()
+    {
+        CmManager cm = GameManager.Instance.GetManager<CmManager>(nameof(CmManager));
+        cm.Noise(0.1f, 0.1f);
     }
 
     async UniTask WaitDodgeTime(CmManager cm)

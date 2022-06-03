@@ -5,6 +5,13 @@ using BehaviourTree;
 
 public class ActionTaskTowardPosition : IAction
 {
+    enum PositionType
+    {
+        Center,
+        Random,
+    }
+
+    [SerializeField] PositionType _type;
     [SerializeField] float _updateSpeed;
     [SerializeField] float _effectDist;
 
@@ -49,13 +56,35 @@ public class ActionTaskTowardPosition : IAction
 
     void SetPosition()
     {
+        switch (_type)
+        {
+            case PositionType.Center:
+
+                _setPostion = SetCenter();
+                break;
+            case PositionType.Random:
+
+                _setPostion = SetRandom();
+                break;
+        }
+    }
+
+    Vector3 SetCenter()
+    {
+        Vector3 center = _roomData.Position.Center;
+
+        return new Vector3((int)center.x, _user.position.y, (int)center.z);
+    }
+
+    Vector3 SetRandom()
+    {
         Vector3 min = _roomData.Position.UpperLeft;
         Vector3 max = _roomData.Position.BottomRight;
 
         float x = Random.Range(min.x, max.x);
         float z = Random.Range(min.z, max.z);
 
-        _setPostion = new Vector3((int)x, _user.position.y, (int)z);
+        return new Vector3((int)x, _user.position.y, (int)z);
     }
 
     public void InitParam()
