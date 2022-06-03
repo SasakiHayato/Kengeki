@@ -4,6 +4,9 @@ using BehaviourTree;
 public class ActionAttack : IAction
 {
     [SerializeField] AttackType _attackType;
+    [SerializeField] bool _attributeID;
+    [SerializeField] int _requestID = -1;
+
     AttackSetting _attackSetting;
     
     public void SetUp(GameObject user)
@@ -15,7 +18,8 @@ public class ActionAttack : IAction
     {
         if (_attackSetting.IsNextInput)
         {
-            _attackSetting.Request(_attackType);
+            if (_attributeID) _attackSetting.RequestAt(_attackType, _requestID);
+            else _attackSetting.Request(_attackType);
         }
 
         return true;

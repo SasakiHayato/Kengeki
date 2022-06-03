@@ -18,7 +18,6 @@ namespace BehaviourTree
 
             public BlockData SetBrockData(List<BlockData> blockDatas)
             {
-                
                 if (_saveBrockData != null)
                 {
                     return _saveBrockData;

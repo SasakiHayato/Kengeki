@@ -43,10 +43,10 @@ MonoBehaviour:
     _isActiveFrame: 10
     _endActiveFrame: 15
     _nextInputFrame: 25
-    _effctTypes: 0000000001000000
+    _effctTypes: 000000000100000003000000
     _actionData:
       _hitAction:
-        rid: -2
+        rid: 6414747721681338396
       _attackAction:
         rid: 6414747721681338391
       _executeFrame: 0
@@ -73,3 +73,9 @@ MonoBehaviour:
         _type: 0
         _moveTime: 0.5
         _applyYPosition: 0
+    - rid: 6414747721681338396
+      type: {class: HitActionForce, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 1
+        _dir: {x: 0, y: 0, z: 0}
+        _power: 5

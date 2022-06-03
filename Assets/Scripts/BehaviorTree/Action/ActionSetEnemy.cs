@@ -17,7 +17,6 @@ public class ActionSetEnemy : IAction
 
     public bool Execute()
     {
-        Debug.Log("sssss");
         _enemyPaths.ForEach(e => _fieldManager.AtInstanceEnemy(_enemyBase.RoomID, e));
         return true;
     }

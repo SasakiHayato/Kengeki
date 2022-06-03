@@ -26,8 +26,26 @@ MonoBehaviour:
       _attackAction:
         rid: -2
       _executeFrame: 0
+  - _animName: Dash_Attack_ver_B
+    _power: 1
+    _isActiveFrame: 9
+    _endActiveFrame: 15
+    _nextInputFrame: 26
+    _effctTypes: 0000000001000000
+    _actionData:
+      _hitAction:
+        rid: 6414747721681338409
+      _attackAction:
+        rid: -2
+      _executeFrame: 0
   references:
     version: 2
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
+    - rid: 6414747721681338409
+      type: {class: HitActionForce, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 1
+        _dir: {x: 0, y: 0, z: 0}
+        _power: 0

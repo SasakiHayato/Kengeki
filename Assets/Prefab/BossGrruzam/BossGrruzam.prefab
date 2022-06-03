@@ -1474,7 +1474,7 @@ MonoBehaviour:
         - rid: 6414747721681338378
         - rid: 6414747721681338380
         - rid: 6414747721681338382
-  - BrockType: 2
+  - BrockType: 3
     Condition: 0
     Priority: 0
     BranchConditionals:
@@ -1521,6 +1521,18 @@ MonoBehaviour:
         Actions:
         - rid: 6414747707582709767
         - rid: 6414747707582709766
+    - QueueType: 0
+      QueueDatas:
+      - RunType: 1
+        Condition: 0
+        Conditionals:
+        - rid: 6414747721681338410
+        Actions:
+        - rid: 6414747721681338413
+        - rid: 6414747721681338414
+        - rid: 6414747721681338415
+        - rid: 6414747721681338411
+        - rid: 6414747721681338412
   - BrockType: 2
     Condition: 0
     Priority: 0
@@ -1566,6 +1578,8 @@ MonoBehaviour:
       type: {class: ActionAttack, ns: , asm: Assembly-CSharp}
       data:
         _attackType: 0
+        _attributeID: 0
+        _requestID: -1
     - rid: 6414747703172923402
       type: {class: ActionSetParticle, ns: , asm: Assembly-CSharp}
       data:
@@ -1630,6 +1644,8 @@ MonoBehaviour:
       type: {class: ActionAttack, ns: , asm: Assembly-CSharp}
       data:
         _attackType: 2
+        _attributeID: 0
+        _requestID: -1
     - rid: 6414747721681338380
       type: {class: ActionWaitNextAttack, ns: , asm: Assembly-CSharp}
     - rid: 6414747721681338381
@@ -1686,6 +1702,34 @@ MonoBehaviour:
       type: {class: ActionSetEnemy, ns: , asm: Assembly-CSharp}
       data:
         _enemyPaths: 000000000100000000000000
+    - rid: 6414747721681338410
+      type: {class: ConditionCheckHP, ns: , asm: Assembly-CSharp}
+      data:
+        _effectParsent: 0.5
+    - rid: 6414747721681338411
+      type: {class: ActionAttack, ns: , asm: Assembly-CSharp}
+      data:
+        _attackType: 2
+        _attributeID: 1
+        _requestID: 1
+    - rid: 6414747721681338412
+      type: {class: ActionWaitNextAttack, ns: , asm: Assembly-CSharp}
+    - rid: 6414747721681338413
+      type: {class: ActionIdle, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: 
+        _applyY: 0
+    - rid: 6414747721681338414
+      type: {class: ActionSetParticle, ns: , asm: Assembly-CSharp}
+      data:
+        _particalType: 2
+        _nextQueue: 0
+    - rid: 6414747721681338415
+      type: {class: ActionTaskTowardPosition, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 1
+        _updateSpeed: 15
+        _effectDist: 3
 --- !u!1 &2473086590774950143
 GameObject:
   m_ObjectHideFlags: 0
