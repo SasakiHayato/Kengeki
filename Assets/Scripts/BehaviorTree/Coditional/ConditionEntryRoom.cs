@@ -21,9 +21,9 @@ public class ConditionEntryRoom : IConditional
 
     public bool Try()
     {
-        if (_minPos.x <= _player.position.x && _maxPos.x > _player.position.x)
+        if (_minPos.x < _player.position.x + 1 && _maxPos.x >= _player.position.x)
         {
-            if (_minPos.z <= _player.position.z && _maxPos.z > _player.position.z)
+            if (_minPos.z < _player.position.z + 1 && _maxPos.z >= _player.position.z)
             {
                 return true;
             }

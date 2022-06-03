@@ -1443,12 +1443,13 @@ MonoBehaviour:
     BrockDatas:
     - QueueType: 0
       QueueDatas:
-      - RunType: 0
+      - RunType: 1
         Condition: 0
         Conditionals:
         - rid: 6414747721681338394
         Actions:
         - rid: 6414747721681338395
+        - rid: 6414747721681338397
   - BrockType: 2
     Condition: 0
     Priority: 0
@@ -1681,6 +1682,10 @@ MonoBehaviour:
         _type: 0
         _updateSpeed: 15
         _effectDist: 3
+    - rid: 6414747721681338397
+      type: {class: ActionSetEnemy, ns: , asm: Assembly-CSharp}
+      data:
+        _enemyPaths: 000000000100000000000000
 --- !u!1 &2473086590774950143
 GameObject:
   m_ObjectHideFlags: 0

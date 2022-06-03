@@ -79,6 +79,24 @@ public class FieldManager : ManagerBase
         data.IsRoomSetUp(true);
     }
 
+    public void AtInstanceEnemy(int roomID, EnemyPath path)
+    {
+        RoomData data = RoomList.FirstOrDefault(r => r.Info.ID == roomID);
+
+        GameObject obj = Instantiate(GameManager.Instance.ObjectData.GetData(path.ToString()).Prefab);
+
+        float x = Random.Range(data.Position.UpperLeft.x, data.Position.BottomRight.x);
+        float z = Random.Range(data.Position.UpperLeft.z, data.Position.BottomRight.z);
+
+        Vector3 setPos = new Vector3(x, ConstYPosition, z);
+        obj.transform.position = setPos;
+
+        EnemyBase enemyBase = obj.GetComponent<EnemyBase>();
+        enemyBase.SetRoomID(data.Info.ID);
+
+        data.Info.AddEnemy(enemyBase);
+    }
+
     public void RemoveEnemyEvent(int roomID, EnemyBase enemyBase)
     {
         RoomData data = RoomList.FirstOrDefault(r => r.Info.ID == roomID);
