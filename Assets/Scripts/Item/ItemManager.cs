@@ -11,6 +11,16 @@ public class ItemManager : ManagerBase
         GameManager.Instance.AddManager(this);
     }
 
+    public override void SetUp()
+    {
+        if (ItemDirectory.Instance == null)
+        {
+            ItemDirectory.SetInstance(new ItemDirectory()).SetUp();
+        }
+
+        base.SetUp();
+    }
+
     public void SpawnRequest(string path, Transform parent = null)
     {
         ItemDataBase.Data data = _itemDataBase.GetData(path);

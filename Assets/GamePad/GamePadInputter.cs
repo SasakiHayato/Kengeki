@@ -25,6 +25,8 @@ public class GamePadInputter : SingletonAttribute<GamePadInputter>
     List<GamePadInputEvent> _gamePadInputEventList;
     GamePadInputEvent _gamePadInputEvent;
 
+    public int SelectID { get; set; }
+
     public GamePad Input { get; private set; }
 
     public InputterType CurrentInputterType { get; private set; }

@@ -22,13 +22,8 @@ public class GamePresenter : MonoBehaviour
         
         GameManager.Instance.SetGameState(_gameState);
         
-        BaseUI.SetInstance(new BaseUI()).SetUp();
+        
         Effects.SetInstance(new Effects()).SetUp();
-
-        if (ItemDirectory.Instance == null)
-        {
-            ItemDirectory.SetInstance(new ItemDirectory()).SetUp();
-        }
         
         GamePadInputter.SetInstance(new GamePadInputter()).SetUp();
         GamePadInputter.Instance.SetInputterType(_inputterType);

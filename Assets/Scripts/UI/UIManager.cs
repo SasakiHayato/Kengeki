@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class UIManager : ManagerBase
 {
-    [SerializeField] List<GamePadInputEvent> _eventList; 
+    [SerializeField] List<GamePadInputEvent> _eventList;
+    [SerializeField] ItemViewer _itemViewer;
 
     void Start()
     {
@@ -13,9 +14,15 @@ public class UIManager : ManagerBase
 
     public override void SetUp()
     {
+        BaseUI.SetInstance(new BaseUI()).SetUp();
         _eventList.ForEach(e => e.SetUp());
 
         base.SetUp();
+    }
+
+    public void UpdateItemInfo(UpdateViewType type)
+    {
+        _itemViewer.UpdateInfo(type);
     }
 
     public override GameObject ManagerObject() => gameObject;

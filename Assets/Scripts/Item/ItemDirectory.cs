@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using SingletonAttribute;
+using System;
 
 public class ItemDirectory : SingletonAttribute<ItemDirectory>
 {
-    class DirectoryData
+    public class DirectoryData
     {
         public DirectoryData(string path)
         {
@@ -15,7 +16,10 @@ public class ItemDirectory : SingletonAttribute<ItemDirectory>
         public string Path { get; private set; }
         List<ItemBase> _itemList;
 
-        public void Add(ItemBase item) => _itemList.Add(item);
+        public void Add(ItemBase item)
+        {
+            _itemList.Add(item);
+        }
 
         public void Load()
         {
@@ -52,6 +56,8 @@ public class ItemDirectory : SingletonAttribute<ItemDirectory>
 
             data.Add(item);
         }
+
+        _directoryList.Add(data);
     }
 
     DirectoryData CreateDirectory(string path)
@@ -72,5 +78,21 @@ public class ItemDirectory : SingletonAttribute<ItemDirectory>
         {
             data.Load();
         }
+    }
+
+    public DirectoryData GetDirectory(int id)
+    {
+        DirectoryData data;
+        
+        try
+        {
+            data = _directoryList[id];
+        }
+        catch (Exception)
+        {
+            data = null;
+        }
+
+        return data;
     }
 }

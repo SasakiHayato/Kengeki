@@ -102,6 +102,8 @@ public class GamePadInputEvent : MonoBehaviour
             _saveInput = 0;
         }
 
+        GamePadInputter.Instance.SelectID = _selectID;
+
         SetScale();
     }
 
