@@ -48,6 +48,7 @@ public abstract class EnemyBase : CharaBase
     protected override void DestoryRequest()
     {
         GameManager.Instance.GetManager<FieldManager>(nameof(FieldManager)).RemoveEnemyEvent(RoomID, this);
+        GameManager.Instance.GetManager<ItemManager>(nameof(ItemManager)).SpawnRequest("Cube", transform);
 
         base.DestoryRequest();
     }

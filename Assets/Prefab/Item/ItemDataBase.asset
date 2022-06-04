@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _datas:
   - Path: Cube
-    Item: {fileID: 0}
+    ItemPrefab: {fileID: 4051632929421136876, guid: 67a7a65c6be262f41a989a0388758c21, type: 3}

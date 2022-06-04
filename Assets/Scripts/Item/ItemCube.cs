@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemCube : ItemBase
 {
-    protected override void Execute()
+    public override void Execute()
     {
         
     }

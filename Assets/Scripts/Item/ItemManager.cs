@@ -14,8 +14,10 @@ public class ItemManager : ManagerBase
     public void SpawnRequest(string path, Transform parent = null)
     {
         ItemDataBase.Data data = _itemDataBase.GetData(path);
-        ItemBase itemBase = Instantiate(data.Item);
+        ItemBase itemBase = Instantiate(data.ItemPrefab);
         itemBase.SetPath(data.Path);
+
+        itemBase.transform.position = parent.position;
     }
 
     public override GameObject ManagerObject() => gameObject;

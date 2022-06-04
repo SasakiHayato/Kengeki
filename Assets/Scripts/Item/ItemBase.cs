@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider))]
 public abstract class ItemBase : MonoBehaviour
 {
     enum UseTimming
@@ -12,11 +13,17 @@ public abstract class ItemBase : MonoBehaviour
 
     [SerializeField] UseTimming _timming;
 
-    protected string Path { get; private set; }
+    void Start()
+    {
+        Collider collider = GetComponent<Collider>();
+        collider.isTrigger = true;
+    }
+
+    public string Path { get; private set; }
 
     public void SetPath(string path) => Path = path;
 
-    protected abstract void Execute();
+    public abstract void Execute();
 
     private void OnTriggerEnter(Collider other)
     {
@@ -33,6 +40,7 @@ public abstract class ItemBase : MonoBehaviour
                 case UseTimming.Directory:
 
                     ItemDirectory.Instance.Save(this);
+                    gameObject.SetActive(false);
                     break;
             }
         }

@@ -1,6 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using System.Linq;
 using SingletonAttribute;
 
 public class ItemDirectory : SingletonAttribute<ItemDirectory>
@@ -15,6 +14,14 @@ public class ItemDirectory : SingletonAttribute<ItemDirectory>
 
         public string Path { get; private set; }
         List<ItemBase> _itemList;
+
+        public void Add(ItemBase item) => _itemList.Add(item);
+
+        public void Load()
+        {
+            _itemList.First().Execute();
+            _itemList.Remove(_itemList.First());
+        }
     }
 
     List<DirectoryData> _directoryList;
@@ -26,26 +33,44 @@ public class ItemDirectory : SingletonAttribute<ItemDirectory>
 
     public void Save(ItemBase item)
     {
+        DirectoryData data;
+
         if (_directoryList.Count <= 0)
         {
-            Add(item);
+            data = CreateDirectory(item.Path);
+            data.Add(item);
+        }
+        else
+        {
+            data = FindDirectory(item.Path);
+
+            if (data == null)
+            {
+                data = CreateDirectory(item.Path);
+                
+            }
+
+            data.Add(item);
         }
     }
 
-    void Add(ItemBase item)
+    DirectoryData CreateDirectory(string path)
     {
-        DirectoryData data = new DirectoryData("");
+        return new DirectoryData(path);
     }
 
-    DirectoryData FindDirectory(ItemBase item)
+    DirectoryData FindDirectory(string path)
     {
-        
-
-        return null;
+        return _directoryList.FirstOrDefault(d => d.Path == path);
     }
 
-    public void Load()
+    public void Load(string path)
     {
+        DirectoryData data = FindDirectory(path);
 
+        if (data != null)
+        {
+            data.Load();
+        }
     }
 }
