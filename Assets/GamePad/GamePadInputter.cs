@@ -43,6 +43,8 @@ public class GamePadInputter : SingletonAttribute<GamePadInputter>
         if (GameManager.Instance.CurrentGameState == GameState.InGame)
         {
             Input.UI.Option.performed += cotext => OpenOption();
+            Input.UI.RightTrigger.performed += context => OnTrigger(GamePadInputEvent.TriggerType.Right);
+            Input.UI.LeftTrigger.performed += context => OnTrigger(GamePadInputEvent.TriggerType.Left);
         }
     }
 
@@ -50,6 +52,13 @@ public class GamePadInputter : SingletonAttribute<GamePadInputter>
     {
         SetInputterType(InputterType.UI);
         BaseUI.Instance.ParentActive("Option", true);
+    }
+
+    void OnTrigger(GamePadInputEvent.TriggerType type)
+    {
+        if (_gamePadInputEvent == null) return;
+
+        _gamePadInputEvent.OnTrigger(type);
     }
 
     void IsSelect()

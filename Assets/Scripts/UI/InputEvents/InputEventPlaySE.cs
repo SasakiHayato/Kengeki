@@ -9,12 +9,12 @@ public class InputEventPlaySE : IInputEvents
 
     public void SetUp()
     {
-        
+        _soundManager = GameManager.Instance.GetManager<SoundManager>(nameof(SoundManager));
     }
 
     public void Execute()
     {
-        _soundManager = GameManager.Instance.GetManager<SoundManager>(nameof(SoundManager));
+        
         _soundManager.Request(SoundType.SE, _path);
     }
 }

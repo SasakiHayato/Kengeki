@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using UniRx;
 using System;
+using System.Linq;
 
 public interface IInputEvents
 {
@@ -16,10 +17,17 @@ public enum InputEventsType
     Option,
     OptionSystem,
     OptionSound,
+    OptionItem,
 }
 
 public class GamePadInputEvent : MonoBehaviour
 {
+    public enum TriggerType
+    {
+        Right,
+        Left,
+    }
+
     [Serializable]
     class EventData
     {
@@ -33,8 +41,20 @@ public class GamePadInputEvent : MonoBehaviour
         public List<IInputEvents> InputEvents => _inputEvents;
     }
 
+    [Serializable]
+    class TriggerEventData
+    {
+        [SerializeField] TriggerType _type;
+        [SerializeReference, SubclassSelector]
+        List<IInputEvents> _inputEvents;
+
+        public TriggerType TriggerType => _type;
+        public List<IInputEvents> InputEvents => _inputEvents;
+    }
+
     [SerializeField] InputEventsType _inputEventsType;
     [SerializeField] List<EventData> _eventsData;
+    [SerializeField] List<TriggerEventData> _triggerEventDatas;
 
     public InputEventsType InputEventsType => _inputEventsType;
 
@@ -46,7 +66,7 @@ public class GamePadInputEvent : MonoBehaviour
     const float WaitSeconds = 0.5f;
     Vector3 ConstScale = new Vector3(1.2f, 1.2f, 1);
 
-    void Start()
+    public void SetUp()
     {
         foreach (EventData data in _eventsData)
         {
@@ -54,6 +74,8 @@ public class GamePadInputEvent : MonoBehaviour
                 .ThrottleFirst(TimeSpan.FromSeconds(WaitSeconds))
                 .TakeUntilDestroy(data.Button)
                 .Subscribe(_ => data.InputEvents.ForEach(c => c.Execute()));
+
+            data.InputEvents.ForEach(c => c.SetUp());
         }
 
         GamePadInputter.Instance.AddGamePadEvent(this);
@@ -104,5 +126,11 @@ public class GamePadInputEvent : MonoBehaviour
         if (GamePadInputter.Instance.CurrentInputterType != InputterType.UI) return;
 
         _saveEvent.InputEvents.ForEach(c => c.Execute());
+    }
+
+    public void OnTrigger(TriggerType type)
+    {
+        TriggerEventData data = _triggerEventDatas.FirstOrDefault(d => d.TriggerType == type);
+        data.InputEvents.ForEach(d => d.Execute());
     }
 }
