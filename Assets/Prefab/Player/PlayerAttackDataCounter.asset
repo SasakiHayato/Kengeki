@@ -15,46 +15,49 @@ MonoBehaviour:
   _type: 2
   _datas:
   - _animName: UpperAttack
+    _soundName: Slash
     _power: 1
     _isActiveFrame: 8
     _endActiveFrame: 20
     _nextInputFrame: 30
     _effctTypes: 0000000001000000
     _actionData:
-      _hitAction:
-        rid: 3710212265707569153
+      _hitActions:
+      - rid: 6414747777599275014
       _attackAction:
         rid: 3710212259873030144
       _executeFrame: 11
   - _animName: Dash_Attack_ver_B
+    _soundName: Slash
     _power: 1
     _isActiveFrame: 8
     _endActiveFrame: 20
     _nextInputFrame: 30
     _effctTypes: 0000000001000000
     _actionData:
-      _hitAction:
-        rid: -2
+      _hitActions:
+      - rid: 6414747777599275015
       _attackAction:
         rid: 3710212494985003011
       _executeFrame: 0
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
     - rid: 3710212259873030144
       type: {class: AttackActionForce, ns: , asm: Assembly-CSharp}
       data:
         _forceDir: {x: 0, y: 1, z: 0}
         _forcePower: 15
-    - rid: 3710212265707569153
-      type: {class: HitActionForce, ns: , asm: Assembly-CSharp}
-      data:
-        _dir: {x: 0, y: 1, z: 0}
-        _power: 18
     - rid: 3710212494985003011
       type: {class: AttackActionTeleportTargetEnemy, ns: , asm: Assembly-CSharp}
       data:
         _offestPostion: 0
         _setDistance: 2
+    - rid: 6414747777599275014
+      type: {class: HitActionPlaySound, ns: , asm: Assembly-CSharp}
+      data:
+        _soundName: HitSlash
+    - rid: 6414747777599275015
+      type: {class: HitActionPlaySound, ns: , asm: Assembly-CSharp}
+      data:
+        _soundName: HitSlash

@@ -15,74 +15,80 @@ MonoBehaviour:
   _type: 1
   _datas:
   - _animName: Jump_Attack_Combo_1
+    _soundName: Slash
     _power: 1
     _isActiveFrame: 4
     _endActiveFrame: 15
     _nextInputFrame: 25
     _effctTypes: 0000000001000000
     _actionData:
-      _hitAction:
-        rid: -2
+      _hitActions:
+      - rid: 6414747777599275008
       _attackAction:
         rid: -2
       _executeFrame: 0
   - _animName: Jump_Attack_Combo_2
+    _soundName: Slash
     _power: 1
     _isActiveFrame: 2
     _endActiveFrame: 10
     _nextInputFrame: 15
     _effctTypes: 0000000001000000
     _actionData:
-      _hitAction:
-        rid: -2
+      _hitActions:
+      - rid: 6414747777599275009
       _attackAction:
         rid: -2
       _executeFrame: 0
   - _animName: Jump_Attack_Combo_3
+    _soundName: Slash
     _power: 1
     _isActiveFrame: 3
     _endActiveFrame: 10
     _nextInputFrame: 20
     _effctTypes: 0000000001000000
     _actionData:
-      _hitAction:
-        rid: -2
+      _hitActions:
+      - rid: 6414747777599275010
       _attackAction:
         rid: -2
       _executeFrame: 0
   - _animName: Jump_Attack_Combo_4
+    _soundName: Slash
     _power: 1
     _isActiveFrame: 3
     _endActiveFrame: 15
     _nextInputFrame: 20
     _effctTypes: 0000000001000000
     _actionData:
-      _hitAction:
-        rid: -2
+      _hitActions:
+      - rid: 6414747777599275011
       _attackAction:
         rid: -2
       _executeFrame: 0
   - _animName: Jump_Attack_Combo_5
+    _soundName: Slash
     _power: 1
     _isActiveFrame: 3
     _endActiveFrame: 10
     _nextInputFrame: 18
     _effctTypes: 0100000000000000
     _actionData:
-      _hitAction:
-        rid: -2
+      _hitActions:
+      - rid: 6414747777599275012
       _attackAction:
         rid: -2
       _executeFrame: 0
   - _animName: Jump_Attack_Combo_6
+    _soundName: Slash
     _power: 1
     _isActiveFrame: 3
     _endActiveFrame: 15
     _nextInputFrame: 27
     _effctTypes: 0000000001000000
     _actionData:
-      _hitAction:
-        rid: -2
+      _hitActions:
+      - rid: 6414747777599275013
       _attackAction:
         rid: -2
       _executeFrame: 0
@@ -91,3 +97,27 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
+    - rid: 6414747777599275008
+      type: {class: HitActionPlaySound, ns: , asm: Assembly-CSharp}
+      data:
+        _soundName: HitSlash
+    - rid: 6414747777599275009
+      type: {class: HitActionPlaySound, ns: , asm: Assembly-CSharp}
+      data:
+        _soundName: HitSlash
+    - rid: 6414747777599275010
+      type: {class: HitActionPlaySound, ns: , asm: Assembly-CSharp}
+      data:
+        _soundName: HitSlash
+    - rid: 6414747777599275011
+      type: {class: HitActionPlaySound, ns: , asm: Assembly-CSharp}
+      data:
+        _soundName: HitSlash
+    - rid: 6414747777599275012
+      type: {class: HitActionPlaySound, ns: , asm: Assembly-CSharp}
+      data:
+        _soundName: HitSlash
+    - rid: 6414747777599275013
+      type: {class: HitActionPlaySound, ns: , asm: Assembly-CSharp}
+      data:
+        _soundName: HitSlash

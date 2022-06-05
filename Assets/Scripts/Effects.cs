@@ -108,6 +108,8 @@ public class Effects : SingletonAttribute<Effects>
 
     public void RequestDodgeEffect()
     {
+        GameManager.Instance.GetManager<SoundManager>(nameof(SoundManager)).Request(SoundType.SE, "SrowMotion");
+
         CmManager cm = GameManager.Instance.GetManager<CmManager>(nameof(CmManager));
         cm.RadialBlur(0.5f, DodgeEffectDuration);
         cm.GrayScale(1, DodgeEffectDuration);

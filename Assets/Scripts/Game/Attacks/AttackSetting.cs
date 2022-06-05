@@ -134,7 +134,6 @@ public class AttackSetting : MonoBehaviour
     {
         if (iDamage.GetDamage(_data.Power))
         {
-            Debug.Log("IsHit");
             _data.Action.HitActions?.ForEach(a => a.Execute(target));
             Effects.Instance.RequestAttackEffect(_data.EffctTypes, target.transform);
         }

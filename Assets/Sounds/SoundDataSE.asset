@@ -30,3 +30,11 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: 4b70a5434b8494a498ecc67059c90f0d, type: 3}
     Volume: 0.5
     SpatialBlend: 0
+  - Path: Dead
+    Clip: {fileID: 8300000, guid: 13a8c72709a9c234ab8697ffb450c0cc, type: 3}
+    Volume: 0.5
+    SpatialBlend: 0
+  - Path: SrowMotion
+    Clip: {fileID: 8300000, guid: 2f33667391de091449c2b9eade96421e, type: 3}
+    Volume: 0.5
+    SpatialBlend: 0

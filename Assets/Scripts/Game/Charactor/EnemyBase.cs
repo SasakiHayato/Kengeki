@@ -49,6 +49,8 @@ public abstract class EnemyBase : CharaBase
     {
         GameManager.Instance.GetManager<FieldManager>(nameof(FieldManager)).RemoveEnemyEvent(RoomID, this);
         GameManager.Instance.GetManager<ItemManager>(nameof(ItemManager)).SpawnRequest("Healer", transform);
+
+        GameManager.Instance.GetManager<SoundManager>(nameof(SoundManager)).Request(SoundType.SE, "Dead");
         
         base.DestoryRequest();
     }
