@@ -9,6 +9,11 @@ public class NoiseRenderer : MonoBehaviour
 
     Material _material;
 
+    void Start()
+    {
+        enabled = false;
+    }
+
     void OnRenderImage(RenderTexture src, RenderTexture dest)
     {
         if (_material == null)
@@ -25,6 +30,8 @@ public class NoiseRenderer : MonoBehaviour
 
     public void SetStrength(float strength, float duration)
     {
+        enabled = true;
+
         DOTween.To
             (
                 () => _horizonValue,
@@ -32,6 +39,10 @@ public class NoiseRenderer : MonoBehaviour
                 strength,
                 duration
             )
-            .OnComplete(() => _horizonValue = 0);
+            .OnComplete(() => 
+            {
+                _horizonValue = 0;
+                enabled = false;
+            });
     }
 }

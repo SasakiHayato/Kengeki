@@ -347,6 +347,7 @@ GameObject:
   - component: {fileID: 895624778}
   - component: {fileID: 895624777}
   - component: {fileID: 895624780}
+  - component: {fileID: 895624781}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -429,6 +430,21 @@ Skybox:
   m_GameObject: {fileID: 895624776}
   m_Enabled: 1
   m_CustomSkybox: {fileID: 15303, guid: 0000000000000000f000000000000000, type: 0}
+--- !u!114 &895624781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895624776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c64af4aae5a5143b1131ff7736963c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _center: {fileID: 1431899681}
+  _speed: 3
+  _distance: 4
 --- !u!1 &1431899677
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,6 +457,7 @@ GameObject:
   - component: {fileID: 1431899680}
   - component: {fileID: 1431899679}
   - component: {fileID: 1431899678}
+  - component: {fileID: 1431899682}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -526,6 +543,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1431899682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431899677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdcfdbbd2bd1e914aa7e4c9b4c77e32e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _endVal: {x: 360, y: 360, z: 360}
+  _duration: 5
 --- !u!1 &1550699870
 GameObject:
   m_ObjectHideFlags: 0
@@ -795,6 +826,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3692370452582786545, guid: d0ebd31b7f80fce4ab2bf67bc830a386, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 0d4e9fb23cd6c6048a713bb9cc656665, type: 2}
     - target: {fileID: 3692370453461177588, guid: d0ebd31b7f80fce4ab2bf67bc830a386, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -811,6 +846,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3692370453628499604, guid: d0ebd31b7f80fce4ab2bf67bc830a386, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 0d4e9fb23cd6c6048a713bb9cc656665, type: 2}
     - target: {fileID: 3692370453628499607, guid: d0ebd31b7f80fce4ab2bf67bc830a386, type: 3}
       propertyPath: managedReferences[-2]
       value: 
@@ -963,6 +1002,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4726706213100979501, guid: d0ebd31b7f80fce4ab2bf67bc830a386, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 0d4e9fb23cd6c6048a713bb9cc656665, type: 2}
     - target: {fileID: 6695976753171352975, guid: d0ebd31b7f80fce4ab2bf67bc830a386, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

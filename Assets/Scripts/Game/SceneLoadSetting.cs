@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 
 /// <summary>
 /// ゲームシーンの管理クラス
@@ -73,5 +74,10 @@ public class SceneLoadSetting : MonoBehaviour
         if (!GameManager.Instance.ManagerIsSetUp) return;
 
         GamePadInputter.Instance.UIInputUpdate();
+    }
+
+    private void OnDestroy()
+    {
+        DOTween.KillAll();
     }
 }
