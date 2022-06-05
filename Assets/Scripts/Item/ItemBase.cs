@@ -20,8 +20,13 @@ public abstract class ItemBase : MonoBehaviour
     }
 
     public string Path { get; private set; }
+    public string MSG { get; private set; }
 
-    public void SetPath(string path) => Path = path;
+    public void SetInfo(ItemDataBase.Data data)
+    {
+        Path = data.Path;
+        MSG = data.MSG;
+    }
 
     public abstract void Execute();
 

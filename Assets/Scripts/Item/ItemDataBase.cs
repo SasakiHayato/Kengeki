@@ -13,6 +13,7 @@ public class ItemDataBase : ScriptableObject
     public class Data
     {
         public string Path;
+        public string MSG;
         public ItemBase ItemPrefab;
     }
 }

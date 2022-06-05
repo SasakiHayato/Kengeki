@@ -6,6 +6,6 @@ public class ItemCube : ItemBase
 {
     public override void Execute()
     {
-        
+        Debug.Log("aaaa");
     }
 }

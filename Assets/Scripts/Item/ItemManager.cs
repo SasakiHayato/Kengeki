@@ -25,7 +25,7 @@ public class ItemManager : ManagerBase
     {
         ItemDataBase.Data data = _itemDataBase.GetData(path);
         ItemBase itemBase = Instantiate(data.ItemPrefab);
-        itemBase.SetPath(data.Path);
+        itemBase.SetInfo(data);
 
         itemBase.transform.position = parent.position;
     }

@@ -58,8 +58,8 @@ public class GamePadInputter : SingletonAttribute<GamePadInputter>
 
     void OnTrigger(GamePadInputEvent.TriggerType type)
     {
-        if (_gamePadInputEvent == null) return;
-
+        if (InputterType.UI != CurrentInputterType || _gamePadInputEvent == null) return;
+        
         _gamePadInputEvent.OnTrigger(type);
     }
 
@@ -125,6 +125,7 @@ public class GamePadInputter : SingletonAttribute<GamePadInputter>
     public void RequestGamePadEvents(InputEventsType type)
     {
         _gamePadInputEvent = _gamePadInputEventList.FirstOrDefault(g => g.InputEventsType == type);
+        _gamePadInputEvent.Init();
     }
 
     public static void Despose()

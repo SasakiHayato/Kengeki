@@ -1,8 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using System;
 
 public enum UpdateViewType
 {
@@ -18,14 +18,20 @@ public class ItemViewer : MonoBehaviour
     [SerializeField] Text _msgText;
 
     List<ButtonData> _buttonDatas;
+    Action _action;
 
     int _buttonCount;
+
+    int _saveInfoFirst;
+    int _saveInfoEnd;
 
     class ButtonData
     {
         public int ID;
         public string ItemPath;
+        public string MSG;
         public Text Text;
+        public Action Execute;
     }
 
     void Start()
@@ -41,6 +47,13 @@ public class ItemViewer : MonoBehaviour
 
             _buttonDatas.Add(data);
         }
+    }
+
+    void Update()
+    {
+        if (GamePadInputter.Instance.CurrentInputterType != InputterType.UI) return;
+
+        PickUp();
     }
 
     public void UpdateInfo(UpdateViewType type)
@@ -60,6 +73,9 @@ public class ItemViewer : MonoBehaviour
 
     void SetInfo(int first, int end)
     {
+        _saveInfoFirst = first;
+        _saveInfoEnd = end;
+
         int id = 0;
 
         for (int index = first; index < end; index++)
@@ -70,10 +86,14 @@ public class ItemViewer : MonoBehaviour
             if (directory == null)
             {
                 data.Text.text = "Nodata";
+                data.MSG = "Nodata";
+                data.Execute = null;
             }
             else
             {
-                data.Text.text = directory.Path;
+                data.Text.text = $"{directory.Path}~{directory.ItemCount}";
+                data.MSG = directory.MSG;
+                data.Execute = directory.Load;
             }
 
             id++;
@@ -82,14 +102,21 @@ public class ItemViewer : MonoBehaviour
 
     void PickUp()
     {
+        if (_buttonDatas.Count <= 0) return;
+
         foreach (ButtonData data in _buttonDatas)
         {
             if (data.ID == GamePadInputter.Instance.SelectID)
             {
-                _msgText.text = "";
+                _msgText.text = data.MSG;
+                _action = data.Execute;
             }
         }
+    }
 
-       
+    public void PickUpLoad()
+    {
+        _action?.Invoke();
+        SetInfo(_saveInfoFirst, _saveInfoEnd);
     }
 }

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,6 +22,11 @@ public class UIManager : ManagerBase
     public void UpdateItemInfo(UpdateViewType type)
     {
         _itemViewer.UpdateInfo(type);
+    }
+
+    public void InputLoadItem()
+    {
+        _itemViewer.PickUpLoad();
     }
 
     public override GameObject ManagerObject() => gameObject;

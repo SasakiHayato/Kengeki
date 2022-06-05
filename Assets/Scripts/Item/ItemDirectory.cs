@@ -7,13 +7,17 @@ public class ItemDirectory : SingletonAttribute<ItemDirectory>
 {
     public class DirectoryData
     {
-        public DirectoryData(string path)
+        public DirectoryData(string path, string msg)
         {
             Path = path;
+            MSG = msg;
+
             _itemList = new List<ItemBase>();
         }
 
         public string Path { get; private set; }
+        public string MSG { get; private set; }
+        public int ItemCount => _itemList.Count;
         List<ItemBase> _itemList;
 
         public void Add(ItemBase item)
@@ -24,7 +28,18 @@ public class ItemDirectory : SingletonAttribute<ItemDirectory>
         public void Load()
         {
             _itemList.First().Execute();
+
+            DeleteData();
+        }
+
+        void DeleteData()
+        {
             _itemList.Remove(_itemList.First());
+
+            if (_itemList.Count <= 0)
+            {
+                Instance.DeleteDirectory(Path);
+            }
         }
     }
 
@@ -41,8 +56,7 @@ public class ItemDirectory : SingletonAttribute<ItemDirectory>
 
         if (_directoryList.Count <= 0)
         {
-            data = CreateDirectory(item.Path);
-            data.Add(item);
+            data = CreateDirectory(item);
         }
         else
         {
@@ -50,19 +64,19 @@ public class ItemDirectory : SingletonAttribute<ItemDirectory>
 
             if (data == null)
             {
-                data = CreateDirectory(item.Path);
-                
+                data = CreateDirectory(item);
             }
-
-            data.Add(item);
         }
 
-        _directoryList.Add(data);
+        data.Add(item);
     }
 
-    DirectoryData CreateDirectory(string path)
+    DirectoryData CreateDirectory(ItemBase item)
     {
-        return new DirectoryData(path);
+        DirectoryData data = new DirectoryData(item.Path, item.MSG);
+        _directoryList.Add(data);
+
+        return data;
     }
 
     DirectoryData FindDirectory(string path)
@@ -94,5 +108,13 @@ public class ItemDirectory : SingletonAttribute<ItemDirectory>
         }
 
         return data;
+    }
+
+    protected void DeleteDirectory(string path)
+    {
+        if (_directoryList.Count <= 0) return;
+
+        DirectoryData data = _directoryList.FirstOrDefault(d => d.Path == path);
+        _directoryList.Remove(data);
     }
 }

@@ -135,4 +135,10 @@ public class GamePadInputEvent : MonoBehaviour
         TriggerEventData data = _triggerEventDatas.FirstOrDefault(d => d.TriggerType == type);
         data.InputEvents.ForEach(d => d.Execute());
     }
+
+    public void Init()
+    {
+        _selectID = 0;
+        _saveInput = 0;
+    }
 }
