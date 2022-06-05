@@ -481,7 +481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 812e88111efddf7498031cc593e83acf, type: 2}
+  m_Material: {fileID: 2100000, guid: 0d4e9fb23cd6c6048a713bb9cc656665, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -1194,6 +1194,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shader: {fileID: 4800000, guid: 030e600d609060843bc751e19723d41b, type: 3}
   _horizonValue: 0
+--- !u!45 &326519849
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326519837}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 15303, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!4 &326947061 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5064831249328109829, guid: f2389b99b0c7d554cabe8575d766dd38, type: 3}
@@ -2796,6 +2805,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1727081048}
     m_Modifications:
+    - target: {fileID: 3692370452582786545, guid: d0ebd31b7f80fce4ab2bf67bc830a386, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 0d4e9fb23cd6c6048a713bb9cc656665, type: 2}
     - target: {fileID: 3692370453461177588, guid: d0ebd31b7f80fce4ab2bf67bc830a386, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -2812,6 +2825,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3692370453628499604, guid: d0ebd31b7f80fce4ab2bf67bc830a386, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 0d4e9fb23cd6c6048a713bb9cc656665, type: 2}
     - target: {fileID: 3692370453628499607, guid: d0ebd31b7f80fce4ab2bf67bc830a386, type: 3}
       propertyPath: managedReferences[-2]
       value: 
@@ -3016,6 +3033,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4726706213100979501, guid: d0ebd31b7f80fce4ab2bf67bc830a386, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 0d4e9fb23cd6c6048a713bb9cc656665, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0ebd31b7f80fce4ab2bf67bc830a386, type: 3}
 --- !u!1 &1861364275
@@ -3449,7 +3470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 812e88111efddf7498031cc593e83acf, type: 2}
+  m_Material: {fileID: 2100000, guid: 0d4e9fb23cd6c6048a713bb9cc656665, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}

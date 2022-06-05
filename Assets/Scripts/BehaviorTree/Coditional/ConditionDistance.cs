@@ -3,7 +3,14 @@ using BehaviourTree;
 
 public class ConditionDistance : IConditional
 {
+    enum CheckType
+    {
+        In,
+        Out,
+    }
+
     [SerializeField] float _effectDistance;
+    [SerializeField] CheckType _checkType;
 
     Transform _user;
     Transform _player;
@@ -16,7 +23,16 @@ public class ConditionDistance : IConditional
 
     public bool Try()
     {
-        return _effectDistance > Vector3.Distance(_user.position, _player.position);
+        switch (_checkType)
+        {
+            case CheckType.In:
+                return _effectDistance > Vector3.Distance(_user.position, _player.position);
+
+            case CheckType.Out:
+                return _effectDistance < Vector3.Distance(_user.position, _player.position);
+
+            default: return false;
+        }
     }
 
     public void InitParam()

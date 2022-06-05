@@ -7,6 +7,7 @@ public class ActionMove : IAction
     {
         TowardPlayer,
         Back,
+        Side,
     }
 
     [SerializeField] string _animName;
@@ -40,6 +41,13 @@ public class ActionMove : IAction
                 break;
             case MoveDirType.Back:
                 _enemyBase.MoveDir = dir;
+
+                break;
+            case MoveDirType.Side:
+                Vector3 right = _user.right;
+                if (!_applyY) right.y = 0;
+
+                _enemyBase.MoveDir = right;
 
                 break;
         }

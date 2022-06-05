@@ -13,6 +13,7 @@ public class ActionShotBullet : IAction
     BulletManager _bulletManager;
 
     float _timer;
+    Vector3 _beforePos;
 
     public void SetUp(GameObject user)
     {
@@ -32,7 +33,7 @@ public class ActionShotBullet : IAction
 
         if (_timer > _intarvalTime)
         {
-            Vector3 dir = _bulletManager.SetDir(_shotType, _user, _player);
+            Vector3 dir = _bulletManager.SetDir(_shotType, _user, _player, _beforePos, _speed);
             Bullet bullet = _bulletManager.ShotRequest(_charaBase.CharaData.ObjectType, dir, _speed, _charaBase.CharaData.Power);
 
             bullet.transform.position = _user.position;
@@ -40,6 +41,7 @@ public class ActionShotBullet : IAction
             return true;
         }
 
+        _beforePos = _player.position;
         return false;
     }
 

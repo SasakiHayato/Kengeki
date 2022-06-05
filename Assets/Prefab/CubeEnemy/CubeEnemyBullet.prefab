@@ -134,15 +134,34 @@ MonoBehaviour:
     Priority: 0
     BranchConditionals:
     - rid: 3710212221310074889
+    - rid: 6414747767461380100
+    BrockDatas:
+    - QueueType: 0
+      QueueDatas:
+      - RunType: 1
+        Condition: 0
+        Conditionals:
+        - rid: 6414747767461380101
+        Actions:
+        - rid: 6414747767461380110
+        - rid: 6414747767461380111
+  - BrockType: 2
+    Condition: 0
+    Priority: 0
+    BranchConditionals:
+    - rid: 3710212221310074889
+    - rid: 6414747767461380104
     BrockDatas:
     - QueueType: 0
       QueueDatas:
       - RunType: 0
         Condition: 0
         Conditionals:
-        - rid: 3710212221310074890
+        - rid: 6414747767461380099
         Actions:
         - rid: 3710212221310074891
+        - rid: 6414747767461380109
+        - rid: 6414747767461380112
   references:
     version: 2
     RefIds:
@@ -152,16 +171,47 @@ MonoBehaviour:
       type: {class: ActionIdle, ns: , asm: Assembly-CSharp}
       data:
         _animName: CubeEnemy_Idle
+        _applyY: 0
     - rid: 3710212221310074889
       type: {class: ConditionEntryRoom, ns: , asm: Assembly-CSharp}
-    - rid: 3710212221310074890
-      type: {class: ConditionEmpty, ns: , asm: Assembly-CSharp}
     - rid: 3710212221310074891
       type: {class: ActionShotBullet, ns: , asm: Assembly-CSharp}
       data:
         _intarvalTime: 1
         _speed: 10
         _shotType: 0
+    - rid: 6414747767461380099
+      type: {class: ConditionInTheCm, ns: , asm: Assembly-CSharp}
+    - rid: 6414747767461380100
+      type: {class: ConditionDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _effectDistance: 7
+        _checkType: 0
+    - rid: 6414747767461380101
+      type: {class: ConditionEmpty, ns: , asm: Assembly-CSharp}
+    - rid: 6414747767461380104
+      type: {class: ConditionDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _effectDistance: 8
+        _checkType: 1
+    - rid: 6414747767461380109
+      type: {class: ActionRotate, ns: , asm: Assembly-CSharp}
+    - rid: 6414747767461380110
+      type: {class: ActionWait, ns: , asm: Assembly-CSharp}
+      data:
+        _waitTime: 0.2
+    - rid: 6414747767461380111
+      type: {class: ActionTaskTowardPosition, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 1
+        _updateSpeed: 6
+        _effectDist: 2
+    - rid: 6414747767461380112
+      type: {class: ActionMove, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: 
+        _moveDirType: 2
+        _applyY: 0
 --- !u!54 &6963685349223446708
 Rigidbody:
   m_ObjectHideFlags: 0

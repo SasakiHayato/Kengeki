@@ -3,6 +3,7 @@ using UnityEngine;
 public enum ShotType
 { 
     Toward,
+    Deviation,
 }
 
 public class BulletManager : ManagerBase
@@ -30,7 +31,7 @@ public class BulletManager : ManagerBase
         return bullet;
     }
 
-    public Vector3 SetDir(ShotType type, Transform user, Transform target)
+    public Vector3 SetDir(ShotType type, Transform user, Transform target, Vector3 beforePos = default, float speed = 1)
     {
         Vector3 dir = Vector3.zero;
 
@@ -38,6 +39,11 @@ public class BulletManager : ManagerBase
         {
             case ShotType.Toward:
                 dir = target.position - user.position;
+                break;
+            case ShotType.Deviation:
+
+                Deviation deviation = new Deviation();
+                dir = deviation.DeviationDir(target.position, user.position, beforePos, speed);
                 break;
            
         }

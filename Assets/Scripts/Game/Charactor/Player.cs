@@ -107,7 +107,14 @@ public class Player : CharaBase, IDamage
         else
         {
             CmManager cmManager = GameManager.Instance.GetManager<CmManager>(nameof(CmManager));
-            GameManager.Instance.LockonTarget = cmManager.FindCenterTarget(ObjectType.Enemy, 50).transform;
+            try
+            {
+                GameManager.Instance.LockonTarget = cmManager.FindCenterTarget(ObjectType.Enemy, 50).transform;
+            }
+            catch(System.Exception)
+            {
+                GameManager.Instance.LockonTarget = null;
+            }
         }
     }
 
