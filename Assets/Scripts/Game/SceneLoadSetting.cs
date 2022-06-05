@@ -6,13 +6,12 @@ using Cysharp.Threading.Tasks;
 /// ゲームシーンの管理クラス
 /// </summary>
 
-public class GamePresenter : MonoBehaviour
+public class SceneLoadSetting : MonoBehaviour
 {
     [SerializeField] GameState _gameState;
     [SerializeField] InputterType _inputterType;
+    [SerializeField] float _waitSetUpTime; 
     
-    bool _isSetUp = false;
-
     private void Awake()
     {
         if (GameManager.Instance == null)
@@ -38,12 +37,19 @@ public class GamePresenter : MonoBehaviour
     async UniTask WaitFade()
     {
         Fader fader = new Fader(1, 0);
-        await UniTask.WaitUntil(() => _isSetUp);
+        await UniTask.WaitUntil(() => 
+        {
+            Debug.Log($"ManagerSetUp => {GameManager.Instance.ManagerIsSetUp}");
+            return GameManager.Instance.ManagerIsSetUp;
+        });
 
-        
         fader.SetFade();
 
-        await UniTask.WaitUntil(() => fader.IsEndFade);
+        await UniTask.WaitUntil(() =>
+        {
+            Debug.Log($"IsFade => {fader.IsEndFade}");
+            return fader.IsEndFade;
+        });
 
         if (GameManager.Instance.CurrentGameState == GameState.InGame)
         {
@@ -58,13 +64,14 @@ public class GamePresenter : MonoBehaviour
 
     async UniTask WaitSetUpManager()
     {
-        await UniTask.Delay(TimeSpan.FromSeconds(1f));
+        await UniTask.Delay(TimeSpan.FromSeconds(_waitSetUpTime));
         GameManager.Instance.SetUpManager();
-        _isSetUp = true;
     }
 
     void Update()
     {
+        if (!GameManager.Instance.ManagerIsSetUp) return;
+
         GamePadInputter.Instance.UIInputUpdate();
     }
 }

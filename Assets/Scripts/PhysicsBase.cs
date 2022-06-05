@@ -6,6 +6,7 @@ static public class PhsicsMasterData
     static public float GravityScale = 2;
 }
 
+[RequireComponent(typeof(Rigidbody))]
 public class PhysicsBase : MonoBehaviour
 {
     [SerializeField] bool _useGravity;
@@ -117,7 +118,7 @@ public class PhysicsBase : MonoBehaviour
         IsForce = true;
     }
 
-    public void InitializeTumer()
+    public void InitializeTimer()
     {
         _gravityTimer = 0;
     }

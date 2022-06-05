@@ -34,7 +34,7 @@ public class PlayerDodge : State
     {
         if (_beforeStatePath == Player.State.Float.ToString())
         {
-            _physicsBase.InitializeTumer();
+            _physicsBase.InitializeTimer();
         }
         
         _player.Move(_saveInput);

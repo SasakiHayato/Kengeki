@@ -27,6 +27,8 @@ public class SoundManager : ManagerBase
 
     public override void SetUp()
     {
+        base.SetUp();
+
         _soundPool = new ObjectPool<SoundPool>(_soundPrefab, null, _createPoolCount);
 
         Request(SoundType.BGM, _bgmPath);

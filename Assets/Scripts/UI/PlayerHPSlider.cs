@@ -23,7 +23,8 @@ public class PlayerHPSlider : ChildrenUI
                 val,
                 DurationTime
             )
-            .SetEase(Ease.Linear);
+            .SetEase(Ease.Linear)
+            .SetUpdate(true);
     }
 
     public override void CallBack(object[] datas = null)

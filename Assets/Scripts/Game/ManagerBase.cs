@@ -7,7 +7,7 @@ public abstract class ManagerBase : MonoBehaviour
     [SerializeField] int _priority;
 
     public int Priority => _priority;
-    protected bool IsSetUp { get; private set; }
+    public bool IsSetUp { get; private set; }
 
     private void Start()
     {

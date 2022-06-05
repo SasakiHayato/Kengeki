@@ -18,7 +18,6 @@ public interface IDamage
 /// </summary>
 
 [RequireComponent(typeof(PhysicsBase))]
-[RequireComponent(typeof(Rigidbody))]
 public abstract class CharaBase : MonoBehaviour
 {
     [SerializeField] string _dataPath;
@@ -98,8 +97,9 @@ public class CharaData
         Speed = value;
     }
 
-    public void UpDateHP(int hp)
+    public void UpdateHP(int hp)
     {
         HP += hp;
+        if (HP >= MaxHP) HP = MaxHP;
     }
 }

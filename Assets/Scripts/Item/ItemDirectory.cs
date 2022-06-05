@@ -27,9 +27,12 @@ public class ItemDirectory : SingletonAttribute<ItemDirectory>
 
         public void Load()
         {
-            _itemList.First().Execute();
+            bool check = _itemList.First().Execute();
 
-            DeleteData();
+            if (check)
+            {
+                DeleteData();
+            }
         }
 
         void DeleteData()

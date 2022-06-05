@@ -122,7 +122,7 @@ public class Player : CharaBase, IDamage
         if (_jumpSetting.IsSet)
         {
             _state.ChangeState(State.Float, true);
-            PhysicsBase.InitializeTumer();
+            PhysicsBase.InitializeTimer();
         }
     }
 
@@ -152,8 +152,8 @@ public class Player : CharaBase, IDamage
 
         if (damage <= 0) return false;
 
-        CharaData.UpDateHP(-damage);
-        _state.ChangeState(State.KnockBack);
+        CharaData.UpdateHP(-damage);
+        //_state.ChangeState(State.KnockBack);
         return true;
     }
 }

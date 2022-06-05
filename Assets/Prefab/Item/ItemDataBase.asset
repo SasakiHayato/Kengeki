@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ItemDataBase
   m_EditorClassIdentifier: 
   _datas:
-  - Path: Cube
+  - Path: EnemyCore
     MSG: "\u304A\u91D1\u3067\u3059\u3002"
     ItemPrefab: {fileID: 4051632929421136876, guid: 67a7a65c6be262f41a989a0388758c21, type: 3}

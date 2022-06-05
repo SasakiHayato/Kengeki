@@ -39,20 +39,22 @@ public class Effects : SingletonAttribute<Effects>
     {
         _attackEffect = new AttackEffect();
 
+        Transform parent = new GameObject("Effect").transform;
+
         GameObject hitPartical = (GameObject)Resources.Load(ParticleFileName+"HitParticle");
-        _hitParticalPool = new ObjectPool<ParticleUser>(hitPartical.GetComponent<ParticleUser>(), null, 5);
+        _hitParticalPool = new ObjectPool<ParticleUser>(hitPartical.GetComponent<ParticleUser>(), parent, 5);
 
         GameObject deadPartical = (GameObject)Resources.Load(ParticleFileName+"DeadParticle");
-        _deadParticalPool = new ObjectPool<ParticleUser>(deadPartical.GetComponent<ParticleUser>(), null, 5);
+        _deadParticalPool = new ObjectPool<ParticleUser>(deadPartical.GetComponent<ParticleUser>(), parent, 5);
 
         GameObject warning = (GameObject)Resources.Load(ParticleFileName + "WarnigParticle");
-        _warnigParticalPool = new ObjectPool<ParticleUser>(warning.GetComponent<ParticleUser>(), null, 5);
+        _warnigParticalPool = new ObjectPool<ParticleUser>(warning.GetComponent<ParticleUser>(), parent, 5);
 
         GameObject collect = (GameObject)Resources.Load(ParticleFileName + "CollectParticle");
-        _collectParticlePool = new ObjectPool<ParticleUser>(collect.GetComponent<ParticleUser>(), null, 5);
+        _collectParticlePool = new ObjectPool<ParticleUser>(collect.GetComponent<ParticleUser>(), parent, 5);
 
         GameObject impluse = (GameObject)Resources.Load(ParticleFileName + "ImpulseParticle");
-        _impulseParticlePool = new ObjectPool<ParticleUser>(impluse.GetComponent<ParticleUser>(), null, 5);
+        _impulseParticlePool = new ObjectPool<ParticleUser>(impluse.GetComponent<ParticleUser>(), parent, 5);
     }
 
     public void RequestAttackEffect(AttckEffctType[] type, Transform user)

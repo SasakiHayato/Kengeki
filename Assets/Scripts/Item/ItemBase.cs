@@ -28,7 +28,7 @@ public abstract class ItemBase : MonoBehaviour
         MSG = data.MSG;
     }
 
-    public abstract void Execute();
+    public abstract bool Execute();
 
     private void OnTriggerEnter(Collider other)
     {

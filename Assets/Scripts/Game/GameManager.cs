@@ -30,6 +30,8 @@ public class GameManager : SingletonAttribute<GameManager>
 
     public int FieldHierarchy { get; private set; }
 
+    public bool ManagerIsSetUp => _managerList.All(m => m.IsSetUp);
+
     public override void SetUp()
     {
         ObjectData = Resources.Load<ObjectDataBase>("ObjectDataBase");
@@ -69,6 +71,7 @@ public class GameManager : SingletonAttribute<GameManager>
     public void SetUpManager()
     {
         var sort = _managerList.OrderBy(m => m.Priority);
+        Debug.Log(sort.Count());
         sort.ToList().ForEach(m => m.SetUp());
     }
 

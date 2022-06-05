@@ -62,7 +62,7 @@ public class Fader
         Color color = _fadeImage.color;
         color.a = _startVal;
         _fadeImage.color = color;
-
+        
         _fadeImage.DOFade(_endVal, _duration)
             .SetEase(ease)
             .OnComplete(() => IsEndFade = true);

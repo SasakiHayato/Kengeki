@@ -13,10 +13,10 @@ public class UIManager : ManagerBase
 
     public override void SetUp()
     {
+        base.SetUp();
+
         BaseUI.SetInstance(new BaseUI()).SetUp();
         _eventList.ForEach(e => e.SetUp());
-
-        base.SetUp();
     }
 
     public void UpdateItemInfo(UpdateViewType type)

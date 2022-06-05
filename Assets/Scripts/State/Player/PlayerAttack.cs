@@ -69,7 +69,7 @@ public class PlayerAttack : State
 
         if (!_physicsBase.IsGround)
         {
-            _physicsBase.InitializeTumer();
+            _physicsBase.InitializeTimer();
         }
     }
 

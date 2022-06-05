@@ -9,7 +9,7 @@ public class InputEventPanelActive : IInputEvents
 
     public void SetUp()
     {
-        Debug.Log("Set");
+        
     }
 
     public void Execute()

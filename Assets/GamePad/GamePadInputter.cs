@@ -118,6 +118,7 @@ public class GamePadInputter : SingletonAttribute<GamePadInputter>
         }
         else
         {
+            if (GameManager.Instance.CurrentGameState != GameState.InGame) return;
             Time.timeScale = 0;
         }
     }
