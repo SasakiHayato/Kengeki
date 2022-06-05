@@ -36,6 +36,7 @@ public class AttackDataBase : ScriptableObject
     public class Data
     {
         [SerializeField] string _animName;
+        [SerializeField] string _soundName;
         [SerializeField] int _power;
         [SerializeField] int _isActiveFrame;
         [SerializeField] int _endActiveFrame;
@@ -44,6 +45,7 @@ public class AttackDataBase : ScriptableObject
         [SerializeField] ActionData _actionData;
 
         public string AnimName => _animName;
+        public string SoundName => _soundName;
         public int Power => _power;
         public int IsActiveFrame => _isActiveFrame;
         public int EndActiveFrame => _endActiveFrame;
@@ -54,11 +56,11 @@ public class AttackDataBase : ScriptableObject
         [System.Serializable]
         public class ActionData
         {
-            [SerializeReference, SubclassSelector] IHitAction _hitAction;
+            [SerializeReference, SubclassSelector] List<IHitAction> _hitActions;
             [SerializeReference, SubclassSelector] IAttackAction _attackAction;
             [SerializeField] int _executeFrame;
 
-            public IHitAction HitAction => _hitAction;
+            public List<IHitAction> HitActions => _hitActions;
             public IAttackAction AttackAction => _attackAction;
             public int ExecuteFrame => _executeFrame;
         }

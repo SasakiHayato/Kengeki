@@ -1097,7 +1097,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6696115475712488958, guid: 72436c2ab3e9b2f47a25c08dd797a872, type: 3}
       propertyPath: _sensitivity
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6696115475712488959, guid: 72436c2ab3e9b2f47a25c08dd797a872, type: 3}
       propertyPath: m_RootOrder

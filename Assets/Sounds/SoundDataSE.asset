@@ -22,3 +22,11 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: 52d68baafe7f4944886ddf5f8ac6f99e, type: 3}
     Volume: 0.5
     SpatialBlend: 0
+  - Path: HitSlash
+    Clip: {fileID: 8300000, guid: 22b72b8efdcbf804c808e062bc495ddc, type: 3}
+    Volume: 0.5
+    SpatialBlend: 0
+  - Path: Slash
+    Clip: {fileID: 8300000, guid: 4b70a5434b8494a498ecc67059c90f0d, type: 3}
+    Volume: 0.5
+    SpatialBlend: 0

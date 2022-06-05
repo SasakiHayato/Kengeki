@@ -16,6 +16,7 @@ public class AttackSetting : MonoBehaviour
     public bool IsNextInput { get; private set; }
 
     AttackDataBase.Data _data;
+    SoundManager _soundManager;
 
     CancellationTokenSource _waitEndAnimSource;
     CancellationTokenSource _waitNextInputSource;
@@ -28,11 +29,13 @@ public class AttackSetting : MonoBehaviour
         _attackDatas.ForEach(a => a.GetDatas.ForEach(a =>
         {
             a.Action.AttackAction?.SetUp(_user.gameObject);
-            a.Action.HitAction?.SetUp(_user.gameObject);
+            a.Action.HitActions?.ForEach(a => a.SetUp(_user.gameObject));
         }));
 
         _targetCollider.SetUp(_user.CharaData.ObjectType, this);
         IsNextInput = true;
+
+        _soundManager = GameManager.Instance.GetManager<SoundManager>(nameof(SoundManager));
     }
 
     public bool Request(AttackType type)
@@ -46,6 +49,11 @@ public class AttackSetting : MonoBehaviour
 
         _data = dataBase.GetData(_id);
         _user.Anim.SetAnimEvent(() => ColliderActive(true), _data.IsActiveFrame).Play(_data.AnimName);
+
+        if (_data.SoundName != "")
+        {
+            _soundManager.Request(SoundType.SE, _data.SoundName);
+        }
 
         WaitEndActive(_data.EndActiveFrame).Forget();
         WaitNextInput(_data.NextInputFrame).Forget();
@@ -67,6 +75,11 @@ public class AttackSetting : MonoBehaviour
 
         _data = dataBase.GetData(id);
         _user.Anim.SetAnimEvent(() => ColliderActive(true), _data.IsActiveFrame).Play(_data.AnimName);
+
+        if (_data.SoundName != "")
+        {
+            _soundManager.Request(SoundType.SE, _data.SoundName);
+        }
 
         WaitEndActive(_data.EndActiveFrame).Forget();
         WaitNextInput(_data.NextInputFrame).Forget();
@@ -121,7 +134,8 @@ public class AttackSetting : MonoBehaviour
     {
         if (iDamage.GetDamage(_data.Power))
         {
-            _data.Action.HitAction?.Execute(target);
+            Debug.Log("IsHit");
+            _data.Action.HitActions?.ForEach(a => a.Execute(target));
             Effects.Instance.RequestAttackEffect(_data.EffctTypes, target.transform);
         }
     }

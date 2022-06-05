@@ -37,14 +37,13 @@ public class SoundManager : ManagerBase
     public void Request(SoundType type, string path)
     {
         SoundDataBase dataBase = _soundDataBases.FirstOrDefault(d => d.SoundType == type);
-
         SoundPool sound = _soundPool.Use();
-
+        
         if (type == SoundType.BGM)
         {
             _currentBGMSound = sound;
         }
-
+        
         sound.SetData(type, dataBase.GetData(path));
     }
 
