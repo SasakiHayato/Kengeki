@@ -53,7 +53,6 @@ public abstract class CharaBase : MonoBehaviour
         Anim = new ObjectAnimController(data.Runtime, data.Avatar, gameObject);
 
         GameManager.Instance.FieldObject.Add(gameObject, data.ObjectType, CharaData.ID);
-        Debug.Log($"{gameObject.name} IsSetUp");
     }
 
     protected virtual void DestoryRequest()
@@ -99,7 +98,22 @@ public class CharaData
 
     public void UpdateHP(int hp)
     {
-        HP += hp;
+        HP = hp;
         if (HP >= MaxHP) HP = MaxHP;
+    }
+
+    public void UpdateMaxHP(int hp, bool isAttributeHP = false)
+    {
+        MaxHP = hp;
+
+        if (isAttributeHP)
+        {
+            HP = hp;
+        }
+    }
+
+    public void UpdatePower(int power)
+    {
+        Power = power;
     }
 }

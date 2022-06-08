@@ -159,7 +159,9 @@ public class Player : CharaBase, IDamage
 
         if (damage <= 0) return false;
 
-        CharaData.UpdateHP(-damage);
+        int hp = CharaData.HP - damage;
+        CharaData.UpdateHP(hp);
+
         //_state.ChangeState(State.KnockBack);
         return true;
     }

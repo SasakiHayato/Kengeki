@@ -114,7 +114,7 @@ public class PhysicsBase : MonoBehaviour
     {
         _forceDir = dir.normalized;
         _forcePower = power;
-        
+        Debug.Log($"Dir {_forceDir} Power {_forcePower}");
         IsForce = true;
     }
 

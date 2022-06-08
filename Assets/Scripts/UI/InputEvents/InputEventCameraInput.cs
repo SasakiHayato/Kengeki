@@ -46,8 +46,7 @@ public class InputEventCameraInput : IInputEvents
         }
 
         _txt.text = _inputType.ToString();
-        Debug.Log($"{_txt.text}");
-
+        
         if (_inputType == CmInputData.InputType.Inversion)
         {
             _inputType = CmInputData.InputType.Normal;
@@ -56,7 +55,5 @@ public class InputEventCameraInput : IInputEvents
         {
             _inputType = CmInputData.InputType.Inversion;
         }
-
-        
     }
 }

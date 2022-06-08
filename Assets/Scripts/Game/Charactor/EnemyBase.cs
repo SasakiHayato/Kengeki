@@ -43,6 +43,8 @@ public abstract class EnemyBase : CharaBase
             .RunRequest(true, State.RunTree);
 
         GetComponentInChildren<EnemyCanvas>().SetUp();
+
+        GameManager.Instance.GetManager<FieldManager>(nameof(FieldManager)).UpdateStatus(this);
     }
 
     protected override void DestoryRequest()

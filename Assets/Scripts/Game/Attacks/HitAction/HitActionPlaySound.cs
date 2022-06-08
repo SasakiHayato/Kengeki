@@ -13,7 +13,6 @@ public class HitActionPlaySound : IHitAction
 
     public void Execute(Collider collider)
     {
-        Debug.Log(_soundName);
         _soundManager.Request(SoundType.SE, _soundName);
     }
 }

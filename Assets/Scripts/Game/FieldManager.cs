@@ -7,7 +7,8 @@ public class FieldManager : ManagerBase
     [SerializeField] MapCreater _creater;
     public List<RoomData> RoomList { get; private set; }
 
-    const float ConstYPosition = 5f;
+    const float SetYPosition = 5f;
+    const float AddStatus = 0.5f;
 
     void Start()
     {
@@ -36,7 +37,7 @@ public class FieldManager : ManagerBase
         GameObject player = Instantiate(GameManager.Instance.ObjectData.GetData("Player").Prefab);
         RoomData data = RoomList[randomID];
         Vector3 setPos = data.Position.Center;
-        setPos.y = ConstYPosition;
+        setPos.y = SetYPosition;
         player.transform.position = setPos;
 
         data.Info.IsSetTeleporter(false);
@@ -67,7 +68,7 @@ public class FieldManager : ManagerBase
             float x = Random.Range(data.Position.UpperLeft.x, data.Position.BottomRight.x);
             float z = Random.Range(data.Position.UpperLeft.z, data.Position.BottomRight.z);
 
-            Vector3 setPos = new Vector3(x, ConstYPosition, z);
+            Vector3 setPos = new Vector3(x, SetYPosition, z);
             obj.transform.position = setPos;
 
             EnemyBase enemyBase = obj.GetComponent<EnemyBase>();
@@ -88,7 +89,7 @@ public class FieldManager : ManagerBase
         float x = Random.Range(data.Position.UpperLeft.x, data.Position.BottomRight.x);
         float z = Random.Range(data.Position.UpperLeft.z, data.Position.BottomRight.z);
 
-        Vector3 setPos = new Vector3(x, ConstYPosition, z);
+        Vector3 setPos = new Vector3(x, SetYPosition, z);
         obj.transform.position = setPos;
 
         EnemyBase enemyBase = obj.GetComponent<EnemyBase>();
@@ -106,6 +107,20 @@ public class FieldManager : ManagerBase
         {
             _creater.SetTeleport();
         }
+    }
+
+    public void UpdateStatus(CharaBase chara)
+    {
+        int hierarchy = GameManager.Instance.FieldHierarchy;
+
+        CharaData data = chara.CharaData;
+
+        if (hierarchy <= 1) return;
+
+        float add = hierarchy * AddStatus;
+        
+        data.UpdateMaxHP(data.MaxHP + (int)add, true);
+        data.UpdatePower(data.Power + (int)add);
     }
 
     public RoomData GetRoomData(int id) => RoomList.FirstOrDefault(r => r.Info.ID == id);

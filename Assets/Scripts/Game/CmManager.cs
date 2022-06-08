@@ -203,6 +203,8 @@ public class CmManager : ManagerBase
         _state.ChangeState(State.Shake);
     }
 
+    public void SetSensivity(float addVal) => _sensitivity += addVal;
+
     public void RadialBlur(float strength, float duration = 1)
     {
         _radialrAttribute.SetStrength(strength, duration);

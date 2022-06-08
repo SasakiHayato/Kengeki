@@ -5,14 +5,16 @@ using System;
 public class EnemyNomotion : State
 {
     PhysicsBase _physicsBase;
+    EnemyBase _enemyBase;
 
     float _timer;
 
-    const float DurationTime = 0.5f;
+    const float DurationTime = 0.2f;
 
     public override void SetUp(GameObject user)
     {
         _physicsBase = user.GetComponent<PhysicsBase>();
+        _enemyBase = user.GetComponent<EnemyBase>();
     }
 
     public override void Entry(string beforeStatePath)
@@ -24,6 +26,7 @@ public class EnemyNomotion : State
     {
         if (!_physicsBase.IsForce)
         {
+            _enemyBase.MoveDir = Vector3.up;
             _timer += Time.deltaTime;
         }
     }

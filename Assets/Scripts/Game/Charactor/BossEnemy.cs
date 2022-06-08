@@ -25,7 +25,9 @@ public class BossEnemy : EnemyBase, IDamage
     public bool GetDamage(int damage)
     {
         _attackSetting?.Cancel();
-        CharaData.UpdateHP(-damage);
+
+        int hp = CharaData.HP - damage;
+        CharaData.UpdateHP(hp);
 
         if (CharaData.HP <= 0) DestoryRequest();
 

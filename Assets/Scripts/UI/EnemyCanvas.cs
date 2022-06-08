@@ -31,6 +31,7 @@ public class EnemyCanvas : MonoBehaviour
 
     void CanvasView()
     {
+        _slider.maxValue = _user.CharaData.MaxHP;
         _slider.value = _user.CharaData.HP;
 
         if (_slider.maxValue <= _user.CharaData.HP) _canvas.enabled = false;
