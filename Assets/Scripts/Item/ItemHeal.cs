@@ -15,8 +15,8 @@ public class ItemHeal : ItemBase
 
         if (hp >= player.CharaData.MaxHP) return false;
 
-        player.CharaData.UpdateHP(_healPower);
-
+        player.CharaData.UpdateHP(_healPower + hp);
+        ItemManager.RemoveItem(this);
         return true;
     }
 }

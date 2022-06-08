@@ -88,12 +88,18 @@ public class CmManager : ManagerBase
         public float Sensitivity { get; private set; }
 
         Vector3 _position = Vector3.zero;
-        public Vector3 NormalizePosition 
+        public Vector3 Position
         {
-            get => _position.normalized; 
-            set { _position = value; }
+            get
+            {
+                return _position;
+            }
+            set
+            {
+                _position = value;
+            }
         }
-
+        
         public float VirticalRate { get; set; }
         public System.Enum SaveState { get; set; }
     }
@@ -134,7 +140,6 @@ public class CmManager : ManagerBase
         _state = new StateManager(gameObject);
         _state.AddState(new NormalCm(), State.Normal)
             .AddState(new LockonCm(), State.Lockon)
-            .AddState(new TransitionCm(), State.Transition)
             .AddState(new ShakeCm(), State.Shake)
             .RunRequest(true, State.Normal);
     }
@@ -151,13 +156,13 @@ public class CmManager : ManagerBase
 
     void Move()
     {
-        Vector3 cmPos = CmData.NormalizePosition * (_dist - Zoom());
+        Vector3 cmPos = CmData.Position * (_dist - Zoom());
 
         if (cmPos.y > CmData.VirticalRate) cmPos.y = CmData.VirticalRate;
 
         transform.position = cmPos + _user.position;
 
-        Vector3 virtualCmPos = CmData.NormalizePosition * _dist;
+        Vector3 virtualCmPos = CmData.Position * _dist;
         _virtualityCm.position = virtualCmPos;
     }
 
@@ -199,8 +204,8 @@ public class CmManager : ManagerBase
 
     public void Shake()
     {
-        CmData.SaveState = _state.CurrentStatePath;
-        _state.ChangeState(State.Shake);
+        //CmData.SaveState = _state.CurrentStatePath;
+        //_state.ChangeState(State.Shake);
     }
 
     public void SetSensivity(float addVal) => _sensitivity += addVal;

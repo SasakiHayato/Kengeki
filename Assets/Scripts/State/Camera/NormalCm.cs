@@ -26,6 +26,7 @@ public class NormalCm : StateMachine.State
     {
         _cmManager.ViewTarget = _cmManager.CmData.User;
         _cmManager.CmData.VirticalRate = float.MaxValue;
+        _cmManager.CmData.SaveState = CmManager.State.Normal;
     }
 
     public override void Run()
@@ -36,7 +37,7 @@ public class NormalCm : StateMachine.State
         Horizontal(input.x * CmInputData.HorizontalInput);
         Virtical(input.y * CmInputData.VerticalInput);
 
-        _cmManager.CmData.NormalizePosition = _setPos;
+        _cmManager.CmData.Position = _setPos.normalized;
     }
 
     void Horizontal(float input)

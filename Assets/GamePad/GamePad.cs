@@ -80,6 +80,15 @@ public partial class @GamePad : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Entry"",
+                    ""type"": ""Button"",
+                    ""id"": ""ae689e18-a990-4ed1-8c86-1398a4e929a0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -261,11 +270,11 @@ public partial class @GamePad : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""05f6913d-c316-48b2-a6bb-e225f14c7960"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""id"": ""12caea66-ce4a-4cab-a06f-072834569c74"",
+                    ""path"": ""<Keyboard>/tab"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
+                    ""groups"": """",
                     ""action"": ""Dodge"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -322,6 +331,28 @@ public partial class @GamePad : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Lockon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""263eded3-bd4d-431a-a0af-1422cb0105d0"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Entry"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""47f1a8c8-b1a6-4a2f-889f-4da77b68ba5a"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Entry"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1008,6 +1039,7 @@ public partial class @GamePad : IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_Lockon = m_Player.FindAction("Lockon", throwIfNotFound: true);
+        m_Player_Entry = m_Player.FindAction("Entry", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1088,6 +1120,7 @@ public partial class @GamePad : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_Lockon;
+    private readonly InputAction m_Player_Entry;
     public struct PlayerActions
     {
         private @GamePad m_Wrapper;
@@ -1098,6 +1131,7 @@ public partial class @GamePad : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
         public InputAction @Lockon => m_Wrapper.m_Player_Lockon;
+        public InputAction @Entry => m_Wrapper.m_Player_Entry;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1125,6 +1159,9 @@ public partial class @GamePad : IInputActionCollection2, IDisposable
                 @Lockon.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLockon;
                 @Lockon.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLockon;
                 @Lockon.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLockon;
+                @Entry.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEntry;
+                @Entry.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEntry;
+                @Entry.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEntry;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1147,6 +1184,9 @@ public partial class @GamePad : IInputActionCollection2, IDisposable
                 @Lockon.started += instance.OnLockon;
                 @Lockon.performed += instance.OnLockon;
                 @Lockon.canceled += instance.OnLockon;
+                @Entry.started += instance.OnEntry;
+                @Entry.performed += instance.OnEntry;
+                @Entry.canceled += instance.OnEntry;
             }
         }
     }
@@ -1333,6 +1373,7 @@ public partial class @GamePad : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnLockon(InputAction.CallbackContext context);
+        void OnEntry(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

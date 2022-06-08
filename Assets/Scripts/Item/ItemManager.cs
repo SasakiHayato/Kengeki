@@ -1,14 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class ItemManager : ManagerBase
 {
     [SerializeField] ItemDataBase _itemDataBase;
 
+    List<ItemBase> _fieldItemList;
+
     void Start()
     {
         GameManager.Instance.AddManager(this);
+        _fieldItemList = new List<ItemBase>();
+        GamePadInputter.Instance.Input.Player.Entry.performed += context => Get();
+    }
+
+    void Get()
+    {
+        ItemBase itemBase = _fieldItemList.FirstOrDefault(f => f.IsEffect);
+        if (itemBase.Get())
+        {
+            RemoveItem(itemBase);
+        }
+    }
+
+    public void RemoveItem(ItemBase itemBase)
+    {
+        _fieldItemList.Remove(itemBase);
     }
 
     public override void SetUp()
@@ -28,6 +47,8 @@ public class ItemManager : ManagerBase
         itemBase.SetInfo(data);
 
         itemBase.transform.position = parent.position;
+
+        _fieldItemList.Add(itemBase);
     }
 
     public override GameObject ManagerObject() => gameObject;

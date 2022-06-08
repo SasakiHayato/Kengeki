@@ -20,6 +20,8 @@ public class LockonCm : StateMachine.State
     {
         _cmManager.ViewTarget = GameManager.Instance.LockonTarget;
         _cmManager.CmData.VirticalRate = VirticalRate;
+
+        _cmManager.CmData.SaveState = CmManager.State.Lockon;
     }
 
     public override void Run()
@@ -27,7 +29,7 @@ public class LockonCm : StateMachine.State
         Vector3 forward = _cmManager.CmData.User.position - _cmManager.ViewTarget.position;
         Vector3 offset = Camera.main.transform.right + Vector3.up;
 
-        _cmManager.CmData.NormalizePosition = forward + offset;
+        _cmManager.CmData.Position = (forward + offset).normalized;
     }
 
     public override Enum Exit()

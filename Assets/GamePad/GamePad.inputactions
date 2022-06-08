@@ -58,6 +58,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Entry",
+                    "type": "Button",
+                    "id": "ae689e18-a990-4ed1-8c86-1398a4e929a0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -239,11 +248,11 @@
                 },
                 {
                     "name": "",
-                    "id": "05f6913d-c316-48b2-a6bb-e225f14c7960",
-                    "path": "<Mouse>/leftButton",
+                    "id": "12caea66-ce4a-4cab-a06f-072834569c74",
+                    "path": "<Keyboard>/tab",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard&Mouse",
+                    "groups": "",
                     "action": "Dodge",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -300,6 +309,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Lockon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "263eded3-bd4d-431a-a0af-1422cb0105d0",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Entry",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "47f1a8c8-b1a6-4a2f-889f-4da77b68ba5a",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Entry",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

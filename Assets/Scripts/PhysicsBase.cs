@@ -33,7 +33,6 @@ public class PhysicsBase : MonoBehaviour
         {
             if (IsForce)
             {
-                
                 return _gravity;
             }
             else

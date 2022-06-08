@@ -110,5 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39eb969458100e147a57f4093f0c0135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputType: 0
   _timming: 1
+  _effectDist: 10
   _healPower: 3
