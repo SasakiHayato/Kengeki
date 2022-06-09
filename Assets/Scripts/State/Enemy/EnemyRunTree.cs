@@ -7,13 +7,11 @@ public class EnemyRunTree : State
 {
     TreeManager _tree;
     PhysicsBase _physicsBase;
-    EnemyBase _enemyBase;
 
     public override void SetUp(GameObject user)
     {
         _tree = user.GetComponent<TreeManager>();
         _physicsBase = user.GetComponent<PhysicsBase>();
-        _enemyBase = user.GetComponent<EnemyBase>();
     }
 
     public override void Entry(string beforeStatePath)
@@ -31,7 +29,6 @@ public class EnemyRunTree : State
         if (_physicsBase.IsForce)
         {
             _tree.IsRun = false;
-            _enemyBase.MoveDir = Vector3.one;
             return EnemyBase.State.Nomotion;
         }
         else return EnemyBase.State.RunTree;

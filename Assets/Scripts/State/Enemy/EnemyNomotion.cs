@@ -9,7 +9,7 @@ public class EnemyNomotion : State
 
     float _timer;
 
-    const float DurationTime = 0.2f;
+    const float DurationTime = 0.0f;
 
     public override void SetUp(GameObject user)
     {
@@ -20,6 +20,7 @@ public class EnemyNomotion : State
     public override void Entry(string beforeStatePath)
     {
         _timer = 0;
+        _enemyBase.MoveDir = Vector3.up;
         _enemyBase.CharaData.UpdateSpeed(1);
     }
 
@@ -35,6 +36,7 @@ public class EnemyNomotion : State
     {
         if (_timer > DurationTime)
         {
+            _enemyBase.MoveDir = Vector3.zero;
             _enemyBase.CharaData.UpdateSpeed(_enemyBase.CharaData.DefaultSpeed);
             return EnemyBase.State.RunTree;
         }

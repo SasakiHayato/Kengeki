@@ -16,9 +16,9 @@ public class MobEnemy : EnemyBase, IDamage
     {
         StateManager.Run();
 
-        Vector3 move = Vector3.Scale(MoveDir, PhysicsBase.Gravity);
+        Vector3 move = Vector3.Scale(MoveDir * CharaData.Speed, PhysicsBase.Gravity);
         
-        RB.velocity = move * CharaData.Speed;
+        RB.velocity = move;
     }
 
     public bool GetDamage(int damage)
