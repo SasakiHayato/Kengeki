@@ -15,14 +15,14 @@ MonoBehaviour:
   _type: 0
   _datas:
   - _animName: CubeEnemy_Attack
+    _soundName: 
     _power: 1
     _isActiveFrame: 9
     _endActiveFrame: 16
     _nextInputFrame: 25
     _effctTypes: 0000000001000000
     _actionData:
-      _hitAction:
-        rid: -2
+      _hitActions: []
       _attackAction:
         rid: -2
       _executeFrame: 0

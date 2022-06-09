@@ -20,6 +20,7 @@ public class EnemyNomotion : State
     public override void Entry(string beforeStatePath)
     {
         _timer = 0;
+        _enemyBase.CharaData.UpdateSpeed(1);
     }
 
     public override void Run()
@@ -32,7 +33,11 @@ public class EnemyNomotion : State
 
     public override Enum Exit()
     {
-        if (_timer > DurationTime) return EnemyBase.State.RunTree;
+        if (_timer > DurationTime)
+        {
+            _enemyBase.CharaData.UpdateSpeed(_enemyBase.CharaData.DefaultSpeed);
+            return EnemyBase.State.RunTree;
+        }
         else return EnemyBase.State.Nomotion;
     }
 }
