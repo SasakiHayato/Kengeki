@@ -135,6 +135,7 @@ public class AttackSetting : MonoBehaviour
         if (iDamage.GetDamage(_data.Power))
         {
             _data.Action.HitActions?.ForEach(a => a.Execute(target));
+            BaseUI.Instance.CallBack("GameUI", "Damage", new object[] { _data.Power, target.transform });
             Effects.Instance.RequestAttackEffect(_data.EffctTypes, target.transform);
         }
     }

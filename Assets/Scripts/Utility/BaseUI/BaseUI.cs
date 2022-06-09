@@ -13,9 +13,12 @@ public class BaseUI : SingletonAttribute<BaseUI>
     const string CanvasName = "Canvas";
     List<ParentUI> _uiList;
 
+    public Canvas MasterCanvas { get; private set; }
+
     public override void SetUp()
     {
-        ParentUI[] parents = GameObject.Find(CanvasName).GetComponentsInChildren<ParentUI>();
+        MasterCanvas = GameObject.Find(CanvasName).GetComponent<Canvas>();
+        ParentUI[] parents = MasterCanvas.GetComponentsInChildren<ParentUI>();
 
         int id = 0;
         _uiList = new List<ParentUI>();

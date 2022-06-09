@@ -45,6 +45,7 @@ public class PlayerDodge : State
         if (_player.Anim.EndCurrentAnimNormalizeTime)
         {
             Vector2 input = GamePadInputter.Instance.PlayerGetValue(GamePadInputter.ValueType.PlayerMove);
+            _player.IsDodge = false;
 
             if (input == Vector2.zero) return Player.State.Idle;
             else return Player.State.Move;

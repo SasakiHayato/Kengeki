@@ -31,6 +31,10 @@ public class Player : CharaBase, IDamage
             _isDodge = false;
             return isDodge;
         }
+        set
+        {
+            _isDodge = value;
+        }
     }
 
     protected override void SetUp()
@@ -53,7 +57,7 @@ public class Player : CharaBase, IDamage
             .AddState(new PlayerKnockBack(), State.KnockBack)
             .RunRequest(true, State.Idle);
 
-        BaseUI.Instance.CallBack("PlayerUI", "HP");
+        BaseUI.Instance.CallBack("GameUI", "HP");
         GameManager.Instance.GetManager<CmManager>(nameof(CmManager)).SetUser();
     }
 
@@ -151,8 +155,11 @@ public class Player : CharaBase, IDamage
     {
         if (_state.CurrentPathName == State.Dodge.ToString())
         {
-            _isDodge = true;
-            Effects.Instance.RequestDodgeEffect();
+            if (!_isDodge)
+            {
+                _isDodge = true;
+                Effects.Instance.RequestDodgeEffect();
+            }
 
             return false;
         }

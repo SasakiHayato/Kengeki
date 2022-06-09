@@ -1,5 +1,5 @@
 
-public class PlayerPanel : ParentUI
+public class GamePanel : ParentUI
 {
     public override void SetUp()
     {

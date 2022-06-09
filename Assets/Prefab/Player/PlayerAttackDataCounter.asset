@@ -24,6 +24,7 @@ MonoBehaviour:
     _actionData:
       _hitActions:
       - rid: 6414747777599275014
+      - rid: 6414747838294786048
       _attackAction:
         rid: 3710212259873030144
       _executeFrame: 11
@@ -33,7 +34,7 @@ MonoBehaviour:
     _isActiveFrame: 8
     _endActiveFrame: 20
     _nextInputFrame: 30
-    _effctTypes: 0000000001000000
+    _effctTypes: 000000000100000003000000
     _actionData:
       _hitActions:
       - rid: 6414747777599275015
@@ -61,3 +62,9 @@ MonoBehaviour:
       type: {class: HitActionPlaySound, ns: , asm: Assembly-CSharp}
       data:
         _soundName: HitSlash
+    - rid: 6414747838294786048
+      type: {class: HitActionForce, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 2
+        _dir: {x: 0, y: 1, z: 0}
+        _power: 15

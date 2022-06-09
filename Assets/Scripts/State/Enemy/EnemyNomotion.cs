@@ -26,7 +26,6 @@ public class EnemyNomotion : State
     {
         if (!_physicsBase.IsForce)
         {
-            _enemyBase.MoveDir = Vector3.up;
             _timer += Time.deltaTime;
         }
     }

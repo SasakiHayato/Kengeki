@@ -25,7 +25,7 @@ MonoBehaviour:
     Path: Player
   - Name: CubeEnemySword
     Prefab: {fileID: 2544215643859038677, guid: ee415bf13eea6ab4fb3571fb863bdda6, type: 3}
-    HP: 3
+    HP: 5
     Speed: 1
     Power: 1
     Runtime: {fileID: 9100000, guid: a2a5bb66a9ac2004cb7602b86514f83f, type: 2}
@@ -45,7 +45,7 @@ MonoBehaviour:
     Path: CubeEnemyBullet
   - Name: BossGrruzam
     Prefab: {fileID: 2473082838094617567, guid: fd93b2d530f32104ab865e217c9c7b32, type: 3}
-    HP: 10
+    HP: 50
     Speed: 5
     Power: 1
     Runtime: {fileID: 9100000, guid: 78d833dcd15b2164aa0dce5031b02512, type: 2}
