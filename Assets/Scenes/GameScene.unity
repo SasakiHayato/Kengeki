@@ -2218,7 +2218,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6701862034259071487, guid: e5ac9fd144964d94aa884e5f6d3bddca, type: 3}
       propertyPath: _arenaHierarchy
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6701862034259071487, guid: e5ac9fd144964d94aa884e5f6d3bddca, type: 3}
       propertyPath: _tipDatas.Array.size
