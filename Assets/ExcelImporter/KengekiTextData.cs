@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +6,7 @@ public class KengekiTextData : ScriptableObject
 {
     public List<Data> TextData;
 
+    [System.Serializable]
 	public class Data
     {
         public string Path;

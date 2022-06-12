@@ -7,9 +7,9 @@ public class TextDataGetter
 
     const string DataPath = "KengekiTextData";
 
-    public TextDataGetter()
+    public void SetUp()
     {
-        _textData = (KengekiTextData)Resources.Load(DataPath);
+        _textData = Resources.Load<KengekiTextData>(DataPath);
     }
 
     public string Request(string path, int id)

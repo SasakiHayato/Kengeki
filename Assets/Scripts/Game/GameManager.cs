@@ -52,6 +52,7 @@ public class GameManager : SingletonAttribute<GameManager>
         EnemyDataTipList.Add(Resources.Load<EnemyDataTip>("BossEnemyDataTip"));
 
         TextData = new TextDataGetter();
+        TextData.SetUp();
     }
 
     public void AddFieldHierarchy() => FieldHierarchy++;
@@ -81,7 +82,6 @@ public class GameManager : SingletonAttribute<GameManager>
     public void SetUpManager()
     {
         var sort = _managerList.OrderBy(m => m.Priority);
-        Debug.Log(sort.Count());
         sort.ToList().ForEach(m => m.SetUp());
     }
 

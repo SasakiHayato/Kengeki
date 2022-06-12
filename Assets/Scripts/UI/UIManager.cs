@@ -17,6 +17,15 @@ public class UIManager : ManagerBase
 
         BaseUI.SetInstance(new BaseUI()).SetUp();
         _eventList.ForEach(e => e.SetUp());
+
+        if (GameManager.Instance.CurrentMapType == MapType.Normal)
+        {
+            BaseUI.Instance.CallBack("GameUI", "Text", new object[] { GameManager.Instance.TextData.Request("SystemMSG", 1) });
+        }
+        else
+        {
+            BaseUI.Instance.CallBack("GameUI", "Text", new object[] { GameManager.Instance.TextData.Request("SystemMSG", 3) });
+        }
     }
 
     public void UpdateItemInfo(UpdateViewType type)
