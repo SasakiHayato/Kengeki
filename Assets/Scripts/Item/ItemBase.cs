@@ -52,7 +52,7 @@ public abstract class ItemBase : MonoBehaviour
 
     public bool Get()
     {
-        if (!IsEffect) return false;
+        if (!IsEffect || !gameObject.activeSelf) return false;
 
         switch (_timming)
         {

@@ -12,6 +12,12 @@ public enum GameState
     None,
 }
 
+public enum MapType
+{
+    Normal,
+    Arena,
+}
+
 /// <summary>
 /// ƒQ[ƒ€‚ÌŠÇ—ƒNƒ‰ƒX
 /// </summary>
@@ -21,6 +27,7 @@ public class GameManager : SingletonAttribute<GameManager>
     List<ManagerBase> _managerList;
     
     public GameState CurrentGameState { get; private set; }
+    public MapType CurrentMapType { get; private set; }
 
     public ObjectDataBase ObjectData { get; private set; }
     public FieldObjectData FieldObject { get; private set; }
@@ -76,12 +83,14 @@ public class GameManager : SingletonAttribute<GameManager>
     }
 
     public void SetGameState(GameState gameState) => CurrentGameState = gameState;
+    public void SetMapType(MapType type) => CurrentMapType = type;
 
     public void ChangeScene(string sceneName)
     {
         _managerList = new List<ManagerBase>();
         FieldObject = new FieldObjectData();
         GamePadInputter.Despose();
+
         SceneManager.LoadScene(sceneName);
     }
 }

@@ -10,7 +10,14 @@ public class MapTeleporter : MonoBehaviour
 
         if (charaBase.CharaData.ObjectType == ObjectType.GameUser)
         {
-            GameManager.Instance.ChangeScene("GameScene");
+            if (GameManager.Instance.CurrentMapType == MapType.Arena)
+            {
+                GameManager.Instance.ChangeScene("TitleScene");
+            }
+            else
+            {
+                GameManager.Instance.ChangeScene("GameScene");
+            }
         }
     }
 }

@@ -67,4 +67,4 @@ MonoBehaviour:
       data:
         _type: 2
         _dir: {x: 0, y: 1, z: 0}
-        _power: 20
+        _power: 15

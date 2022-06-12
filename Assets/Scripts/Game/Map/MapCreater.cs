@@ -75,12 +75,14 @@ public class MapCreater : MonoBehaviour
             _saveRoomCount = 2;
             IsSetArena = true;
             ArenaMap();
+            GameManager.Instance.SetMapType(MapType.Arena);
         }
         else
         {
             _saveRoomCount = _roomCount;
             IsSetArena = false;
             NormalMap();
+            GameManager.Instance.SetMapType(MapType.Normal);
         }
 
         CreateWall();
