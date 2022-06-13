@@ -5,6 +5,7 @@ public class UIManager : ManagerBase
 {
     [SerializeField] List<GamePadInputEvent> _eventList;
     [SerializeField] ItemViewer _itemViewer;
+    [SerializeField] LogViewer _logViewer;
 
     void Start()
     {
@@ -36,6 +37,11 @@ public class UIManager : ManagerBase
     public void InputLoadItem()
     {
         _itemViewer.PickUpLoad();
+    }
+
+    public void ReqestSetLog(string text)
+    {
+        _logViewer.SetText(text);
     }
 
     public override GameObject ManagerObject() => gameObject;

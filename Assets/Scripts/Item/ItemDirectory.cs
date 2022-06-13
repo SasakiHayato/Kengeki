@@ -120,4 +120,9 @@ public class ItemDirectory : SingletonAttribute<ItemDirectory>
         DirectoryData data = _directoryList.FirstOrDefault(d => d.Path == path);
         _directoryList.Remove(data);
     }
+
+    public void Dispose()
+    {
+        _directoryList = new List<DirectoryData>();
+    }
 }

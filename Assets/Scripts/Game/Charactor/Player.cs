@@ -169,6 +169,19 @@ public class Player : CharaBase, IDamage
         int hp = CharaData.HP - damage;
         CharaData.UpdateHP(hp);
 
+        if (CharaData.HP <= 0)
+        {
+            DestoryRequest();
+        }
+
         return true;
+    }
+
+    protected override void DestoryRequest()
+    {
+        ItemDirectory.Instance.Dispose();
+        GameManager.Instance.ChangeScene("TitleScene");
+
+        base.DestoryRequest();
     }
 }

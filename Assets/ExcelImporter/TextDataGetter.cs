@@ -15,6 +15,8 @@ public class TextDataGetter
     public string Request(string path, int id)
     {
         var dataList = _textData.TextData.Where(d => d.Path == path);
-        return dataList.First(d => d.ID == id).Text;
+        string txt = dataList.First(d => d.ID == id).Text;
+        GameManager.Instance.GetManager<UIManager>(nameof(UIManager)).ReqestSetLog(txt);
+        return txt;
     }
 }

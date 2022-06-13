@@ -18,6 +18,7 @@ public enum InputEventsType
     OptionSystem,
     OptionSound,
     OptionItem,
+    OptionLog,
 }
 
 public class GamePadInputEvent : MonoBehaviour
