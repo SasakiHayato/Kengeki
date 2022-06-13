@@ -20,8 +20,12 @@ public class SetText : ChildrenUI
 
     public override void CallBack(object[] datas = null)
     {
+        string get = (string)datas[0];
+        
+        string set = get.Replace('/', '\n');
+        
         _image.gameObject.SetActive(true);
-        _txt.DOText((string)datas[0], Duration)
+        _txt.DOText(set, Duration)
             .OnComplete(() => Init().Forget());
     }
 
