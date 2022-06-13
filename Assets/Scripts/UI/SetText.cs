@@ -39,6 +39,7 @@ public class SetText : ChildrenUI
     {
         _image.gameObject.SetActive(true);
         _txt.DOText(set, Duration)
+            
             .OnComplete(() => Init().Forget());
     }
 
