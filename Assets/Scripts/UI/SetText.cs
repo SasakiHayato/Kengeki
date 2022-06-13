@@ -3,12 +3,17 @@ using UnityEngine.UI;
 using DG.Tweening;
 using Cysharp.Threading.Tasks;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public class SetText : ChildrenUI
 {
     [SerializeField] Text _txt;
     Image _image;
 
+    List<string> _txtList = new List<string>();
+
+    bool _isDisplaying = false;
     const float Duration = 2f;
 
     public override void SetUp()
@@ -20,10 +25,18 @@ public class SetText : ChildrenUI
 
     public override void CallBack(object[] datas = null)
     {
-        string get = (string)datas[0];
+        _txtList.Add((string)datas[0]);
+        if (_isDisplaying) return;
+
+        _isDisplaying = true;
+
+        string get = _txtList.First();
         
-        string set = get.Replace('/', '\n');
-        
+        Set(get.Replace('/', '\n'));
+    }
+
+    void Set(string set)
+    {
         _image.gameObject.SetActive(true);
         _txt.DOText(set, Duration)
             .OnComplete(() => Init().Forget());
@@ -33,6 +46,16 @@ public class SetText : ChildrenUI
     {
         await UniTask.Delay(TimeSpan.FromSeconds(1f));
         _txt.text = "";
-        _image.gameObject.SetActive(false);
+        _isDisplaying = false;
+        _txtList.Remove(_txtList.First());
+
+        if (_txtList.Count > 0)
+        {
+            Set(_txtList.First());
+        }
+        else
+        {
+            _image.gameObject.SetActive(false);
+        }
     }
 }

@@ -7,6 +7,10 @@ public class FieldManager : ManagerBase
     [SerializeField] MapCreater _creater;
     public List<RoomData> RoomList { get; private set; }
 
+    float _timer = 0;
+    bool _isCall = false;
+
+    const float CallTime = 15f;
     const float SetYPosition = 5f;
     const float AddStatus = 0.5f;
 
@@ -29,6 +33,17 @@ public class FieldManager : ManagerBase
         }
 
         base.SetUp();
+    }
+
+    void Update()
+    {
+        _timer += Time.deltaTime;
+        if (_timer > CallTime && !_isCall)
+        {
+            _isCall = true;
+            object[] data = new object[] { GameManager.Instance.TextData.Request("SystemMSG", 2) };
+            BaseUI.Instance.CallBack("GameUI", "Text", data);
+        }
     }
 
     void InstancePlayer()
@@ -106,6 +121,8 @@ public class FieldManager : ManagerBase
         if (data.Info.SetTeleporter && data.Info.EnemyList.Count() <= 0)
         {
             _creater.SetTeleport();
+            object[] info = new object[] { GameManager.Instance.TextData.Request("SystemMSG", 4) };
+            BaseUI.Instance.CallBack("GameUI", "Text", info);
         }
     }
 

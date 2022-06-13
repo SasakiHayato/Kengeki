@@ -50,6 +50,8 @@ public abstract class EnemyBase : CharaBase
     protected override void DestoryRequest()
     {
         GameManager.Instance.GetManager<FieldManager>(nameof(FieldManager)).RemoveEnemyEvent(RoomID, this);
+
+        BaseUI.Instance.CallBack("GameUI", "Text", new object[] { GameManager.Instance.TextData.Request("GameMSG", 1) });
         GameManager.Instance.GetManager<ItemManager>(nameof(ItemManager)).SpawnRequest("Healer", transform);
 
         GameManager.Instance.GetManager<SoundManager>(nameof(SoundManager)).Request(SoundType.SE, "Dead");
