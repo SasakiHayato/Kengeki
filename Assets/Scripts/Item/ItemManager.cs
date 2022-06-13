@@ -17,7 +17,7 @@ public class ItemManager : ManagerBase
 
     void Get()
     {
-        ItemBase itemBase = _fieldItemList.FirstOrDefault(f => f.IsEffect);
+        ItemBase itemBase = _fieldItemList.FirstOrDefault(f => f.IsEffect && f.gameObject.activeSelf);
         if (itemBase.Get())
         {
             RemoveItem(itemBase);

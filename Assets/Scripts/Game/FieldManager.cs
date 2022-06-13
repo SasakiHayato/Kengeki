@@ -121,6 +121,7 @@ public class FieldManager : ManagerBase
         if (data.Info.SetTeleporter && data.Info.EnemyList.Count() <= 0)
         {
             _creater.SetTeleport();
+            _isCall = true;
             object[] info = new object[] { GameManager.Instance.TextData.Request("SystemMSG", 4) };
             BaseUI.Instance.CallBack("GameUI", "Text", info);
         }
