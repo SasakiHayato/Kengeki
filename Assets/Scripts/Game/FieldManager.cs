@@ -88,6 +88,7 @@ public class FieldManager : ManagerBase
 
             EnemyBase enemyBase = obj.GetComponent<EnemyBase>();
             enemyBase.SetRoomID(data.Info.ID);
+            enemyBase.SetItemPath(tip.ItemPath);
 
             data.Info.AddEnemy(enemyBase);
         }

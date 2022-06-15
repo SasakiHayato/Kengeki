@@ -29,8 +29,17 @@ public class EnemyDataTip : ScriptableObject
     [System.Serializable]
     public class DataTip
     {
+        [SerializeField] List<string> _itemPathList;
         [SerializeField] List<EnemyPath> _enemyPaths;
 
+        public string ItemPath
+        {
+            get
+            {
+                int random = Random.Range(0, _itemPathList.Count);
+                return _itemPathList[random];
+            }
+        }
         public List<EnemyPath> EnemyPaths => _enemyPaths;
     }
 }

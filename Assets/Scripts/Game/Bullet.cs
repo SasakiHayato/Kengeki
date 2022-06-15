@@ -63,6 +63,7 @@ public class Bullet : MonoBehaviour, IPool
             {
                 if (iDamage.GetDamage(_power))
                 {
+                    BaseUI.Instance.CallBack("GameUI", "Damage", new object[] { _power, other.transform });
                     Effects.Instance.RequestParticleEffect(ParticalType.Hit, other.transform);
                     Waiting = true;
                     Delete();

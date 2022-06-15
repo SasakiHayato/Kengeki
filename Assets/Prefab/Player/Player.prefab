@@ -442,6 +442,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dataPath: Player
   _offsetPosition: {fileID: 2046847861937009994}
+  _updateBerserkerPower: 3
 --- !u!114 &1162459682554197377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -495,6 +496,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ecd93d06008c52c458a8552015b4af92, type: 2}
   - {fileID: 11400000, guid: 468ae2d7b634f704b8e476e8a00eb030, type: 2}
   - {fileID: 11400000, guid: 0dabc1c94f30fdf4d85c1680fad052fe, type: 2}
+  - {fileID: 11400000, guid: 8d90030722107f34ab83737351b3da8f, type: 2}
 --- !u!136 &4269416146639633525
 CapsuleCollider:
   m_ObjectHideFlags: 0

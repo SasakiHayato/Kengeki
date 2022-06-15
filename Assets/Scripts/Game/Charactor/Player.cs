@@ -7,6 +7,8 @@ using StateMachine;
 
 public class Player : CharaBase, IDamage
 {
+    [SerializeField] int _updateBerserkerPower;
+
     public enum State
     {
         Idle,
@@ -18,6 +20,9 @@ public class Player : CharaBase, IDamage
     }
 
     Vector3 _saveDir;
+    float _berserkerTime;
+
+    float _timer;
 
     JumpSetting _jumpSetting;
     StateManager _state;
@@ -35,6 +40,14 @@ public class Player : CharaBase, IDamage
         {
             _isDodge = value;
         }
+    }
+
+    public bool OnBerserker { get; private set; }
+    public void SetOnBerserker(float effectTime)
+    {
+        _berserkerTime = effectTime;
+        OnBerserker = true;
+        CharaData.UpdatePower(CharaData.Power + _updateBerserkerPower);
     }
 
     protected override void SetUp()
@@ -66,6 +79,22 @@ public class Player : CharaBase, IDamage
         if (GamePadInputter.Instance.CurrentInputterType != InputterType.Player) return;
 
         _state.Run();
+
+        CheckBerserker();
+    }
+
+    void CheckBerserker()
+    {
+        if (OnBerserker)
+        {
+            _timer += Time.deltaTime;
+            if (_timer > _berserkerTime)
+            {
+                OnBerserker = false;
+                _timer = 0;
+                _berserkerTime = 0;
+            }
+        }
     }
 
     /// <summary>
@@ -179,7 +208,7 @@ public class Player : CharaBase, IDamage
 
     protected override void DestoryRequest()
     {
-        ItemDirectory.Instance.Dispose();
+        GameManager.Instance.Init();
         GameManager.Instance.ChangeScene("TitleScene");
 
         base.DestoryRequest();

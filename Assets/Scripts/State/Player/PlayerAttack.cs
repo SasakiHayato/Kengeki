@@ -39,7 +39,17 @@ public class PlayerAttack : State
         }
         else
         {
-            if (_physicsBase.IsGround) type = AttackType.Weak;
+            if (_physicsBase.IsGround)
+            {
+                if (_player.OnBerserker)
+                {
+                    type = AttackType.Strength;
+                }
+                else
+                {
+                    type = AttackType.Weak;
+                }
+            }
             else type = AttackType.Float;
 
             if (_attackSetting.Request(type)) _timer = 0;

@@ -1362,7 +1362,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _rayDirection: {x: 0, y: -1, z: 0}
-  _rayDistance: 2.2
+  _rayDistance: 2.7
 --- !u!54 &7586370589469115304
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1574,6 +1574,7 @@ MonoBehaviour:
       type: {class: ConditionDistance, ns: , asm: Assembly-CSharp}
       data:
         _effectDistance: 5
+        _checkType: 0
     - rid: 6414747703172923401
       type: {class: ActionAttack, ns: , asm: Assembly-CSharp}
       data:

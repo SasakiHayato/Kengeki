@@ -25,7 +25,7 @@ public enum MapType
 public class GameManager : SingletonAttribute<GameManager>
 {
     List<ManagerBase> _managerList;
-    
+
     public GameState CurrentGameState { get; private set; }
     public MapType CurrentMapType { get; private set; }
 
@@ -33,7 +33,7 @@ public class GameManager : SingletonAttribute<GameManager>
     public FieldObjectData FieldObject { get; private set; }
     public List<EnemyDataTip> EnemyDataTipList { get; private set; }
     public TextDataGetter TextData { get; private set; }
-
+    
     public Transform LockonTarget { get; set; }
 
     public int FieldHierarchy { get; private set; }
@@ -95,5 +95,11 @@ public class GameManager : SingletonAttribute<GameManager>
         GamePadInputter.Despose();
 
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void Init()
+    {
+        FieldHierarchy = 0;
+        ItemDirectory.Instance.Dispose();
     }
 }

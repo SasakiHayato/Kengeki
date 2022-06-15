@@ -60,7 +60,7 @@ public class AttackSetting : MonoBehaviour
         WaitExecuteAction(_data.Action.ExecuteFrame).Forget();
 
         _id++;
-
+        
         return true;
     }
 
@@ -132,10 +132,12 @@ public class AttackSetting : MonoBehaviour
 
     public void IsHit(IDamage iDamage, Collider target)
     {
-        if (iDamage.GetDamage(_data.Power))
+        int power = _data.Power + _user.CharaData.Power;
+
+        if (iDamage.GetDamage(power))
         {
             _data.Action.HitActions?.ForEach(a => a.Execute(target));
-            BaseUI.Instance.CallBack("GameUI", "Damage", new object[] { _data.Power, target.transform });
+            BaseUI.Instance.CallBack("GameUI", "Damage", new object[] { power, target.transform });
             Effects.Instance.RequestAttackEffect(_data.EffctTypes, target.transform);
         }
     }

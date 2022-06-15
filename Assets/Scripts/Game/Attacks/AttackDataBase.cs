@@ -4,6 +4,7 @@ using UnityEngine;
 public enum AttackType
 {
     Weak,
+    Strength,
     Float,
     Counter,
 }
