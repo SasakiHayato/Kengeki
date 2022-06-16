@@ -1,6 +1,10 @@
 using UnityEngine;
 using DG.Tweening;
 
+/// <summary>
+/// GrayScaleShaderの使用リクエストクラス
+/// </summary>
+
 [ExecuteInEditMode]
 public class GrayScaleRender : MonoBehaviour
 {

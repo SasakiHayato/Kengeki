@@ -1,6 +1,10 @@
 using UnityEngine;
 using DG.Tweening;
 
+/// <summary>
+/// NoiseShaderの使用リクエストクラス
+/// </summary>
+
 [ExecuteInEditMode]
 public class NoiseRenderer : MonoBehaviour
 {

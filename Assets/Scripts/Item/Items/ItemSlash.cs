@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// aŒ‚‚ğ‚¾‚·Û‚ÌÀsƒNƒ‰ƒX
+/// </summary>
+
 public class ItemSlash : ItemBase
 {
     [SerializeField] float _effectTime;

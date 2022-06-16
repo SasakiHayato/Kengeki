@@ -1,6 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+/// <summary>
+/// ‰ñ•œ‚·‚éÛ‚ÌÀsƒNƒ‰ƒX
+/// </summary>
 
 public class ItemHeal : ItemBase
 {

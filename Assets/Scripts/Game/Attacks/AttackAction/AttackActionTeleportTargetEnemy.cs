@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// 攻撃時の実行クラス。対象に向かって瞬間移動する
+/// </summary>
+
 public class AttackActionTeleportTargetEnemy : IAttackAction
 {
     enum OffestPostion

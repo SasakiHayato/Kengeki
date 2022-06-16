@@ -1,6 +1,10 @@
 using System;
 using UnityEngine;
 
+/// <summary>
+/// Player‚Ì‹ó’†Žž‚ÌState
+/// </summary>
+
 public class PlayerFloat : StateMachine.State
 {
     float _timer;

@@ -3,6 +3,10 @@ using System.Linq;
 using SingletonAttribute;
 using System;
 
+/// <summary>
+/// Item‚Ì•ÛƒNƒ‰ƒX
+/// </summary>
+
 public class ItemDirectory : SingletonAttribute<ItemDirectory>
 {
     public class DirectoryData

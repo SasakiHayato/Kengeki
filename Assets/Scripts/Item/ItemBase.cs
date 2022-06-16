@@ -1,6 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+/// <summary>
+/// Item‚ÌŠî’êƒNƒ‰ƒX
+/// </summary>
 
 [RequireComponent(typeof(Collider))]
 public abstract class ItemBase : MonoBehaviour

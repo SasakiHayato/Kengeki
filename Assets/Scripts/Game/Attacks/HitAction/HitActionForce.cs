@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// 攻撃ヒット時の実行クラス。任意の方向に飛ばす
+/// </summary>
+
 public class HitActionForce : IHitAction
 {
     enum DirType

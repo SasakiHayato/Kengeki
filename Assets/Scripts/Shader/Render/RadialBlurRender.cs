@@ -1,6 +1,10 @@
 using UnityEngine;
 using DG.Tweening;
 
+/// <summary>
+/// RadialBlurShaderの使用リクエストクラス
+/// </summary>
+
 [ExecuteInEditMode]
 public class RadialBlurRender : MonoBehaviour
 {

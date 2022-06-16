@@ -2,6 +2,10 @@ using System;
 using UnityEngine;
 using StateMachine;
 
+/// <summary>
+/// Player‚ÌUŒ‚‚·‚éÛ‚ÌState
+/// </summary>
+
 public class PlayerAttack : State
 {
     Player _player;

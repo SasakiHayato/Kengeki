@@ -3,6 +3,10 @@ using StateMachine;
 using BehaviourTree;
 using System;
 
+/// <summary>
+/// Enemy‚Ì’Êí‚ÌState
+/// </summary>
+
 public class EnemyRunTree : State
 {
     TreeManager _tree;

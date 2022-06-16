@@ -12,6 +12,10 @@ public enum UpdateViewType
     None,
 }
 
+/// <summary>
+/// Item‚ÌUI‚É‘Î‚·‚éŠÇ—ƒNƒ‰ƒX
+/// </summary>
+
 public class ItemViewer : MonoBehaviour
 {
     [SerializeField] GameObject _itemButtonPanel;

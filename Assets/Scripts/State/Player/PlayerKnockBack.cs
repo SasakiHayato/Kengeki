@@ -1,8 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using StateMachine;
 using System;
+
+/// <summary>
+/// Player‚ªUŒ‚‚ğ‚¤‚¯‚½Û‚ÌState
+/// </summary>
 
 public class PlayerKnockBack : State
 {

@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// 攻撃時の実行クラス。Bulletを飛ばす
+/// </summary>
+
 public class AttackActionSetSlash : IAttackAction
 {
     [SerializeField] Bullet _bullet;

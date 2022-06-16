@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// 攻撃ヒット時の実行クラス。音を鳴らす
+/// </summary>
+
 public class HitActionPlaySound : IHitAction
 {
     [SerializeField] string _soundName;

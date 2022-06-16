@@ -2,6 +2,10 @@ using UnityEngine;
 using StateMachine;
 using System;
 
+/// <summary>
+/// Player‚Ì‰ñ”ğ‚·‚éÛ‚ÌState
+/// </summary>
+/// 
 public class PlayerDodge : State
 {
     Player _player;

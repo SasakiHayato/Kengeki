@@ -2,6 +2,10 @@ using UnityEngine;
 using StateMachine;
 using System;
 
+/// <summary>
+/// UŒ‚‚ğó‚¯‚½Û‚ÌEnemy‚ÌState
+/// </summary>
+
 public class EnemyNomotion : State
 {
     PhysicsBase _physicsBase;

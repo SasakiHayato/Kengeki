@@ -1,6 +1,10 @@
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 
+/// <summary>
+/// 攻撃時の実行クラス。対象に向かって移動する
+/// </summary>
+
 public class AttackActionEnemyMove : IAttackAction
 {
     enum MoveType

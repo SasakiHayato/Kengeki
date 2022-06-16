@@ -2,6 +2,10 @@ using UnityEngine;
 using StateMachine;
 using System;
 
+/// <summary>
+/// Camera‚ğ—h‚ç‚·Û‚ÌState
+/// </summary>
+
 public class ShakeCm : State
 {
     CmManager _cmManager;

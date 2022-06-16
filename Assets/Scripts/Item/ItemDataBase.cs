@@ -2,6 +2,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+/// <summary>
+/// Itemのデータクラス
+/// </summary>
+
 [CreateAssetMenu(fileName = "ItemDataBase")]
 public class ItemDataBase : ScriptableObject
 {

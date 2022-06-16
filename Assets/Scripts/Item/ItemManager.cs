@@ -2,6 +2,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+/// <summary>
+/// Item‚ÌŠÇ—ƒNƒ‰ƒX
+/// </summary>
+
 public class ItemManager : ManagerBase
 {
     [SerializeField] ItemDataBase _itemDataBase;
