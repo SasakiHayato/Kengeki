@@ -50,10 +50,12 @@ public class FieldManager : ManagerBase
     {
         int randomID = Random.Range(0, RoomList.Count);
         GameObject player = Instantiate(GameManager.Instance.ObjectData.GetData("Player").Prefab);
+        GameObject pod = Instantiate(GameManager.Instance.ObjectData.GetData("Pod").Prefab);
         RoomData data = RoomList[randomID];
         Vector3 setPos = data.Position.Center;
         setPos.y = SetYPosition;
         player.transform.position = setPos;
+        pod.transform.position = setPos;
 
         data.Info.IsSetTeleporter(false);
         data.IsRoomSetUp(true);

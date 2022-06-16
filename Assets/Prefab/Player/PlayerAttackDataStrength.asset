@@ -20,7 +20,7 @@ MonoBehaviour:
     _isActiveFrame: 8
     _endActiveFrame: 15
     _nextInputFrame: 25
-    _effctTypes: 000000000100000002000000
+    _effctTypes: 0000000001000000
     _actionData:
       _hitActions:
       - rid: 6414747767461380113
@@ -72,14 +72,14 @@ MonoBehaviour:
       type: {class: AttackActionSetSlash, ns: , asm: Assembly-CSharp}
       data:
         _bullet: {fileID: 7631262680365912071, guid: 6a8b75b1f75f48c46bcf43a348e2131d, type: 3}
-        _speed: 5
+        _speed: 20
     - rid: 6414747971268116481
       type: {class: AttackActionSetSlash, ns: , asm: Assembly-CSharp}
       data:
         _bullet: {fileID: 7631262680365912071, guid: 6a8b75b1f75f48c46bcf43a348e2131d, type: 3}
-        _speed: 5
+        _speed: 20
     - rid: 6414747971268116482
       type: {class: AttackActionSetSlash, ns: , asm: Assembly-CSharp}
       data:
         _bullet: {fileID: 7631262680365912071, guid: 6a8b75b1f75f48c46bcf43a348e2131d, type: 3}
-        _speed: 5
+        _speed: 20

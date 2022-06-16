@@ -20,7 +20,7 @@ MonoBehaviour:
     _isActiveFrame: 8
     _endActiveFrame: 15
     _nextInputFrame: 25
-    _effctTypes: 000000000100000002000000
+    _effctTypes: 0000000001000000
     _actionData:
       _hitActions:
       - rid: 6414747767461380113

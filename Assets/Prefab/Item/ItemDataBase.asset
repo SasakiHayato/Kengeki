@@ -16,3 +16,6 @@ MonoBehaviour:
   - Path: Healer
     MSG: "\u56DE\u5FA9\u3057\u307E\u3059\u3002"
     ItemPrefab: {fileID: 4051632929421136876, guid: 67a7a65c6be262f41a989a0388758c21, type: 3}
+  - Path: Berserker
+    MSG: "\u6975\u9650\u72B6\u614B\u306B\u5165\u308A\u307E\u3059"
+    ItemPrefab: {fileID: 1127934502607608209, guid: c7d343db98412eb46b6f338006210b2a, type: 3}

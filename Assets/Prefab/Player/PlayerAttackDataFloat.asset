@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 480422c488d2d2945bc358330d2bdeaa, type: 3}
   m_Name: PlayerAttackDataFloat
   m_EditorClassIdentifier: 
-  _type: 1
+  _type: 2
   _datas:
   - _animName: Jump_Attack_Combo_1
     _soundName: Slash

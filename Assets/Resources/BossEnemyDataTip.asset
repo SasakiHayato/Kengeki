@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyType: 1
   _dataTips:
-  - _enemyPaths: 02000000
+  - _itemPathList:
+    - Healer
+    _enemyPaths: 02000000
