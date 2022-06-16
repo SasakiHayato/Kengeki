@@ -1,6 +1,10 @@
 using UnityEngine;
 using BehaviourTree;
 
+/// <summary>
+/// BehaviorTree‚ÌğŒƒNƒ‰ƒXB‘ÎÛ‚ÌObject‚ªCamera“à‚É‘¶İ‚·‚é‚©‚Ì¬”Û
+/// </summary>
+
 public class ConditionInTheCm : IConditional
 {
     float _viewAngle;

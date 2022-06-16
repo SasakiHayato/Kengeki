@@ -1,7 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using BehaviourTree;
+
+/// <summary>
+/// BehaviorTreeの行動クラス。次の攻撃を待機
+/// </summary>
 
 public class ActionWaitNextAttack : IAction
 {

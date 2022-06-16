@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// Sound‚ð–Â‚ç‚·Object‚ÌPoolƒNƒ‰ƒX
+/// </summary>
+
 public class SoundPool : MonoBehaviour, IPool
 {
     public bool Waiting { get; set; }

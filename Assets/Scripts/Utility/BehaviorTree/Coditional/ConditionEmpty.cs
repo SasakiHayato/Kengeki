@@ -1,7 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using BehaviourTree;
+
+/// <summary>
+/// BehaviorTree‚ÌğŒƒNƒ‰ƒXBDefault
+/// </summary>
 
 public class ConditionEmpty : IConditional
 {

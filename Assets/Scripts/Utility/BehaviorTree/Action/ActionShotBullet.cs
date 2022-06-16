@@ -1,6 +1,10 @@
 using UnityEngine;
 using BehaviourTree;
 
+/// <summary>
+/// BehaviorTreeの行動クラス。Bulletのリクエスト
+/// </summary>
+
 public class ActionShotBullet : IAction
 {
     [SerializeField] float _intarvalTime;

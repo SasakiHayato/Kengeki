@@ -1,6 +1,10 @@
 using UnityEngine;
 using BehaviourTree;
 
+/// <summary>
+/// BehaviorTreeの行動クラス。待つ
+/// </summary>
+
 public class ActionWait : IAction
 {
     [SerializeField] float _waitTime;

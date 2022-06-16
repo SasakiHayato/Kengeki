@@ -8,6 +8,10 @@ public enum SoundType
     SE,
 }
 
+/// <summary>
+/// Soundのデータクラス
+/// </summary>
+
 [CreateAssetMenu (fileName = "SoundDataBase")]
 public class SoundDataBase : ScriptableObject
 {

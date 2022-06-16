@@ -1,7 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using BehaviourTree;
+
+/// <summary>
+/// BehaviorTreeの行動クラス。Roomないの移動
+/// </summary>
 
 public class ActionTaskTowardPosition : IAction
 {

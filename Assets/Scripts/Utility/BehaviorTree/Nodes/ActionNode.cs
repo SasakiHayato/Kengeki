@@ -7,6 +7,10 @@ namespace BehaviourTree
     {
         ActionNode _actionNode;
 
+        /// <summary>
+        /// s“®‚ÌŠÇ—ƒm[ƒh
+        /// </summary>
+
         class ActionNode
         {
             int _executeID = 0;

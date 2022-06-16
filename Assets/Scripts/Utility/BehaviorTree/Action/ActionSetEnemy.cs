@@ -2,6 +2,10 @@ using UnityEngine;
 using System.Collections.Generic;
 using BehaviourTree;
 
+/// <summary>
+/// BehaviorTreeの行動クラス。Enemyの生成
+/// </summary>
+
 public class ActionSetEnemy : IAction
 {
     [SerializeField] List<EnemyPath> _enemyPaths;

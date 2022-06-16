@@ -1,6 +1,10 @@
 using UnityEngine;
 using BehaviourTree;
 
+/// <summary>
+/// BehaviorTree‚ÌğŒƒNƒ‰ƒXBPlayer‚Æ‚Ì‹——£‚É‘Î‚·‚é¬”Û
+/// </summary>
+
 public class ConditionDistance : IConditional
 {
     enum CheckType

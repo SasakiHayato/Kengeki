@@ -1,6 +1,10 @@
 using UnityEngine;
 using BehaviourTree;
 
+/// <summary>
+/// BehaviorTree‚ÌğŒƒNƒ‰ƒXBPlayer‚ª‘ÎÛ‚ÌRoom‚É‚¢‚é‚©‚Ç‚¤‚©‚Ì¬”Û
+/// </summary>
+
 public class ConditionEntryRoom : IConditional
 {
     Transform _player;

@@ -2,6 +2,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+/// <summary>
+/// Sound‚ÌŠÇ—ƒNƒ‰ƒX
+/// </summary>
+
 public class SoundManager : ManagerBase
 {
     [SerializeField] string _bgmPath;

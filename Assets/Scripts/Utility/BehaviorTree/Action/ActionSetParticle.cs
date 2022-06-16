@@ -1,6 +1,10 @@
 using UnityEngine;
 using BehaviourTree;
 
+/// <summary>
+/// BehaviorTreeの行動クラス。Particleの生成
+/// </summary>
+
 public class ActionSetParticle : IAction
 {
     enum NextQueue

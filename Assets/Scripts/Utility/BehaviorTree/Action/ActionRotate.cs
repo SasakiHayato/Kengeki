@@ -1,6 +1,10 @@
 using BehaviourTree;
 using UnityEngine;
 
+/// <summary>
+/// BehaviorTreeの行動クラス。回転の実行
+/// </summary>
+
 public class ActionRotate : IAction
 {
     Transform _user;

@@ -2,6 +2,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
+/// <summary>
+/// Fade‚ÌŠÇ—ƒNƒ‰ƒX
+/// </summary>
+
 public class Fader
 {
     float _startVal;

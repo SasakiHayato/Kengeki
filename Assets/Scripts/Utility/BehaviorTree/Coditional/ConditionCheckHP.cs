@@ -1,6 +1,10 @@
 using UnityEngine;
 using BehaviourTree;
 
+/// <summary>
+/// BehaviorTree‚ÌğŒƒNƒ‰ƒXB‘ÎÛ‚ÌHP‚É‘Î‚·‚é¬”Û
+/// </summary>
+
 public class ConditionCheckHP : IConditional
 {
     [SerializeField, Range(0, 1)] float _effectParsent;

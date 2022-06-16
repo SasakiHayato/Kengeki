@@ -1,6 +1,10 @@
 using UnityEngine;
 using BehaviourTree;
 
+/// <summary>
+/// BehaviorTreeの行動クラス。攻撃のリクエスト
+/// </summary>
+
 public class ActionAttack : IAction
 {
     [SerializeField] AttackType _attackType;

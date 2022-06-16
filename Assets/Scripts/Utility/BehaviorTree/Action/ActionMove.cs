@@ -1,6 +1,10 @@
 using UnityEngine;
 using BehaviourTree;
 
+/// <summary>
+/// BehaviorTreeの行動クラス。Move
+/// </summary>
+
 public class ActionMove : IAction
 {
     enum MoveDirType

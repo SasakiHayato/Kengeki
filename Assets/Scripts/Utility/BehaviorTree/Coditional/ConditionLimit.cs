@@ -3,6 +3,10 @@ using UnityEngine;
 using System.Linq;
 using BehaviourTree;
 
+/// <summary>
+/// BehaviorTreeの条件クラス。特殊条件の実行に対する成否
+/// </summary>
+
 public class ConditionLimit : IConditional
 {
     [SerializeField] int _limitCount;

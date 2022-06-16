@@ -1,6 +1,10 @@
 using UnityEngine;
 using BehaviourTree;
 
+/// <summary>
+/// BehaviorTreeの条件クラス。対象が地面にいるかどうかの成否
+/// </summary>
+
 public class ConditionIsGround : IConditional
 {
     PhysicsBase _physicsBase;

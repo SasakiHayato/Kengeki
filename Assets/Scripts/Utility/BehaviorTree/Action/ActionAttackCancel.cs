@@ -1,6 +1,10 @@
 using UnityEngine;
 using BehaviourTree;
 
+/// <summary>
+/// BehaviorTreeの行動クラス。攻撃のCancelをリクエスト
+/// </summary>
+
 public class ActionAttackCancel : IAction
 {
     AttackSetting _attackSetting;

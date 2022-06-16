@@ -1,6 +1,10 @@
 using UnityEngine;
 using BehaviourTree;
 
+/// <summary>
+/// BehaviorTreeの行動クラス。Idle
+/// </summary>
+
 public class ActionIdle : IAction
 {
     [SerializeField] string _animName;
