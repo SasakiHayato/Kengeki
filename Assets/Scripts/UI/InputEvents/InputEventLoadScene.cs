@@ -1,6 +1,9 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Cysharp.Threading.Tasks;
+
+/// <summary>
+/// ゲームパッドからの入力に対する実行クラス。Scene変更のリクエスト
+/// </summary>
 
 public class InputEventLoadScene : IInputEvents
 {

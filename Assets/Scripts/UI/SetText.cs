@@ -6,6 +6,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+/// <summary>
+/// ゲームUIの子クラス。ExcelからのTextDataを表示するクラス
+/// </summary>
+
 public class SetText : ChildrenUI
 {
     [SerializeField] Text _txt;

@@ -21,6 +21,10 @@ public enum InputEventsType
     OptionLog,
 }
 
+/// <summary>
+/// ゲームパッドからの入力に対するActionの管理クラス
+/// </summary>
+
 public class GamePadInputEvent : MonoBehaviour
 {
     public enum TriggerType

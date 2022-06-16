@@ -1,3 +1,6 @@
+/// <summary>
+/// ゲームパッドからの入力に対する実行クラス。BGMの停止
+/// </summary>
 
 public class InputEventStopBGM : IInputEvents
 {

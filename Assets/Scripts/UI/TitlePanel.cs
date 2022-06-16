@@ -1,3 +1,6 @@
+/// <summary>
+/// TitleUI‚ÌeƒNƒ‰ƒX
+/// </summary>
 
 public class TitlePanel : ParentUI
 {

@@ -2,6 +2,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Log‚ğ•\¦‚·‚éŠÇ—ƒNƒ‰ƒX
+/// </summary>
+
 public class LogViewer : MonoBehaviour
 {
     List<Text> _txtList = new List<Text>();

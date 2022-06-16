@@ -1,3 +1,6 @@
+/// <summary>
+/// ゲームUIの親クラス
+/// </summary>
 
 public class GamePanel : ParentUI
 {

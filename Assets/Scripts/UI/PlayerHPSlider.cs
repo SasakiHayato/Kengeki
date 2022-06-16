@@ -2,6 +2,10 @@ using UnityEngine.UI;
 using UniRx;
 using DG.Tweening;
 
+/// <summary>
+/// ゲームUIの子クラス。PlayerのHPを表示するクラス
+/// </summary>
+
 public class PlayerHPSlider : ChildrenUI
 {
     Player _player;

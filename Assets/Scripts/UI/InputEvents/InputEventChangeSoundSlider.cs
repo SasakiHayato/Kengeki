@@ -1,7 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
+/// <summary>
+/// ゲームパッドからの入力に対する実行クラス。音量調整時のそれに対するSliderの値変更
+/// </summary>
 
 public class InputEventChangeSoundSlider : IInputEvents
 {

@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// ゲームパッドからの入力に対する実行クラス。Soundの音量調整
+/// </summary>
+
 public class InputEventChageSoundValue : IInputEvents
 {
     [SerializeField] float _addCount;

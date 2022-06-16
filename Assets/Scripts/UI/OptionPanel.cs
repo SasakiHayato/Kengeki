@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// OptionUI‚ÌeƒNƒ‰ƒX
+/// </summary>
+
 public class OptionPanel : ParentUI
 {
     [SerializeField] InputEventsType _inputEventsType;

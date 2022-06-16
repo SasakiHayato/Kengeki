@@ -2,6 +2,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UniRx;
 
+/// <summary>
+/// 各Enemyに対するUIの表示クラス
+/// </summary>
+
 public class EnemyCanvas : MonoBehaviour
 {
     [SerializeField] EnemyBase _user;

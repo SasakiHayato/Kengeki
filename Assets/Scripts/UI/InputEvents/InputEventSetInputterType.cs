@@ -1,6 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+/// <summary>
+/// ゲームパッドからの入力に対する実行クラス。UIの操作リクエスト
+/// </summary>
 
 public class InputEventSetInputterType : IInputEvents
 {

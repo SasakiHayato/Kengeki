@@ -1,6 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// ゲームパッドからの入力に対する実行クラス。Cameraの入力を変更をリクエスト
+/// </summary>
+
 public class InputEventCameraInput : IInputEvents
 {
     enum CmInputType

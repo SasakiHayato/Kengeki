@@ -2,6 +2,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
+/// <summary>
+/// Text‚Æ‚µ‚Ä•\Ž¦‚·‚éObject‚ÌPoolƒNƒ‰ƒX
+/// </summary>
+
 public class TextPool : MonoBehaviour, IPool
 {
     public bool Waiting { get; set; }

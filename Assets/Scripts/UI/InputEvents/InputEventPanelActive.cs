@@ -1,6 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+/// <summary>
+/// ゲームパッドからの入力に対する実行クラス。各UIのActiveを変更
+/// </summary>
 
 public class InputEventPanelActive : IInputEvents
 {

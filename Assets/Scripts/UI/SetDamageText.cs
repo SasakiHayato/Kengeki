@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// ゲームUIの子クラス。ダメージの表示するクラス
+/// </summary>
+
 public class SetDamageText : ChildrenUI
 {
     [SerializeField] TextPool _text;

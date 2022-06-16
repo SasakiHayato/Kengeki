@@ -1,6 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// UI‘S‘Ì‚ÌŠÇ—ƒNƒ‰ƒX
+/// </summary>
+
 public class UIManager : ManagerBase
 {
     [SerializeField] List<GamePadInputEvent> _eventList;
