@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// MobEnemy‚ÌŠÇ—ƒNƒ‰ƒX
+/// </summary>
+
 public class MobEnemy : EnemyBase, IDamage
 {
     AttackSetting _attackSetting;

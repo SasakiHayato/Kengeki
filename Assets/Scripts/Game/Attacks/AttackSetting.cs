@@ -4,6 +4,10 @@ using System.Linq;
 using Cysharp.Threading.Tasks;
 using System.Threading;
 
+/// <summary>
+/// UŒ‚‚·‚é‚·‚éÛ‚ÌŠÇ—ƒNƒ‰ƒX
+/// </summary>
+
 public class AttackSetting : MonoBehaviour
 {
     [SerializeField] CharaBase _user;

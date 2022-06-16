@@ -1,6 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Roomのデータクラス
+/// </summary>
+
 public class RoomData
 {
     public PositionData Position { get; set; }

@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// Boss‚ÌŠÇ—ƒNƒ‰ƒX
+/// </summary>
+
 public class BossEnemy : EnemyBase, IDamage
 {
     AttackSetting _attackSetting;

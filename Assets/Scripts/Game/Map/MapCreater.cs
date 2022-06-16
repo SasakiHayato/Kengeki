@@ -2,6 +2,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+/// <summary>
+/// Map‚Ì©“®¶¬ƒNƒ‰ƒX
+/// </summary>
+
 public class MapCreater : MonoBehaviour
 {
     enum CellType

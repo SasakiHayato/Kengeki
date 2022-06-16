@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviourTree;
 
+/// <summary>
+/// Pod‚ÌŠÇ—ƒNƒ‰ƒX
+/// </summary>
+
 public class Pod : CharaBase
 {
     TreeManager _tree;

@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// UŒ‚”»’è‚Ì‚ ‚éObject‚ÌŠÇ—ƒNƒ‰ƒX
+/// </summary>
+
 [RequireComponent(typeof(Rigidbody))] 
 public class AttackCollider : MonoBehaviour
 {

@@ -2,6 +2,10 @@ using UnityEngine;
 using BehaviourTree;
 using StateMachine;
 
+/// <summary>
+/// Enemy‚ÌŠî’êƒNƒ‰ƒX
+/// </summary>
+
 [RequireComponent(typeof(TreeManager))]
 public abstract class EnemyBase : CharaBase
 {

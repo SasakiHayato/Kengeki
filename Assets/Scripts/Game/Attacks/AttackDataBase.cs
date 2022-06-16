@@ -21,6 +21,10 @@ public interface IHitAction
     void Execute(Collider collider);
 }
 
+/// <summary>
+/// 攻撃のデータクラス
+/// </summary>
+
 [CreateAssetMenu (fileName = "AttackDataBase")]
 public class AttackDataBase : ScriptableObject
 {

@@ -1,6 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+/// <summary>
+/// TeleporterCell‚ÌŠÇ—ƒNƒ‰ƒX
+/// </summary>
 
 public class MapTeleporter : MonoBehaviour
 {

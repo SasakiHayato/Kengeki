@@ -1,6 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+/// <summary>
+/// playerのデータクラス
+/// </summary>
 
 public class PlayerData 
 {
