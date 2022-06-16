@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// Bulletを使用するObjectののPoolクラス
+/// </summary>
+
 public class Bullet : MonoBehaviour, IPool
 {   
     public bool Waiting { get; set; }

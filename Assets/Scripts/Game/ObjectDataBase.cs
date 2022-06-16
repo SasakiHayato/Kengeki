@@ -2,6 +2,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+/// <summary>
+/// ゲームに存在するObjectのデータクラス
+/// </summary>
+
 [CreateAssetMenu (fileName = "ObjectDataBase")]
 public class ObjectDataBase : ScriptableObject
 {

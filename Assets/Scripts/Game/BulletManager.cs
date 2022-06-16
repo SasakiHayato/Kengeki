@@ -6,6 +6,10 @@ public enum ShotType
     Deviation,
 }
 
+/// <summary>
+/// Bullet‘S‘Ì‚ÌŠÇ—ƒNƒ‰ƒX
+/// </summary>
+
 public class BulletManager : ManagerBase
 {
     [SerializeField] Bullet _bullet;

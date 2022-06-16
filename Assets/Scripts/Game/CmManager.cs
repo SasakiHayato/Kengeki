@@ -42,6 +42,10 @@ public static class CmInputData
     }
 }
 
+/// <summary>
+/// Camera‚ÌŠÇ—ƒNƒ‰ƒX
+/// </summary>
+
 public class CmManager : ManagerBase
 {
     public enum State

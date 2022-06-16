@@ -2,6 +2,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+/// <summary>
+/// ŠeŠK‘w‚ÌField‚ÌŠÇ—ƒNƒ‰ƒX
+/// </summary>
+
 public class FieldManager : ManagerBase
 {
     [SerializeField] MapCreater _creater;

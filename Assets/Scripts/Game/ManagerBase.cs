@@ -1,6 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+/// <summary>
+/// Manager‚ÉŒp³‚·‚éŠî’êƒNƒ‰ƒX
+/// </summary>
 
 public abstract class ManagerBase : MonoBehaviour
 {
