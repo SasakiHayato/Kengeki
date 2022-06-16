@@ -15,6 +15,10 @@ public enum EnemyType
     Boss,
 }
 
+/// <summary>
+/// Enemyの各Roomに対する生成データ
+/// </summary>
+
 [CreateAssetMenu (fileName = "EnemyDataTip")]
 public class EnemyDataTip : ScriptableObject
 {

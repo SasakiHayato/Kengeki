@@ -2,6 +2,10 @@ using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System;
 
+/// <summary>
+/// Particleを使用するObjectのPoolクラス
+/// </summary>
+
 public class ParticleUser : MonoBehaviour, IPool
 {
     [SerializeField] ParticleSystem _particleSystem;

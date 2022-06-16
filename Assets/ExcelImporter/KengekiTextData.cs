@@ -1,6 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Excelのデータ作成クラス
+/// </summary>
+
 [ExcelAsset]
 public class KengekiTextData : ScriptableObject
 {

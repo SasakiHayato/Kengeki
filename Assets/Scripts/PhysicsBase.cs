@@ -6,6 +6,10 @@ static public class PhsicsMasterData
     static public float GravityScale = 2;
 }
 
+/// <summary>
+/// •¨—‹““®‚ÌŠÇ—ƒNƒ‰ƒX
+/// </summary>
+
 [RequireComponent(typeof(Rigidbody))]
 public class PhysicsBase : MonoBehaviour
 {

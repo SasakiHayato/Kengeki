@@ -1,6 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Jump‚·‚éÛ‚ÌŠÇ—ƒNƒ‰ƒX
+/// </summary>
+
 public class JumpSetting : MonoBehaviour
 {
     [SerializeField] List<Data> _datas;

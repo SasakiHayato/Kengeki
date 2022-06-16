@@ -1,6 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+/// <summary>
+/// Title‚ÌCamera‚Ì‘Î‚·‚éAnimationƒNƒ‰ƒX
+/// </summary>
 
 public class TitleCmAnimation : MonoBehaviour
 {

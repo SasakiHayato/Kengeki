@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// Player‰ñ”ğ‚Ì•â³ƒNƒ‰ƒX
+/// </summary>
+
 public class DodgeCollection : MonoBehaviour
 {
     [SerializeField] float _collectionDist;

@@ -1,6 +1,10 @@
 using UnityEngine;
 using DG.Tweening;
 
+/// <summary>
+/// Title‚ÌCube‚É‘Î‚·‚éAnimationƒNƒ‰ƒX
+/// </summary>
+
 public class TitleCubeAnimation : MonoBehaviour
 {
     [SerializeField] Vector3 _endVal;

@@ -20,6 +20,10 @@ public enum ParticalType
     Impulse,
 }
 
+/// <summary>
+/// Effect‚ÌŠÇ—ƒNƒ‰ƒX
+/// </summary>
+
 public class Effects : SingletonAttribute<Effects>
 {
     AttackEffect _attackEffect;

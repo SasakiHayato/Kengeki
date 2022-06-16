@@ -1,6 +1,10 @@
 using UnityEngine;
 using System.Linq;
 
+/// <summary>
+/// Excelからのデータを受け取るクラス
+/// </summary>
+
 public class TextDataGetter
 {
     KengekiTextData _textData;
