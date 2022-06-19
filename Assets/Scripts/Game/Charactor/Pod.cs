@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using BehaviourTree;
 
@@ -16,7 +14,9 @@ public class Pod : CharaBase
     protected override void SetUp()
     {
         base.SetUp();
+
         _tree = GetComponent<TreeManager>();
+        _tree.SetUp();
     }
 
     void Update()

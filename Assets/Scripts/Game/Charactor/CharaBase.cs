@@ -50,7 +50,10 @@ public abstract class CharaBase : MonoBehaviour
         ObjectDataBase.Data data = GameManager.Instance.ObjectData.GetData(_dataPath);
         CharaData.SetData(data);
 
-        Anim = new ObjectAnimController(data.Runtime, data.Avatar, gameObject);
+        if (data.Runtime != null)
+        {
+            Anim = new ObjectAnimController(data.Runtime, data.Avatar, gameObject);
+        }
 
         GameManager.Instance.FieldObject.Add(gameObject, data.ObjectType, CharaData.ID);
     }

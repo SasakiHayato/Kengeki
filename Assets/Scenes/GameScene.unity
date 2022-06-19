@@ -2679,6 +2679,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _priority: 0
   _creater: {fileID: 967911490}
+  _isSetPod: 1
 --- !u!224 &1419841070 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3692370453628499611, guid: d0ebd31b7f80fce4ab2bf67bc830a386, type: 3}

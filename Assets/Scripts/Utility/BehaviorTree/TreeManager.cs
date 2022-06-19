@@ -44,7 +44,7 @@ namespace BehaviourTree
 
         BranchData _runBranch;
 
-        public bool IsRun { get; set; }
+        public bool IsRun { get; set; } = true;
 
         public void SetUp()
         {
