@@ -118,7 +118,15 @@ public class GamePadInputEvent : MonoBehaviour
         {
             if (data.ID == _selectID)
             {
-                data.Button.transform.localScale = ConstScale;
+                if (GamePadInputter.Instance.IsConnect)
+                {
+                    data.Button.transform.localScale = ConstScale;
+                }
+                else
+                {
+                    data.Button.transform.localScale = Vector3.one;
+                }
+
                 _saveEvent = data;
             }
             else

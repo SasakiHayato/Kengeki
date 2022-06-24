@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using SingletonAttribute;
 using System.Linq;
+using UnityEngine.InputSystem;
 
 public enum InputterType
 {
@@ -26,6 +27,7 @@ public class GamePadInputter : SingletonAttribute<GamePadInputter>
     GamePadInputEvent _gamePadInputEvent;
 
     public int SelectID { get; set; }
+    public bool IsConnect { get; private set; }
 
     public GamePad Input { get; private set; }
 
@@ -52,8 +54,18 @@ public class GamePadInputter : SingletonAttribute<GamePadInputter>
 
     void OpenOption()
     {
-        SetInputterType(InputterType.UI);
-        BaseUI.Instance.ParentActive("Option", true);
+        if (CurrentInputterType == InputterType.Player)
+        {
+            SetInputterType(InputterType.UI);
+            BaseUI.Instance.ParentActive("Option", true);
+        }
+        else
+        {
+            SetInputterType(InputterType.Player);
+            RequestGamePadEvents(InputEventsType.Option);
+            BaseUI.Instance.ParentActive("Option", false);
+            _gamePadInputEvent.Init();
+        }
     }
 
     void OnTrigger(GamePadInputEvent.TriggerType type)
@@ -80,6 +92,15 @@ public class GamePadInputter : SingletonAttribute<GamePadInputter>
         if (Mathf.Abs(input.y) < DeadInput) input.y = 0;
 
         _gamePadInputEvent.Select(input);
+        
+        if (Gamepad.current != null)
+        {
+            IsConnect = true;
+        }
+        else
+        {
+            IsConnect = false;
+        }
     }
 
     public Vector2 PlayerGetValue(ValueType type)
