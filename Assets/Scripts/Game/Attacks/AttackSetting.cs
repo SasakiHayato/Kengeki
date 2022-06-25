@@ -36,7 +36,7 @@ public class AttackSetting : MonoBehaviour
             a.Action.HitActions?.ForEach(a => a.SetUp(_user.gameObject));
         }));
 
-        _targetCollider.SetUp(_user.CharaData.ObjectType, this);
+        _targetCollider.SetUp(_user.CharaData.ObjectType, IsHit);
         IsNextInput = true;
 
         _soundManager = GameManager.Instance.GetManager<SoundManager>(nameof(SoundManager));

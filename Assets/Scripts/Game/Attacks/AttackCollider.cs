@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 /// <summary>
 /// çUåÇîªíËÇÃÇ†ÇÈObjectÇÃä«óùÉNÉâÉX
@@ -11,11 +12,11 @@ public class AttackCollider : MonoBehaviour
     Rigidbody _rb;
     Collider _collider;
 
-    AttackSetting _attackSetting;
-
+    Action<IDamage, Collider> _hitAction;
+    
     bool _isHit = false;
 
-    public void SetUp(ObjectType type, AttackSetting setting)
+    public void SetUp(ObjectType type, Action<IDamage, Collider> action)
     {
         _rb = GetComponent<Rigidbody>();
         _rb.useGravity = false;
@@ -27,7 +28,7 @@ public class AttackCollider : MonoBehaviour
         _collider.enabled = false;
 
         _type = type;
-        _attackSetting = setting;
+        _hitAction= action;
     }
 
     public void SetColliderActive(bool active)
@@ -45,7 +46,7 @@ public class AttackCollider : MonoBehaviour
             IDamage iDamage = other.GetComponent<IDamage>();
             _isHit = true;
 
-            if (iDamage != null) _attackSetting.IsHit(iDamage, other);
+            if (iDamage != null) _hitAction.Invoke(iDamage, other);
         }
     }
 
@@ -60,7 +61,7 @@ public class AttackCollider : MonoBehaviour
             IDamage iDamage = other.GetComponent<IDamage>();
             _isHit = true;
 
-            if (iDamage != null) _attackSetting.IsHit(iDamage, other);
+            if (iDamage != null) _hitAction.Invoke(iDamage, other);
         }
     }
 }
