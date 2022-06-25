@@ -314,6 +314,17 @@
                 },
                 {
                     "name": "",
+                    "id": "d9a264e8-3dfd-437d-8c41-ee9d8d0800cd",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Lockon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "263eded3-bd4d-431a-a0af-1422cb0105d0",
                     "path": "<Gamepad>/buttonEast",
                     "interactions": "",

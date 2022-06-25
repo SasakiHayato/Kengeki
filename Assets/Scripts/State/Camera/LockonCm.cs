@@ -22,6 +22,8 @@ public class LockonCm : StateMachine.State
         _cmManager.CmData.VirticalRate = VirticalRate;
 
         _cmManager.CmData.SaveState = CmManager.State.Lockon;
+
+        BaseUI.Instance.CallBack("GameUI", "Lockon", new object[] { GameManager.Instance.LockonTarget });
     }
 
     public override void Run()
@@ -34,7 +36,15 @@ public class LockonCm : StateMachine.State
 
     public override Enum Exit()
     {
-        if (GameManager.Instance.LockonTarget != null) return CmManager.State.Lockon;
-        else return CmManager.State.Normal;
+        if (GameManager.Instance.LockonTarget != null)
+        {
+
+            return CmManager.State.Lockon;
+        }
+        else
+        {
+            BaseUI.Instance.CallBack("GameUI", "Lockon", new object[] { null });
+            return CmManager.State.Normal;
+        }
     }
 }

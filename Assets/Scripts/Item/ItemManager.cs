@@ -22,7 +22,7 @@ public class ItemManager : ManagerBase
     void Get()
     {
         ItemBase itemBase = _fieldItemList.FirstOrDefault(f => f.IsEffect && f.gameObject.activeSelf);
-        if (itemBase.Get())
+        if (itemBase != null && itemBase.Get())
         {
             RemoveItem(itemBase);
         }
