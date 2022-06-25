@@ -1,7 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using BehaviourTree;
+
+/// <summary>
+/// BehaviorTreeの行動クラス。標的がいる際のPodの回転
+/// </summary>
 
 public class ActionPodRotateTarget : IAction
 {

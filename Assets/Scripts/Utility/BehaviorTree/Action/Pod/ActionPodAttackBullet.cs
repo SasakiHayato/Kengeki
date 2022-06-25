@@ -1,6 +1,10 @@
 using UnityEngine;
 using BehaviourTree;
 
+/// <summary>
+/// BehaviorTreeの行動クラス。Podの攻撃
+/// </summary>
+
 public class ActionPodAttackBullet : IAction
 {
     [SerializeField] float _coolTime;
