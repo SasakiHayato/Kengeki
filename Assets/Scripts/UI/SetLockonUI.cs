@@ -1,7 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
+/// <summary>
+/// ゲームUIの子クラス。ロックオンの可視化
+/// </summary>
 
 public class SetLockonUI : ChildrenUI
 {

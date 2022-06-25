@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 /// <summary>
 /// 偏差射撃の計算
@@ -6,10 +7,10 @@ using UnityEngine;
 
 public struct Deviation
 {
-    // tPos => Player
+    // tPos => 対象
     // tBeforePos => Playerの1F.later
-    // myPos => Enemy
-    // speed => Bulletの速度
+    // myPos => 自身
+    // speed => 進む速度
     public Vector3 DeviationDir(Vector3 tPos, Vector3 myPos, Vector3 tBeforePos, float speed)
     {
         float fps = 1 / Time.deltaTime;

@@ -37,7 +37,7 @@ public class ActionShotBullet : IAction
 
         if (_timer > _intarvalTime)
         {
-            Vector3 dir = _bulletManager.SetDir(_shotType, _user, _player, _beforePos, _speed);
+            Vector3 dir = _bulletManager.SetDir(_shotType, _user, _player);
             Bullet bullet = _bulletManager.ShotRequest(_charaBase.CharaData.ObjectType, dir, _speed, _charaBase.CharaData.Power);
 
             bullet.transform.position = _user.position;

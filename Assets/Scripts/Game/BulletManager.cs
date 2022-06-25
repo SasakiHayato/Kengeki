@@ -43,7 +43,7 @@ public class BulletManager : ManagerBase
         return bullet;
     }
 
-    public Vector3 SetDir(ShotType type, Transform user, Transform target, Vector3 beforePos = default, float speed = 1)
+    public Vector3 SetDir(ShotType type, Transform user, Transform target)
     {
         Vector3 dir = Vector3.zero;
 
@@ -54,8 +54,7 @@ public class BulletManager : ManagerBase
                 break;
             case ShotType.Deviation:
 
-                Deviation deviation = new Deviation();
-                dir = deviation.DeviationDir(target.position, user.position, beforePos, speed);
+                //dir = 
                 break;
            
         }

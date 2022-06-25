@@ -310,6 +310,22 @@ MonoBehaviour:
     Condition: 0
     Priority: 0
     BranchConditionals:
+    - rid: 6414748221201973248
+    BrockDatas:
+    - QueueType: 0
+      QueueDatas:
+      - RunType: 1
+        Condition: 0
+        Conditionals:
+        - rid: 6414748221201973249
+        Actions:
+        - rid: 6414748221201973252
+        - rid: 6414748221201973253
+        - rid: 6414748221201973250
+  - BrockType: 2
+    Condition: 0
+    Priority: 0
+    BranchConditionals:
     - rid: 6414748081680023564
     - rid: 6414748081680023565
     BrockDatas:
@@ -366,3 +382,16 @@ MonoBehaviour:
       data:
         _effectDistance: 15
         _checkType: 0
+    - rid: 6414748221201973248
+      type: {class: ConditionIsLockonTarget, ns: , asm: Assembly-CSharp}
+    - rid: 6414748221201973249
+      type: {class: ConditionEmpty, ns: , asm: Assembly-CSharp}
+    - rid: 6414748221201973250
+      type: {class: ActionPodAttackBullet, ns: , asm: Assembly-CSharp}
+      data:
+        _coolTime: 0.5
+        _bulletSpeed: 10
+    - rid: 6414748221201973252
+      type: {class: ActionPodMove, ns: , asm: Assembly-CSharp}
+    - rid: 6414748221201973253
+      type: {class: ActionPodRotateTarget, ns: , asm: Assembly-CSharp}
