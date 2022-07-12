@@ -1,0 +1,21 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using BehaviorTree.Execute;
+
+public class NewCondition : Conditional
+{
+    protected override void SetUp(GameObject user)
+    {
+
+    }
+
+    protected override bool Try()
+    {
+        return true;
+    }
+    protected override void Init()
+    {
+        
+    }
+}

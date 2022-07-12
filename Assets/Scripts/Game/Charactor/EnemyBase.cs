@@ -1,12 +1,11 @@
 using UnityEngine;
-using BehaviourTree;
 using StateMachine;
 
 /// <summary>
 /// Enemy‚ÌŠî’êƒNƒ‰ƒX
 /// </summary>
 
-[RequireComponent(typeof(TreeManager))]
+[RequireComponent(typeof(BehaviourTreeUser))]
 public abstract class EnemyBase : CharaBase
 {
     public enum State
@@ -31,16 +30,12 @@ public abstract class EnemyBase : CharaBase
 
     public int RoomID { get; private set; }
     string _itemPath;
-    protected TreeManager TreeManager { get; private set; }
-
+    
     protected StateManager StateManager { get; private set; }
 
     protected override void SetUp()
     {
         base.SetUp();
-
-        TreeManager = GetComponent<TreeManager>();
-        TreeManager.SetUp();
 
         StateManager = new StateManager(gameObject);
         StateManager.AddState(new EnemyRunTree(), State.RunTree)
