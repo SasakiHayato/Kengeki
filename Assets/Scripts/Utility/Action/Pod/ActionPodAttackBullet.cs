@@ -5,7 +5,7 @@ using BehaviourTree.Execute;
 /// BehaviorTreeの行動クラス。Podの攻撃
 /// </summary>
 
-public class ActionPodAttackBullet : Action
+public class ActionPodAttackBullet : BehaviourAction
 {
     [SerializeField] float _coolTime;
     [SerializeField] float _bulletSpeed;

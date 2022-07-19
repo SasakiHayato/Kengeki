@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using BehaviorTree.Execute;
+using BehaviourTree.Execute;
 
-public class NewCondition : Conditional
+public class NewCondition : BehaviourConditional
 {
-    protected override void SetUp(GameObject user)
+    protected override void Setup(GameObject user)
     {
 
     }
@@ -14,7 +14,8 @@ public class NewCondition : Conditional
     {
         return true;
     }
-    protected override void Init()
+
+    protected override void Initialize()
     {
         
     }

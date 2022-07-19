@@ -5,7 +5,7 @@ using BehaviourTree.Execute;
 /// BehaviorTree‚ÌğŒƒNƒ‰ƒXBPlayer‚ª‘ÎÛ‚ÌRoom‚É‚¢‚é‚©‚Ç‚¤‚©‚Ì¬”Û
 /// </summary>
 
-public class ConditionEntryRoom : Conditional
+public class ConditionEntryRoom : BehaviourConditional
 {
     Transform _player;
 

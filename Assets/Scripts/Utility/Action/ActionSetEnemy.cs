@@ -6,7 +6,7 @@ using BehaviourTree.Execute;
 /// BehaviorTreeの行動クラス。Enemyの生成
 /// </summary>
 
-public class ActionSetEnemy : Action
+public class ActionSetEnemy : BehaviourAction
 {
     [SerializeField] List<EnemyPath> _enemyPaths;
 

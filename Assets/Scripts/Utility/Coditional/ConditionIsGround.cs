@@ -5,7 +5,7 @@ using BehaviourTree.Execute;
 /// BehaviorTreeの条件クラス。対象が地面にいるかどうかの成否
 /// </summary>
 
-public class ConditionIsGround : Conditional
+public class ConditionIsGround : BehaviourConditional
 {
     PhysicsBase _physicsBase;
 

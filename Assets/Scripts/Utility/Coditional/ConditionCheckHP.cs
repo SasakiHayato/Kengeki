@@ -5,7 +5,7 @@ using BehaviourTree.Execute;
 /// BehaviorTree‚ÌğŒƒNƒ‰ƒXB‘ÎÛ‚ÌHP‚É‘Î‚·‚é¬”Û
 /// </summary>
 
-public class ConditionCheckHP : Conditional
+public class ConditionCheckHP : BehaviourConditional
 {
     [SerializeField, Range(0, 1)] float _effectParsent;
     CharaBase _charaBase;

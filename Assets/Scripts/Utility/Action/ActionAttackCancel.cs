@@ -5,7 +5,7 @@ using BehaviourTree.Execute;
 /// BehaviorTreeの行動クラス。攻撃のCancelをリクエスト
 /// </summary>
 
-public class ActionAttackCancel : Action
+public class ActionAttackCancel : BehaviourAction
 {
     AttackSetting _attackSetting;
 

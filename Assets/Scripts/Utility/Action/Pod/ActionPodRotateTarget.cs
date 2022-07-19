@@ -5,7 +5,7 @@ using BehaviourTree.Execute;
 /// BehaviorTreeの行動クラス。標的がいる際のPodの回転
 /// </summary>
 
-public class ActionPodRotateTarget : Action
+public class ActionPodRotateTarget : BehaviourAction
 {
     Transform _user;
 

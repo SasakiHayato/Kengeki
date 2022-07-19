@@ -19,7 +19,7 @@ public class MobEnemy : EnemyBase, IDamage
     void Update()
     {
         StateManager.Run();
-
+        Debug.Log(MoveDir);
         Vector3 move = Vector3.Scale(MoveDir * CharaData.Speed, PhysicsBase.Gravity);
         
         RB.velocity = move;

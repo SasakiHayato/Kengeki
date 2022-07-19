@@ -5,7 +5,7 @@ using BehaviourTree.Execute;
 /// BehaviorTreeの条件クラス。ロックオン対象がいるかどうか
 /// </summary>
 
-public class ConditionIsLockonTarget : Conditional
+public class ConditionIsLockonTarget : BehaviourConditional
 {
     protected override void Setup(GameObject user)
     {

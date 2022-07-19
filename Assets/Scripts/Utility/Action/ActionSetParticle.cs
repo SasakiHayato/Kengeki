@@ -5,7 +5,7 @@ using BehaviourTree.Execute;
 /// BehaviorTreeの行動クラス。Particleの生成
 /// </summary>
 
-public class ActionSetParticle : Action
+public class ActionSetParticle : BehaviourAction
 {
     enum NextQueue
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviourTree.Execute;
 
-public class ActionPodCollectPosition : Action
+public class ActionPodCollectPosition : BehaviourAction
 {
     [SerializeField] Vector3 _offsetPosition;
     Pod _pod;

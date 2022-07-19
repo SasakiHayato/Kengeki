@@ -5,7 +5,7 @@ using BehaviourTree.Execute;
 /// BehaviorTree‚ÌğŒƒNƒ‰ƒXBPlayer‚Æ‚Ì‹——£‚É‘Î‚·‚é¬”Û
 /// </summary>
 
-public class ConditionDistance : Conditional
+public class ConditionDistance : BehaviourConditional
 {
     enum CheckType
     {

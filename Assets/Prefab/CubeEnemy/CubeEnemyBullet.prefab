@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 5383214433243662356}
   - component: {fileID: 859384391023729540}
   - component: {fileID: 8593245835690103513}
-  - component: {fileID: 7586546726386154950}
   - component: {fileID: 6963685349223446708}
   - component: {fileID: 8743500062227779541}
   - component: {fileID: 5048936842902551026}
+  - component: {fileID: 3697679676391675415}
   m_Layer: 0
   m_Name: CubeEnemyBullet
   m_TagString: Untagged
@@ -103,115 +103,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dataPath: CubeEnemyBullet
   _offsetPosition: {fileID: 228685139597299000}
---- !u!114 &7586546726386154950
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 936507443772999277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5f5b0aac85f5104f80db91a9a742c8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _branchDatas:
-  - BrockType: 0
-    Condition: 0
-    Priority: 0
-    BranchConditionals: []
-    BrockDatas:
-    - QueueType: 0
-      QueueDatas:
-      - RunType: 0
-        Condition: 0
-        Conditionals:
-        - rid: 3710212221310074880
-        Actions:
-        - rid: 3710212221310074881
-  - BrockType: 2
-    Condition: 0
-    Priority: 0
-    BranchConditionals:
-    - rid: 3710212221310074889
-    - rid: 6414747767461380100
-    BrockDatas:
-    - QueueType: 0
-      QueueDatas:
-      - RunType: 1
-        Condition: 0
-        Conditionals:
-        - rid: 6414747767461380101
-        Actions:
-        - rid: 6414747767461380110
-        - rid: 6414747767461380111
-  - BrockType: 2
-    Condition: 0
-    Priority: 0
-    BranchConditionals:
-    - rid: 3710212221310074889
-    - rid: 6414747767461380104
-    BrockDatas:
-    - QueueType: 0
-      QueueDatas:
-      - RunType: 0
-        Condition: 0
-        Conditionals:
-        - rid: 6414747767461380099
-        Actions:
-        - rid: 3710212221310074891
-        - rid: 6414747971268116483
-        - rid: 6414747767461380112
-  references:
-    version: 2
-    RefIds:
-    - rid: 3710212221310074880
-      type: {class: ConditionEmpty, ns: , asm: Assembly-CSharp}
-    - rid: 3710212221310074881
-      type: {class: ActionIdle, ns: , asm: Assembly-CSharp}
-      data:
-        _animName: CubeEnemy_Idle
-        _applyY: 0
-    - rid: 3710212221310074889
-      type: {class: ConditionEntryRoom, ns: , asm: Assembly-CSharp}
-    - rid: 3710212221310074891
-      type: {class: ActionShotBullet, ns: , asm: Assembly-CSharp}
-      data:
-        _intarvalTime: 1
-        _speed: 10
-        _shotType: 0
-    - rid: 6414747767461380099
-      type: {class: ConditionInTheCm, ns: , asm: Assembly-CSharp}
-    - rid: 6414747767461380100
-      type: {class: ConditionDistance, ns: , asm: Assembly-CSharp}
-      data:
-        _effectDistance: 7
-        _checkType: 0
-    - rid: 6414747767461380101
-      type: {class: ConditionEmpty, ns: , asm: Assembly-CSharp}
-    - rid: 6414747767461380104
-      type: {class: ConditionDistance, ns: , asm: Assembly-CSharp}
-      data:
-        _effectDistance: 8
-        _checkType: 1
-    - rid: 6414747767461380110
-      type: {class: ActionWait, ns: , asm: Assembly-CSharp}
-      data:
-        _waitTime: 0.2
-    - rid: 6414747767461380111
-      type: {class: ActionTaskTowardPosition, ns: , asm: Assembly-CSharp}
-      data:
-        _type: 1
-        _updateSpeed: 6
-        _effectDist: 2
-    - rid: 6414747767461380112
-      type: {class: ActionMove, ns: , asm: Assembly-CSharp}
-      data:
-        _animName: 
-        _moveDirType: 2
-        _applyY: 0
-    - rid: 6414747971268116483
-      type: {class: ActionRotate, ns: , asm: Assembly-CSharp}
 --- !u!54 &6963685349223446708
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -259,6 +150,26 @@ MonoBehaviour:
     m_Bits: 0
   _rayDirection: {x: 0, y: 0, z: 0}
   _rayDistance: 0
+--- !u!114 &3697679676391675415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936507443772999277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b039cb51975f2d4aafa800e2fa3fc96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _path: 
+  _runUpdate: 1
+  _offset: {fileID: 0}
+  _limitConditionalCount: 0
+  _treeDataList: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1001 &2284031560499897737
 PrefabInstance:
   m_ObjectHideFlags: 0

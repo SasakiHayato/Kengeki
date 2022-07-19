@@ -5,7 +5,7 @@ using BehaviourTree.Execute;
 /// BehaviorTreeの行動クラス。Bulletのリクエスト
 /// </summary>
 
-public class ActionShotBullet : Action
+public class ActionShotBullet : BehaviourAction
 {
     [SerializeField] float _intarvalTime;
     [SerializeField] float _speed;

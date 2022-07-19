@@ -5,7 +5,7 @@ using BehaviourTree.Execute;
 /// BehaviorTreeの行動クラス。Animationの実行
 /// </summary>
 
-public class ActionPlayAnim : Action
+public class ActionPlayAnim : BehaviourAction
 {
     [SerializeField] string _animName;
 

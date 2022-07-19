@@ -1,21 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using BehaviorTree.Execute;
+using BehaviourTree.Execute;
 
-public class NewAction : Action
+public class NewAction : BehaviourAction
 {
-    protected override void SetUp(GameObject user)
+    protected override void Setup(GameObject user)
     {
         
     }
 
     protected override bool Execute()
     {
-        
+        return true;
     }
 
-    protected override void Init()
+    protected override void Initialize()
     {
         
     }

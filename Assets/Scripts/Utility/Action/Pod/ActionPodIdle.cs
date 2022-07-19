@@ -5,7 +5,7 @@ using BehaviourTree.Execute;
 /// BehaviorTreeの行動クラス。PodIdle
 /// </summary>
 
-public class ActionPodIdle : Action
+public class ActionPodIdle : BehaviourAction
 {
     Pod _pod;
 

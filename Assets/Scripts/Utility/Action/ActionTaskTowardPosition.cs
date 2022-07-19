@@ -5,7 +5,7 @@ using BehaviourTree.Execute;
 /// BehaviorTreeの行動クラス。Roomないの移動
 /// </summary>
 
-public class ActionTaskTowardPosition : Action
+public class ActionTaskTowardPosition : BehaviourAction
 {
     enum PositionType
     {

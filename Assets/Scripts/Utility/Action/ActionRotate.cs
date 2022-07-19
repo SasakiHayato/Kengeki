@@ -5,7 +5,7 @@ using UnityEngine;
 /// BehaviorTreeの行動クラス。回転の実行
 /// </summary>
 
-public class ActionRotate : Action
+public class ActionRotate : BehaviourAction
 {
     Transform _user;
     Transform _player;

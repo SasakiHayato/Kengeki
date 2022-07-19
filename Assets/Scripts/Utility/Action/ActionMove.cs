@@ -5,7 +5,7 @@ using BehaviourTree.Execute;
 /// BehaviorTreeの行動クラス。Move
 /// </summary>
 
-public class ActionMove : Action
+public class ActionMove : BehaviourAction
 {
     enum MoveDirType
     {

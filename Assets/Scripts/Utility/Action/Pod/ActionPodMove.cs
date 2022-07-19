@@ -5,7 +5,7 @@ using BehaviourTree.Execute;
 /// BehaviorTreeの行動クラス。Podの移動
 /// </summary>
 
-public class ActionPodMove : Action
+public class ActionPodMove : BehaviourAction
 {
     Pod _pod;
     Transform _player;

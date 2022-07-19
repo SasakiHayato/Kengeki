@@ -5,7 +5,7 @@ using BehaviourTree.Execute;
 /// BehaviorTreeの行動クラス。次の攻撃を待機
 /// </summary>
 
-public class ActionWaitNextAttack : Action
+public class ActionWaitNextAttack : BehaviourAction
 {
     AttackSetting _attackSetting;
 
@@ -21,6 +21,6 @@ public class ActionWaitNextAttack : Action
 
     protected override void Initialize()
     {
-        throw new System.NotImplementedException();
+        
     }
 }

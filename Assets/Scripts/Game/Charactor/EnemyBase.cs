@@ -1,5 +1,6 @@
 using UnityEngine;
 using StateMachine;
+using BehaviourTree;
 
 /// <summary>
 /// Enemy‚ÌŠî’êƒNƒ‰ƒX

@@ -5,7 +5,7 @@ using BehaviourTree.Execute;
 /// BehaviorTreeの行動クラス。対象のScale変更
 /// </summary>
 
-public class ActionChangeScale : Action
+public class ActionChangeScale : BehaviourAction
 {
     [SerializeField] GameObject _terget;
     [SerializeField] Vector3 _setScale;

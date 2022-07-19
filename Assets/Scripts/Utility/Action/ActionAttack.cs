@@ -5,7 +5,7 @@ using BehaviourTree.Execute;
 /// BehaviorTreeの行動クラス。攻撃のリクエスト
 /// </summary>
 
-public class ActionAttack : Action
+public class ActionAttack : BehaviourAction
 {
     [SerializeField] AttackType _attackType;
     [SerializeField] bool _attributeID;

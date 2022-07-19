@@ -17,10 +17,4 @@ MonoBehaviour:
   - _itemPathList:
     - Healer
     - Berserker
-    _enemyPaths: 0100000000000000
-  - _itemPathList:
-    - Healer
     _enemyPaths: 00000000
-  - _itemPathList:
-    - Healer
-    _enemyPaths: 01000000

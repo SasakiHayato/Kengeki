@@ -5,7 +5,7 @@ using BehaviourTree.Execute;
 /// BehaviorTreeの行動クラス。Idle
 /// </summary>
 
-public class ActionIdle : Action
+public class ActionIdle : BehaviourAction
 {
     [SerializeField] string _animName;
     [SerializeField] bool _applyY;

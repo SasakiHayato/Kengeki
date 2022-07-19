@@ -5,7 +5,7 @@ using BehaviourTree.Execute;
 /// BehaviorTree‚ÌğŒƒNƒ‰ƒXB‘ÎÛ‚ÌObject‚ªCamera“à‚É‘¶İ‚·‚é‚©‚Ì¬”Û
 /// </summary>
 
-public class ConditionInTheCm : Conditional
+public class ConditionInTheCm : BehaviourConditional
 {
     float _viewAngle;
     Transform _user;
