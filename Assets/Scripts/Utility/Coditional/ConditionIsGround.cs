@@ -18,9 +18,4 @@ public class ConditionIsGround : BehaviourConditional
     {
         return _physicsBase.IsGround;
     }
-
-    protected override void Initialize()
-    {
-        throw new System.NotImplementedException();
-    }
 }

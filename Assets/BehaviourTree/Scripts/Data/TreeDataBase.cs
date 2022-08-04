@@ -11,6 +11,7 @@ namespace BehaviourTree.Data
     [System.Serializable]
     public class TreeDataBase 
     {
+        [SerializeField] string _name;
         [SerializeField] ConditionalNode _mastarCodition;
         [SerializeField] TreeData _treeData;
         

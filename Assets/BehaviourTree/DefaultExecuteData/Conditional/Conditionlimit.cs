@@ -1,4 +1,5 @@
 using UnityEngine;
+using BehaviourTree;
 using BehaviourTree.Execute;
 using BehaviourTree.Data;
 
@@ -10,7 +11,8 @@ public class Conditionlimit : BehaviourConditional
     BehaviourTreeUserData _userData;
     protected override void Setup(GameObject user)
     {
-        _userData = BehaviourTreeMasterData.Instance.FindUserData(user.GetInstanceID());
+        BehaviourTreeUser treeUser = user.GetComponent<BehaviourTreeUser>();
+        _userData = BehaviourTreeMasterData.Instance.FindUserData(treeUser.UserID);
     }
 
     protected override bool Try()

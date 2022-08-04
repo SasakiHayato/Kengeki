@@ -1,3 +1,4 @@
+using BehaviourTree;
 using BehaviourTree.Execute;
 using BehaviourTree.Data;
 using UnityEngine;
@@ -10,7 +11,8 @@ public class ActionIsCallConditionLimit : BehaviourAction
     BehaviourTreeUserData _userData;
     protected override void Setup(GameObject user)
     {
-        _userData = BehaviourTreeMasterData.Instance.FindUserData(user.GetInstanceID());
+        BehaviourTreeUser treeUser = user.GetComponent<BehaviourTreeUser>();
+        _userData = BehaviourTreeMasterData.Instance.FindUserData(treeUser.UserID);
     }
 
     protected override bool Execute()

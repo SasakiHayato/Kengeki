@@ -1419,14 +1419,244 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b039cb51975f2d4aafa800e2fa3fc96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _path: 
+  _userPath: 
   _runUpdate: 1
-  _offset: {fileID: 0}
-  _limitConditionalCount: 0
-  _treeDataList: []
+  _offset: {fileID: 7781719752261621080}
+  _limitConditionalCount: 1
+  _treeDataList:
+  - _name: Idle
+    _mastarCodition:
+      _conditionType: 0
+      _couditionList: []
+    _treeData:
+      _treeType: 0
+      _executeList:
+      - _treeExecuteType: 0
+        _condition:
+          _conditionType: 0
+          _couditionList: []
+        _action:
+          _actionList:
+          - rid: 5180213899444355086
+  - _name: Attack%75
+    _mastarCodition:
+      _conditionType: 0
+      _couditionList:
+      - rid: 5180213899444355238
+      - rid: 5180213899444355239
+    _treeData:
+      _treeType: 0
+      _executeList:
+      - _treeExecuteType: 1
+        _condition:
+          _conditionType: 0
+          _couditionList: []
+        _action:
+          _actionList:
+          - rid: 5180213899444355240
+          - rid: 5180213899444355241
+          - rid: 5180213899444355406
+          - rid: 5180213899444355244
+          - rid: 5180213899444355485
+          - rid: 5180213899444355455
+          - rid: 5180213899444355456
+          - rid: 5180213899444355242
+          - rid: 5180213899444355243
+          - rid: 5180213899444355457
+  - _name: Move
+    _mastarCodition:
+      _conditionType: 0
+      _couditionList:
+      - rid: 5180213899444355088
+      - rid: 5180213899444355089
+      - rid: 5180213899444355172
+    _treeData:
+      _treeType: 0
+      _executeList:
+      - _treeExecuteType: 0
+        _condition:
+          _conditionType: 0
+          _couditionList:
+          - rid: 5180213899444355110
+        _action:
+          _actionList:
+          - rid: 5180213899444355090
+          - rid: 5180213899444355099
+      - _treeExecuteType: 0
+        _condition:
+          _conditionType: 0
+          _couditionList:
+          - rid: 5180213899444355111
+        _action:
+          _actionList:
+          - rid: 5180213899444355112
+          - rid: 5180213899444355099
+  - _name: Attack
+    _mastarCodition:
+      _conditionType: 0
+      _couditionList:
+      - rid: 5180213899444355088
+      - rid: 5180213899444355139
+      - rid: 5180213899444355173
+    _treeData:
+      _treeType: 0
+      _executeList:
+      - _treeExecuteType: 1
+        _condition:
+          _conditionType: 0
+          _couditionList: []
+        _action:
+          _actionList:
+          - rid: 5180213899444355141
+          - rid: 5180213899444355142
+          - rid: 5180213899444355140
+          - rid: 5180213899444355143
+      - _treeExecuteType: 1
+        _condition:
+          _conditionType: 0
+          _couditionList: []
+        _action:
+          _actionList:
+          - rid: 5180213899444355141
+          - rid: 5180213899444355142
+          - rid: 5180213899444355140
+          - rid: 5180213899444355143
+      - _treeExecuteType: 1
+        _condition:
+          _conditionType: 0
+          _couditionList: []
+        _action:
+          _actionList:
+          - rid: 5180213899444355141
+          - rid: 5180213899444355142
+          - rid: 5180213899444355140
+          - rid: 5180213899444355143
+      - _treeExecuteType: 1
+        _condition:
+          _conditionType: 0
+          _couditionList: []
+        _action:
+          _actionList:
+          - rid: 5180213899444355157
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 5180213899444355086
+      type: {class: ActionIdle, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: Idle
+        _applyY: 1
+    - rid: 5180213899444355088
+      type: {class: ConditionEntryRoom, ns: , asm: Assembly-CSharp}
+    - rid: 5180213899444355089
+      type: {class: ConditionDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _effectDistance: 4
+        _checkType: 1
+    - rid: 5180213899444355090
+      type: {class: ActionMove, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: Run_ver_B
+        _moveDirType: 0
+        _applyY: 0
+    - rid: 5180213899444355099
+      type: {class: ActionRotate, ns: , asm: Assembly-CSharp}
+    - rid: 5180213899444355110
+      type: {class: ConditionDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _effectDistance: 6
+        _checkType: 1
+    - rid: 5180213899444355111
+      type: {class: ConditionDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _effectDistance: 5
+        _checkType: 0
+    - rid: 5180213899444355112
+      type: {class: ActionMove, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: Run_ver_B
+        _moveDirType: 2
+        _applyY: 0
+    - rid: 5180213899444355139
+      type: {class: ConditionDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _effectDistance: 3
+        _checkType: 0
+    - rid: 5180213899444355140
+      type: {class: ActionAttack, ns: , asm: Assembly-CSharp}
+      data:
+        _attackType: 0
+        _attributeID: 0
+        _requestID: -1
+    - rid: 5180213899444355141
+      type: {class: ActionSetParticle, ns: , asm: Assembly-CSharp}
+      data:
+        _particalType: 2
+        _nextQueue: 0
+    - rid: 5180213899444355142
+      type: {class: ActionRotate, ns: , asm: Assembly-CSharp}
+    - rid: 5180213899444355143
+      type: {class: ActionWaitNextAttack, ns: , asm: Assembly-CSharp}
+    - rid: 5180213899444355157
+      type: {class: ActionTaskTowardPosition, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 1
+        _updateSpeed: 3
+        _effectDist: 2
+    - rid: 5180213899444355172
+      type: {class: ConditionIsGround, ns: , asm: Assembly-CSharp}
+    - rid: 5180213899444355173
+      type: {class: ConditionIsGround, ns: , asm: Assembly-CSharp}
+    - rid: 5180213899444355238
+      type: {class: Conditionlimit, ns: , asm: Assembly-CSharp}
+    - rid: 5180213899444355239
+      type: {class: ConditionCheckHP, ns: , asm: Assembly-CSharp}
+      data:
+        _effectParsent: 0.95
+    - rid: 5180213899444355240
+      type: {class: ActionIsCallConditionLimit, ns: , asm: Assembly-CSharp}
+    - rid: 5180213899444355241
+      type: {class: ActionTaskTowardPosition, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 0
+        _updateSpeed: 12
+        _effectDist: 2
+    - rid: 5180213899444355242
+      type: {class: ActionAttack, ns: , asm: Assembly-CSharp}
+      data:
+        _attackType: 3
+        _attributeID: 1
+        _requestID: 0
+    - rid: 5180213899444355243
+      type: {class: ActionWaitNextAttack, ns: , asm: Assembly-CSharp}
+    - rid: 5180213899444355244
+      type: {class: ActionSetParticle, ns: , asm: Assembly-CSharp}
+      data:
+        _particalType: 3
+        _nextQueue: 0
+    - rid: 5180213899444355406
+      type: {class: ActionIdle, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: 
+        _applyY: 0
+    - rid: 5180213899444355455
+      type: {class: ActionMove, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: 
+        _moveDirType: 0
+        _applyY: 0
+    - rid: 5180213899444355456
+      type: {class: ActionChangeScale, ns: , asm: Assembly-CSharp}
+      data:
+        _terget: {fileID: 8955983091552384534}
+        _setScale: {x: 10, y: 10, z: 10}
+    - rid: 5180213899444355457
+      type: {class: ActionChangeScale, ns: , asm: Assembly-CSharp}
+      data:
+        _terget: {fileID: 8955983091552384534}
+        _setScale: {x: 1, y: 1, z: 1}
+    - rid: 5180213899444355485
+      type: {class: ActionRotate, ns: , asm: Assembly-CSharp}
 --- !u!1 &2473086590774950143
 GameObject:
   m_ObjectHideFlags: 0
