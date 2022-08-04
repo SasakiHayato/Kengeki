@@ -1422,7 +1422,7 @@ MonoBehaviour:
   _userPath: 
   _runUpdate: 1
   _offset: {fileID: 7781719752261621080}
-  _limitConditionalCount: 1
+  _limitConditionalCount: 2
   _treeDataList:
   - _name: Idle
     _mastarCodition:
@@ -1438,7 +1438,24 @@ MonoBehaviour:
         _action:
           _actionList:
           - rid: 5180213899444355086
-  - _name: Attack%75
+  - _name: Attack%30
+    _mastarCodition:
+      _conditionType: 0
+      _couditionList:
+      - rid: 5180213899444355514
+      - rid: 5180213899444355548
+    _treeData:
+      _treeType: 0
+      _executeList:
+      - _treeExecuteType: 0
+        _condition:
+          _conditionType: 0
+          _couditionList: []
+        _action:
+          _actionList:
+          - rid: 5180213899444355515
+          - rid: 5180213899444355516
+  - _name: Attack%65
     _mastarCodition:
       _conditionType: 0
       _couditionList:
@@ -1612,7 +1629,7 @@ MonoBehaviour:
     - rid: 5180213899444355239
       type: {class: ConditionCheckHP, ns: , asm: Assembly-CSharp}
       data:
-        _effectParsent: 0.95
+        _effectParsent: 0.65
     - rid: 5180213899444355240
       type: {class: ActionIsCallConditionLimit, ns: , asm: Assembly-CSharp}
     - rid: 5180213899444355241
@@ -1657,6 +1674,18 @@ MonoBehaviour:
         _setScale: {x: 1, y: 1, z: 1}
     - rid: 5180213899444355485
       type: {class: ActionRotate, ns: , asm: Assembly-CSharp}
+    - rid: 5180213899444355514
+      type: {class: Conditionlimit, ns: , asm: Assembly-CSharp}
+    - rid: 5180213899444355515
+      type: {class: ActionIsCallConditionLimit, ns: , asm: Assembly-CSharp}
+    - rid: 5180213899444355516
+      type: {class: ActionSetEnemy, ns: , asm: Assembly-CSharp}
+      data:
+        _enemyPaths: 000000000100000001000000
+    - rid: 5180213899444355548
+      type: {class: ConditionCheckHP, ns: , asm: Assembly-CSharp}
+      data:
+        _effectParsent: 0.3
 --- !u!1 &2473086590774950143
 GameObject:
   m_ObjectHideFlags: 0
