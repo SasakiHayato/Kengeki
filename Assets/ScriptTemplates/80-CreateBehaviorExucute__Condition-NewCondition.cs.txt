@@ -1,0 +1,22 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using BehaviourTree.Execute;
+
+public class NewCondition : BehaviourConditional
+{
+    protected override void Setup(GameObject user)
+    {
+
+    }
+
+    protected override bool Try()
+    {
+        return true;
+    }
+
+    protected override void Initialize()
+    {
+        
+    }
+}

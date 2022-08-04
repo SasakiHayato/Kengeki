@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 2544215643859038666}
   - component: {fileID: 2544215643859038679}
   - component: {fileID: 2544215643859038672}
-  - component: {fileID: 1015941906628081736}
   - component: {fileID: -5274312816883287191}
   - component: {fileID: -1077190957882698632}
   - component: {fileID: 1881212838622687727}
+  - component: {fileID: 54706651753577910}
   m_Layer: 0
   m_Name: CubeEnemySword
   m_TagString: Untagged
@@ -122,101 +122,6 @@ MonoBehaviour:
   _targetCollider: {fileID: 2544215643859038678}
   _attackDatas:
   - {fileID: 11400000, guid: 2c7f7085c61bdca41a03d83aa78358e7, type: 2}
---- !u!114 &1015941906628081736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2544215643859038677}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5f5b0aac85f5104f80db91a9a742c8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _branchDatas:
-  - BrockType: 0
-    Condition: 0
-    Priority: 0
-    BranchConditionals:
-    - rid: 3710212216005853190
-    BrockDatas:
-    - QueueType: 0
-      QueueDatas:
-      - RunType: 0
-        Condition: 0
-        Conditionals:
-        - rid: 3710212216005853191
-        Actions:
-        - rid: 3710212216005853193
-  - BrockType: 2
-    Condition: 0
-    Priority: 0
-    BranchConditionals:
-    - rid: 3710212216005853190
-    BrockDatas:
-    - QueueType: 0
-      QueueDatas:
-      - RunType: 0
-        Condition: 0
-        Conditionals:
-        - rid: 3710212221310074882
-        Actions:
-        - rid: 3710212216005853188
-        - rid: 3710212216005853189
-      - RunType: 1
-        Condition: 0
-        Conditionals:
-        - rid: 3710212216005853195
-        Actions:
-        - rid: 3710212494985003010
-        - rid: 3710212216005853196
-        - rid: 3710212216005853197
-        - rid: 3710212374395879455
-  references:
-    version: 2
-    RefIds:
-    - rid: 3710212216005853188
-      type: {class: ActionMove, ns: , asm: Assembly-CSharp}
-      data:
-        _animName: 
-        _moveDirType: 0
-        _applyY: 1
-    - rid: 3710212216005853189
-      type: {class: ActionRotate, ns: , asm: Assembly-CSharp}
-    - rid: 3710212216005853190
-      type: {class: ConditionEntryRoom, ns: , asm: Assembly-CSharp}
-    - rid: 3710212216005853191
-      type: {class: ConditionEmpty, ns: , asm: Assembly-CSharp}
-    - rid: 3710212216005853193
-      type: {class: ActionIdle, ns: , asm: Assembly-CSharp}
-      data:
-        _animName: CubeEnemy_Idle
-        _applyY: 0
-    - rid: 3710212216005853195
-      type: {class: ConditionDistance, ns: , asm: Assembly-CSharp}
-      data:
-        _effectDistance: 5
-    - rid: 3710212216005853196
-      type: {class: ActionAttack, ns: , asm: Assembly-CSharp}
-      data:
-        _attackType: 0
-    - rid: 3710212216005853197
-      type: {class: ActionWait, ns: , asm: Assembly-CSharp}
-      data:
-        _waitTime: 1.5
-    - rid: 3710212221310074882
-      type: {class: ConditionEmpty, ns: , asm: Assembly-CSharp}
-    - rid: 3710212374395879455
-      type: {class: ActionIdle, ns: , asm: Assembly-CSharp}
-      data:
-        _animName: CubeEnemy_Idle
-        _applyY: 0
-    - rid: 3710212494985003010
-      type: {class: ActionSetParticle, ns: , asm: Assembly-CSharp}
-      data:
-        _particalType: 2
-        _nextQueue: 0
 --- !u!65 &-5274312816883287191
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -264,6 +169,131 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &54706651753577910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2544215643859038677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b039cb51975f2d4aafa800e2fa3fc96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _path: 
+  _runUpdate: 1
+  _offset: {fileID: 0}
+  _limitConditionalCount: 0
+  _treeDataList:
+  - _mastarCodition:
+      _conditionType: 0
+      _couditionList: []
+    _treeData:
+      _treeType: 0
+      _executeList:
+      - _treeExecuteType: 0
+        _condition:
+          _conditionType: 0
+          _couditionList: []
+        _action:
+          _actionList:
+          - rid: 3921785790187962368
+  - _mastarCodition:
+      _conditionType: 0
+      _couditionList:
+      - rid: 3921785790187962369
+      - rid: 3921785790187962371
+    _treeData:
+      _treeType: 0
+      _executeList:
+      - _treeExecuteType: 1
+        _condition:
+          _conditionType: 0
+          _couditionList: []
+        _action:
+          _actionList:
+          - rid: 3921785790187962373
+          - rid: 3921785790187962377
+          - rid: 3921785790187962372
+          - rid: 3921785790187962374
+          - rid: 3921785790187962375
+      - _treeExecuteType: 1
+        _condition:
+          _conditionType: 0
+          _couditionList: []
+        _action:
+          _actionList:
+          - rid: 3921785790187962379
+          - rid: 3921785790187962380
+  - _mastarCodition:
+      _conditionType: 0
+      _couditionList:
+      - rid: 3921785790187962369
+    _treeData:
+      _treeType: 0
+      _executeList:
+      - _treeExecuteType: 0
+        _condition:
+          _conditionType: 0
+          _couditionList: []
+        _action:
+          _actionList:
+          - rid: 3921785790187962370
+          - rid: 3921785790187962378
+  references:
+    version: 2
+    RefIds:
+    - rid: 3921785790187962368
+      type: {class: ActionIdle, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: 
+        _applyY: 0
+    - rid: 3921785790187962369
+      type: {class: ConditionEntryRoom, ns: , asm: Assembly-CSharp}
+    - rid: 3921785790187962370
+      type: {class: ActionMove, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: 
+        _moveDirType: 0
+        _applyY: 1
+    - rid: 3921785790187962371
+      type: {class: ConditionDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _effectDistance: 3
+        _checkType: 0
+    - rid: 3921785790187962372
+      type: {class: ActionSetParticle, ns: , asm: Assembly-CSharp}
+      data:
+        _particalType: 2
+        _nextQueue: 0
+    - rid: 3921785790187962373
+      type: {class: ActionIdle, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: CubeEnemy_Idle
+        _applyY: 0
+    - rid: 3921785790187962374
+      type: {class: ActionAttack, ns: , asm: Assembly-CSharp}
+      data:
+        _attackType: 0
+        _attributeID: 0
+        _requestID: -1
+    - rid: 3921785790187962375
+      type: {class: ActionWaitNextAttack, ns: , asm: Assembly-CSharp}
+    - rid: 3921785790187962377
+      type: {class: ActionRotate, ns: , asm: Assembly-CSharp}
+    - rid: 3921785790187962378
+      type: {class: ActionRotate, ns: , asm: Assembly-CSharp}
+    - rid: 3921785790187962379
+      type: {class: ActionMove, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: 
+        _moveDirType: 2
+        _applyY: 0
+    - rid: 3921785790187962380
+      type: {class: ActionWait, ns: , asm: Assembly-CSharp}
+      data:
+        _waitTime: 1
 --- !u!1 &7514123693954417454
 GameObject:
   m_ObjectHideFlags: 0

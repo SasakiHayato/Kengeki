@@ -19,6 +19,7 @@ public class FieldManager : ManagerBase
     const float SetYPosition = 5f;
     const float AddStatus = 0.5f;
 
+    int _testID;
     void Start()
     {
         GameManager.Instance.AddManager(this);
@@ -91,7 +92,8 @@ public class FieldManager : ManagerBase
         foreach (EnemyPath path in tip.EnemyPaths)
         {
             GameObject obj = Instantiate(GameManager.Instance.ObjectData.GetData(path.ToString()).Prefab);
-
+            obj.name = path.ToString() + _testID.ToString();
+            _testID++;
             float x = Random.Range(data.Position.UpperLeft.x, data.Position.BottomRight.x);
             float z = Random.Range(data.Position.UpperLeft.z, data.Position.BottomRight.z);
 

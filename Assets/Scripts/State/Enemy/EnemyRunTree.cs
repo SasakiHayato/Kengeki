@@ -1,7 +1,7 @@
 using UnityEngine;
 using StateMachine;
-using BehaviourTree;
 using System;
+using BehaviourTree;
 
 /// <summary>
 /// EnemyÇÃí èÌéûÇÃState
@@ -9,30 +9,30 @@ using System;
 
 public class EnemyRunTree : State
 {
-    TreeManager _tree;
+    BehaviourTreeUser _treeUser;
     PhysicsBase _physicsBase;
 
     public override void SetUp(GameObject user)
     {
-        _tree = user.GetComponent<TreeManager>();
+        _treeUser = user.GetComponent<BehaviourTreeUser>();
         _physicsBase = user.GetComponent<PhysicsBase>();
     }
 
     public override void Entry(string beforeStatePath)
     {
-        _tree.IsRun = true;
+        _treeUser.SetRunRequest(true);
     }
 
     public override void Run()
     {
-        _tree.TreeUpdate();
+        
     }
 
     public override Enum Exit()
     {
         if (_physicsBase.IsForce)
         {
-            _tree.IsRun = false;
+            _treeUser.SetRunRequest(false);
             return EnemyBase.State.Nomotion;
         }
         else return EnemyBase.State.RunTree;

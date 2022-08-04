@@ -1301,7 +1301,7 @@ GameObject:
   - component: {fileID: 7586370589469115304}
   - component: {fileID: 5714641218120383349}
   - component: {fileID: -7924496618511053628}
-  - component: {fileID: 4044448374854081201}
+  - component: {fileID: 5967600764617701912}
   m_Layer: 0
   m_Name: BossGrruzam
   m_TagString: Untagged
@@ -1407,7 +1407,7 @@ CapsuleCollider:
   m_Height: 1.9
   m_Direction: 1
   m_Center: {x: 0, y: 0.88, z: 0}
---- !u!114 &4044448374854081201
+--- !u!114 &5967600764617701912
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1416,321 +1416,276 @@ MonoBehaviour:
   m_GameObject: {fileID: 2473082838094617567}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5f5b0aac85f5104f80db91a9a742c8c, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b039cb51975f2d4aafa800e2fa3fc96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _branchDatas:
-  - BrockType: 0
-    Condition: 0
-    Priority: 0
-    BranchConditionals: []
-    BrockDatas:
-    - QueueType: 0
-      QueueDatas:
-      - RunType: 0
-        Condition: 0
-        Conditionals:
-        - rid: 6414747703172923392
-        Actions:
-        - rid: 6414747703172923393
-  - BrockType: 2
-    Condition: 0
-    Priority: 0
-    BranchConditionals:
-    - rid: 6414747703172923396
-    - rid: 6414747707582709763
-    - rid: 6414747721681338392
-    BrockDatas:
-    - QueueType: 0
-      QueueDatas:
-      - RunType: 1
-        Condition: 0
-        Conditionals:
-        - rid: 6414747721681338394
-        Actions:
-        - rid: 6414747721681338395
-        - rid: 6414747721681338397
-  - BrockType: 2
-    Condition: 0
-    Priority: 0
-    BranchConditionals:
-    - rid: 6414747703172923396
-    - rid: 6414747707582709763
-    - rid: 6414747721681338369
-    BrockDatas:
-    - QueueType: 0
-      QueueDatas:
-      - RunType: 1
-        Condition: 0
-        Conditionals:
-        - rid: 6414747707582709772
-        Actions:
-        - rid: 6414747721681338375
-        - rid: 6414747721681338387
-        - rid: 6414747721681338386
-        - rid: 6414747721681338388
-        - rid: 6414747721681338385
-        - rid: 6414747721681338381
-        - rid: 6414747721681338378
-        - rid: 6414747721681338380
-        - rid: 6414747721681338382
-  - BrockType: 3
-    Condition: 0
-    Priority: 0
-    BranchConditionals:
-    - rid: 6414747703172923396
-    - rid: 6414747703172923400
-    - rid: 6414747707582709762
-    BrockDatas:
-    - QueueType: 0
-      QueueDatas:
-      - RunType: 0
-        Condition: 0
-        Conditionals:
-        - rid: 6414747703172923392
-        Actions:
-        - rid: 6414747703172923408
-        - rid: 6414747703172923402
-        - rid: 6414747703172923401
-        - rid: 6414747707582709770
-        - rid: 6414747703172923403
-      - RunType: 0
-        Condition: 0
-        Conditionals:
-        - rid: 6414747703172923392
-        Actions:
-        - rid: 6414747703172923409
-        - rid: 6414747703172923402
-        - rid: 6414747703172923401
-        - rid: 6414747707582709769
-        - rid: 6414747703172923403
-      - RunType: 0
-        Condition: 0
-        Conditionals:
-        - rid: 6414747703172923392
-        Actions:
-        - rid: 6414747703172923409
-        - rid: 6414747703172923402
-        - rid: 6414747703172923401
-        - rid: 6414747707582709768
-        - rid: 6414747707582709764
-      - RunType: 1
-        Condition: 0
-        Conditionals:
-        - rid: 6414747703172923392
-        Actions:
-        - rid: 6414747707582709767
-        - rid: 6414747707582709766
-    - QueueType: 0
-      QueueDatas:
-      - RunType: 1
-        Condition: 0
-        Conditionals:
-        - rid: 6414747721681338410
-        Actions:
-        - rid: 6414747721681338413
-        - rid: 6414747721681338414
-        - rid: 6414747721681338415
-        - rid: 6414747721681338411
-        - rid: 6414747721681338412
-  - BrockType: 2
-    Condition: 0
-    Priority: 0
-    BranchConditionals:
-    - rid: 6414747703172923396
-    - rid: 6414747707582709763
-    BrockDatas:
-    - QueueType: 0
-      QueueDatas:
-      - RunType: 0
-        Condition: 0
-        Conditionals:
-        - rid: 6414747703172923392
-        Actions:
-        - rid: 6414747703172923397
-        - rid: 6414747703172923398
-        - rid: 6414747707582709761
+  _userPath: 
+  _runUpdate: 1
+  _offset: {fileID: 7781719752261621080}
+  _limitConditionalCount: 2
+  _treeDataList:
+  - _name: Idle
+    _mastarCodition:
+      _conditionType: 0
+      _couditionList: []
+    _treeData:
+      _treeType: 0
+      _executeList:
+      - _treeExecuteType: 0
+        _condition:
+          _conditionType: 0
+          _couditionList: []
+        _action:
+          _actionList:
+          - rid: 5180213899444355086
+  - _name: Attack%30
+    _mastarCodition:
+      _conditionType: 0
+      _couditionList:
+      - rid: 5180213899444355514
+      - rid: 5180213899444355548
+    _treeData:
+      _treeType: 0
+      _executeList:
+      - _treeExecuteType: 0
+        _condition:
+          _conditionType: 0
+          _couditionList: []
+        _action:
+          _actionList:
+          - rid: 5180213899444355515
+          - rid: 5180213899444355516
+  - _name: Attack%65
+    _mastarCodition:
+      _conditionType: 0
+      _couditionList:
+      - rid: 5180213899444355238
+      - rid: 5180213899444355239
+    _treeData:
+      _treeType: 0
+      _executeList:
+      - _treeExecuteType: 1
+        _condition:
+          _conditionType: 0
+          _couditionList: []
+        _action:
+          _actionList:
+          - rid: 5180213899444355240
+          - rid: 5180213899444355241
+          - rid: 5180213899444355406
+          - rid: 5180213899444355244
+          - rid: 5180213899444355485
+          - rid: 5180213899444355455
+          - rid: 5180213899444355456
+          - rid: 5180213899444355242
+          - rid: 5180213899444355243
+          - rid: 5180213899444355457
+  - _name: Move
+    _mastarCodition:
+      _conditionType: 0
+      _couditionList:
+      - rid: 5180213899444355088
+      - rid: 5180213899444355089
+      - rid: 5180213899444355172
+    _treeData:
+      _treeType: 0
+      _executeList:
+      - _treeExecuteType: 0
+        _condition:
+          _conditionType: 0
+          _couditionList:
+          - rid: 5180213899444355110
+        _action:
+          _actionList:
+          - rid: 5180213899444355090
+          - rid: 5180213899444355099
+      - _treeExecuteType: 0
+        _condition:
+          _conditionType: 0
+          _couditionList:
+          - rid: 5180213899444355111
+        _action:
+          _actionList:
+          - rid: 5180213899444355112
+          - rid: 5180213899444355099
+  - _name: Attack
+    _mastarCodition:
+      _conditionType: 0
+      _couditionList:
+      - rid: 5180213899444355088
+      - rid: 5180213899444355139
+      - rid: 5180213899444355173
+    _treeData:
+      _treeType: 0
+      _executeList:
+      - _treeExecuteType: 1
+        _condition:
+          _conditionType: 0
+          _couditionList: []
+        _action:
+          _actionList:
+          - rid: 5180213899444355141
+          - rid: 5180213899444355142
+          - rid: 5180213899444355140
+          - rid: 5180213899444355143
+      - _treeExecuteType: 1
+        _condition:
+          _conditionType: 0
+          _couditionList: []
+        _action:
+          _actionList:
+          - rid: 5180213899444355141
+          - rid: 5180213899444355142
+          - rid: 5180213899444355140
+          - rid: 5180213899444355143
+      - _treeExecuteType: 1
+        _condition:
+          _conditionType: 0
+          _couditionList: []
+        _action:
+          _actionList:
+          - rid: 5180213899444355141
+          - rid: 5180213899444355142
+          - rid: 5180213899444355140
+          - rid: 5180213899444355143
+      - _treeExecuteType: 1
+        _condition:
+          _conditionType: 0
+          _couditionList: []
+        _action:
+          _actionList:
+          - rid: 5180213899444355157
   references:
     version: 2
     RefIds:
-    - rid: 6414747703172923392
-      type: {class: ConditionEmpty, ns: , asm: Assembly-CSharp}
-    - rid: 6414747703172923393
+    - rid: 5180213899444355086
       type: {class: ActionIdle, ns: , asm: Assembly-CSharp}
       data:
         _animName: Idle
         _applyY: 1
-    - rid: 6414747703172923396
+    - rid: 5180213899444355088
       type: {class: ConditionEntryRoom, ns: , asm: Assembly-CSharp}
-    - rid: 6414747703172923397
+    - rid: 5180213899444355089
+      type: {class: ConditionDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _effectDistance: 4
+        _checkType: 1
+    - rid: 5180213899444355090
       type: {class: ActionMove, ns: , asm: Assembly-CSharp}
       data:
         _animName: Run_ver_B
         _moveDirType: 0
         _applyY: 0
-    - rid: 6414747703172923398
+    - rid: 5180213899444355099
       type: {class: ActionRotate, ns: , asm: Assembly-CSharp}
-    - rid: 6414747703172923400
+    - rid: 5180213899444355110
+      type: {class: ConditionDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _effectDistance: 6
+        _checkType: 1
+    - rid: 5180213899444355111
       type: {class: ConditionDistance, ns: , asm: Assembly-CSharp}
       data:
         _effectDistance: 5
         _checkType: 0
-    - rid: 6414747703172923401
+    - rid: 5180213899444355112
+      type: {class: ActionMove, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: Run_ver_B
+        _moveDirType: 2
+        _applyY: 0
+    - rid: 5180213899444355139
+      type: {class: ConditionDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _effectDistance: 3
+        _checkType: 0
+    - rid: 5180213899444355140
       type: {class: ActionAttack, ns: , asm: Assembly-CSharp}
       data:
         _attackType: 0
         _attributeID: 0
         _requestID: -1
-    - rid: 6414747703172923402
+    - rid: 5180213899444355141
       type: {class: ActionSetParticle, ns: , asm: Assembly-CSharp}
       data:
         _particalType: 2
         _nextQueue: 0
-    - rid: 6414747703172923403
+    - rid: 5180213899444355142
+      type: {class: ActionRotate, ns: , asm: Assembly-CSharp}
+    - rid: 5180213899444355143
       type: {class: ActionWaitNextAttack, ns: , asm: Assembly-CSharp}
-    - rid: 6414747703172923408
-      type: {class: ActionIdle, ns: , asm: Assembly-CSharp}
+    - rid: 5180213899444355157
+      type: {class: ActionTaskTowardPosition, ns: , asm: Assembly-CSharp}
       data:
-        _animName: Idle
-        _applyY: 1
-    - rid: 6414747703172923409
+        _type: 1
+        _updateSpeed: 3
+        _effectDist: 2
+    - rid: 5180213899444355172
+      type: {class: ConditionIsGround, ns: , asm: Assembly-CSharp}
+    - rid: 5180213899444355173
+      type: {class: ConditionIsGround, ns: , asm: Assembly-CSharp}
+    - rid: 5180213899444355238
+      type: {class: Conditionlimit, ns: , asm: Assembly-CSharp}
+    - rid: 5180213899444355239
+      type: {class: ConditionCheckHP, ns: , asm: Assembly-CSharp}
+      data:
+        _effectParsent: 0.65
+    - rid: 5180213899444355240
+      type: {class: ActionIsCallConditionLimit, ns: , asm: Assembly-CSharp}
+    - rid: 5180213899444355241
+      type: {class: ActionTaskTowardPosition, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 0
+        _updateSpeed: 12
+        _effectDist: 2
+    - rid: 5180213899444355242
+      type: {class: ActionAttack, ns: , asm: Assembly-CSharp}
+      data:
+        _attackType: 3
+        _attributeID: 1
+        _requestID: 0
+    - rid: 5180213899444355243
+      type: {class: ActionWaitNextAttack, ns: , asm: Assembly-CSharp}
+    - rid: 5180213899444355244
+      type: {class: ActionSetParticle, ns: , asm: Assembly-CSharp}
+      data:
+        _particalType: 3
+        _nextQueue: 0
+    - rid: 5180213899444355406
       type: {class: ActionIdle, ns: , asm: Assembly-CSharp}
       data:
         _animName: 
         _applyY: 0
-    - rid: 6414747707582709761
-      type: {class: ActionAttackCancel, ns: , asm: Assembly-CSharp}
-    - rid: 6414747707582709762
-      type: {class: ConditionIsGround, ns: , asm: Assembly-CSharp}
-    - rid: 6414747707582709763
-      type: {class: ConditionIsGround, ns: , asm: Assembly-CSharp}
-    - rid: 6414747707582709764
-      type: {class: ActionWaitNextAttack, ns: , asm: Assembly-CSharp}
-    - rid: 6414747707582709766
-      type: {class: ActionTaskTowardPosition, ns: , asm: Assembly-CSharp}
-      data:
-        _type: 1
-        _updateSpeed: 12
-        _effectDist: 3
-    - rid: 6414747707582709767
-      type: {class: ActionPlayAnim, ns: , asm: Assembly-CSharp}
-      data:
-        _animName: Dodge_Right
-    - rid: 6414747707582709768
-      type: {class: ActionRotate, ns: , asm: Assembly-CSharp}
-    - rid: 6414747707582709769
-      type: {class: ActionRotate, ns: , asm: Assembly-CSharp}
-    - rid: 6414747707582709770
-      type: {class: ActionRotate, ns: , asm: Assembly-CSharp}
-    - rid: 6414747707582709772
-      type: {class: ConditionEmpty, ns: , asm: Assembly-CSharp}
-    - rid: 6414747721681338369
-      type: {class: ConditionLimit, ns: , asm: Assembly-CSharp}
-      data:
-        _limitCount: 1
-        _type: 0
-        _conditions:
-        - rid: 6414747721681338370
-    - rid: 6414747721681338370
-      type: {class: ConditionCheckHP, ns: , asm: Assembly-CSharp}
-      data:
-        _effectParsent: 0.75
-    - rid: 6414747721681338375
-      type: {class: ActionTaskTowardPosition, ns: , asm: Assembly-CSharp}
-      data:
-        _type: 0
-        _updateSpeed: 15
-        _effectDist: 1.7
-    - rid: 6414747721681338378
-      type: {class: ActionAttack, ns: , asm: Assembly-CSharp}
-      data:
-        _attackType: 2
-        _attributeID: 0
-        _requestID: -1
-    - rid: 6414747721681338380
-      type: {class: ActionWaitNextAttack, ns: , asm: Assembly-CSharp}
-    - rid: 6414747721681338381
-      type: {class: ActionChangeScale, ns: , asm: Assembly-CSharp}
-      data:
-        _terget: {fileID: 8955983091552384534}
-        _setScale: {x: 5, y: 5, z: 5}
-    - rid: 6414747721681338382
-      type: {class: ActionChangeScale, ns: , asm: Assembly-CSharp}
-      data:
-        _terget: {fileID: 8955983091552384534}
-        _setScale: {x: 1, y: 1, z: 1}
-    - rid: 6414747721681338385
+    - rid: 5180213899444355455
       type: {class: ActionMove, ns: , asm: Assembly-CSharp}
       data:
         _animName: 
         _moveDirType: 0
         _applyY: 0
-    - rid: 6414747721681338386
-      type: {class: ActionSetParticle, ns: , asm: Assembly-CSharp}
+    - rid: 5180213899444355456
+      type: {class: ActionChangeScale, ns: , asm: Assembly-CSharp}
       data:
-        _particalType: 3
-        _nextQueue: 0
-    - rid: 6414747721681338387
-      type: {class: ActionIdle, ns: , asm: Assembly-CSharp}
+        _terget: {fileID: 8955983091552384534}
+        _setScale: {x: 10, y: 10, z: 10}
+    - rid: 5180213899444355457
+      type: {class: ActionChangeScale, ns: , asm: Assembly-CSharp}
       data:
-        _animName: 
-        _applyY: 0
-    - rid: 6414747721681338388
-      type: {class: ActionSetParticle, ns: , asm: Assembly-CSharp}
-      data:
-        _particalType: 4
-        _nextQueue: 1
-    - rid: 6414747721681338392
-      type: {class: ConditionLimit, ns: , asm: Assembly-CSharp}
-      data:
-        _limitCount: 1
-        _type: 0
-        _conditions:
-        - rid: 6414747721681338393
-    - rid: 6414747721681338393
-      type: {class: ConditionCheckHP, ns: , asm: Assembly-CSharp}
-      data:
-        _effectParsent: 0.5
-    - rid: 6414747721681338394
-      type: {class: ConditionEmpty, ns: , asm: Assembly-CSharp}
-    - rid: 6414747721681338395
-      type: {class: ActionTaskTowardPosition, ns: , asm: Assembly-CSharp}
-      data:
-        _type: 0
-        _updateSpeed: 15
-        _effectDist: 3
-    - rid: 6414747721681338397
+        _terget: {fileID: 8955983091552384534}
+        _setScale: {x: 1, y: 1, z: 1}
+    - rid: 5180213899444355485
+      type: {class: ActionRotate, ns: , asm: Assembly-CSharp}
+    - rid: 5180213899444355514
+      type: {class: Conditionlimit, ns: , asm: Assembly-CSharp}
+    - rid: 5180213899444355515
+      type: {class: ActionIsCallConditionLimit, ns: , asm: Assembly-CSharp}
+    - rid: 5180213899444355516
       type: {class: ActionSetEnemy, ns: , asm: Assembly-CSharp}
       data:
-        _enemyPaths: 000000000100000000000000
-    - rid: 6414747721681338410
+        _enemyPaths: 000000000100000001000000
+    - rid: 5180213899444355548
       type: {class: ConditionCheckHP, ns: , asm: Assembly-CSharp}
       data:
-        _effectParsent: 0.5
-    - rid: 6414747721681338411
-      type: {class: ActionAttack, ns: , asm: Assembly-CSharp}
-      data:
-        _attackType: 2
-        _attributeID: 1
-        _requestID: 1
-    - rid: 6414747721681338412
-      type: {class: ActionWaitNextAttack, ns: , asm: Assembly-CSharp}
-    - rid: 6414747721681338413
-      type: {class: ActionIdle, ns: , asm: Assembly-CSharp}
-      data:
-        _animName: 
-        _applyY: 0
-    - rid: 6414747721681338414
-      type: {class: ActionSetParticle, ns: , asm: Assembly-CSharp}
-      data:
-        _particalType: 2
-        _nextQueue: 0
-    - rid: 6414747721681338415
-      type: {class: ActionTaskTowardPosition, ns: , asm: Assembly-CSharp}
-      data:
-        _type: 1
-        _updateSpeed: 15
-        _effectDist: 3
+        _effectParsent: 0.3
 --- !u!1 &2473086590774950143
 GameObject:
   m_ObjectHideFlags: 0
