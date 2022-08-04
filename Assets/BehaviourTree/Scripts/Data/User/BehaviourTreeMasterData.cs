@@ -19,7 +19,7 @@ namespace BehaviourTree.Data
         int _pathID;
         int _userID;
 
-        const string UserPath = "BehaviorUser_No.";
+        const string UserPath = "BehaviourUser_No.";
 
         public static string CreateUserPath()
         {
@@ -39,21 +39,21 @@ namespace BehaviourTree.Data
             return id;
         }
 
-        public void CreateUser(int instanceID, string path, BehaviourTreeUser user, Transform offset)
+        public void CreateUser(int userID, string path, BehaviourTreeUser user, Transform offset)
         {
             BehaviourTreeUserData data = new BehaviourTreeUserData(user, offset, path);
-            _userDic.Add(instanceID, data);
+            _userDic.Add(userID, data);
         }
 
-        public BehaviourTreeUserData FindUserData(int instanceID)
+        public BehaviourTreeUserData FindUserData(int userID)
         {
             try
             {
-                return _userDic.First(u => u.Key == instanceID).Value;
+                return _userDic.First(u => u.Key == userID).Value;
             }
             catch (Exception)
             {
-                Debug.Log($"NothingData. FindID{instanceID}.  Return => Null");
+                Debug.Log($"NothingData. FindID{userID}.  Return => Null");
                 return null;
             }
         }
@@ -62,7 +62,7 @@ namespace BehaviourTree.Data
         {
             try
             {
-                return _userDic.First(u => u.Value.Path == path).Value;
+                return _userDic.First(u => u.Value.UserPath == path).Value;
             }
             catch (Exception)
             {
@@ -83,14 +83,14 @@ namespace BehaviourTree.Data
             return dataList;
         }
 
-        public void DeleteUser(int instanceID)
+        public void DeleteUser(int userID)
         {
             if (_userDic.Count <= 0)
             {
                 return;
             }
 
-            _userDic.Remove(instanceID);
+            _userDic.Remove(userID);
         }
 
         public static void Dispose()

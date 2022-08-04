@@ -11,10 +11,12 @@ namespace BehaviourTree.Data
         {
             Offset = transform;
             User = user;
-            Path = path;
+            UserPath = path;
         }
 
-        public string Path { get; private set; }
+        public string UserPath { get; private set; }
+
+        public string IOPath { get; private set; }
 
         public Transform Offset { get; private set; }
 
@@ -25,5 +27,7 @@ namespace BehaviourTree.Data
         public void SetLimitConditionalCount(int count) => LimitConditionalCount = count;
         
         public bool IsLimitCondition() => LimitConditionalCount > 0;
+
+        public void SetIOPath(string path) => IOPath = path;
     }
 }
