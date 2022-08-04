@@ -162,14 +162,142 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b039cb51975f2d4aafa800e2fa3fc96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _path: 
+  _userPath: 
   _runUpdate: 1
   _offset: {fileID: 0}
   _limitConditionalCount: 0
-  _treeDataList: []
+  _treeDataList:
+  - _mastarCodition:
+      _conditionType: 0
+      _couditionList: []
+    _treeData:
+      _treeType: 0
+      _executeList:
+      - _treeExecuteType: 0
+        _condition:
+          _conditionType: 0
+          _couditionList: []
+        _action:
+          _actionList:
+          - rid: 5180213899444355072
+  - _mastarCodition:
+      _conditionType: 0
+      _couditionList:
+      - rid: 5180213899444355073
+      - rid: 5180213899444355074
+    _treeData:
+      _treeType: 0
+      _executeList:
+      - _treeExecuteType: 1
+        _condition:
+          _conditionType: 0
+          _couditionList: []
+        _action:
+          _actionList:
+          - rid: 5180213899444355076
+          - rid: 5180213899444355080
+  - _mastarCodition:
+      _conditionType: 0
+      _couditionList:
+      - rid: 5180213899444355073
+      - rid: 5180213899444355077
+      - rid: 5180213899444355078
+    _treeData:
+      _treeType: 0
+      _executeList:
+      - _treeExecuteType: 0
+        _condition:
+          _conditionType: 0
+          _couditionList: []
+        _action:
+          _actionList:
+          - rid: 5180213899444355079
+          - rid: 5180213899444355081
+          - rid: 5180213899444355083
+      - _treeExecuteType: 1
+        _condition:
+          _conditionType: 0
+          _couditionList: []
+        _action:
+          _actionList:
+          - rid: 5180213899444355082
+  - _mastarCodition:
+      _conditionType: 0
+      _couditionList:
+      - rid: 5180213899444355073
+      - rid: 5180213899444355084
+    _treeData:
+      _treeType: 0
+      _executeList:
+      - _treeExecuteType: 0
+        _condition:
+          _conditionType: 0
+          _couditionList: []
+        _action:
+          _actionList:
+          - rid: 5180213899444355085
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 5180213899444355072
+      type: {class: ActionIdle, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: 
+        _applyY: 0
+    - rid: 5180213899444355073
+      type: {class: ConditionEntryRoom, ns: , asm: Assembly-CSharp}
+    - rid: 5180213899444355074
+      type: {class: ConditionDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _effectDistance: 7
+        _checkType: 0
+    - rid: 5180213899444355076
+      type: {class: ActionTaskTowardPosition, ns: , asm: Assembly-CSharp}
+      data:
+        _type: 1
+        _updateSpeed: 3
+        _effectDist: 2
+    - rid: 5180213899444355077
+      type: {class: ConditionDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _effectDistance: 8
+        _checkType: 1
+    - rid: 5180213899444355078
+      type: {class: ConditionDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _effectDistance: 15
+        _checkType: 0
+    - rid: 5180213899444355079
+      type: {class: ActionShotBullet, ns: , asm: Assembly-CSharp}
+      data:
+        _intarvalTime: 0
+        _speed: 3
+        _shotType: 0
+    - rid: 5180213899444355080
+      type: {class: ActionRotate, ns: , asm: Assembly-CSharp}
+    - rid: 5180213899444355081
+      type: {class: ActionMove, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: 
+        _moveDirType: 2
+        _applyY: 0
+    - rid: 5180213899444355082
+      type: {class: ActionWait, ns: , asm: Assembly-CSharp}
+      data:
+        _waitTime: 0.5
+    - rid: 5180213899444355083
+      type: {class: ActionRotate, ns: , asm: Assembly-CSharp}
+    - rid: 5180213899444355084
+      type: {class: ConditionDistance, ns: , asm: Assembly-CSharp}
+      data:
+        _effectDistance: 16
+        _checkType: 1
+    - rid: 5180213899444355085
+      type: {class: ActionMove, ns: , asm: Assembly-CSharp}
+      data:
+        _animName: 
+        _moveDirType: 0
+        _applyY: 0
 --- !u!1001 &2284031560499897737
 PrefabInstance:
   m_ObjectHideFlags: 0
