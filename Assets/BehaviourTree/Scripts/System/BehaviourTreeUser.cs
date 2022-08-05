@@ -63,11 +63,16 @@ namespace BehaviourTree
 
             string ioPath;
 
+            #if UNITY_EDITOR
             BehaviourTreeIO.CreateFile(_userPath, out ioPath);
+            #endif
 
             BehaviourTreeUserData userData = BehaviourTreeMasterData.Instance.FindUserData(UserID);
             userData.SetLimitConditionalCount(_limitConditionalCount);
+
+            #if UNITY_EDITOR
             userData.SetIOPath(ioPath);
+            #endif
         }
 
         void SetModelData()

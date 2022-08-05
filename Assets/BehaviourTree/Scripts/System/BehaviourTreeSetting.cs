@@ -12,12 +12,17 @@ namespace BehaviourTree
     {
         void Awake()
         {
+            #if UNITY_EDITOR
             BehaviourTreeIO.Initialize();
+            #endif
         }
 
         void OnDestroy()
         {
+            #if UNITY_EDITOR
             BehaviourTreeIO.Update();
+            #endif
+
             BehaviourTreeMasterData.Dispose();
         }
     }

@@ -12,29 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 480422c488d2d2945bc358330d2bdeaa, type: 3}
   m_Name: AttackDataCounter
   m_EditorClassIdentifier: 
-  _type: 2
+  _type: 3
   _datas:
   - _animName: Skill_E
+    _soundName: 
     _power: 1
     _isActiveFrame: 2
     _endActiveFrame: 40
     _nextInputFrame: 50
     _effctTypes: 0000000001000000
     _actionData:
-      _hitAction:
-        rid: -2
+      _hitActions: []
       _attackAction:
         rid: -2
       _executeFrame: 0
   - _animName: Dash_Attack_ver_B
+    _soundName: 
     _power: 1
     _isActiveFrame: 9
     _endActiveFrame: 15
     _nextInputFrame: 26
     _effctTypes: 0000000001000000
     _actionData:
-      _hitAction:
-        rid: 6414747721681338409
+      _hitActions: []
       _attackAction:
         rid: -2
       _executeFrame: 0
@@ -43,9 +43,3 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 6414747721681338409
-      type: {class: HitActionForce, ns: , asm: Assembly-CSharp}
-      data:
-        _type: 1
-        _dir: {x: 0, y: 0, z: 0}
-        _power: 0

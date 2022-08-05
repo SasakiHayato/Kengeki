@@ -1,3 +1,5 @@
+#if UNITY_EDITOR
+
 using UnityEngine;
 using BehaviourTree;
 using BehaviourTree.Data;
@@ -32,3 +34,5 @@ public class ConditionConsole : BehaviourConditional
         BehaviourTreeDebug.SetLog(_userData, $"ConditionalInit.");
     }
 }
+
+#endif

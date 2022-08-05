@@ -1,3 +1,5 @@
+#if UNITY_EDITOR
+
 using UnityEngine;
 using BehaviourTree;
 using BehaviourTree.Execute;
@@ -33,3 +35,5 @@ public class ActionConsole : BehaviourAction
         BehaviourTreeDebug.SetLog(_userData, $"ActionInit. User_{_userData.UserPath}");
     }
 }
+
+#endif
